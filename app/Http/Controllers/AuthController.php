@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\LoginToken;
+use App\Models\Logo;
 use App\Models\OTP;
 use App\Models\User;
 use Carbon\Carbon;
@@ -209,4 +210,6 @@ class AuthController extends Controller
 
         return redirect('/login')->with('error', 'Login failed.');
     }
+
+ 
 }
