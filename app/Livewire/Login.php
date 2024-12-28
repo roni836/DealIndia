@@ -3,7 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Component;
-use App\Models\OTP;
+use App\Models\Otp;
 use App\Models\LoginToken;
 use App\Models\User;
 use Carbon\Carbon;
@@ -39,7 +39,7 @@ class Login extends Component
         if ($user && Hash::check($this->password, $user->password)) {
             $otp = rand(100000, 999999);
 
-            OTP::updateOrCreate(
+            Otp::updateOrCreate(
                 ['email' => $this->email],
                 [
                     'otp' => $otp,

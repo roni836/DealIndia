@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LogoController;
+use Illuminate\Support\Facades\Artisan;
 use App\Models\Logo;
 
 Route::get('/', function () {
@@ -46,6 +47,22 @@ Route::get('/admin/application-approved', [AdminController::class, 'approvedAppl
 Route::get('/admin/application/{id}', [ApplicationController::class, 'editApplication']);
 Route::post('/admin/application/generate/{id}', [ApplicationController::class, 'generateCode']);
 Route::resource('logos', LogoController::class);
+
+
+Route::get('/storage-link', function () {
+    Artisan::call('storage:link');
+    return 'Storage link has been created!';
+});
+
+Route::get('/clear-cache', function () {
+    Artisan::call('cache:clear');
+    Artisan::call('config:cache');
+    Artisan::call('config:clear');
+    Artisan::call('view:clear');
+    Artisan::call('route:clear');
+    Artisan::call('optimize:clear');
+    return "All Caches are cleared by @Roni";
+});
 
 
 
