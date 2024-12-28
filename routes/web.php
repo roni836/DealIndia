@@ -40,6 +40,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/admin/application', [AdminController::class, 'pendingApplication']);
 Route::get('/admin/application-approved', [AdminController::class, 'approvedApplication']);
 Route::get('/admin/application/{id}', [ApplicationController::class, 'editApplication']);
+Route::post('/admin/application/generate/{id}', [ApplicationController::class, 'generateCode']);
 
 
 

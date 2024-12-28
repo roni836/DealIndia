@@ -7,7 +7,7 @@
         <!-- Table Section -->
         <div class="bg-white rounded-lg shadow-md overflow-hidden">
             <div class="p-4 border-b border-gray-200">
-                <h3 class="text-lg font-semibold">Recent Applications</h3>
+                <h3 class="text-lg font-semibold">Approved Applications</h3>
             </div>
             <table class="w-full text-left table-auto">
                 <thead>
