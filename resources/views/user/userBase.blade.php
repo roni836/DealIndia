@@ -46,15 +46,16 @@
                 <li><a href="#services" class="hover:underline">Services</a></li>
                 <li><a href="#about" class="hover:underline">About</a></li>
                 <li><a href="#contact" class="hover:underline">Contact</a></li>
-                <li><a href="{{ url('register') }}" class="hover:underline">Register</a></li>
+                
                 @guest
+                <li><a href="{{ url('register') }}" class="hover:underline">Register</a></li>
                 <li><a href="{{ route('login') }}" class="hover:underline">Login</a></li>
                 @endguest
                 @auth
                 <li>
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
-                        <button type="submit" class="hover:underline bg-transparent border-none cursor-pointer text-blue-600">
+                        <button type="submit" class="hover:underline bg-transparent border-none cursor-pointer text-white">
                             Logout
                         </button>
                     </form>
@@ -64,9 +65,9 @@
 
             </ul>
         </div>
-    </nav>
-    <div class="min-h-screen flex bg-gray-100">
-        <div class="flex-1 flex flex-col">
+    </nav> 
+    <div class="min-h-screen gap-3 flex flex-1 bg-gray-100">
+        <div class="flex-1 flex flex-col ">
 
 
             <!-- Dashboard Content -->
@@ -75,7 +76,9 @@
                 @yield('content')
                 @show
             </div>
+           <div class="mt-10">
             @include('user.include.footer')
+           </div>
 
         </div>
     </div>
