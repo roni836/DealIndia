@@ -46,17 +46,18 @@
                 <a href="" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">
                     Dashboard
                 </a>
-                <a href="{{ url('/hirer/job-post') }}" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">
+                <a href="{{ url('/admin/application') }}" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">
                     Recent Applications
-                </a>
+                 </a>
                 <a href="{{ url('/admin/application-approved') }}" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">
                    Approved Applications
                 </a>
-                <a href="{{ url('/admin/application') }}" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">
-                   Pending Applications
+               
+                <a href="{{route('logos.create')}}" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">
+                    logo insert
                 </a>
-                <a href="#" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">
-                    Settings
+                <a href="{{route('logos.index')}}" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">
+                    manage logo 
                 </a>
             </nav>
         </aside>

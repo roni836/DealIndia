@@ -18,7 +18,12 @@ return new class extends Migration
             $table->string('mobile')->unique();
             $table->string('gender');
             $table->string('dob');
-            $table->string('address');
+            $table->string('address')->nullable();
+            $table->string('vr_code')->nullable();
+            $table->string('range_code')->nullable();
+            $table->string('company_code')->nullable();
+            $table->string('noc_number')->nullable();
+            $table->string('status')->default(0);
             $table->boolean('isAdmin')->default(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

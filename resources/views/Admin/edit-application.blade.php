@@ -28,16 +28,27 @@
                 </div>
                 <div class="mt-6 text-right">
                     <a href="#" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-                        Edit User
+                        Update User
                     </a>
-                    <a href="#" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
-                        Approve Now
-                    </a>
-                    <a href="#" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">
+                    @if ($user->vr_code && $user->company_code && $user->noc_number)
+                        @else
+                        <form action="{{ url('/admin/application/generate/' . $user->id) }}" method="POST"
+                            class="inline-block">
+                            @csrf <!-- Add CSRF token for security -->
+                            <button type="submit"
+                                class="bg-green-500 w-[80px] text-white px-4 py-2 rounded hover:bg-green-600 font-semibold focus:outline-none focus:ring-2 focus:ring-green-500">
+                                Approve Now
+                            </button>
+                        </form>
+                    @endif
+
+                    <a href="{{ url('/admin/application') }}"
+                        class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">
                         Back to List
                     </a>
                 </div>
             </div>
+
 
             <!-- Additional User Info -->
             <div class="border-t px-6 py-4">
