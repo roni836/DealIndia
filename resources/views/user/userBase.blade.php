@@ -66,7 +66,7 @@
             </ul>
         </div>
     </nav> 
-    <div class="min-h-screen gap-3 flex flex-1 bg-gray-100">
+    <div class="min-h-screen  flex flex-1 bg-gray-100">
         <div class="flex-1 flex flex-col ">
 
 
@@ -76,10 +76,10 @@
                 @yield('content')
                 @show
             </div>
-           <div class="mt-10">
+           <div class="">
             @include('user.include.footer')
            </div>
-
+          
         </div>
     </div>
 
