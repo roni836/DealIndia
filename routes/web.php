@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LogoController;
+use App\Models\Logo;
 
 Route::get('/', function () {
     return view('user.home');
@@ -24,7 +25,9 @@ Route::get('/verification', function () {
 });
 
 Route::get('/register', function () {
-    return view('auth.register');
+    $data['logo'] = Logo::where('status', 1)->first();
+
+    return view('auth.register',$data);
 });
 
 Route::get('/dashboard', function () {

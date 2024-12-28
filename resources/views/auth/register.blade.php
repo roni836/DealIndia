@@ -19,8 +19,11 @@
                 <div class="absolute inset-0 bg-black opacity-50"></div>
 
                 <div class="absolute inset-0 flex items-center justify-center">
+                    @if ($logo) 
+                    <img src="{{ asset('storage/' . $logo->logo_path) }}" alt="Logo" class="h-20 md:h-32">
+                @else
                     <img src="logo.png" alt="Logo" class="h-20 md:h-32">
-                </div>
+                @endif                </div>
             </div>
         </div>
     
