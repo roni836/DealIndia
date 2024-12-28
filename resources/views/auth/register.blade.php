@@ -17,6 +17,10 @@
             <div class="w-full h-full relative">
                 <img src="register.jpg" class="object-cover w-full h-full filter opacity-80" alt="">
                 <div class="absolute inset-0 bg-black opacity-50"></div>
+
+                <div class="absolute inset-0 flex items-center justify-center">
+                    <img src="logo.png" alt="Logo" class="h-20 md:h-32">
+                </div>
             </div>
         </div>
     
@@ -34,7 +38,7 @@
                 </div>
             @endif
             <div class="w-full mx-6 lg:mx-12 p-8">
-                <h2 class="text-4xl font-semibold text-center text-gray-800 mb-6" style="font-family: 'Roboto Condensed', serif;">Create An Account</h2>
+                <h2 class="text-4xl font-semibold text-center text-gray-800 mb-6" style="font-family: 'Roboto Condensed', serif;">Become A Member</h2>
     
                 <!-- Register Form -->
                 <form method="POST" action="{{route('user.register')}}">

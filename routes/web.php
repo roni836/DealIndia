@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LogoController;
 
 Route::get('/', function () {
     return view('user.home');
@@ -41,6 +42,7 @@ Route::get('/admin/application', [AdminController::class, 'pendingApplication'])
 Route::get('/admin/application-approved', [AdminController::class, 'approvedApplication']);
 Route::get('/admin/application/{id}', [ApplicationController::class, 'editApplication']);
 Route::post('/admin/application/generate/{id}', [ApplicationController::class, 'generateCode']);
+Route::resource('logos', LogoController::class);
 
 
 

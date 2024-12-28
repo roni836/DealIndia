@@ -53,8 +53,11 @@
                    Approved Applications
                 </a>
                
-                <a href="#" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">
-                    Settings
+                <a href="{{route('logos.create')}}" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">
+                    logo insert
+                </a>
+                <a href="{{route('logos.index')}}" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">
+                    manage logo 
                 </a>
             </nav>
         </aside>
