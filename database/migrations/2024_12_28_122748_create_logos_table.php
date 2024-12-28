@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('logos', function (Blueprint $table) {
             $table->id();
+            $table->string('title'); 
+            $table->string('logo_path'); 
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

@@ -12,7 +12,8 @@ class LogoController extends Controller
      */
     public function index()
     {
-        //
+        $data['logos']=Logo::all();
+        return view('Admin.setting.manageLogo',$data);
     }
 
     /**
@@ -20,16 +21,29 @@ class LogoController extends Controller
      */
     public function create()
     {
-        //
+        return view('Admin.setting.logoCreate');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    // Store a newly created resource in storage
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'title' => 'required|string',
+            'logo_path' => 'required|image|mimes:jpeg,png,jpg',
+        ]);
+
+        $image = $request->file('logo_path');
+        $imageName = time() . '.' . $image->getClientOriginalExtension();
+        $imagePath = $image->storeAs('logos', $imageName, 'public');
+
+        Logo::create([
+            'title' => $data['title'],
+            'logo_path' => $imagePath,
+        ]);
+
+        return redirect()->route('logos.index')->with('success', 'Logo added successfully.');
     }
+
 
     /**
      * Display the specified resource.
