@@ -44,14 +44,15 @@
                 <h2 class="text-3xl md:text-4xl font-semibold text-center text-gray-800 mb-6" style="font-family: 'Roboto Condensed', serif;">Admin Login</h2>
 
                 <!-- Buttons to select Login method -->
-                <div class="flex justify-center items-center ">
-                    <button wire:click="toggleForm('otp')" class="px-6 py-2 bg-blue-900 text-white rounded-md mr-4">
+                <div class="flex justify-center items-center flex-nowrap space-x-4">
+                    <button wire:click="toggleForm('otp')" class="px-6 py-2 bg-blue-900 text-white rounded-md">
                         Login with OTP
                     </button>
                     <button wire:click="toggleForm('link')" class="px-6 py-2 bg-blue-900 text-white rounded-md">
                         Login with Email Link
                     </button>
                 </div>
+
 
 
 
