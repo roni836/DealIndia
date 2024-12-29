@@ -29,17 +29,17 @@
         </div>
     @endif
 
-    <div class="w-full h-screen bg-white flex flex-col md:flex-row overflow-hidden">
+    <div class="w-full  bg-white flex flex-col md:flex-row overflow-hidden">
         <!-- Left Section: Image -->
-        <div class="w-full md:w-6/12 h-64 md:h-full hidden md:flex">
+        <div class="w-full md:w-6/12 h-64 md:h-full hidden  md:flex">
             <div class="w-full h-full relative">
-                <img src="register.jpg" class="object-cover w-full h-full filter opacity-80" alt="">
+                <img src="register.jpg" class="object-cover hidden md:block w-full h-full filter opacity-80" alt="">
                 <div class="absolute inset-0 bg-black opacity-50"></div>
             </div>
         </div>
         <!-- Right Section: Login Form -->
         <div class="flex justify-center items-center w-full md:w-6/12 p-6 md:p-12 lg:p-24">
-            <div class="w-full">
+            <div class="w-full py-6 md:py-0">
 
                 <h2 class="text-3xl md:text-4xl font-semibold text-center text-gray-800 mb-6" style="font-family: 'Roboto Condensed', serif;">Admin Login</h2>
 
@@ -53,8 +53,30 @@
                     </button>
                 </div>
 
-                <!-- OTP Login Form -->
-                @if($loginMethod === 'otp')
+             
+
+                <div class="mt-6 text-center flex items-center justify-center">
+                    <hr class="flex-grow border-t border-blue-900">
+                    <a href="{{ url('register') }}" class="text-sm text-blue-900 hover:underline mx-4">Don't have an account? Register now</a>
+                    <hr class="flex-grow border-t border-blue-900">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+   <!-- OTP Login Form -->
+   @if($loginMethod === 'otp')
                     <div id="otp-form">
                         <form wire:submit.prevent="sendOtp">
                             <div class="mb-4">
@@ -114,13 +136,3 @@
                         </form>
                     </div>
                 @endif
-
-                <div class="mt-6 text-center flex items-center justify-center">
-                    <hr class="flex-grow border-t border-blue-900">
-                    <a href="{{ url('register') }}" class="text-sm text-blue-900 hover:underline mx-4">Don't have an account? Register now</a>
-                    <hr class="flex-grow border-t border-blue-900">
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
