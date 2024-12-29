@@ -45,7 +45,7 @@
 
 <nav class="border-gray-200 bg-gray-50">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-      <a href="#" class=" w-[30%] lg:w-[10%] flex items-center space-x-3 rtl:space-x-reverse">
+      <a href="{{ route('homepage') }}" class=" w-[30%] lg:w-[10%] flex items-center space-x-3 rtl:space-x-reverse">
         <img src="logo.png" class="w-full" alt="">
       </a>
       <button data-collapse-toggle="navbar-solid-bg" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 " aria-controls="navbar-solid-bg" aria-expanded="false">

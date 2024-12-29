@@ -10,7 +10,7 @@ use App\Models\Logo;
 
 Route::get('/', function () {
     return view('user.home');
-});
+})->name("homepage");
 
 
 Route::get('/admin', function () {
