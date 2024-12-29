@@ -2,15 +2,16 @@
 @section('title', '')
 @section('content')
 <main class="">
-   
+
     <section class="container mx-auto px-6 py-16 flex flex-col md:flex-row items-center">
         <div class="md:w-1/2 lg:pr-24 md:pr-16">
             <h1 class="text-4xl md:text-6xl font-bold text-gray-900 leading-tight mb-6">Empower Your Investments with DealIndia.</h1>
             <p class="text-lg text-gray-600 mb-8">Streamline investment tracking, connect with top investors, and grow your financial opportunities—all in one place.</p>
             <div class="flex gap-4">
-                <button class="bg-teal-600 text-white px-8 py-3 rounded-lg hover:bg-teal-700 transition duration-300">Explore Services</button>
-                <button class="border-2 border-teal-600 text-teal-600 px-8 py-3 rounded-lg hover:bg-teal-50 transition duration-300">Learn More</button>
+                <button class="bg-teal-600 text-white px-8 py-3 rounded-lg hover:bg-teal-700 transition duration-300 whitespace-nowrap">Explore Services</button>
+                <button class="border-2 border-teal-600 text-teal-600 px-8 py-3 rounded-lg hover:bg-teal-50 transition duration-300 whitespace-nowrap">Learn More</button>
             </div>
+
         </div>
         <div class="md:w-1/2 mt-12 md:mt-0">
             <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800" alt="Financial Growth" class="rounded-lg shadow-xl">
