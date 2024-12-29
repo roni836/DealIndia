@@ -50,11 +50,11 @@
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="bg-white p-8 rounded-xl shadow-lg">
-                    <div class="flex items-center mb-4">
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=100" alt="User" class="w-12 h-12 rounded-full mr-4">
+                    <div class="flex gap-4 items-center mb-4">
+                        <img class="object-cover object-center w-12 h-12 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=100" alt="User" class="w-12 h-12 rounded-full mr-4">
                         <div>
                             <h4 class="font-semibold">Sarah Johnson</h4>
-                            <div class="text-yellow-400">
+                            <div class="text-[#f8931f]">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -66,11 +66,11 @@
                     <p class="text-gray-600">"DealIndia simplified my investment tracking like never before!"</p>
                 </div>
                 <div class="bg-white p-8 rounded-xl shadow-lg">
-                    <div class="flex items-center mb-4">
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100" alt="User" class="w-12 h-12 rounded-full mr-4">
+                    <div class="flex gap-4 items-center mb-4">
+                        <img class="object-cover object-center w-12 h-12 rounded-full" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100" alt="User" class="w-12 h-12 rounded-full mr-4">
                         <div>
                             <h4 class="font-semibold">Michael Chen</h4>
-                            <div class="text-yellow-400">
+                            <div class="text-[#f8931f]">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -82,11 +82,11 @@
                     <p class="text-gray-600">"The best platform for managing investments and finding opportunities."</p>
                 </div>
                 <div class="bg-white p-8 rounded-xl shadow-lg">
-                    <div class="flex items-center mb-4">
-                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100" alt="User" class="w-12 h-12 rounded-full mr-4">
+                    <div class="flex gap-4 items-center mb-4">
+                        <img class="object-cover object-center w-12 h-12 rounded-full" src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100" alt="User" class="w-12 h-12 rounded-full mr-4">
                         <div>
                             <h4 class="font-semibold">Emma Wilson</h4>
-                            <div class="text-yellow-400">
+                            <div class="text-[#f8931f]">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -100,6 +100,7 @@
             </div>
         </div>
     </section>
+
 
     <!-- How It Works Section -->
     <section class="py-20 bg-white">
