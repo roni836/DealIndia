@@ -126,15 +126,6 @@
 </div>
 
 
-
-
-
-
-
-
-
-
-
 <!-- OTP Login Form -->
 @if($loginMethod === 'otp')
 <div id="otp-form">
