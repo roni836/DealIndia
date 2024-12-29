@@ -51,14 +51,13 @@ class InvestorController extends Controller
 
     public function submitForm(Request $request)
     {
-        
         $validator = Validator::make($request->all(), [
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
             'date_of_birth' => 'required|date',
             'gender' => 'required|string',
             'religion' => 'nullable|string|max:255',
-            'email' => 'required|email|max:255',
+            'email' => 'required|email|max:255|unique:investor_details',
             'mobile' => 'required|string|max:15',
             'bank_name' => 'required|string|max:255',
             'account_number' => 'required|string|max:255',
@@ -71,59 +70,43 @@ class InvestorController extends Controller
             'country' => 'required|string|max:255',
             'postal_code' => 'required|string|max:10',
             'aadhar_card' => 'required|file|mimes:jpeg,png,pdf|max:2048',
+            'aadhar_card_number' => 'required|string|max:12',
             'pan_card' => 'required|file|mimes:jpeg,png,pdf|max:2048',
+            'pan_card_number' => 'required|string|max:10',
+            'label1_name' => 'nullable|string|max:255',
+            'label1_image' => 'nullable|file|mimes:jpeg,png,pdf|max:2048',
+            'label2_name' => 'nullable|string|max:255',
+            'label2_image' => 'nullable|file|mimes:jpeg,png,pdf|max:2048',
+            'label3_name' => 'nullable|string|max:255',
+            'label3_image' => 'nullable|file|mimes:jpeg,png,pdf|max:2048',
+            'label4_name' => 'nullable|string|max:255',
+            'label4_image' => 'nullable|file|mimes:jpeg,png,pdf|max:2048',
         ]);
-        
+
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-        
+
+        $data = $request->all();
+
         // Handle file uploads
-        $aadharCardPath = $request->hasFile('aadhar_card') 
-            ? $request->file('aadhar_card')->store('documents/aadhar', 'public') 
-            : null;
-        
-        $panCardPath = $request->hasFile('pan_card') 
-            ? $request->file('pan_card')->store('documents/pan', 'public') 
-            : null;
-        
-        // Insert into the database
-        $details = InvesterDetail::create([
-            'user_id' => Auth::id(),
-            'first_name' => $request->input('first_name'),
-            'last_name' => $request->input('last_name'),
-            'date_of_birth' => $request->input('date_of_birth'),
-            'gender' => $request->input('gender'),
-            'religion' => $request->input('religion'),
-            'email' => $request->input('email'),
-            'mobile' => $request->input('mobile'),
-            'bank_name' => $request->input('bank_name'),
-            'account_number' => $request->input('account_number'),
-            'ifsc_code' => $request->input('ifsc_code'),
-            'account_holder_name' => $request->input('account_holder_name'),
-            'account_type' => $request->input('account_type'),
-            'street_address' => $request->input('street_address'),
-            'city' => $request->input('city'),
-            'state' => $request->input('state'),
-            'country' => $request->input('country'),
-            'postal_code' => $request->input('postal_code'),
-            'aadhar_card' => $aadharCardPath,
-            'pan_card' => $panCardPath,
-        ]);
+        $data['aadhar_card'] = $request->file('aadhar_card')?->store('documents/aadhar', 'public');
+        $data['pan_card'] = $request->file('pan_card')?->store('documents/pan', 'public');
+        $data['label1_image'] = $request->file('label1_image')?->store('documents/labels', 'public');
+        $data['label2_image'] = $request->file('label2_image')?->store('documents/labels', 'public');
+        $data['label3_image'] = $request->file('label3_image')?->store('documents/labels', 'public');
+        $data['label4_image'] = $request->file('label4_image')?->store('documents/labels', 'public');
 
-        if($details){
-            $user = User::find(Auth::id());
-            $user->all_details = 1;
-            $user->save();
+        $data['user_id'] = Auth::id();
 
-            return redirect('/dashboard')->with('success', 'Details submitted successfully!');
-        }
+        InvesterDetail::create($data);
 
+        return redirect('/dashboard')->with('success', 'Details submitted successfully!');
+    }
 
        
         
 
       
     }
-    
-}
+

@@ -8,17 +8,13 @@ class InvesterDetail extends Model
 {
     protected $fillable = [
         'user_id',
-        'vr_code',
-        'range_code',
-        'company_code',
-        'noc_number',
         'first_name',
         'last_name',
         'date_of_birth',
         'gender',
         'religion',
         'email',
-        'contact_number',
+        'mobile',
         'bank_name',
         'account_number',
         'ifsc_code',
@@ -30,6 +26,16 @@ class InvesterDetail extends Model
         'country',
         'postal_code',
         'aadhar_card',
-        'pan_card'
+        'aadhar_card_number',
+        'pan_card',
+        'pan_card_number',
+        'label1_name',
+        'label1_image',
+        'label2_name',
+        'label2_image',
+        'label3_name',
+        'label3_image',
+        'label4_name',
+        'label4_image',
     ];
 }
