@@ -102,6 +102,7 @@
     </div>
 </div>
 
+
 <script>
     // Sidebar toggle for small and medium screens
     const menuButton = document.getElementById('menuButton');
@@ -116,4 +117,5 @@
         sidebar.classList.add('-translate-x-full');
     });
 </script>
+
 @endsection

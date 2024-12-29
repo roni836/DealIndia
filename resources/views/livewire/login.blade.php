@@ -52,7 +52,66 @@
                         Login with Email Link
                     </button>
                 </div>
+                @if($loginMethod === 'otp')
+                    <div id="otp-form" class="mt-4">
+                        <form wire:submit.prevent="sendOtp">
+                            <div class="mb-4">
+                                <label {{$inputDisabled ? 'readonly' : ''}} for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                                <input wire:model="email" type="email" required autofocus
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                                <input wire:model="password" type="password" required
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <button type="submit" class="w-full bg-blue-900 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                Login
+                            </button>
+                        </form>
 
+                        @if ($showOtpMessage)
+                            <div class="mt-4 text-green-700">
+                                OTP has been sent to your email.
+                            </div>
+                            @elseif($resendOtpMessage)
+                            <div class="mt-4 text-green-700">
+                                OTP has been resent to your email.
+                            </div>
+                        @endif
+
+                        @if($isToggleOtp)
+                        <form wire:submit.prevent="verifyOtp" class="mt-4">
+                            <div class="mb-4">
+                                <label for="otp" class="block text-sm font-medium text-gray-700 mb-2">Enter OTP</label>
+                                <input wire:model="otp" type="text" required
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <button type="submit" class="w-full bg-green-700 hover:bg-green-500 text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500">
+                                Verify OTP
+                            </button>
+                            
+                        </form>
+                        <button wire:click="verifyOtp" class="text-blue-600">resend otp</button>
+                        @endif
+                    </div>
+                @endif
+
+                <!-- Email Link Login Form -->
+                @if($loginMethod === 'link')
+                    <div id="link-form" class="mt-4">
+                        <form wire:submit.prevent="sendLoginLink">
+                            <div class="mb-4">
+                                <label for="email-link" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                                <input {{$inputDisabled ? 'readonly' : ''}} wire:model="email" type="email" required autofocus
+                                    class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <button type="submit" class="w-full bg-blue-900 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                Send Login Link
+                            </button>
+                        </form>
+                    </div>
+                @endif
 
 
 
