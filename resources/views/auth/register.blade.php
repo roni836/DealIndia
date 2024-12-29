@@ -1,7 +1,7 @@
 @extends('user.userBase')
 @section('title', 'Login Work')
 @section('content')
-    <div class="flex w-full h-screen flex-col lg:flex-row">
+    <div class="flex w-full h-screen flex-col mt-10 lg:flex-row">
         <!-- Left Section (Image) -->
         <div class="w-full lg:w-6/12 h-full bg-orange-100 hidden md:flex">
             <div class="w-full h-full relative">
