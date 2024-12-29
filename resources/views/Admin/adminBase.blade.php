@@ -48,16 +48,16 @@
                 </a>
                 <a href="{{ url('/admin/application') }}" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">
                     Recent Applications
-                 </a>
-                <a href="{{ url('/admin/application-approved') }}" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">
-                   Approved Applications
                 </a>
-               
+                <a href="{{ url('/admin/application-approved') }}" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">
+                    Approved Applications
+                </a>
+
                 <a href="{{route('logos.create')}}" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">
                     logo insert
                 </a>
                 <a href="{{route('logos.index')}}" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">
-                    manage logo 
+                    manage logo
                 </a>
             </nav>
         </aside>
@@ -69,11 +69,14 @@
                 <h2 class="text-xl font-semibold">Admin Dashboard</h2>
                 <div class="flex items-center space-x-4">
                     <p>Welcome Roni</p>
-                    <form id="logout-form"   class="inline-block">
+                    @auth
+                    <form id="logout-form" method="POST" action="{{ route('admin.logout') }}" class="inline-block">
                         @csrf
                         <button type="submit"
                             class="px-4 py-2 text-white bg-red-500 rounded hover:bg-red-700">Logout</button>
                     </form>
+                    @endauth
+
                 </div>
             </header>
 
@@ -81,11 +84,11 @@
 
             <div class="md:mt-20 mt-8">
                 @yield('content')
-            @show
-        </div>
+                @show
+            </div>
 
+        </div>
     </div>
-</div>
 
 </body>
 

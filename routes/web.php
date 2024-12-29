@@ -46,6 +46,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/application-approved', [AdminController::class, 'approvedApplication']);
     Route::get('/admin/application/{id}', [ApplicationController::class, 'editApplication']);
     Route::post('/admin/application/generate/{id}', [ApplicationController::class, 'generateCode']);
+    Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
+
     Route::resource('logos', LogoController::class);
 });
 

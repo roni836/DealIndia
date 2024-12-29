@@ -99,7 +99,7 @@ class Login extends Component
                 Auth::login($user);
                 return redirect()->route('admin')->with('success', 'Admin login successful.');
             }
-
+            
             // For non-admin users, redirect to the dashboard
             Auth::login($user);
             return redirect()->route('user.dashboard')->with('success', 'Login successful.');
