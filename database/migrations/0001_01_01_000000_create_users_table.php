@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('mobile')->unique();
+            $table->boolean('code_details')->default(0);
+            $table->boolean('all_details')->default(0);
             $table->string('gender');
             $table->string('dob');
             $table->string('address')->nullable();

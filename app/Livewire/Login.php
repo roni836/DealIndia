@@ -102,7 +102,7 @@ class Login extends Component
 
             // For non-admin users, redirect to the dashboard
             Auth::login($user);
-            return redirect()->route('user.dashboard')->with('success', 'Login successful.');
+            return redirect()->route('user.investerCodeform')->with('success', 'Login successful.');
         }
 
         session()->flash('error', 'Login failed.');

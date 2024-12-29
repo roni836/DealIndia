@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\InvestorController;
 use App\Http\Controllers\LogoController;
 use Illuminate\Support\Facades\Artisan;
 use App\Models\Logo;
@@ -50,6 +51,14 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::resource('logos', LogoController::class);
 });
+
+
+Route::get('/investerform',[InvestorController::class,'index'])->name('user.investerCodeform');
+Route::post('/investerform/submit',[InvestorController::class,'store'])->name('user.investerCodecheck');
+use App\Http\Controllers\DetailsController;
+
+Route::get('/details-form', [InvestorController::class, 'showForm'])->name('details.form');
+Route::post('/details-form', [InvestorController::class, 'submitForm'])->name('details.submit');
 
 
 
