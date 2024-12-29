@@ -30,7 +30,7 @@
                     </ul>
                 </div>
             @endif
-            <div class="w-full mx-6 lg:mx-12 p-8">
+            <div class="w-full mx-6 lg:mx-12 md:p-8 p-3">
                 <h2 class="text-4xl font-semibold text-center text-gray-800 mb-6" style="font-family: 'Roboto Condensed', serif;">Become A Member</h2>
     
                 <!-- Register Form -->
