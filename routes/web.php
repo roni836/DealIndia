@@ -13,9 +13,7 @@ Route::get('/', function () {
 })->name("homepage");
 
 
-Route::get('/admin', function () {
-    return view('Admin.dashboard');
-});
+
 
 Route::get('/login', function () {
     return view('auth.login');
@@ -28,7 +26,7 @@ Route::get('/verification', function () {
 Route::get('/register', function () {
     $data['logo'] = Logo::where('status', 1)->first();
 
-    return view('auth.register',$data);
+    return view('auth.register', $data);
 });
 
 Route::get('/dashboard', function () {
@@ -37,16 +35,21 @@ Route::get('/dashboard', function () {
 
 Route::post('/send-otp', [AuthController::class, 'sendOTP'])->middleware('throttle:5,1');
 Route::post('/verify-otp', [AuthController::class, 'verifyOTP']);
-Route::post('/new-register',[AuthController::class,"register"])->name("user.register");
+Route::post('/new-register', [AuthController::class, "register"])->name("user.register");
 Route::post('/send-login-link', [AuthController::class, 'sendLoginLink'])->name('sendLoginLink');
 Route::get('/login/link', [AuthController::class, 'loginViaLink'])->name('loginViaLink');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/admin/application', [AdminController::class, 'pendingApplication']);
-Route::get('/admin/application-approved', [AdminController::class, 'approvedApplication']);
-Route::get('/admin/application/{id}', [ApplicationController::class, 'editApplication']);
-Route::post('/admin/application/generate/{id}', [ApplicationController::class, 'generateCode']);
-Route::resource('logos', LogoController::class);
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin');
+    Route::get('/admin/application', [AdminController::class, 'pendingApplication']);
+    Route::get('/admin/application-approved', [AdminController::class, 'approvedApplication']);
+    Route::get('/admin/application/{id}', [ApplicationController::class, 'editApplication']);
+    Route::post('/admin/application/generate/{id}', [ApplicationController::class, 'generateCode']);
+    Route::resource('logos', LogoController::class);
+});
+
+
 
 
 Route::get('/storage-link', function () {
@@ -63,6 +66,3 @@ Route::get('/clear-cache', function () {
     Artisan::call('optimize:clear');
     return "All Caches are cleared by @Roni";
 });
-
-
-
