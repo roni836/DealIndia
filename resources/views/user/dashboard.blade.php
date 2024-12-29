@@ -1,7 +1,7 @@
 @extends('user.userBase')
 @section('title', 'User Dashboard')
 @section('content')
-<div class="flex  bg-gray-100">
+<div class="flex mt-10 bg-gray-100">
     <!-- Sidebar -->
     <aside id="sidebar" class="fixed top-0 left-0 z-30 w-64 bg-gray-300 text-black h-screen transform -translate-x-full lg:translate-x-0 lg:relative transition-transform">
         <div class="flex items-center justify-between px-4 py-4 border-b">
