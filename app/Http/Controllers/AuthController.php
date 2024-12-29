@@ -44,9 +44,9 @@ class AuthController extends Controller
         ]);
 
         if ($data) {
-            Mail::raw("Hello $request->name, your Real Account has been Created Successfully.", function ($message) use ($request) {
+            Mail::raw("Hello $request->name, your Deal Account has been Created Successfully.", function ($message) use ($request) {
                 $message->to($request->email)
-                    ->subject('New Real Account Created');
+                    ->subject('New Deal Account Created');
             });
             return redirect()->route('login')->with('success', 'Account created successfully. Please log in.');
         }

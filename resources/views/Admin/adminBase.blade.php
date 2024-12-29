@@ -20,7 +20,7 @@
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
 
-    <title>@yield('title') | Real India</title>
+    <title>@yield('title') | Deal India</title>
 
     <style>
         .roboto-medium {
@@ -40,7 +40,7 @@
         <!-- Sidebar -->
         <aside class="w-64 bg-white shadow-md ">
             <div class="p-4">
-                <h1 class="text-xl font-bold text-gray-800">Real India</h1>
+                <h1 class="text-xl font-bold text-gray-800">Deal India</h1>
             </div>
             <nav class="mt-6">
                 <a href="" class="block py-2 px-8 text-gray-700 hover:bg-gray-200">

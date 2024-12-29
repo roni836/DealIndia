@@ -5,12 +5,12 @@
             <div class="flex flex-col items-center sm:items-start">
                 <img src="logo.png" alt="Logo" class="h-16 mb-4">
                 <p class="text-sm text-center sm:text-left mb-4">
-                    Real India is dedicated to providing exceptional services across design, finance, and business sectors, delivering quality solutions to our clients globally.
+                    Deal India is dedicated to providing exceptional services across design, finance, and business sectors, delivering quality solutions to our clients globally.
                 </p>
                 <div class="mt-4 text-center sm:text-left">
                     <p class="text-sm">Phone: <a href="tel:+1234567890" class="text-blue-300 hover:text-white">+123 456 7890</a></p>
-                    <p class="text-sm">Email: <a href="mailto:info@realindia.com" class="text-blue-300 hover:text-white">info@realindia.com</a></p>
-                </div>
+                    <p class="text-sm">Email: <a href="mailto:info@dealindia.com" class="text-blue-300 hover:text-white">info@dealindia.com</a></p>
+                </div>0
             </div>
  
             <div class="grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12">
@@ -73,7 +73,7 @@
         </div>
  
         <div class="mt-12 border-t border-white pt-4">
-            <p class="text-sm text-center">&copy; {{ date('Y') }} Real India. All rights reserved.</p>
+            <p class="text-sm text-center">&copy; {{ date('Y') }} Deal India. All rights reserved.</p>
         </div>
     </div>
 </footer>

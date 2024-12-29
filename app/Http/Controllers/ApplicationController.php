@@ -52,7 +52,7 @@ class ApplicationController extends Controller
         $emailBody = "
             Hello {$user->name},
 
-            Your Real Account has been created successfully! Here are the details:
+            Your Deal India Account has been created successfully! Here are the details:
 
             VR Code: {$user->vr_code}
             Range Code: {$user->range_code}
@@ -62,13 +62,13 @@ class ApplicationController extends Controller
             Thank you for choosing our services!
 
             Regards,
-            [Your Company Name]
+            Deal India
         ";
 
         // Send email
         Mail::raw($emailBody, function ($message) use ($user) {
             $message->to($user->email)
-                ->subject('New Real Account Created');
+                ->subject('New Deal India Account Created');
         });
 
         return redirect()->back()->with('success', 'User approved successfully!');
