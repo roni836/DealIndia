@@ -37,7 +37,7 @@ class ApplicationController extends Controller
     {
         $user = User::find($id);
 
-        if (!$user) {
+        if (!$user){
             return redirect()->back()->with('error', 'User not found');
         }
 

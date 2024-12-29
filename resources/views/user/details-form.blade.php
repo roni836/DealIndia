@@ -2,158 +2,139 @@
 @section('title', 'User Dashboard')
 @section('content')
 
-<div class="bg-gray-100 py-10">
-    <div class="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow">
-        <h1 class="text-2xl font-bold mb-6">Details Form</h1>
+<div class="bg-gray-100">
 
-        @if(session('success'))
-            <div class="bg-green-500 text-white p-4 rounded mb-6">
-                {{ session('success') }}
-            </div>
-        @endif
+<div class="max-w-4xl mx-auto mt-10 bg-white p-8 rounded-lg shadow-md">
+    <h1 class="text-2xl font-bold mb-6 text-center">Investor Details Form</h1>
+    <form action="{{ route('details.submit') }}" method="POST" enctype="multipart/form-data" id="investorForm">
+        @csrf
 
-     
+        <!-- Personal Details -->
+        <h2 class="text-xl font-semibold mt-4 mb-3">Personal Details</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input type="text" name="first_name" placeholder="First Name" required 
+                class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <input type="text" name="last_name" placeholder="Last Name" required 
+                class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <input type="date" name="date_of_birth" required 
+                class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <select name="gender" required 
+                class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+            <input type="text" name="religion" placeholder="Religion" 
+                class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <input type="email" name="email" placeholder="Email" required 
+                class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <input type="tel" name="mobile" placeholder="Mobile" pattern="[0-9]{10}" required 
+                class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        </div>
 
-        <form action="{{ route('details.submit') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
-            @csrf
+        <!-- Banking Details -->
+        <h2 class="text-xl font-semibold mt-6 mb-3">Banking Details</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input type="text" name="bank_name" placeholder="Bank Name" required 
+                class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <input type="text" name="account_number" placeholder="Account Number" required 
+                class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <input type="text" name="ifsc_code" placeholder="IFSC Code" required 
+                class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <input type="text" name="account_holder_name" placeholder="Account Holder Name" required 
+                class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <select name="account_type" required 
+                class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                <option value="">Select Account Type</option>
+                <option value="Savings">Savings</option>
+                <option value="Current">Current</option>
+            </select>
+        </div>
 
-            <!-- Personal Details -->
+        <!-- Address -->
+        <h2 class="text-xl font-semibold mt-6 mb-3">Address</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input type="text" name="street_address" placeholder="Street Address" required 
+                class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <input type="text" name="city" placeholder="City" required 
+                class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <input type="text" name="state" placeholder="State" required 
+                class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <input type="text" name="country" placeholder="Country" required 
+                class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <input type="text" name="postal_code" placeholder="Postal Code" pattern="\d{6}" required 
+                class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        </div>
+
+        <!-- Documents -->
+        <h2 class="text-xl font-semibold mt-6 mb-3">Documents</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-                <h2 class="text-xl font-semibold mb-4">Personal Details</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-sm font-medium mb-2">First Name</label>
-                        <input type="text" name="first_name" class="w-full border rounded p-2" value="{{ old('first_name') }}">
-                        @error('first_name') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-2">Last Name</label>
-                        <input type="text" name="last_name" class="w-full border rounded p-2" value="{{ old('last_name') }}">
-                        @error('last_name') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-2">Date of Birth</label>
-                        <input type="date" name="date_of_birth" class="w-full border rounded p-2" value="{{ old('date_of_birth') }}">
-                        @error('date_of_birth') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-2">Gender</label>
-                        <select name="gender" class="w-full border rounded p-2">
-                            <option value="">Select Gender</option>
-                            <option value="Male" {{ old('gender') === 'Male' ? 'selected' : '' }}>Male</option>
-                            <option value="Female" {{ old('gender') === 'Female' ? 'selected' : '' }}>Female</option>
-                            <option value="Other" {{ old('gender') === 'Other' ? 'selected' : '' }}>Other</option>
-                        </select>
-                        @error('gender') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-2">Religion</label>
-                        <input type="text" name="religion" class="w-full border rounded p-2" value="{{ old('religion') }}">
-                        @error('religion') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-2">Email</label>
-                        <input type="email" name="email" class="w-full border rounded p-2" value="{{ old('email') }}">
-                        @error('email') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-2">Mobile</label>
-                        <input type="text" name="mobile" class="w-full border rounded p-2" value="{{ old('mobile') }}">
-                        @error('mobile') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
-                    </div>
-                </div>
+                <label class="block mb-1">Aadhar Card (Image/PDF)</label>
+                <input type="file" name="aadhar_card" accept=".jpeg,.png,.pdf" required 
+                    class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
             </div>
-
-            <!-- Banking Details -->
+            <input type="text" name="aadhar_card_number" placeholder="Aadhar Card Number" required 
+                class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
             <div>
-                <h2 class="text-xl font-semibold mb-4">Banking Details</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-sm font-medium mb-2">Bank Name</label>
-                        <input type="text" name="bank_name" class="w-full border rounded p-2" value="{{ old('bank_name') }}">
-                        @error('bank_name') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-2">Account Number</label>
-                        <input type="text" name="account_number" class="w-full border rounded p-2" value="{{ old('account_number') }}">
-                        @error('account_number') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-2">IFSC Code</label>
-                        <input type="text" name="ifsc_code" class="w-full border rounded p-2" value="{{ old('ifsc_code') }}">
-                        @error('ifsc_code') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-2">Account Holder Name</label>
-                        <input type="text" name="account_holder_name" class="w-full border rounded p-2" value="{{ old('account_holder_name') }}">
-                        @error('account_holder_name') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-2">Account Type</label>
-                        <select name="account_type" class="w-full border rounded p-2">
-                            <option value="">Select Account Type</option>
-                            <option value="Savings" {{ old('account_type') === 'Savings' ? 'selected' : '' }}>Savings</option>
-                            <option value="Current" {{ old('account_type') === 'Current' ? 'selected' : '' }}>Current</option>
-                        </select>
-                        @error('account_type') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
-                    </div>
-                </div>
+                <label class="block mb-1">PAN Card (Image/PDF)</label>
+                <input type="file" name="pan_card" accept=".jpeg,.png,.pdf" required 
+                    class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
             </div>
+            <input type="text" name="pan_card_number" placeholder="PAN Card Number" required 
+                class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        </div>
 
-            <!-- Address Details -->
-            <div>
-                <h2 class="text-xl font-semibold mb-4">Address Details</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-sm font-medium mb-2">Street Address</label>
-                        <input type="text" name="street_address" class="w-full border rounded p-2" value="{{ old('street_address') }}">
-                        @error('street_address') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-2">City</label>
-                        <input type="text" name="city" class="w-full border rounded p-2" value="{{ old('city') }}">
-                        @error('city') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-2">State</label>
-                        <input type="text" name="state" class="w-full border rounded p-2" value="{{ old('state') }}">
-                        @error('state') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-2">Country</label>
-                        <input type="text" name="country" class="w-full border rounded p-2" value="{{ old('country') }}">
-                        @error('country') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-2">Postal Code</label>
-                        <input type="text" name="postal_code" class="w-full border rounded p-2" value="{{ old('postal_code') }}">
-                        @error('postal_code') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
-                    </div>
-                </div>
-            </div>
+        <!-- Custom Labels -->
+        <h2 class="text-xl font-semibold mt-6 mb-3">Custom Labels</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <input type="text" name="label1_name" placeholder="Label 1 Name" 
+                class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <input type="file" name="label1_image" accept=".jpeg,.png,.pdf" 
+                class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <input type="text" name="label2_name" placeholder="Label 2 Name" 
+                class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <input type="file" name="label2_image" accept=".jpeg,.png,.pdf" 
+                class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <input type="text" name="label3_name" placeholder="Label 3 Name" 
+                class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <input type="file" name="label3_image" accept=".jpeg,.png,.pdf" 
+                class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <input type="text" name="label4_name" placeholder="Label 4 Name" 
+                class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            <input type="file" name="label4_image" accept=".jpeg,.png,.pdf" 
+                class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+        </div>
 
-            <!-- Upload Documents -->
-            <div>
-                <h2 class="text-xl font-semibold mb-4">Upload Documents</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                        <label class="block text-sm font-medium mb-2">Aadhar Card</label>
-                        <input type="file" name="aadhar_card" class="w-full border rounded p-2">
-                        @error('aadhar_card') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium mb-2">PAN Card</label>
-                        <input type="file" name="pan_card" class="w-full border rounded p-2">
-                        @error('pan_card') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
-                    </div>
-                </div>
-            </div>
-
-            <div>
-                <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Submit</button>
-            </div>
-        </form>
-    </div>
+        <button type="submit" class="w-full bg-blue-500 text-white p-3 rounded mt-6 hover:bg-blue-600 transition">
+            Submit
+        </button>
+    </form>
 </div>
+
+<script>
+    const form = document.getElementById('investorForm');
+    form.addEventListener('submit', function(event) {
+        const inputs = form.querySelectorAll('input[required], select[required]');
+        let valid = true;
+
+        inputs.forEach(input => {
+            if (!input.value) {
+                input.classList.add('border-red-500');
+                valid = false;
+            } else {
+                input.classList.remove('border-red-500');
+            }
+        });
+
+        if (!valid) {
+            event.preventDefault();
+            alert('Please fill all required fields.');
+        }
+    });
+</script>
+</div>
+
 
 @endsection
