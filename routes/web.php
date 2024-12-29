@@ -75,5 +75,12 @@ Route::get('/clear-cache', function () {
     Artisan::call('view:clear');
     Artisan::call('route:clear');
     Artisan::call('optimize:clear');
+    
     return "All Caches are cleared by @Roni";
+});
+
+Route::get('/seed',function(){
+    Artisan::call('db:seed');
+
+    return "seeder run successfully";
 });
