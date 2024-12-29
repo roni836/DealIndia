@@ -1,19 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <!-- Include Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-
-<body class="">
-
+@extends('user.userBase')
+@section('title', 'Login Work')
+@section('content')
     <div class="flex w-full h-screen flex-col lg:flex-row">
         <!-- Left Section (Image) -->
-        <div class="w-full lg:w-6/12 h-full bg-orange-100">
+        <div class="w-full lg:w-6/12 h-full bg-orange-100 hidden md:flex">
             <div class="w-full h-full relative">
                 <img src="register.jpg" class="object-cover w-full h-full filter opacity-80" alt="">
                 <div class="absolute inset-0 bg-black opacity-50"></div>
@@ -132,7 +122,4 @@
         </div>
     </div>
     
-
-</body>
-
-</html>
+@endsection

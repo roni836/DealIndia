@@ -31,7 +31,7 @@
 
     <div class="w-full h-screen bg-white flex flex-col md:flex-row overflow-hidden">
         <!-- Left Section: Image -->
-        <div class="w-full md:w-6/12 h-64 md:h-full">
+        <div class="w-full md:w-6/12 h-64 md:h-full hidden md:flex">
             <div class="w-full h-full relative">
                 <img src="register.jpg" class="object-cover w-full h-full filter opacity-80" alt="">
                 <div class="absolute inset-0 bg-black opacity-50"></div>
@@ -40,6 +40,7 @@
         <!-- Right Section: Login Form -->
         <div class="flex justify-center items-center w-full md:w-6/12 p-6 md:p-12 lg:p-24">
             <div class="w-full">
+
                 <h2 class="text-3xl md:text-4xl font-semibold text-center text-gray-800 mb-6" style="font-family: 'Roboto Condensed', serif;">Admin Login</h2>
 
                 <!-- Buttons to select Login method -->
