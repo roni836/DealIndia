@@ -2,15 +2,16 @@
 @section('title', '')
 @section('content')
 <main class="">
-   
+
     <section class="container mx-auto px-6 py-16 flex flex-col md:flex-row items-center">
         <div class="md:w-1/2 lg:pr-24 md:pr-16">
             <h1 class="text-4xl md:text-6xl font-bold text-gray-900 leading-tight mb-6">Empower Your Investments with DealIndia.</h1>
             <p class="text-lg text-gray-600 mb-8">Streamline investment tracking, connect with top investors, and grow your financial opportunities—all in one place.</p>
             <div class="flex gap-4">
-                <button class="bg-teal-600 text-white px-8 py-3 rounded-lg hover:bg-teal-700 transition duration-300">Explore Services</button>
-                <button class="border-2 border-teal-600 text-teal-600 px-8 py-3 rounded-lg hover:bg-teal-50 transition duration-300">Learn More</button>
+                <button class="bg-teal-600 text-white px-8 py-3 rounded-lg hover:bg-teal-700 transition duration-300 whitespace-nowrap">Explore Services</button>
+                <button class="border-2 border-teal-600 text-teal-600 px-8 py-3 rounded-lg hover:bg-teal-50 transition duration-300 whitespace-nowrap">Learn More</button>
             </div>
+
         </div>
         <div class="md:w-1/2 mt-12 md:mt-0">
             <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800" alt="Financial Growth" class="rounded-lg shadow-xl">
@@ -50,8 +51,8 @@
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="bg-white p-8 rounded-xl shadow-lg">
-                    <div class="flex items-center mb-4">
-                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=100" alt="User" class="w-12 h-12 rounded-full mr-4">
+                    <div class="flex gap-4 items-center mb-4">
+                        <img class="object-cover object-center w-12 h-12 rounded-full" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=100" alt="User" class="w-12 h-12 rounded-full mr-4">
                         <div>
                             <h4 class="font-semibold">Sarah Johnson</h4>
                             <div class="text-[#f8931f]">
@@ -66,8 +67,8 @@
                     <p class="text-gray-600">"DealIndia simplified my investment tracking like never before!"</p>
                 </div>
                 <div class="bg-white p-8 rounded-xl shadow-lg">
-                    <div class="flex items-center mb-4">
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100" alt="User" class="w-12 h-12 rounded-full mr-4">
+                    <div class="flex gap-4 items-center mb-4">
+                        <img class="object-cover object-center w-12 h-12 rounded-full" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100" alt="User" class="w-12 h-12 rounded-full mr-4">
                         <div>
                             <h4 class="font-semibold">Michael Chen</h4>
                             <div class="text-[#f8931f]">
@@ -82,8 +83,8 @@
                     <p class="text-gray-600">"The best platform for managing investments and finding opportunities."</p>
                 </div>
                 <div class="bg-white p-8 rounded-xl shadow-lg">
-                    <div class="flex items-center mb-4">
-                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100" alt="User" class="w-12 h-12 rounded-full mr-4">
+                    <div class="flex gap-4 items-center mb-4">
+                        <img class="object-cover object-center w-12 h-12 rounded-full" src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100" alt="User" class="w-12 h-12 rounded-full mr-4">
                         <div>
                             <h4 class="font-semibold">Emma Wilson</h4>
                             <div class="text-[#f8931f]">
