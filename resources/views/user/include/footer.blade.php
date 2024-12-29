@@ -1,11 +1,11 @@
 <footer class="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-700 text-white py-12">
     <div class="max-w-screen-xl mx-auto px-6 lg:px-8">
         <!-- Top Section -->
-        <div class="grid grid-cols-1  sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center lg:text-left">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center lg:text-left">
             <!-- Logo and About Section -->
             <div>
                 <img src="logo.png" alt="Logo" class="h-14 mx-auto lg:mx-0 mb-4">
-                <p class="text-sm ">
+                <p class="text-sm">
                     Deal India delivers exceptional solutions in design, finance, and business. Quality is at the heart of everything we do.
                 </p>
                 <div class="mt-4 space-y-2">
