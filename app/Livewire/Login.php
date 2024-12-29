@@ -97,9 +97,9 @@ class Login extends Component
             // Check if the user is an admin
             if ($user->isAdmin == 1) {
                 Auth::login($user);
-                return redirect()->route('admin')->with('success', 'Admin login successful.');
+                return redirect()->route('admin.dashboard')->with('success', 'Admin login successful.');
             }
-            
+
             // For non-admin users, redirect to the dashboard
             Auth::login($user);
             return redirect()->route('user.dashboard')->with('success', 'Login successful.');

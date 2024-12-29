@@ -41,7 +41,7 @@ Route::get('/login/link', [AuthController::class, 'loginViaLink'])->name('loginV
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin');
+    Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/admin/application', [AdminController::class, 'pendingApplication']);
     Route::get('/admin/application-approved', [AdminController::class, 'approvedApplication']);
     Route::get('/admin/application/{id}', [ApplicationController::class, 'editApplication']);
