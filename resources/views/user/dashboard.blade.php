@@ -1,5 +1,5 @@
 @extends('user.userBase')
-@section('title', 'Responsive Dashboard')
+@section('title', 'User Dashboard')
 @section('content')
 <div class="flex  bg-gray-100">
     <!-- Sidebar -->
