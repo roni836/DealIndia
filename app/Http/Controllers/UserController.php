@@ -46,8 +46,9 @@ class UserController extends Controller
     public function personalInvestorDetails($id)
     {
         $data['logo'] = Setting::first();
-        $data['investor'] = InvesterDetail::findOrFail($id);
-
+        $user = auth()->user();
+    
+        $data['investor'] = InvesterDetail::where('user_id', $user->id)->firstOrFail();
     
         return view('user.personalDetails', $data); 
     }
