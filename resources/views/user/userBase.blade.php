@@ -52,11 +52,11 @@
       </div>
       <nav class="hidden md:flex items-center space-x-6">
         <a href="{{ route('homepage') }}" class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-blue-600" id="home">Home</a>
-        <a href="" class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-blue-600" id="services">Services</a>
-        <a href="#" class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-blue-600" id="about">About</a>
+        <a href="{{route('services')}}" class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-blue-600" id="services">Services</a>
+        <a href="{{route('about')}}" class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-blue-600" id="about">About</a>
         <a href="{{route('contact')}}" class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-blue-600" id="contact">Contact</a>
-        <a href="#" class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-blue-600" id="privacy">Privacy Policy</a>
-        <a href="#" class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-blue-600" id="terms">Terms of Service</a>
+        <a href="{{route('privacy-policy')}}" class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-blue-600" id="privacy">Privacy Policy</a>
+        <a href="{{route('Terms-of-Service')}}" class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-blue-600" id="terms">Terms of Service</a>
       </nav>
       <div class="hidden md:flex items-center space-x-4">
         @guest
@@ -79,8 +79,7 @@
     <div class="px-2 pt-2 pb-3 space-y-1">
       <a href="{{ route('homepage') }}" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-blue-600 hover:bg-blue-50" id="mobile-home">Home</a>
       <a href="#" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-blue-600 hover:bg-blue-50" id="mobile-services">Services</a>
-      <a href="#" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-blue-600 hover:bg-blue-50" id="mobile-about">About</a>
-      <a href="#" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-blue-600 hover:bg-blue-50" id="mobile-contact">Contact</a>
+      <a href="{{ route('contact') }}" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-blue-600 hover:bg-blue-50" id="mobile-contact">Contact</a>
       <a href="#" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-blue-600 hover:bg-blue-50" id="mobile-privacy">Privacy Policy</a>
       <a href="#" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-blue-600 hover:bg-blue-50" id="mobile-terms">Terms of Service</a>
       <div class="pt-4 space-y-2">
