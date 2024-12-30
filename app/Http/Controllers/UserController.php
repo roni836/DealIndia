@@ -42,19 +42,27 @@ class UserController extends Controller
     {
         $data['logo'] = Setting::first();
         return view('user.termsOfService', $data);
-    } 
+    }
+
+
+    public function dashboard()
+    {
+
+        return view('user.dashboard');
+    }
     public function personalInvestorDetails($id)
     {
         $data['logo'] = Setting::first();
         $user = auth()->user();
-    
+
         $investor = InvesterDetail::where('user_id', $user->id)->first();
-    if (!$investor) {
-        return redirect()->route('details.submit');
+        if (!$investor) {
+            return redirect()->route('details.submit');
+        }
+
+        $data['investor'] = $investor;
+        return view('user.personalDetails', $data);
     }
 
-    $data['investor'] = $investor;
-        return view('user.personalDetails', $data); 
-    }
-    
+   
 }

@@ -10,17 +10,17 @@
     <nav class="flex-1 text-lg">
         <ul>
             <li>
-                
-                @if ($logo)
-    <a href="{{ route('details', $logo->id) }}" class="block px-4 py-2 hover:bg-gray-400">
-        <i class="bi bi-person-bounding-box px-4"></i>Profile
-    </a>
-@else
-<a href="" class="block px-4 py-2 hover:bg-gray-400">
-    <i class="bi bi-person-bounding-box px-4"></i>Profile
-</a>
-@endif
-               
+
+                {{-- @if ($logo) --}}
+                    <a href="{{ route('details', auth()->id()) }}" class="block px-4 py-2 hover:bg-gray-400">
+                        <i class="bi bi-person-bounding-box px-4"></i>Profile
+                    </a>
+                {{-- @else
+                    <a href="" class="block px-4 py-2 hover:bg-gray-400">
+                        <i class="bi bi-person-bounding-box px-4"></i>Profile
+                    </a>
+                @endif --}}
+
             </li>
             <li>
                 <a href="#settings" class="block px-4 py-2 hover:bg-gray-400"><i
