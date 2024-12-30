@@ -40,6 +40,8 @@
                             Approve Now
                         </button>
                     </form>
+                    
+                    
                 @endif
                 <a href="{{ url('/admin/application') }}"
                     class="bg-gray-500 text-white w-full md:w-auto px-4 py-2 rounded hover:bg-gray-600 text-sm md:text-base text-center">
