@@ -34,19 +34,24 @@ Route::get('/register', function () {
     return view('auth.register', $data);
 });
 
-Route::get('/dashboard', function () {
-    $data['logo'] = Setting::first();
-    return view('user.dashboard',$data);
-})->middleware('auth');
-
-
-
 Route::post('/send-otp', [AuthController::class, 'sendOTP'])->middleware('throttle:5,1');
 Route::post('/verify-otp', [AuthController::class, 'verifyOTP']);
 Route::post('/new-register', [AuthController::class, "register"])->name("user.register");
 Route::post('/send-login-link', [AuthController::class, 'sendLoginLink'])->name('sendLoginLink');
 Route::get('/login/link', [AuthController::class, 'loginViaLink'])->name('loginViaLink');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', function () {
+        $data['logo'] = Setting::first();
+        return view('user.dashboard',$data);
+    });
+
+    Route::get('/investerform', [InvestorController::class, 'index'])->name('user.investerCodeform');
+    Route::post('/investerform/submit', [InvestorController::class, 'store'])->name('user.investerCodecheck');
+    Route::get('/details-form', [InvestorController::class, 'showForm'])->name('details.form');
+    Route::post('/details-form', [InvestorController::class, 'submitForm'])->name('details.submit');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+});
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
@@ -55,23 +60,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/application/{id}', [ApplicationController::class, 'editApplication']);
     Route::post('/admin/application/generate/{id}', [ApplicationController::class, 'generateCode']);
     Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
-
-
     Route::get('admin/settings', [SettingController::class, 'index']);
 
-
 });
-
-
-Route::get('/investerform', [InvestorController::class, 'index'])->name('user.investerCodeform');
-Route::post('/investerform/submit', [InvestorController::class, 'store'])->name('user.investerCodecheck');
-use App\Http\Controllers\DetailsController;
-
-Route::get('/details-form', [InvestorController::class, 'showForm'])->name('details.form');
-Route::post('/details-form', [InvestorController::class, 'submitForm'])->name('details.submit');
-
-
-
 
 Route::get('/storage-link', function () {
     Artisan::call('storage:link');

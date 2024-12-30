@@ -40,7 +40,7 @@ class InvestorController extends Controller
         ) {
             // Save details in the InvesterDetail model
            User::find(Auth::id())->update(['code_details' => 1]);
-            return redirect()->route('details.form')->with('success', 'Code details added successfully!');
+            return redirect()->route('user.investerCodeform')->with('success', 'Code details added successfully!');
         } else {
             return redirect()->back()->with('error', 'The provided details do not match.');
         }
