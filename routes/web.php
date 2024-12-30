@@ -6,35 +6,16 @@ use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\InvestorController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Artisan;
 use App\Models\Setting;
 
-Route::get('/', function () {
-    $data['logo'] = Setting::first();
-    return view('user.home', $data);
-})->name("homepage");
-
-Route::get('/contact', function () {
-    $data['logo'] = Setting::first();
-    return view('user.contact',$data);
-})->name('contact');
-
-Route::get('/about', function () {
-    $data['logo'] = Setting::first();
-    return view('user.about', $data);
-})->name('about');
-Route::get('/services', function () {
-    $data['logo'] = Setting::first();
-    return view('user.services',$data);
-})->name('services');
-Route::get('/privacy-policy', function () {
-    $data['logo'] = Setting::first();
-    return view('user.privacyPolicy',$data);
-})->name('privacy-policy');
-Route::get('/Terms-of-Service', function () {
-    $data['logo'] = Setting::first();
-    return view('user.termsOfService',$data);
-})->name('Terms-of-Service');
+Route::get('/', [UserController::class, 'home'])->name('homepage');
+Route::get('/contact', [UserController::class, 'contact'])->name('contact');
+Route::get('/about', [UserController::class, 'about'])->name('about');
+Route::get('/services', [UserController::class, 'services'])->name('services');
+Route::get('/privacy-policy', [UserController::class, 'privacyPolicy'])->name('privacy-policy');
+Route::get('/Terms-of-Service', [UserController::class, 'termsOfService'])->name('Terms-of-Service');
 
 
 Route::get('/login', function () {
