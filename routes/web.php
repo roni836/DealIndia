@@ -6,8 +6,10 @@ use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\InvestorController;
 use App\Http\Controllers\LogoController;
+use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Artisan;
 use App\Models\Logo;
+use App\Models\Setting;
 
 Route::get('/', function () {
     return view('user.home');
@@ -25,7 +27,7 @@ Route::get('/verification', function () {
 });
 
 Route::get('/register', function () {
-    $data['logo'] = Logo::where('status', 1)->first();
+    $data['logo'] = Setting::first();
 
     return view('auth.register', $data);
 });
@@ -50,6 +52,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
 
     Route::resource('logos', LogoController::class);
+    Route::resource('logos', LogoController::class);
+    Route::get('admin/settings', [SettingController::class, 'index']);
+
+   
 });
 
 

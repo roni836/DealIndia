@@ -9,14 +9,15 @@
                 <div class="absolute inset-0 bg-black opacity-50"></div>
 
                 <div class="absolute inset-0 flex items-center justify-center">
-                    @if ($logo) 
-                    <img src="{{ asset('storage/' . $logo->logo_path) }}" alt="Logo" class="h-20 md:h-32">
-                @else
-                    <img src="logo.png" alt="Logo" class="h-20 md:h-32">
-                @endif                </div>
+                    @if (!empty($logo?->meta_logo))
+                        <img src="{{ asset('storage/' . $logo->meta_logo) }}" alt="Company Logo" class="h-20 md:h-32 object-contain">
+                    @else
+                        <img src="{{ asset('images/logo.png') }}" alt="Default Logo" class="h-20 md:h-32 object-contain">
+                    @endif
+                </div>
             </div>
         </div>
-    
+
         <!-- Right Section (Form) -->
         <div class="w-full lg:w-6/12 flex justify-center items-center">
             <!-- Display Validation Errors -->
@@ -31,26 +32,29 @@
                 </div>
             @endif
             <div class="w-full mx-6 lg:mx-12 md:p-8 p-3">
-                <h2 class="text-4xl font-semibold text-center text-gray-800 mb-6" style="font-family: 'Roboto Condensed', serif;">Become A Member</h2>
-    
+                <h2 class="text-4xl font-semibold text-center text-gray-800 mb-6"
+                    style="font-family: 'Roboto Condensed', serif;">Become A Member</h2>
+
                 <!-- Register Form -->
-                <form method="POST" action="{{route('user.register')}}">
+                <form method="POST" action="{{ route('user.register') }}">
                     @csrf
-    
+
                     <!-- Name Field -->
                     <div class="mb-4">
                         <label for="name" class="block text-sm font-medium mb-2 text-gray-700">Full Name</label>
-                        <input id="name" type="text" placeholder="your name" name="name" value="{{ old('name') }}" required autofocus
+                        <input id="name" type="text" placeholder="your name" name="name"
+                            value="{{ old('name') }}" required autofocus
                             class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
-    
+
                     <!-- Email Field -->
                     <div class="mb-4">
                         <label for="email" class="block mb-2 text-sm font-medium text-gray-700">Email</label>
-                        <input id="email" type="email" placeholder="Your E-Mail" name="email" value="{{ old('email') }}" required
+                        <input id="email" type="email" placeholder="Your E-Mail" name="email"
+                            value="{{ old('email') }}" required
                             class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
-    
+
                     <!-- Gender Field -->
                     <div class="mb-4">
                         <label for="gender" class="block mb-2 text-sm font-medium text-gray-700">Gender</label>
@@ -62,7 +66,7 @@
                             <option value="others">Others</option>
                         </select>
                     </div>
-    
+
                     <!-- Date of Birth Field -->
                     <div class="flex w-full gap-2">
                         <div class="mb-4 w-6/12">
@@ -70,22 +74,23 @@
                             <input id="dob" type="date" name="dob" value="{{ old('dob') }}" required
                                 class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                         </div>
-    
+
                         <!-- Contact Number Field -->
                         <div class="mb-4 w-6/12">
                             <label for="mobile" class="block mb-2 text-sm font-medium text-gray-700">Contact No.</label>
-                            <input id="mobile" placeholder="+1234567890" type="tel" name="mobile" value="{{ old('mobile') }}" required
+                            <input id="mobile" placeholder="+1234567890" type="tel" name="mobile"
+                                value="{{ old('mobile') }}" required
                                 class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm">
                         </div>
                     </div>
-    
+
                     <!-- Address Field -->
                     <div class="mb-4">
                         <label for="address" class="block mb-2 text-sm font-medium text-gray-700">Address</label>
                         <textarea id="address" placeholder="Your Address" name="address" required
                             class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">{{ old('address') }}</textarea>
                     </div>
-    
+
                     <!-- Password Field -->
                     <div class="flex w-full gap-2">
                         <div class="mb-3 w-6/12">
@@ -93,15 +98,17 @@
                             <input id="password" placeholder="Password" type="password" name="password" required
                                 class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                         </div>
-    
+
                         <!-- Confirm Password Field -->
                         <div class="mb-4 w-6/12">
-                            <label for="password_confirmation" class="block mb-2 text-sm font-medium text-gray-700">Confirm Password</label>
-                            <input id="password_confirmation" placeholder="Confirm Password" type="password" name="password_confirmation" required
+                            <label for="password_confirmation" class="block mb-2 text-sm font-medium text-gray-700">Confirm
+                                Password</label>
+                            <input id="password_confirmation" placeholder="Confirm Password" type="password"
+                                name="password_confirmation" required
                                 class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
                         </div>
                     </div>
-    
+
                     <!-- Submit Button -->
                     <div>
                         <button type="submit"
@@ -110,16 +117,16 @@
                         </button>
                     </div>
                 </form>
-    
+
                 <!-- Already Registered Link -->
                 <div class="mt-6 text-center flex items-center justify-center">
                     <hr class="flex-grow border-t border-blue-900">
                     <a href="{{ url('login') }}" class="text-sm text-blue-900 mx-4">Already have an account? Log in</a>
                     <hr class="flex-grow border-t border-blue-900">
                 </div>
-    
+
             </div>
         </div>
     </div>
-    
+
 @endsection
