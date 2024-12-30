@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\InvesterDetail;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 
@@ -41,5 +42,15 @@ class UserController extends Controller
     {
         $data['logo'] = Setting::first();
         return view('user.termsOfService', $data);
+    } 
+    public function personalInvestorDetails($id)
+    {
+        $data['logo'] = Setting::first();
+        $user = auth()->user();
+    
+        $data['investor'] = InvesterDetail::where('user_id', $user->id)->firstOrFail();
+    
+        return view('user.personalDetails', $data); 
     }
+    
 }
