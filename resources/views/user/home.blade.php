@@ -32,7 +32,7 @@
                     <p class="text-gray-600">Connect with potential investors and manage relationships effectively.</p>
                 </div>
                 <div class="p-6 bg-gray-50 rounded-xl hover:shadow-lg transition duration-300">
-                    <i class="fas fa-analytics text-4xl text-teal-600 mb-4"></i>
+                <i class="fa-solid fa-wand-magic-sparkles text-4xl text-teal-600 mb-4"></i>
                     <h3 class="text-xl font-semibold mb-2">Portfolio Insights</h3>
                     <p class="text-gray-600">Advanced analytics to make informed investment decisions.</p>
                 </div>
