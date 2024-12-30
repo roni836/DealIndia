@@ -5,17 +5,17 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\InvestorController;
-use App\Http\Controllers\LogoController;
 use App\Http\Controllers\SettingController;
 use Illuminate\Support\Facades\Artisan;
-use App\Models\Logo;
 use App\Models\Setting;
 
 Route::get('/', function () {
     return view('user.home');
 })->name("homepage");
 
-
+Route::get('/contact', function () {
+    return view('user.contact');
+})->name('contact');
 
 
 Route::get('/login', function () {
@@ -36,6 +36,8 @@ Route::get('/dashboard', function () {
     return view('user.dashboard');
 })->middleware('auth');
 
+
+
 Route::post('/send-otp', [AuthController::class, 'sendOTP'])->middleware('throttle:5,1');
 Route::post('/verify-otp', [AuthController::class, 'verifyOTP']);
 Route::post('/new-register', [AuthController::class, "register"])->name("user.register");
@@ -51,8 +53,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/admin/application/generate/{id}', [ApplicationController::class, 'generateCode']);
     Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
 
-    Route::resource('logos', LogoController::class);
-    Route::resource('logos', LogoController::class);
+   
     Route::get('admin/settings', [SettingController::class, 'index']);
 
    

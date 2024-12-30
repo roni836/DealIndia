@@ -52,9 +52,9 @@
       </div>
       <nav class="hidden md:flex items-center space-x-6">
         <a href="{{ route('homepage') }}" class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-blue-600" id="home">Home</a>
-        <a href="#" class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-blue-600" id="services">Services</a>
+        <a href="" class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-blue-600" id="services">Services</a>
         <a href="#" class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-blue-600" id="about">About</a>
-        <a href="#" class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-blue-600" id="contact">Contact</a>
+        <a href="{{route('contact')}}" class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-blue-600" id="contact">Contact</a>
         <a href="#" class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-blue-600" id="privacy">Privacy Policy</a>
         <a href="#" class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-blue-600" id="terms">Terms of Service</a>
       </nav>
