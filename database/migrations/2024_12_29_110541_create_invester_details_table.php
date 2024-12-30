@@ -12,6 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('invester_details', function (Blueprint $table) {
+            $table->id();
+
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
 
             // Personal Details
@@ -44,14 +46,14 @@ return new class extends Migration
             $table->string('pan_card_number')->nullable();
 
             // Custom Labels
-            $table->string('label1_name')->nullable();
-            $table->string('label1_image')->nullable();
-            $table->string('label2_name')->nullable();
-            $table->string('label2_image')->nullable();
-            $table->string('label3_name')->nullable();
-            $table->string('label3_image')->nullable();
-            $table->string('label4_name')->nullable();
-            $table->string('label4_image')->nullable();
+            // $table->string('label1_name')->nullable();
+            // $table->string('label1_image')->nullable();
+            // $table->string('label2_name')->nullable();
+            // $table->string('label2_image')->nullable();
+            // $table->string('label3_name')->nullable();
+            // $table->string('label3_image')->nullable();
+            // $table->string('label4_name')->nullable();
+            // $table->string('label4_image')->nullable();
 
             
             $table->timestamps();

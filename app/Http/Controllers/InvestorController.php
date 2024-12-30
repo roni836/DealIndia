@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\InvesterDetail;
 use App\Models\User;
+use App\Models\AdditionalDocument;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -51,62 +52,61 @@ class InvestorController extends Controller
 
     public function submitForm(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'date_of_birth' => 'required|date',
-            'gender' => 'required|string',
-            'religion' => 'nullable|string|max:255',
-            'email' => 'required|email|max:255|unique:investor_details',
-            'mobile' => 'required|string|max:15',
-            'bank_name' => 'required|string|max:255',
-            'account_number' => 'required|string|max:255',
-            'ifsc_code' => 'required|string|max:15',
-            'account_holder_name' => 'required|string|max:255',
-            'account_type' => 'required|string',
-            'street_address' => 'required|string|max:255',
-            'city' => 'required|string|max:255',
-            'state' => 'required|string|max:255',
-            'country' => 'required|string|max:255',
-            'postal_code' => 'required|string|max:10',
-            'aadhar_card' => 'required|file|mimes:jpeg,png,pdf|max:2048',
-            'aadhar_card_number' => 'required|string|max:12',
-            'pan_card' => 'required|file|mimes:jpeg,png,pdf|max:2048',
-            'pan_card_number' => 'required|string|max:10',
-            'label1_name' => 'nullable|string|max:255',
-            'label1_image' => 'nullable|file|mimes:jpeg,png,pdf|max:2048',
-            'label2_name' => 'nullable|string|max:255',
-            'label2_image' => 'nullable|file|mimes:jpeg,png,pdf|max:2048',
-            'label3_name' => 'nullable|string|max:255',
-            'label3_image' => 'nullable|file|mimes:jpeg,png,pdf|max:2048',
-            'label4_name' => 'nullable|string|max:255',
-            'label4_image' => 'nullable|file|mimes:jpeg,png,pdf|max:2048',
-        ]);
+        // $validator = Validator::make($request->all(), [
+        //     'first_name' => 'required|string|max:255',
+        //     'last_name' => 'required|string|max:255',
+        //     'date_of_birth' => 'required|date',
+        //     'gender' => 'required|string',
+        //     'religion' => 'nullable|string|max:255',
+        //     'email' => 'required|email|max:255|unique:invester_details',
+        //     'mobile' => 'required|string|max:15',
+        //     'bank_name' => 'required|string|max:255',
+        //     'account_number' => 'required|string|max:255',
+        //     'ifsc_code' => 'required|string|max:15|regex:/^[A-Z]{4}0[A-Z0-9]{6}$/',
+        //     'account_holder_name' => 'required|string|max:255',
+        //     'account_type' => 'required|string',
+        //     'street_address' => 'required|string|max:255',
+        //     'city' => 'required|string|max:255',
+        //     'state' => 'required|string|max:255',
+        //     'country' => 'required|string|max:255',
+        //     'postal_code' => 'required|string|max:10',
+        //     'aadhar_card' => 'required|file|mimes:jpeg,png,pdf|max:2048',
+        //     'aadhar_card_number' => 'required|string|size:12',
+        //     'pan_card' => 'required|file|mimes:jpeg,png,pdf|max:2048',
+        //     'pan_card_number' => 'required|string|size:10',
+        //     'inputs' => 'nullable|array',
+        //     'inputs.*.name' => 'required_with:inputs|string|max:255',
+        //     'inputs.*.filename' => 'required_with:inputs|file|mimes:jpeg,png,pdf|max:2048',
+        // ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-
-        $data = $request->all();
-
-        // Handle file uploads
-        $data['aadhar_card'] = $request->file('aadhar_card')?->store('documents/aadhar', 'public');
-        $data['pan_card'] = $request->file('pan_card')?->store('documents/pan', 'public');
-        $data['label1_image'] = $request->file('label1_image')?->store('documents/labels', 'public');
-        $data['label2_image'] = $request->file('label2_image')?->store('documents/labels', 'public');
-        $data['label3_image'] = $request->file('label3_image')?->store('documents/labels', 'public');
-        $data['label4_image'] = $request->file('label4_image')?->store('documents/labels', 'public');
-
-        $data['user_id'] = Auth::id();
-
-        InvesterDetail::create($data);
-
-        return redirect('/dashboard')->with('success', 'Details submitted successfully!');
+        // if ($validator->fails()) {
+        //     return redirect()->back()->withErrors($validator)->withInput();
+        // }
+    
+        // else {
+            $data = $request->except('aadhar_card', 'pan_card', 'inputs');
+            $data['aadhar_card'] = $request->file('aadhar_card')?->store('documents/aadhar', 'public');
+            $data['pan_card'] = $request->file('pan_card')?->store('documents/pan', 'public');
+            $data['user_id'] = Auth::id();
+    
+            $investerDetails = InvesterDetail::create($data);
+    
+            if ($investerDetails && $request->has('inputs')) {
+                foreach ($request->inputs as $input) {
+                    $filename = $input['filename']?->store('documents/documents', 'public');
+                    $investerDetails->additional_documents()->create([
+                        'user_id' => Auth::id(),
+                        'name' => $input['name'],
+                        'filename' => $filename,
+                    ]);
+                }
+            }
+    
+            return redirect('/dashboard')->with('success', 'Details submitted successfully!');
+        // }
+        return redirect()->back()->with('error', 'Something went wrong! Please try again later.');
     }
+    
 
-       
-        
-
-      
     }
 
