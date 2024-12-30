@@ -11,9 +11,15 @@
         <ul>
             <li>
                 
-                    <a href="{{ route('details', $logo->id) }}" class="block px-4 py-2 hover:bg-gray-400">
-                        <i class="bi bi-person-bounding-box px-4"></i>Profile
-                    </a>
+                @if ($logo)
+    <a href="{{ route('details', $logo->id) }}" class="block px-4 py-2 hover:bg-gray-400">
+        <i class="bi bi-person-bounding-box px-4"></i>Profile
+    </a>
+@else
+<a href="" class="block px-4 py-2 hover:bg-gray-400">
+    <i class="bi bi-person-bounding-box px-4"></i>Profile
+</a>
+@endif
                
             </li>
             <li>
