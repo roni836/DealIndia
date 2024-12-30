@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('logos', function (Blueprint $table) {
+        Schema::create('settings', function (Blueprint $table) {
             $table->id();
-            $table->string('title'); 
-            $table->string('logo_path'); 
-            $table->boolean('status')->default(true);
+            $table->string('meta_title')->nullable();
+            $table->string('meta_logo')->nullable();
+            $table->string('fav_icon')->nullable();
             $table->timestamps();
         });
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('logos');
+        Schema::dropIfExists('settings');
     }
 };

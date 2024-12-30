@@ -57,11 +57,9 @@
                 <a href="{{ url('/admin/application-approved') }}" class="block py-2 px-4 text-gray-700 hover:bg-gray-200">
                     <i class="bi bi-person-fill-check px-2"></i> Approved Applications
                 </a>
-                <a href="{{route('logos.create')}}" class="block py-2 px-4 text-gray-700 hover:bg-gray-200">
-                    <i class="bi bi-brilliance px-2"></i> Logo Insert
-                </a>
-                <a href="{{route('logos.index')}}" class="block py-2 px-4 text-gray-700 hover:bg-gray-200">
-                    <i class="bi bi-exposure px-2"></i>  Manage Logo
+               
+                <a href="{{url('admin/settings')}}" class="block py-2 px-4 text-gray-700 hover:bg-gray-200">
+                    <i class="bi bi-exposure px-2"></i>  Setting
                 </a>
             </nav>
         </aside>

@@ -16,9 +16,9 @@ class AdminSeeder extends Seeder
     {
         User::create([
             'name' => 'Sam',
-            'email' => 'samcool3203@gmail.com',
+            'email' => 'saritaakumari24@gmail.com',
             'password' => Hash::make('dealindia123'),
-            'mobile' => '8555667788',
+            'mobile' => '9123278215',
             'dob' => '1990-01-01',
             'address' => 'Admin Address',
             'isAdmin' => '1',
