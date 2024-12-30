@@ -6,37 +6,26 @@ use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\InvestorController;
 use App\Http\Controllers\SettingController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Artisan;
 use App\Models\Setting;
 
-Route::get('/', function () {
-    return view('user.home');
-})->name("homepage");
-
-Route::get('/contact', function () {
-    return view('user.contact');
-})->name('contact');
-
-Route::get('/about', function () {
-    return view('user.about');
-})->name('about');
-Route::get('/services', function () {
-    return view('user.services');
-})->name('services');
-Route::get('/privacy-policy', function () {
-    return view('user.privacyPolicy');
-})->name('privacy-policy');
-Route::get('/Terms-of-Service', function () {
-    return view('user.termsOfService');
-})->name('Terms-of-Service');
+Route::get('/', [UserController::class, 'home'])->name('homepage');
+Route::get('/contact', [UserController::class, 'contact'])->name('contact');
+Route::get('/about', [UserController::class, 'about'])->name('about');
+Route::get('/services', [UserController::class, 'services'])->name('services');
+Route::get('/privacy-policy', [UserController::class, 'privacyPolicy'])->name('privacy-policy');
+Route::get('/Terms-of-Service', [UserController::class, 'termsOfService'])->name('Terms-of-Service');
 
 
 Route::get('/login', function () {
-    return view('auth.login');
+    $data['logo'] = Setting::first();
+    return view('auth.login', $data);
 })->name('login');
 
 Route::get('/verification', function () {
-    return view('auth.verification');
+    $data['logo'] = Setting::first();
+    return view('auth.verification',$data);
 });
 
 Route::get('/register', function () {
@@ -46,7 +35,8 @@ Route::get('/register', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('user.dashboard');
+    $data['logo'] = Setting::first();
+    return view('user.dashboard',$data);
 })->middleware('auth');
 
 
@@ -66,15 +56,15 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/admin/application/generate/{id}', [ApplicationController::class, 'generateCode']);
     Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
 
-   
+
     Route::get('admin/settings', [SettingController::class, 'index']);
 
-   
+
 });
 
 
-Route::get('/investerform',[InvestorController::class,'index'])->name('user.investerCodeform');
-Route::post('/investerform/submit',[InvestorController::class,'store'])->name('user.investerCodecheck');
+Route::get('/investerform', [InvestorController::class, 'index'])->name('user.investerCodeform');
+Route::post('/investerform/submit', [InvestorController::class, 'store'])->name('user.investerCodecheck');
 use App\Http\Controllers\DetailsController;
 
 Route::get('/details-form', [InvestorController::class, 'showForm'])->name('details.form');
@@ -95,11 +85,11 @@ Route::get('/clear-cache', function () {
     Artisan::call('view:clear');
     Artisan::call('route:clear');
     Artisan::call('optimize:clear');
-    
+
     return "All Caches are cleared by @Roni";
 });
 
-Route::get('/seed',function(){
+Route::get('/seed', function () {
     Artisan::call('db:seed');
 
     return "seeder run successfully";
