@@ -3,7 +3,7 @@
 @section('content')
 <!-- Hero Section -->
 <div
-class="relative h-screen flex items-center justify-center bg-gradient-to-r from-blue-900 to-blue-700 text-white px-4"
+class="relative h-screen flex items-center justify-center bg-gradient-to-r from-teal-900 to-teal-700 text-white px-4"
 style="
   background-image: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=80');
   background-size: cover;
@@ -20,7 +20,7 @@ style="
     collaborations and investments.
   </p>
   <button
-    class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105"
+    class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105"
   >
     Get Started
   </button>
@@ -36,7 +36,7 @@ style="
       class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300 text-center"
     >
       <div class="mb-6">
-        <i class="fas fa-tools text-4xl text-blue-600"></i>
+        <i class="fas fa-tools text-4xl text-teal-600"></i>
       </div>
       <h3 class="text-xl font-bold mb-4">Streamlined Admin Tools</h3>
       <p class="text-gray-600">
@@ -48,7 +48,7 @@ style="
       class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300 text-center"
     >
       <div class="mb-6">
-        <i class="fas fa-chart-line text-4xl text-blue-600"></i>
+        <i class="fas fa-chart-line text-4xl text-teal-600"></i>
       </div>
       <h3 class="text-xl font-bold mb-4">
         Investor Monitoring Made Simple
@@ -62,7 +62,7 @@ style="
       class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300 text-center"
     >
       <div class="mb-6">
-        <i class="fas fa-chart-bar text-4xl text-blue-600"></i>
+        <i class="fas fa-chart-bar text-4xl text-teal-600"></i>
       </div>
       <h3 class="text-xl font-bold mb-4">Comprehensive Reports</h3>
       <p class="text-gray-600">
@@ -73,7 +73,7 @@ style="
       class="bg-white p-8 rounded-lg shadow-lg hover:shadow-xl transition duration-300 text-center"
     >
       <div class="mb-6">
-        <i class="fas fa-shield-alt text-4xl text-blue-600"></i>
+        <i class="fas fa-shield-alt text-4xl text-teal-600"></i>
       </div>
       <h3 class="text-xl font-bold mb-4">Enhanced Security</h3>
       <p class="text-gray-600">
@@ -159,7 +159,7 @@ style="
 </div>
 
 <!-- CTA Section -->
-<div class="py-20 px-4 bg-blue-900 text-white text-center">
+<div class="py-20 px-4 bg-teal-900 text-white text-center">
 <div class="max-w-4xl mx-auto">
   <h2 class="text-4xl font-bold mb-6">
     Ready to Transform Your Investments?
@@ -170,12 +170,12 @@ style="
   </p>
   <div class="space-x-4">
     <button
-      class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition duration-300"
+      class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-8 rounded-full transition duration-300"
     >
       Start Now
     </button>
     <button
-      class="bg-transparent border-2 border-white hover:bg-white hover:text-blue-900 text-white font-bold py-3 px-8 rounded-full transition duration-300"
+      class="bg-transparent border-2 border-white hover:bg-white hover:text-teal-900 text-white font-bold py-3 px-8 rounded-full transition duration-300"
     >
       Learn More
     </button>
@@ -222,7 +222,6 @@ style="
   </div>
 </div>
 </div>
-<div id="footer"></div>
 {{-- <script>
 let openFAQ = null;
 

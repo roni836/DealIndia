@@ -1,7 +1,6 @@
 @extends('user.userBase')
 @section('title', '')
 @section('content')
-<div id="header"></div>
 <div class="bg-gray-50">
   <!-- Hero Section -->
   <div class="relative overflow-hidden bg-white">
@@ -17,7 +16,7 @@
               class="text-4xl tracking-tight font-bold text-gray-900 sm:text-5xl md:text-6xl"
             >
               <span class="block xl:inline">About DealIndia:</span>
-              <span class="block text-blue-600 xl:inline">
+              <span class="block text-teal-600 xl:inline">
                 Your Trusted Financial Growth Partner</span
               >
             </h1>
@@ -53,14 +52,14 @@
         <div
           class="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10"
         >
-          <div class="bg-blue-50 p-6 rounded-lg">
+          <div class="bg-teal-50 p-6 rounded-lg">
             <h3 class="text-2xl font-semibold text-gray-900">Mission</h3>
             <p class="mt-2 text-gray-600">
               To create a transparent and collaborative environment for
               investors to grow together.
             </p>
           </div>
-          <div class="bg-blue-50 p-6 rounded-lg">
+          <div class="bg-teal-50 p-6 rounded-lg">
             <h3 class="text-2xl font-semibold text-gray-900">Vision</h3>
             <p class="mt-2 text-gray-600">
               To become the leading platform for managing financial
@@ -83,7 +82,7 @@
       <div class="mt-10">
         <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           <div class="bg-white p-6 rounded-lg shadow-lg">
-            <div class="text-blue-600 text-4xl mb-4">
+            <div class="text-teal-600 text-4xl mb-4">
               <i class="fas fa-chart-line"></i>
             </div>
             <h3 class="text-xl font-semibold text-gray-900">
@@ -94,7 +93,7 @@
             </p>
           </div>
           <div class="bg-white p-6 rounded-lg shadow-lg">
-            <div class="text-blue-600 text-4xl mb-4">
+            <div class="text-teal-600 text-4xl mb-4">
               <i class="fas fa-users"></i>
             </div>
             <h3 class="text-xl font-semibold text-gray-900">
@@ -105,7 +104,7 @@
             </p>
           </div>
           <div class="bg-white p-6 rounded-lg shadow-lg">
-            <div class="text-blue-600 text-4xl mb-4">
+            <div class="text-teal-600 text-4xl mb-4">
               <i class="fas fa-lightbulb"></i>
             </div>
             <h3 class="text-xl font-semibold text-gray-900">
@@ -136,16 +135,16 @@
         <h3 class="text-xl font-semibold">Amit Sharma</h3>
         <p class="text-gray-600 mb-4">Founder & CEO</p>
         <div class="flex justify-center space-x-4">
-          <a href="#" class="text-blue-600 hover:text-blue-800">
+          <a href="#" class="text-teal-600 hover:text-teal-800">
             <i class="fab fa-linkedin text-2xl"></i>
           </a>
-          <a href="#" class="text-blue-600 hover:text-blue-800">
+          <a href="#" class="text-teal-600 hover:text-teal-800">
             <i class="fab fa-facebook text-2xl"></i>
           </a>
-          <a href="#" class="text-blue-600 hover:text-blue-800">
+          <a href="#" class="text-teal-600 hover:text-teal-800">
             <i class="fab fa-instagram text-2xl"></i>
           </a>
-          <a href="#" class="text-blue-600 hover:text-blue-800">
+          <a href="#" class="text-teal-600 hover:text-teal-800">
             <i class="fab fa-twitter text-2xl"></i>
           </a>
         </div>
@@ -160,16 +159,16 @@
         <h3 class="text-xl font-semibold">Priya Singh</h3>
         <p class="text-gray-600 mb-4">Lead Developer</p>
         <div class="flex justify-center space-x-4">
-          <a href="#" class="text-blue-600 hover:text-blue-800">
+          <a href="#" class="text-teal-600 hover:text-teal-800">
             <i class="fab fa-linkedin text-2xl"></i>
           </a>
-          <a href="#" class="text-blue-600 hover:text-blue-800">
+          <a href="#" class="text-teal-600 hover:text-teal-800">
             <i class="fab fa-facebook text-2xl"></i>
           </a>
-          <a href="#" class="text-blue-600 hover:text-blue-800">
+          <a href="#" class="text-teal-600 hover:text-teal-800">
             <i class="fab fa-instagram text-2xl"></i>
           </a>
-          <a href="#" class="text-blue-600 hover:text-blue-800">
+          <a href="#" class="text-teal-600 hover:text-teal-800">
             <i class="fab fa-twitter text-2xl"></i>
           </a>
         </div>
@@ -184,16 +183,16 @@
         <h3 class="text-xl font-semibold">Ravi Kumar</h3>
         <p class="text-gray-600 mb-4">Financial Analyst</p>
         <div class="flex justify-center space-x-4">
-          <a href="#" class="text-blue-600 hover:text-blue-800">
+          <a href="#" class="text-teal-600 hover:text-teal-800">
             <i class="fab fa-linkedin text-2xl"></i>
           </a>
-          <a href="#" class="text-blue-600 hover:text-blue-800">
+          <a href="#" class="text-teal-600 hover:text-teal-800">
             <i class="fab fa-facebook text-2xl"></i>
           </a>
-          <a href="#" class="text-blue-600 hover:text-blue-800">
+          <a href="#" class="text-teal-600 hover:text-teal-800">
             <i class="fab fa-instagram text-2xl"></i>
           </a>
-          <a href="#" class="text-blue-600 hover:text-blue-800">
+          <a href="#" class="text-teal-600 hover:text-teal-800">
             <i class="fab fa-twitter text-2xl"></i>
           </a>
         </div>
@@ -213,11 +212,11 @@
             <div class="col-start-5 col-end-6 mr-10 md:mx-auto relative">
               <div class="h-full w-6 flex items-center justify-center">
                 <div
-                  class="h-full w-1 bg-blue-600 pointer-events-none"
+                  class="h-full w-1 bg-teal-600 pointer-events-none"
                 ></div>
               </div>
               <div
-                class="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-blue-600"
+                class="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-teal-600"
               ></div>
             </div>
             <div
@@ -231,11 +230,11 @@
             <div class="col-start-5 col-end-6 mr-10 md:mx-auto relative">
               <div class="h-full w-6 flex items-center justify-center">
                 <div
-                  class="h-full w-1 bg-blue-600 pointer-events-none"
+                  class="h-full w-1 bg-teal-600 pointer-events-none"
                 ></div>
               </div>
               <div
-                class="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-blue-600"
+                class="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-teal-600"
               ></div>
             </div>
             <div
@@ -249,11 +248,11 @@
             <div class="col-start-5 col-end-6 mr-10 md:mx-auto relative">
               <div class="h-full w-6 flex items-center justify-center">
                 <div
-                  class="h-full w-1 bg-blue-600 pointer-events-none"
+                  class="h-full w-1 bg-teal-600 pointer-events-none"
                 ></div>
               </div>
               <div
-                class="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-blue-600"
+                class="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-teal-600"
               ></div>
             </div>
             <div
@@ -267,11 +266,11 @@
             <div class="col-start-5 col-end-6 mr-10 md:mx-auto relative">
               <div class="h-full w-6 flex items-center justify-center">
                 <div
-                  class="h-full w-1 bg-blue-600 pointer-events-none"
+                  class="h-full w-1 bg-teal-600 pointer-events-none"
                 ></div>
               </div>
               <div
-                class="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-blue-600"
+                class="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-teal-600"
               ></div>
             </div>
             <div
@@ -294,7 +293,7 @@
       </div>
       <div class="mt-10">
         <div class="relative bg-white p-8 rounded-lg shadow-lg">
-          <i class="fas fa-quote-left text-4xl text-blue-600 mb-4"></i>
+          <i class="fas fa-quote-left text-4xl text-teal-600 mb-4"></i>
           <div class="flex items-center mb-8">
             <img
               class="testimonial-image h-12 w-12 rounded-full object-cover"
@@ -317,7 +316,7 @@
           </p>
           <div class="mt-6 flex justify-center space-x-2">
             <button
-              class="testimonial-indicator w-3 h-3 rounded-full bg-blue-600"
+              class="testimonial-indicator w-3 h-3 rounded-full bg-teal-600"
             ></button>
             <button
               class="testimonial-indicator w-3 h-3 rounded-full bg-gray-300"
@@ -332,24 +331,24 @@
   </div>
 
   <!-- CTA Section -->
-  <div class="bg-blue-600">
+  <div class="bg-teal-600">
     <div
       class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between"
     >
       <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">
         <span class="block">Join Us Today</span>
-        <span class="block text-blue-200"
+        <span class="block text-teal-200"
           >Start your investment journey with DealIndia.</span
         >
       </h2>
       <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0 space-x-4">
         <button
-          class="bg-white text-blue-600 px-6 py-3 rounded-md font-semibold hover:bg-blue-50 transition-colors"
+          class="bg-white text-teal-600 px-6 py-3 rounded-md font-semibold hover:bg-teal-50 transition-colors"
         >
           Start Your Journey
         </button>
         <button
-          class="border-2 border-white text-white px-6 py-3 rounded-md font-semibold hover:bg-blue-700 transition-colors"
+          class="border-2 border-white text-white px-6 py-3 rounded-md font-semibold hover:bg-teal-700 transition-colors"
         >
           Contact Us
         </button>
@@ -357,7 +356,6 @@
     </div>
   </div>
 </div>
-<div id="footer"></div>
 {{-- <script>
   document.addEventListener("DOMContentLoaded", function () {
     const testimonials = [
@@ -398,7 +396,7 @@
       document
         .querySelectorAll(".testimonial-indicator")
         .forEach((indicator, i) => {
-          indicator.classList.toggle("bg-blue-600", i === index);
+          indicator.classList.toggle("bg-teal-600", i === index);
           indicator.classList.toggle("bg-gray-300", i !== index);
         });
     }

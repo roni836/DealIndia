@@ -2,7 +2,7 @@
 @section('title', '')
 @section('content')
 <!-- Hero Section -->
-<div class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-16">
+<div class="bg-gradient-to-r from-teal-600 to-teal-800 text-white py-16">
     <div class="container mx-auto px-4 text-center">
       <i class="fas fa-balance-scale w-16 h-16 mx-auto mb-6"></i>
       <h1 class="text-4xl font-bold mb-4">DealIndia Terms of Service</h1>
@@ -54,7 +54,7 @@
                 class="flex items-center w-full p-2 rounded-md transition-colors hover:bg-gray-100"
               >
                 <i class="fas fa-briefcase mr-2"></i>
-                <span>Services Provided by DealIndia</span>
+                <span>Services Provided</span>
               </button>
             </li>
             <li>
@@ -99,7 +99,7 @@
                 class="flex items-center w-full p-2 rounded-md transition-colors hover:bg-gray-100"
               >
                 <i class="fas fa-exclamation-triangle mr-2"></i>
-                <span>Disclaimer and Limitation of Liability</span>
+                <span>Disclaimer and Limitation</span>
               </button>
             </li>
             <li>
@@ -287,7 +287,7 @@
               <i class="fas fa-envelope mr-2"></i> Email:
               <a
                 href="mailto:support@dealindia.com"
-                class="text-blue-600 hover:underline"
+                class="text-teal-600 hover:underline"
                 >support@dealindia.com</a
               >
             </p>
@@ -308,13 +308,12 @@
   <div class="text-center py-8">
     <a
       href="/register"
-      class="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+      class="inline-block px-6 py-3 bg-teal-600 text-white rounded-lg hover:bg-teal-700 transition-colors"
     >
       Agree to Terms and Continue
     </a>
   </div>
 
-  <div id="footer"></div>
 
   {{-- <script>
     document.addEventListener("DOMContentLoaded", function () {
@@ -326,12 +325,12 @@
           const rect = section.getBoundingClientRect();
           if (rect.top <= 100 && rect.bottom >= 100) {
             navLinks.forEach((link) => {
-              link.classList.remove("bg-blue-100", "text-blue-600");
+              link.classList.remove("bg-teal-100", "text-teal-600");
               if (
                 link.textContent.trim() ===
                 section.querySelector("h2").textContent.trim()
               ) {
-                link.classList.add("bg-blue-100", "text-blue-600");
+                link.classList.add("bg-teal-100", "text-teal-600");
               }
             });
           }
