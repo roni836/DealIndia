@@ -8,8 +8,11 @@ use Illuminate\Http\Request;
 class ApplicationController extends Controller
 {
     public function editApplication($id){
-        $data = User::where('id',$id)->first();
-        return view('Admin.edit-application',["user"=>$data]);
+        // $data = User::where('id',$id)->first();
+        $user = User::with('investorDetails')->findOrFail($id);
+
+        
+        return view('Admin.edit-application',["user"=>$user]);
     }
 
     // public function generateCode($id){

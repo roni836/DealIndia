@@ -127,9 +127,6 @@ class AuthController extends Controller
         return redirect()->back()->with('error', 'Failed to log in.');
     }
 
-
-
-
     public function sendLoginLink(Request $request)
     {
         $validator = Validator::make($request->all(), [

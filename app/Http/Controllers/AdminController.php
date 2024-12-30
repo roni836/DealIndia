@@ -12,16 +12,19 @@ class AdminController extends Controller
    }
 
    public function applications(){
-    return view('Admin.applications');
+      $applications = User::with('investorDetails')->get();
+    return view('Admin.applications',["applications" => $applications]);
    }
 
    public function approvedApplication(){
-      $applications = User::where('status',1)->get();
-      return view('Admin.approved-applications',["applications"=>$applications]);
-   }
+     
+      $applications = User::where('status', 1)->with('investorDetails')->get();
+      return view('Admin.approved-applications', ["applications" => $applications]);
+  }
+   
 
    public function pendingApplication(){
-      $applications = User::where('status',0)->get();
+      $applications = User::where('status', 0)->with('investorDetails')->get();
       return view('Admin.applications',["applications"=>$applications]);
    }
    public function logout()
