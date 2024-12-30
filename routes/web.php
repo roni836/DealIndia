@@ -10,16 +10,19 @@ use Illuminate\Support\Facades\Artisan;
 use App\Models\Setting;
 
 Route::get('/', function () {
-    return view('user.home');
+    $data['logo'] = Setting::first();
+    return view('user.home', $data);
 })->name("homepage");
 
 Route::get('/contact', function () {
-    return view('user.contact');
+    $data['logo'] = Setting::first();
+    return view('user.contact',$data);
 })->name('contact');
 
 
 Route::get('/login', function () {
-    return view('auth.login');
+    $data['logo'] = Setting::first();
+    return view('auth.login', $data);
 })->name('login');
 
 Route::get('/verification', function () {
@@ -53,15 +56,15 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/admin/application/generate/{id}', [ApplicationController::class, 'generateCode']);
     Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
 
-   
+
     Route::get('admin/settings', [SettingController::class, 'index']);
 
-   
+
 });
 
 
-Route::get('/investerform',[InvestorController::class,'index'])->name('user.investerCodeform');
-Route::post('/investerform/submit',[InvestorController::class,'store'])->name('user.investerCodecheck');
+Route::get('/investerform', [InvestorController::class, 'index'])->name('user.investerCodeform');
+Route::post('/investerform/submit', [InvestorController::class, 'store'])->name('user.investerCodecheck');
 use App\Http\Controllers\DetailsController;
 
 Route::get('/details-form', [InvestorController::class, 'showForm'])->name('details.form');
@@ -82,11 +85,11 @@ Route::get('/clear-cache', function () {
     Artisan::call('view:clear');
     Artisan::call('route:clear');
     Artisan::call('optimize:clear');
-    
+
     return "All Caches are cleared by @Roni";
 });
 
-Route::get('/seed',function(){
+Route::get('/seed', function () {
     Artisan::call('db:seed');
 
     return "seeder run successfully";
