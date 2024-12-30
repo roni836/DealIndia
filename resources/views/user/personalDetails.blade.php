@@ -17,7 +17,7 @@
                   <h1 class="text-3xl font-bold text-gray-800">Details Investor Overview</h1>
                   <p class="text-gray-600 mt-2">Review the submitted details below.</p>
                 </div>
-                {{-- <button class="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                {{-- <button class="flex items-center gap-2 bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition-colors">
                   <i class="fas fa-edit"></i> Edit Details
                 </button> --}}
               </div>
@@ -26,7 +26,7 @@
                 <!-- Personal Details Section -->
                 <div class="bg-white p-6 rounded-xl shadow-md">
                   <div class="flex items-center gap-3 mb-4">
-                    <i class="fas fa-user text-blue-600 text-xl"></i>
+                    <i class="fas fa-user text-teal-600 text-xl"></i>
                     <h2 class="text-xl font-semibold">Personal Details</h2>
                   </div>
                   <div class="grid grid-cols-2 gap-4">
@@ -64,7 +64,7 @@
                 <!-- Banking Details Section -->
                 <div class="bg-white p-6 rounded-xl shadow-md">
                   <div class="flex items-center gap-3 mb-4">
-                    <i class="fas fa-university text-blue-600 text-xl"></i>
+                    <i class="fas fa-university text-teal-600 text-xl"></i>
                     <h2 class="text-xl font-semibold">Banking Details</h2>
                   </div>
                   <div class="space-y-4">
@@ -109,7 +109,7 @@
                 <!-- Address Details Section -->
                 <div class="bg-white p-6 rounded-xl shadow-md">
                   <div class="flex items-center gap-3 mb-4">
-                    <i class="fas fa-map-marker-alt text-blue-600 text-xl"></i>
+                    <i class="fas fa-map-marker-alt text-teal-600 text-xl"></i>
                     <h2 class="text-xl font-semibold">Address Details</h2>
                   </div>
                   <div class="space-y-3">
@@ -139,7 +139,7 @@
                 <!-- Documents Section -->
                 <div class="bg-white p-6 rounded-xl shadow-md">
                   <div class="flex items-center gap-3 mb-4">
-                    <i class="fas fa-file-alt text-blue-600 text-xl"></i>
+                    <i class="fas fa-file-alt text-teal-600 text-xl"></i>
                     <h2 class="text-xl font-semibold">Uploaded Documents</h2>
                   </div>
                   <div class="space-y-4">
@@ -150,10 +150,10 @@
                         <span class="bg-orange-100 px-3 rounded-xl mt-1 py-1">{{$investor->aadhar_card_number}}</span>
                       </div>
                       {{-- <div class="flex gap-2">
-                        <button class="p-2 text-blue-600 hover:bg-blue-50 rounded-full">
+                        <button class="p-2 text-teal-600 hover:bg-teal-50 rounded-full">
                           <i class="fas fa-eye"></i>
                         </button>
-                        <button class="p-2 text-blue-600 hover:bg-blue-50 rounded-full">
+                        <button class="p-2 text-teal-600 hover:bg-teal-50 rounded-full">
                           <i class="fas fa-download"></i>
                         </button>
                       </div> --}}
@@ -166,10 +166,10 @@
 
                       </div>
                       {{-- <div class="flex gap-2">
-                        <button class="p-2 text-blue-600 hover:bg-blue-50 rounded-full">
+                        <button class="p-2 text-teal-600 hover:bg-teal-50 rounded-full">
                           <i class="fas fa-eye"></i>
                         </button>
-                        <button class="p-2 text-blue-600 hover:bg-blue-50 rounded-full">
+                        <button class="p-2 text-teal-600 hover:bg-teal-50 rounded-full">
                           <i class="fas fa-download"></i>
                         </button>
                       </div> --}}
@@ -180,10 +180,10 @@
                         <p class="text-sm text-gray-500">2024-12-01</p>
                       </div>
                       <div class="flex gap-2">
-                        <button class="p-2 text-blue-600 hover:bg-blue-50 rounded-full">
+                        <button class="p-2 text-teal-600 hover:bg-teal-50 rounded-full">
                           <i class="fas fa-eye"></i>
                         </button>
-                        <button class="p-2 text-blue-600 hover:bg-blue-50 rounded-full">
+                        <button class="p-2 text-teal-600 hover:bg-teal-50 rounded-full">
                           <i class="fas fa-download"></i>
                         </button>
                       </div>
@@ -191,13 +191,15 @@
                   </div>
                 </div>
               </div>
+
+              
           
               <!-- Action Buttons -->
               {{-- <div class="mt-8 flex flex-wrap gap-4">
                 <button class="flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors">
                   <i class="fas fa-download"></i> Download All Documents
                 </button>
-                <button class="flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                <button class="flex items-center gap-2 bg-teal-600 text-white px-6 py-3 rounded-lg hover:bg-teal-700 transition-colors">
                   Submit Final
                 </button>
               </div> --}}

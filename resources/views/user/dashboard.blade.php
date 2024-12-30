@@ -22,7 +22,7 @@
             <div class="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
                 <!-- Profile Section -->
                 <section id="profile" class="bg-white shadow-md rounded-lg p-4 md:p-6 h-48">
-                    <h2 class="text-2xl font-bold mb-4 text-blue-800">Your Profile</h2>
+                    <h2 class="text-2xl font-bold mb-4 text-teal-800">Your Profile</h2>
                     <div class="text-sm md:text-md space-y-2">
                         <p><strong>Name:</strong> {{ auth()->user()->name }}</p>
                         <p><strong>Email:</strong> {{ auth()->user()->email }}</p>
@@ -30,7 +30,7 @@
                     </div>
                 </section>
                 <section id="profile" class="bg-white shadow-md rounded-lg p-4 md:p-6 h-48">
-                    <h2 class="text-2xl font-bold mb-4 text-blue-800">Your Profile</h2>
+                    <h2 class="text-2xl font-bold mb-4 text-teal-800">Your Profile</h2>
                     <div class="text-sm md:text-md space-y-2">
                         <p><strong>V.R Code:</strong> {{ auth()->user()->vr_code }}</p>
                         <p><strong>Range Code:</strong> {{ auth()->user()->range_code }}</p>
@@ -43,26 +43,26 @@
                 <div class="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
                 <!-- Tasks Section -->
                 <section id="tasks" class="bg-white shadow-md rounded-lg p-6 h-48">
-                    <h2 class="text-2xl font-bold mb-4 text-blue-800">Your Tasks</h2>
+                    <h2 class="text-2xl font-bold mb-4 text-teal-800">Your Tasks</h2>
                     <ul class="space-y-2 text-sm md:text-sm ">
                         <li class="flex justify-between items-center">
                             <span>Complete the project report</span>
-                            <button class="text-sm bg-blue-800 text-white px-2  md:px-3 py-1 md:py-2 rounded hover:bg-blue-700">
+                            <button class="text-sm bg-teal-800 text-white px-2  md:px-3 py-1 md:py-2 rounded hover:bg-teal-700">
                                 Mark as Done
                             </button>
                         </li>
                         <li class="flex justify-between items-center ">
                             <span>Update your profile details</span>
-                            <button class="text-sm bg-blue-800 text-white px-2 md:px-3 py-1 md:py-2 rounded hover:bg-blue-700">
+                            <button class="text-sm bg-teal-800 text-white px-2 md:px-3 py-1 md:py-2 rounded hover:bg-teal-700">
                                 Mark as Done
                             </button>
                         </li>
                     </ul>
                 </section>
                 <section id="settings" class="bg-white shadow-md rounded-lg p-6  h-48">
-                    <h2 class="text-2xl font-bold  text-blue-800">Settings</h2>
+                    <h2 class="text-2xl font-bold  text-teal-800">Settings</h2>
                     <p>Customize your settings here...</p>
-                    <button class="mt-4 bg-blue-800 text-white py-2 px-4 rounded hover:bg-blue-700">
+                    <button class="mt-4 bg-teal-800 text-white py-2 px-4 rounded hover:bg-teal-700">
                         Save Changes
                     </button>
                 </section>
