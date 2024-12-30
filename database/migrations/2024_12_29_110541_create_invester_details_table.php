@@ -40,6 +40,7 @@ return new class extends Migration
             $table->string('postal_code')->nullable();
 
             // Document Details
+            $table->string('photo')->nullable();
             $table->string('aadhar_card')->nullable();
             $table->string('aadhar_card_number')->nullable();
             $table->string('pan_card')->nullable();
