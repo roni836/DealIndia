@@ -46,6 +46,7 @@ class ApplicationController extends Controller
         $user->range_code = 'RG' . time() . rand(10, 99);
         $user->company_code = 'CMP' . strtoupper(uniqid());
         $user->noc_number = 'NOC-' . now()->format('Ymd-His');
+        $user->status = 1;
         $user->save();
 
         // Prepare email details
