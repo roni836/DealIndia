@@ -20,16 +20,20 @@ Route::get('/contact', function () {
 })->name('contact');
 
 Route::get('/about', function () {
-    return view('user.about');
+    $data['logo'] = Setting::first();
+    return view('user.about', $data);
 })->name('about');
 Route::get('/services', function () {
-    return view('user.services');
+    $data['logo'] = Setting::first();
+    return view('user.services',$data);
 })->name('services');
 Route::get('/privacy-policy', function () {
-    return view('user.privacyPolicy');
+    $data['logo'] = Setting::first();
+    return view('user.privacyPolicy',$data);
 })->name('privacy-policy');
 Route::get('/Terms-of-Service', function () {
-    return view('user.termsOfService');
+    $data['logo'] = Setting::first();
+    return view('user.termsOfService',$data);
 })->name('Terms-of-Service');
 
 
@@ -39,7 +43,8 @@ Route::get('/login', function () {
 })->name('login');
 
 Route::get('/verification', function () {
-    return view('auth.verification');
+    $data['logo'] = Setting::first();
+    return view('auth.verification',$data);
 });
 
 Route::get('/register', function () {
@@ -49,7 +54,8 @@ Route::get('/register', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('user.dashboard');
+    $data['logo'] = Setting::first();
+    return view('user.dashboard',$data);
 })->middleware('auth');
 
 
