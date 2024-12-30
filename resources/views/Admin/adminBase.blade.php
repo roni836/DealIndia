@@ -67,7 +67,7 @@
         <!-- Main Content -->
         <div class="flex-1 flex flex-col">
             <!-- Navbar -->
-            <header class="bg-teal-400 shadow-md p-4 flex justify-between items-center">
+            <header class="bg-teal-300 shadow-md p-4 flex justify-between items-center">
                 <div class="flex items-center space-x-4">
                     <button id="menuButton" class="lg:hidden text-gray-800 focus:outline-none">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
