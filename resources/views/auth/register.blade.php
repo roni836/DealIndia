@@ -16,8 +16,6 @@
                     <img src="{{ asset('images/logo.png') }}" alt="Default Logo" class="h-20 md:h-32 object-contain">
                 @endif
             </div>
-
-
         </div>
     </div>
 

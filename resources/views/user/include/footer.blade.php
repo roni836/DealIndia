@@ -4,7 +4,7 @@
                 <!-- Logo & Tagline -->
                 <div class="space-y-4">
                     <div class="flex items-center space-x-2">
-                        <img src="https://comestro.novafix.in/logo.png" alt="DealIndia Logo" class="h-20 w-auto"> 
+                        <img src="{{asset('storage/images/setting/'.$logo->meta_logo)}}" alt="DealIndia Logo" class="h-20 w-auto"> 
                     </div>
                     <p class="text-sm">Your Partner in Financial Growth and Management</p>
                     <div class="flex items-center space-x-2">

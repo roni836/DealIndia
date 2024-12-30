@@ -47,7 +47,7 @@
     <div class="flex items-center justify-between h-16">
       <div class="flex items-center space-x-2">
         <a href="{{ route('homepage') }}">
-          <img src="logo.png" alt="Logo" class="h-10 md:11 w-auto object-contain rounded-md" onerror="this.src='https://via.placeholder.com/40?text=Logo';">
+          <img src="{{ asset('storage/images/setting/' . $logo->meta_logo) }}" alt="Logo" class="h-10 md:11 w-auto object-contain rounded-md" onerror="this.src='https://via.placeholder.com/40?text=Logo';">
         </a>
       </div>
       <nav class="hidden md:flex items-center space-x-6">
