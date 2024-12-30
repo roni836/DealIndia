@@ -47,8 +47,8 @@ class UserController extends Controller
 
     public function dashboard()
     {
-
-        return view('user.dashboard');
+        $data['logo'] = Setting::first();
+        return view('user.dashboard',$data);
     }
     public function personalInvestorDetails($id)
     {
