@@ -37,8 +37,10 @@
                                 <span class="bg-green-100 text-green-800 text-sm px-2 py-1 rounded">Shortlisted</span>
                             </td> --}}
                             <td class="px-4 py-2 flex space-x-2">
-                                <button class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">View</button>
-                                <button class="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">Reject</button>
+                                <a href="{{ url('/admin/application/' . $item->id) }}" class="text-blue-600 hover:underline">
+                                    <button class="px-2 py-1 bg-blue-600 text-white rounded hover:bg-blue-800">View</button>
+                                </a>
+                                <button class="px-2 py-1 bg-orange-500 text-white rounded hover:bg-orange-600">Reject</button>
                             </td>
                         </tr>
                         @endforeach

@@ -31,9 +31,9 @@
                         </td>
                         <td class="px-4 py-2 flex space-x-2">
                             <a href="{{ url('/admin/application/' . $item->id) }}" class="text-blue-600 hover:underline">
-                                <button class="px-2 py-1 bg-blue-500 text-white rounded hover:bg-blue-700">View</button>
+                                <button class="px-2 py-1 bg-blue-600 text-white rounded hover:bg-blue-800">View</button>
                             </a>
-                            <button class="px-2 py-1 bg-red-500 text-white rounded hover:bg-red-700">Reject</button>
+                            <button class="px-2 py-1 bg-orange-500 text-white rounded hover:bg-orange-600">Reject</button>
                         </td>
                     </tr>
                     @endforeach
