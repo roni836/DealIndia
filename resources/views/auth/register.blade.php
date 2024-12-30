@@ -22,20 +22,20 @@
     <!-- Right Section (Form) -->
     <div class="w-full lg:w-6/12 flex justify-center items-center">
         <!-- Display Validation Errors -->
-        @if ($errors->any())
-            <div class="mb-4">
-                <div class="text-red-600 font-medium">Whoops! Something went wrong.</div>
-                <ul class="mt-2 text-sm text-red-600">
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+       
         <div class="w-full mx-6 lg:mx-12 md:p-8 p-3">
             <h2 class="text-4xl font-semibold text-center text-gray-800 mb-6"
                 style="font-family: 'Roboto Condensed', serif;">Become A Member</h2>
-
+                @if ($errors->any())
+                <div class="mb-4">
+                    <div class="text-red-600 font-medium">Whoops! Something went wrong.</div>
+                    <ul class="mt-2 text-sm text-red-600">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             <!-- Register Form -->
             <form method="POST" action="{{ route('user.register') }}">
                 @csrf
