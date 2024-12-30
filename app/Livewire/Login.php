@@ -103,7 +103,7 @@ class Login extends Component
             // For non-admin users, redirect to the dashboard
             Auth::login($user);
 
-            if($user->alldetails != 1){
+            if($user->all_details != 1){
                 return redirect()->route('details.form')->with('success', 'Login successful.');
             }else{
                 return redirect()->route('dashboard')->with('success', 'Login successful.');
