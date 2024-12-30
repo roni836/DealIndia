@@ -48,8 +48,12 @@ class UserController extends Controller
         $data['logo'] = Setting::first();
         $user = auth()->user();
     
-        $data['investor'] = InvesterDetail::where('user_id', $user->id)->firstOrFail();
-    
+        $investor = InvesterDetail::where('user_id', $user->id)->first();
+    if (!$investor) {
+        return redirect()->route('details.submit');
+    }
+
+    $data['investor'] = $investor;
         return view('user.personalDetails', $data); 
     }
     
