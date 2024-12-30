@@ -19,6 +19,19 @@ Route::get('/contact', function () {
     return view('user.contact',$data);
 })->name('contact');
 
+Route::get('/about', function () {
+    return view('user.about');
+})->name('about');
+Route::get('/services', function () {
+    return view('user.services');
+})->name('services');
+Route::get('/privacy-policy', function () {
+    return view('user.privacyPolicy');
+})->name('privacy-policy');
+Route::get('/Terms-of-Service', function () {
+    return view('user.termsOfService');
+})->name('Terms-of-Service');
+
 
 Route::get('/login', function () {
     $data['logo'] = Setting::first();

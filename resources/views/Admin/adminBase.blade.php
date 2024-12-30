@@ -77,7 +77,7 @@
                     <h2 class="text-xl font-semibold">Admin Dashboard</h2>
                 </div>
                 <div class="flex items-center space-x-4">
-                    <p class="text-md font-mono">Welcome Admin</p>
+                    
                     @auth
                     <form id="logout-form" method="POST" action="{{ route('admin.logout') }}" class="inline-block">
                         @csrf
