@@ -71,6 +71,11 @@
                 <h2 class="text-xl font-semibold mt-6 mb-3">Documents</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
+                        <label class="block mb-1">Profile Photo</label>
+                        <input type="file" name="photo"  required
+                            class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                    </div>
+                    <div>
                         <label class="block mb-1">Aadhar Card (Image/PDF)</label>
                         <input type="file" name="aadhar_card" accept=".jpeg,.png,.pdf" required
                             class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">

@@ -87,19 +87,24 @@ class InvestorController extends Controller
             $data = $request->except('aadhar_card', 'pan_card', 'inputs');
             $data['aadhar_card'] = $request->file('aadhar_card')?->store('documents/aadhar', 'public');
             $data['pan_card'] = $request->file('pan_card')?->store('documents/pan', 'public');
+            $data['photo'] = $request->file('photo')?->store('documents/photo', 'public');
             $data['user_id'] = Auth::id();
     
             $investerDetails = InvesterDetail::create($data);
     
             if ($investerDetails && $request->has('inputs')) {
                 foreach ($request->inputs as $input) {
-                    $filename = $input['filename']?->store('documents/documents', 'public');
+                    $filename = $input['filename']?->store('documents/', 'public');
                     $investerDetails->additional_documents()->create([
                         'user_id' => Auth::id(),
                         'name' => $input['name'],
                         'filename' => $filename,
                     ]);
                 }
+            }
+
+            if ($investerDetails) {
+                User::where('id', Auth::id())->update(['alldetails' => 1]);
             }
     
             return redirect('/dashboard')->with('success', 'Details submitted successfully!');
