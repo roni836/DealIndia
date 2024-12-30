@@ -16,7 +16,6 @@ Route::get('/about', [UserController::class, 'about'])->name('about');
 Route::get('/services', [UserController::class, 'services'])->name('services');
 Route::get('/privacy-policy', [UserController::class, 'privacyPolicy'])->name('privacy-policy');
 Route::get('/Terms-of-Service', [UserController::class, 'termsOfService'])->name('Terms-of-Service');
-Route::get('/details/{id}', [UserController::class, 'personalInvestorDetails'])->name('details');
 
 
 Route::get('/login', function () {
@@ -46,6 +45,7 @@ Route::middleware(['auth'])->group(function () {
         $data['logo'] = Setting::first();
         return view('user.dashboard',$data);
     })->name('dashboard');
+    Route::get('/details/{id}', [UserController::class, 'personalInvestorDetails'])->name('details');
 
     Route::get('/investerform', [InvestorController::class, 'index'])->name('user.investerCodeform');
     Route::post('/investerform/submit', [InvestorController::class, 'store'])->name('user.investerCodecheck');

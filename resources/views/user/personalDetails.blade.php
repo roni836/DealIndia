@@ -161,7 +161,7 @@
                     <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                       <div>
                         <p class="font-medium">PAN Card</p>
-                        <p class="text-sm text-gray-500">{{$investor->pan_card}}</p>
+                        <p class="text-sm text-gray-500"></p>
                         <span class="bg-orange-100 px-3 rounded-xl mt-1 py-1">{{$investor->pan_card_number}}</span>
 
                       </div>
