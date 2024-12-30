@@ -3,7 +3,7 @@
 @section('content')
 
 
-<div class="flex mt-10 bg-gray-100">
+<div class="flex mt-10 bg-gray-300">
     <!-- Sidebar -->
   @include('user.include.sidebar')
     <!-- Main Content -->
