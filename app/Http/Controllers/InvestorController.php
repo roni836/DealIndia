@@ -101,6 +101,10 @@ class InvestorController extends Controller
                     ]);
                 }
             }
+
+            if ($investerDetails) {
+                User::where('id', Auth::id())->update(['alldetails' => 1]);
+            }
     
             return redirect('/dashboard')->with('success', 'Details submitted successfully!');
         // }
