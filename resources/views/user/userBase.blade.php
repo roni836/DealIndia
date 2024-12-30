@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 @livewireStyles
+
 <head>
   <meta charset="utf-8">
   <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -42,61 +43,95 @@
 
 <body>
 
-<header id="header" class="fixed w-full z-50 transition-all duration-300 bg-white">
-  <div class="max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-between h-16">
-      <div class="flex items-center space-x-2">
-        <a href="{{ route('homepage') }}">
-          <img src="{{ asset('storage/images/setting/' . $logo->meta_logo) }}" alt="Logo" class="h-10 md:11 w-auto object-contain rounded-md" onerror="this.src='https://via.placeholder.com/40?text=Logo';">
-        </a>
-      </div>
-      <nav class="hidden md:flex items-center space-x-6">
-        <a href="{{ route('homepage') }}" class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-teal-600" id="home">Home</a>
-        <a href="{{route('services')}}" class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-teal-600" id="services">Services</a>
-        <a href="{{route('about')}}" class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-teal-600" id="about">About</a>
-        <a href="{{route('contact')}}" class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-teal-600" id="contact">Contact</a>
-        <a href="{{route('privacy-policy')}}" class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-teal-600" id="privacy">Privacy Policy</a>
-        <a href="{{route('Terms-of-Service')}}" class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-teal-600" id="terms">Terms of Service</a>
-      </nav>
-      <div class="hidden md:flex items-center space-x-4">
-        @guest
-        <a href="{{ route('login') }}" class="px-4 py-2 text-sm font-medium text-teal-600 border border-teal-600 rounded-md hover:bg-teal-50 transition-colors duration-200">Login</a>
-        <a href="{{ url('register') }}" class="px-4 py-2 text-sm font-medium text-white bg-teal-600 rounded-md hover:bg-teal-700 transition-colors duration-200">SignUp</a>
-        @endguest
-        @auth
+  <header id="header" class="fixed w-full z-50 transition-all duration-300 bg-white">
+    <div class="max-w-7xl mx-auto py-2 px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center space-x-2">
+          <a href="{{ route('homepage') }}">
+          @if (!empty($logo?->meta_logo))
+                    <img src="{{ asset('storage/images/setting/' . $logo->meta_logo) }}" alt="Company Logo"
+                        class="h-10 md:11 w-auto object-contain rounded-md">
+                @else
+                    <img src="{{ asset('images/logo.png') }}" alt="Default Logo" class="h-20 md:h-32 object-contain">
+                @endif
+          </a>
+        </div>
+        <nav class="hidden md:flex items-center space-x-6">
+          <a href="{{ route('homepage') }}"
+            class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-teal-600"
+            id="home">Home</a>
+          <a href="{{route('services')}}"
+            class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-teal-600"
+            id="services">Services</a>
+          <a href="{{route('about')}}"
+            class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-teal-600"
+            id="about">About</a>
+          <a href="{{route('contact')}}"
+            class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-teal-600"
+            id="contact">Contact</a>
+          <a href="{{route('privacy-policy')}}"
+            class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-teal-600"
+            id="privacy">Privacy Policy</a>
+          <a href="{{route('Terms-of-Service')}}"
+            class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-teal-600"
+            id="terms">Terms of Service</a>
+        </nav>
+        <div class="hidden md:flex items-center space-x-4">
+          @guest
+        <a href="{{ route('login') }}"
+        class="px-4 py-2 text-sm font-medium text-teal-600 border border-teal-600 rounded-md hover:bg-teal-50 transition-colors duration-200">Login</a>
+        <a href="{{ url('register') }}"
+        class="px-4 py-2 text-sm font-medium text-white bg-teal-600 rounded-md hover:bg-teal-700 transition-colors duration-200">SignUp</a>
+      @endguest
+          @auth
         <form method="POST" action="{{ route('logout') }}" class="inline">
-          @csrf
-          <button type="submit" class="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 transition-colors duration-200">Logout</button>
+        @csrf
+        <button type="submit"
+          class="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 transition-colors duration-200">Logout</button>
         </form>
-        @endauth
+      @endauth
+        </div>
+        <button class="md:hidden text-gray-600 hover:text-teal-600 transition-colors duration-200"
+          onclick="toggleMenu()" aria-label="Toggle menu">
+          <i id="menu-icon" class="fas fa-bars w-6 h-6"></i>
+        </button>
       </div>
-      <button class="md:hidden text-gray-600 hover:text-teal-600 transition-colors duration-200" onclick="toggleMenu()" aria-label="Toggle menu">
-        <i id="menu-icon" class="fas fa-bars w-6 h-6"></i>
-      </button>
     </div>
-  </div>
-  <div id="mobile-menu" class="md:hidden bg-white border-t hidden">
-    <div class="px-2 pt-2 pb-3 space-y-1">
-      <a href="{{ route('homepage') }}" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-teal-600 hover:bg-teal-50" id="mobile-home">Home</a>
-      <a href="#" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-teal-600 hover:bg-teal-50" id="mobile-services">Services</a>
-      <a href="{{ route('contact') }}" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-teal-600 hover:bg-teal-50" id="mobile-contact">Contact</a>
-      <a href="#" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-teal-600 hover:bg-teal-50" id="mobile-privacy">Privacy Policy</a>
-      <a href="#" class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-teal-600 hover:bg-teal-50" id="mobile-terms">Terms of Service</a>
-      <div class="pt-4 space-y-2">
-        @guest
-        <a href="{{ route('login') }}" class="block w-full px-4 py-2 text-sm font-medium text-teal-600 border border-teal-600 rounded-md hover:bg-teal-50 transition-colors duration-200">Login</a>
-        <a href="{{ url('register') }}" class="block w-full px-4 py-2 text-sm font-medium text-white bg-teal-600 rounded-md hover:bg-teal-700 transition-colors duration-200">SignUp</a>
-        @endguest
-        @auth
+    <div id="mobile-menu" class="md:hidden bg-white border-t hidden">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <a href="{{ route('homepage') }}"
+          class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-teal-600 hover:bg-teal-50"
+          id="mobile-home">Home</a>
+        <a href="#"
+          class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-teal-600 hover:bg-teal-50"
+          id="mobile-services">Services</a>
+        <a href="{{ route('contact') }}"
+          class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-teal-600 hover:bg-teal-50"
+          id="mobile-contact">Contact</a>
+        <a href="#"
+          class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-teal-600 hover:bg-teal-50"
+          id="mobile-privacy">Privacy Policy</a>
+        <a href="#"
+          class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-teal-600 hover:bg-teal-50"
+          id="mobile-terms">Terms of Service</a>
+        <div class="pt-4 space-y-2">
+          @guest
+        <a href="{{ route('login') }}"
+        class="block w-full px-4 py-2 text-sm font-medium text-teal-600 border border-teal-600 rounded-md hover:bg-teal-50 transition-colors duration-200">Login</a>
+        <a href="{{ url('register') }}"
+        class="block w-full px-4 py-2 text-sm font-medium text-white bg-teal-600 rounded-md hover:bg-teal-700 transition-colors duration-200">SignUp</a>
+      @endguest
+          @auth
         <form method="POST" action="{{ route('logout') }}" class="inline w-full">
-          @csrf
-          <button type="submit" class="block w-full px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 transition-colors duration-200">Logout</button>
+        @csrf
+        <button type="submit"
+          class="block w-full px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 transition-colors duration-200">Logout</button>
         </form>
-        @endauth
+      @endauth
+        </div>
       </div>
     </div>
-  </div>
-</header>
+  </header>
 
 
 
