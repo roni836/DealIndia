@@ -41,10 +41,8 @@ Route::post('/send-login-link', [AuthController::class, 'sendLoginLink'])->name(
 Route::get('/login/link', [AuthController::class, 'loginViaLink'])->name('loginViaLink');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', function () {
-        $data['logo'] = Setting::first();
-        return view('user.dashboard',$data);
-    })->name('dashboard');
+    Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+
     Route::get('/details/{id}', [UserController::class, 'personalInvestorDetails'])->name('details');
 
     Route::get('/investerform', [InvestorController::class, 'index'])->name('user.investerCodeform');
