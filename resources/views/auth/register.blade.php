@@ -1,10 +1,10 @@
 @extends('user.userBase')
 @section('title', 'Login Work')
 @section('content')
-<div class="flex w-full flex-col lg:flex-row">
+<div class="flex w-full flex-col lg:flex-row mt-10 md:mt-4">
     <!-- Left Section (Image) -->
     <div class="w-full lg:w-6/12  bg-orange-100 hidden md:flex">
-        <div class="w-full h-full relative">
+        <div class="w-full h-screen relative">
             <img src="register.jpg" class="object-cover w-full h-full filter opacity-80" alt="">
             <div class="absolute inset-0 bg-black opacity-50"></div>
 

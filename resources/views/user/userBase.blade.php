@@ -74,12 +74,12 @@
           <a href="{{route('contact')}}"
             class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-teal-600"
             id="contact">Contact</a>
-          <a href="{{route('privacy-policy')}}"
+          {{-- <a href="{{route('privacy-policy')}}"
             class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-teal-600"
             id="privacy">Privacy Policy</a>
           <a href="{{route('Terms-of-Service')}}"
             class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-teal-600"
-            id="terms">Terms of Service</a>
+            id="terms">Terms of Service</a> --}}
         </nav>
         <div class="hidden md:flex items-center space-x-4">
           @guest
@@ -126,31 +126,31 @@
       <div class="px-2 pt-2 pb-3 space-y-1">
         <a href="{{ route('homepage') }}"
           class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-teal-600 hover:bg-teal-50"
-          id="mobile-home">Home</a>
+          id="mobile-home"><i class="bi bi-house-door px-2"></i>Home</a>
         <a href="#"
           class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-teal-600 hover:bg-teal-50"
           id="mobile-services">Services</a>
         <a href="{{ route('contact') }}"
           class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-teal-600 hover:bg-teal-50"
-          id="mobile-contact">Contact</a>
-        <a href="#"
+          id="mobile-contact"><i class="bi bi-person-lines-fill px-2"></i>Contact</a>
+        {{-- <a href="#"
           class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-teal-600 hover:bg-teal-50"
           id="mobile-privacy">Privacy Policy</a>
         <a href="#"
           class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-teal-600 hover:bg-teal-50"
-          id="mobile-terms">Terms of Service</a>
+          id="mobile-terms">Terms of Service</a> --}}
         <div class="pt-4 space-y-2">
           @guest
         <a href="{{ route('login') }}"
-        class="block w-full px-4 py-2 text-sm font-medium text-teal-600 border border-teal-600 rounded-md hover:bg-teal-50 transition-colors duration-200">Login</a>
+        class="block w-1/2 px-4 py-2 text-md text-center font-semibold text-teal-600 border border-teal-600 rounded-md hover:bg-teal-50 transition-colors duration-200">Login</a>
         <a href="{{ url('register') }}"
-        class="block w-full px-4 py-2 text-sm font-medium text-white bg-teal-600 rounded-md hover:bg-teal-700 transition-colors duration-200">SignUp</a>
+        class="block w-1/2 px-4 py-2 text-md text-center font-semibold text-white bg-teal-600 rounded-md hover:bg-teal-700 transition-colors duration-200">SignUp</a>
       @endguest
           @auth
         <form method="POST" action="{{ route('logout') }}" class="inline w-full">
         @csrf
         <button type="submit"
-          class="block w-full px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 transition-colors duration-200">Logout</button>
+          class="block w-1/2 px-4 py-2 text-md text-center font-semibold text-white bg-orange-500 rounded-md hover:bg-orange-700 transition-colors duration-200">Logout</button>
         </form>
       @endauth
         </div>
