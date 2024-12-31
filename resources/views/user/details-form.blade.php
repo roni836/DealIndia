@@ -125,7 +125,7 @@
                 <h2 class="text-xl font-semibold mt-6 mb-4">Banking Details</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Bank Name -->
-                    
+
 
                     <!-- Account Number -->
                     <div>
@@ -139,48 +139,47 @@
 
                     <!-- IFSC Code -->
                     <div>
+                        <label for="ifsc_code" class="sr-only">IFSC Code</label>
                         <input type="text" id="ifsc_code" name="ifsc_code" placeholder="IFSC Code"
-                            class="w-full border p-3 rounded focus:ring-2 @error('ifsc_code') border-red-500 @else border-gray-300 @enderror">
-                            @error('ifsc_code')
-                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                            class="w-full border p-3 rounded focus:ring-2 @error('ifsc_code') border-red-500 @enderror"
+                            autocomplete="off">
+                        @error('ifsc_code')
+                        <p id="ifsc_code_error" class="mt-2 text-sm text-red-600" aria-live="polite">{{ $message }}</p>
                         @enderror
                     </div>
+                    
                     <div>
-                        <input type="number" name="micr_number" placeholder="MICR Number"
-                            class="w-full border @error('micr_number') border-red-500 @else border-gray-300 @enderror
-                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none" readonly>
+                        <label for="micr_number" class="sr-only">MICR Number</label>
+                        <input type="text" id="micr_number" name="micr_number" placeholder="MICR Number"
+                            class="w-full border p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none @error('micr_number') border-red-500 @enderror"
+                            >
                         @error('micr_number')
-                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        <p id="micr_number_error" class="mt-2 text-sm text-red-600" aria-live="polite">{{ $message }}</p>
                         @enderror
                     </div>
-
-                    <!-- Bank Name -->
+                    
                     <div>
+                        <label for="bank_name" class="sr-only">Bank Name</label>
                         <input type="text" id="bank_name" name="bank_name" placeholder="Bank Name"
-                            class="w-full border p-3 rounded focus:ring-2 @error('bank_name') border-red-500 @else border-gray-300 @enderror" readonly>
-                            @error('bank_name')
-                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                            class="w-full border p-3 rounded focus:ring-2 @error('bank_name') border-red-500 @enderror"
+                            >
+                        @error('bank_name')
+                        <p id="bank_name_error" class="mt-2 text-sm text-red-600" aria-live="polite">{{ $message }}</p>
                         @enderror
                     </div>
-
-                    <!-- Branch Name -->
+                    
                     <div>
+                        <label for="branch_name" class="sr-only">Branch Name</label>
                         <input type="text" id="branch_name" name="branch_name" placeholder="Branch Name"
-                            class="w-full border p-3 rounded focus:ring-2 @error('branch_name') border-red-500 @else border-gray-300 @enderror" readonly>
-                            @error('branch_name')
-                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                            class="w-full border p-3 rounded focus:ring-2 @error('branch_name') border-red-500 @enderror"
+                            >
+                        @error('branch_name')
+                        <p id="branch_name_error" class="mt-2 text-sm text-red-600" aria-live="polite">{{ $message }}</p>
                         @enderror
                     </div>
+                    
 
-                    <!-- Loader -->
-                    <div id="loader" class="hidden mt-2">
-                        <svg class="animate-spin h-5 w-5 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 24 24">
-                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
-                                stroke-width="4"></circle>
-                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
-                        </svg>
-                    </div>
+                  
                     <!-- Account Holder Name -->
                     <div>
                         <input type="text" name="account_holder_name" placeholder="Account Holder Name"
@@ -249,11 +248,12 @@
                             <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
                         </svg>
                     </div>
-
+                      <!-- Loader -->
                     <!-- City -->
                     <div>
                         <input type="text" id="city" name="city" placeholder="City"
-                            class="w-full border p-3 rounded focus:ring-2 @error('city') border-red-500 @else border-gray-300 @enderror" readonly>
+                            class="w-full border p-3 rounded focus:ring-2 @error('city') border-red-500 @else border-gray-300 @enderror"
+                            readonly>
                         @error('city')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -262,7 +262,8 @@
                     <!-- State -->
                     <div>
                         <input type="text" id="state" name="state" placeholder="State"
-                            class="w-full border p-3 rounded focus:ring-2 @error('state') border-red-500 @else border-gray-300 @enderror" readonly>
+                            class="w-full border p-3 rounded focus:ring-2 @error('state') border-red-500 @else border-gray-300 @enderror"
+                            readonly>
                         @error('state')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -413,7 +414,7 @@
     </div>
 
     <script>
-        document.getElementById('postal_code').addEventListener('blur', function() {
+        document.getElementById('postal_code').addEventListener('blur', async function() {
             const postalCode = this.value.trim();
             const loader = document.getElementById('loader');
             const cityField = document.getElementById('city');
@@ -431,54 +432,30 @@
                 return;
             }
 
-            // Hide any existing error message and show loader
             hideError('postal_code_error');
-            loader.classList.remove('hidden');
+            loader.classList.remove('hidden'); // Show loader
 
-            // Fetch data from the API
-            fetch(`https://api.postalpincode.in/pincode/${postalCode}`)
-                .then(response => response.json())
-                .then(data => {
-                    if (data[0].Status === 'Success') {
-                        const {
-                            District,
-                            State
-                        } = data[0].PostOffice[0];
+            try {
+                const response = await fetch(`https://api.postalpincode.in/pincode/${postalCode}`);
+                const data = await response.json();
 
-                        // Populate city, state, and country fields
-                        cityField.value = District;
-                        stateField.value = State;
-                        countryField.value = 'India';
-                    } else {
-                        showError('postal_code_error', 'No data found for this postal code');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error fetching postal data:', error);
-                    showError('postal_code_error', 'Failed to fetch data. Please try again.');
-                })
-                .finally(() => {
-                    // Hide loader
-                    loader.classList.add('hidden');
-                });
+                if (data[0]?.Status === 'Success') {
+                    const postOffice = data[0].PostOffice[0];
+                    cityField.value = postOffice?.District || '';
+                    stateField.value = postOffice?.State || '';
+                } else {
+                    showError('postal_code_error', 'No data found for this postal code');
+                }
+            } catch (error) {
+                console.error('Error fetching postal data:', error);
+                showError('postal_code_error', 'Failed to fetch data. Please try again.');
+            } finally {
+                loader.classList.add('hidden'); // Hide loader
+            }
         });
 
-        function showError(elementId, message) {
-            const errorElement = document.getElementById(elementId);
-            errorElement.textContent = message;
-            errorElement.style.display = 'block';
-        }
-
-        function hideError(elementId) {
-            const errorElement = document.getElementById(elementId);
-            errorElement.textContent = '';
-            errorElement.style.display = 'none';
-        }
-    </script>
-
-    <script>
-        document.getElementById('ifsc_code').addEventListener('blur', function() {
-            const ifscCode = this.value.trim().toUpperCase(); // Convert to uppercase for consistency
+        document.getElementById('ifsc_code').addEventListener('blur', async function() {
+            const ifscCode = this.value.trim().toUpperCase();
             const loader = document.getElementById('loader');
             const bankField = document.getElementById('bank_name');
             const branchField = document.getElementById('branch_name');
@@ -489,44 +466,35 @@
             branchField.value = '';
             micrField.value = '';
 
-            // Validate IFSC Code pattern
             if (!/^[A-Z]{4}0[A-Z0-9]{6}$/.test(ifscCode)) {
                 showError('ifsc_code_error', 'Invalid IFSC Code');
                 return;
             }
 
-            // Hide any existing error message and show loader
             hideError('ifsc_code_error');
-            loader.classList.remove('hidden');
+            loader.classList.remove('hidden'); // Show loader
 
-            // Fetch data from the API
-            fetch(`https://ifsc.razorpay.com/${ifscCode}`)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Invalid IFSC Code');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    // Populate bank name and branch name
-                    bankField.value = data.BANK;
-                    branchField.value = data.BRANCH;
-                    micrField.value = data.MICR;
-                })
-                .catch(error => {
-                    console.error('Error fetching IFSC data:', error);
-                    showError('ifsc_code_error', 'Failed to fetch data. Please try again.');
-                })
-                .finally(() => {
-                    // Hide loader
-                    loader.classList.add('hidden');
-                });
+            try {
+                const response = await fetch(`https://ifsc.razorpay.com/${ifscCode}`);
+                if (!response.ok) throw new Error('Invalid IFSC Code');
+                const data = await response.json();
+
+                bankField.value = data?.BANK || '';
+                branchField.value = data?.BRANCH || '';
+                micrField.value = data?.MICR || '';
+            } catch (error) {
+                console.error('Error fetching IFSC data:', error);
+                showError('ifsc_code_error', 'Failed to fetch data. Please try again.');
+            } finally {
+                loader.classList.add('hidden'); // Hide loader
+            }
         });
 
         function showError(elementId, message) {
             const errorElement = document.getElementById(elementId);
             errorElement.textContent = message;
             errorElement.style.display = 'block';
+            errorElement.setAttribute('aria-live', 'assertive'); // Accessibility enhancement
         }
 
         function hideError(elementId) {
@@ -536,9 +504,17 @@
         }
     </script>
 
+
     <style>
         .hidden {
             display: none;
+        }
+
+        input.error {
+            border-color: #ff4d4d;
+            /* Red border for invalid fields */
+            background-color: #ffe6e6;
+            /* Light red background */
         }
     </style>
 
