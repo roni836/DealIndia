@@ -26,7 +26,7 @@ class AuthController extends Controller
             // 'dob' => 'required|date',
             'email' => 'required|email|unique:users,email',
             // 'address' => 'required|string',
-            'mobile' => 'required|digits:10|regex:/^[6789][0-9]{9}$/',
+            'mobile' => 'required|unique:users,mobile|digits:10|regex:/^[6789][0-9]{9}$/',
             'password' => 'required|min:8|confirmed',
         ]);
 
