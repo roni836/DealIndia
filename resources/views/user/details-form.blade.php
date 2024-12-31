@@ -174,73 +174,111 @@
 
 
                 <!-- Address -->
-                <h2 class="text-xl font-semibold mt-6 mb-3">Address</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <input type="text" name="street_address" placeholder="Street Address"
-                        class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                    @error('street_address')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                    <input type="text" name="city" placeholder="City"
-                        class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                    @error('city')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                    <input type="text" name="state" placeholder="State"
-                        class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                    @error('state')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                    <input type="text" name="country" placeholder="Country"
-                        class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                    @error('country')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                    <input type="text" name="postal_code" placeholder="Postal Code" pattern="\d{6}"
-                        class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                    @error('postal_code')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
+                <h2 class="text-xl font-semibold mt-6 mb-4">Address</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Street Address -->
+                    <div>
+                        <input type="text" name="street_address" placeholder="Street Address"
+                            class="w-full border @error('street_address') border-red-500 @else border-gray-300 @enderror
+                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        @error('street_address')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- City -->
+                    <div>
+                        <input type="text" name="city" placeholder="City"
+                            class="w-full border @error('city') border-red-500 @else border-gray-300 @enderror
+                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        @error('city')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- State -->
+                    <div>
+                        <input type="text" name="state" placeholder="State"
+                            class="w-full border @error('state') border-red-500 @else border-gray-300 @enderror
+                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        @error('state')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Country -->
+                    <div>
+                        <input type="text" name="country" placeholder="Country"
+                            class="w-full border @error('country') border-red-500 @else border-gray-300 @enderror
+                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        @error('country')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Postal Code -->
+                    <div>
+                        <input type="text" name="postal_code" placeholder="Postal Code" pattern="\d{6}"
+                            class="w-full border @error('postal_code') border-red-500 @else border-gray-300 @enderror
+                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        @error('postal_code')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
 
+
                 <!-- Documents -->
-                <h2 class="text-xl font-semibold mt-6 mb-3">Documents</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <h2 class="text-xl font-semibold mt-6 mb-4">Documents</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Profile Photo -->
+                    
+
+                    <!-- Aadhar Card -->
                     <div>
-                        <label class="block mb-1">Profile Photo</label>
-                        <input type="file" name="photo"
-                            class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                        @error('photo')
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-                    <div>
-                        <label class="block mb-1">Aadhar Card (Image/PDF)</label>
-                        <input type="file" name="aadhar_card" accept=".jpeg,.png,.pdf"
-                            class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        <label for="aadhar_card" class="block mb-2 font-medium">Aadhar Card (Image/PDF)</label>
+                        <input type="file" id="aadhar_card" name="aadhar_card" accept=".jpeg,.png,.pdf"
+                            class="w-full border @error('aadhar_card') border-red-500 @else border-gray-300 @enderror
+                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         @error('aadhar_card')
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
-                    <input type="text" name="aadhar_card_number" placeholder="Aadhar Card Number"
-                        class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                    @error('aadhar_card_number')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
+
+                    <!-- Aadhar Card Number -->
+                    <div class="md:col-span-2">
+                        <input type="text" name="aadhar_card_number" placeholder="Aadhar Card Number"
+                            class="w-full border @error('aadhar_card_number') border-red-500 @else border-gray-300 @enderror
+                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        @error('aadhar_card_number')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- PAN Card -->
                     <div>
-                        <label class="block mb-1">PAN Card (Image/PDF)</label>
-                        <input type="file" name="pan_card"
-                            class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        <label for="pan_card" class="block mb-2 font-medium">PAN Card (Image/PDF)</label>
+                        <input type="file" id="pan_card" name="pan_card" accept=".jpeg,.png,.pdf"
+                            class="w-full border @error('pan_card') border-red-500 @else border-gray-300 @enderror
+                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         @error('pan_card')
-                            <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
-                    <input type="text" name="pan_card_number" placeholder="PAN Card Number"
-                        class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                    @error('pan_card_number')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
+
+                    <!-- PAN Card Number -->
+                    <div class="md:col-span-2">
+                        <input type="text" name="pan_card_number" placeholder="PAN Card Number"
+                            class="w-full border @error('pan_card_number') border-red-500 @else border-gray-300 @enderror
+                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        @error('pan_card_number')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    
                 </div>
+
 
                 <!-- Custom Labels -->
                 <div id="document">
