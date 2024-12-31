@@ -29,11 +29,14 @@ return new class extends Migration
             $table->string('bank_name')->nullable();
             $table->string('account_number')->nullable();
             $table->string('ifsc_code')->nullable();
+            $table->string('micr_number')->nullable();
+            $table->string('branch_name')->nullable();
             $table->string('account_holder_name')->nullable();
             $table->enum('account_type', ['Savings', 'Current'])->nullable();
 
             // Address Details
             $table->string('street_address')->nullable();
+            $table->string('landmark')->nullable();
             $table->string('city')->nullable();
             $table->string('state')->nullable();
             $table->string('country')->nullable();

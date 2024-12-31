@@ -72,7 +72,7 @@ class InvestorController extends Controller
             'city' => 'required|string|max:255',
             'state' => 'required|string|max:255',
             'country' => 'required|string|max:255',
-            'postal_code' => 'required|string|max:10',
+            'postal_code' => 'required|string|max:6',
             'aadhar_card' => 'required|file|mimes:jpeg,png,pdf|max:2048',
             'aadhar_card_number' => 'required|string|size:12',
             'pan_card' => 'required|file|mimes:jpeg,png,pdf|max:2048',
