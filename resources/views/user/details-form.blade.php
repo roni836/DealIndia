@@ -40,7 +40,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- First Name -->
                     <div>
-                        <input type="text" name="first_name"  value="{{ auth()->user()->first_name }}"  disabled  placeholder="First Name"
+                        <input type="text" name="first_name"  value="{{ auth()->user()->first_name }}"  placeholder="First Name"
                             class="w-full bg-gray-50 border @error('first_name') border-red-500 @else border-gray-300 @enderror
                                    p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         {{-- @error('first_name')
@@ -50,7 +50,7 @@
 
                     <!-- Last Name -->
                     <div>
-                        <input type="text" name="last_name" placeholder="Last Name" value="{{ auth()->user()->last_name }}"
+                        <input type="text" name="last_name" placeholder="Last Name" value="{{ auth()->user()->last_name }}" 
                             class="w-full bg-gray-50 border @error('last_name') border-red-500 @else border-gray-300 @enderror
                                    p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         {{-- @error('last_name')
@@ -95,7 +95,7 @@
 
                     <!-- Email -->
                     <div>
-                        <input type="email" name="email" value="{{ auth()->user()->email }}" disabled
+                        <input type="email" name="email" value="{{ auth()->user()->email }}" 
                             placeholder="Email"
                             class="w-full border border-gray-300 bg-gray-50 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         {{-- @error('email')
@@ -105,7 +105,7 @@
 
                     <!-- Mobile -->
                     <div>
-                        <input type="tel" name="mobile" value="{{ auth()->user()->mobile }}" disabled
+                        <input type="tel" name="mobile" value="{{ auth()->user()->mobile }}" 
                             placeholder="Mobile" pattern="[0-9]{10}"
                             class="w-full border border-gray-300 bg-gray-50 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         {{-- @error('mobile')
