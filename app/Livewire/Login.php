@@ -65,8 +65,6 @@ class Login extends Component
         }
     }
 
-    // Verify OTP
-    // Verify OTP
     public function verifyOtp()
     {
         $this->validate([
@@ -151,10 +149,6 @@ class Login extends Component
             session()->flash('error', 'Invalid email or password.');
         }
     }
-
-    // Send login link
-    // Send login link
-
 
     public function sendLoginLink()
     {
