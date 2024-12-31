@@ -136,26 +136,28 @@
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
+
+                    <!-- IFSC Code -->
                     <div>
-                        <input type="number" name="micr_number" placeholder="MICR Number (optional)"
+                        <input type="text" id="ifsc_code" name="ifsc_code" placeholder="IFSC Code"
+                            class="w-full border p-3 rounded focus:ring-2 @error('ifsc_code') border-red-500 @else border-gray-300 @enderror">
+                            @error('ifsc_code')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div>
+                        <input type="number" name="micr_number" placeholder="MICR Number"
                             class="w-full border @error('micr_number') border-red-500 @else border-gray-300 @enderror
-                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none" readonly>
                         @error('micr_number')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
 
-                    <!-- IFSC Code -->
-                    <div>
-                        <input type="text" id="ifsc_code" name="ifsc_code" placeholder="IFSC Code"
-                            class="w-full border p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                        <p id="ifsc_code_error" class="mt-2 text-sm text-red-600" style="display: none;"></p>
-                    </div>
-
                     <!-- Bank Name -->
                     <div>
                         <input type="text" id="bank_name" name="bank_name" placeholder="Bank Name"
-                            class="w-full border p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none" readonly>
+                            class="w-full border p-3 rounded focus:ring-2 @error('bank_name') border-red-500 @else border-gray-300 @enderror" readonly>
                             @error('bank_name')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -164,7 +166,7 @@
                     <!-- Branch Name -->
                     <div>
                         <input type="text" id="branch_name" name="branch_name" placeholder="Branch Name"
-                            class="w-full border p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none" readonly>
+                            class="w-full border p-3 rounded focus:ring-2 @error('branch_name') border-red-500 @else border-gray-300 @enderror" readonly>
                             @error('branch_name')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -228,7 +230,7 @@
                     <div>
                         <input type="text" id="postal_code" name="postal_code" placeholder="Postal Code"
                             pattern="\d{6}"
-                            class="w-full border p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                            class="w-full border p-3 rounded focus:ring-2 @error('postal_code') border-red-500 @else border-gray-300 @enderror">
                         <p id="postal_code_error" class="mt-2 border-gray-300 text-sm text-red-600"
                             style="display: none;">
                         </p>
@@ -251,7 +253,7 @@
                     <!-- City -->
                     <div>
                         <input type="text" id="city" name="city" placeholder="City"
-                            class="w-full border p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none" readonly>
+                            class="w-full border p-3 rounded focus:ring-2 @error('city') border-red-500 @else border-gray-300 @enderror" readonly>
                         @error('city')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -260,7 +262,7 @@
                     <!-- State -->
                     <div>
                         <input type="text" id="state" name="state" placeholder="State"
-                            class="w-full border p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none" readonly>
+                            class="w-full border p-3 rounded focus:ring-2 @error('state') border-red-500 @else border-gray-300 @enderror" readonly>
                         @error('state')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -269,14 +271,10 @@
                     <!-- Country -->
                     <div>
                         <input type="text" id="country" name="country" placeholder="Country"
-                            class="w-full border p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                            class="w-full border p-3 rounded focus:ring-2 @error('country') border-red-500 @else border-gray-300 @enderror"
                             value="India" readonly>
                     </div>
-
-
-
                 </div>
-
 
                 <!-- Documents -->
                 <h2 class="text-xl font-semibold mt-6 mb-4">Documents</h2>
@@ -337,7 +335,7 @@
                 <!-- Custom Labels -->
                 <div id="document">
 
-                    <h2 class="text-xl font-semibold mt-6 mb-3">Custom Labels</h2>
+                    <h2 class="text-xl font-semibold mt-6 mb-3">Additional Documents</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="doc-container">
                         <input type="text" name="inputs[0][name]" placeholder="Label 1 Name"
                             class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
@@ -484,10 +482,12 @@
             const loader = document.getElementById('loader');
             const bankField = document.getElementById('bank_name');
             const branchField = document.getElementById('branch_name');
+            const micrField = document.getElementById('micr_number');
 
             // Clear previous data
             bankField.value = '';
             branchField.value = '';
+            micrField.value = '';
 
             // Validate IFSC Code pattern
             if (!/^[A-Z]{4}0[A-Z0-9]{6}$/.test(ifscCode)) {
@@ -511,6 +511,7 @@
                     // Populate bank name and branch name
                     bankField.value = data.BANK;
                     branchField.value = data.BRANCH;
+                    micrField.value = data.MICR;
                 })
                 .catch(error => {
                     console.error('Error fetching IFSC data:', error);
