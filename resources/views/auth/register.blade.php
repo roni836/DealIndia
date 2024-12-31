@@ -3,7 +3,7 @@
 @section('content')
 <div class="flex w-full flex-col lg:flex-row">
     <!-- Left Section (Image) -->
-    <div class="w-full lg:w-6/12 h-full bg-orange-100 hidden md:flex">
+    <div class="w-full lg:w-6/12  bg-orange-100 hidden md:flex">
         <div class="w-full h-full relative">
             <img src="register.jpg" class="object-cover w-full h-full filter opacity-80" alt="">
             <div class="absolute inset-0 bg-black opacity-50"></div>

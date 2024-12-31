@@ -230,34 +230,38 @@
 
                 <!-- Documents -->
                 <h2 class="text-xl font-semibold mt-6 mb-4">Documents</h2>
+                <h4 class="text-md  mt-6 ">Aadhar Card (Image/PDF)</h4>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Profile Photo -->
                     
 
                     <!-- Aadhar Card -->
                     <div>
-                        <label for="aadhar_card" class="block mb-2 font-medium">Aadhar Card (Image/PDF)</label>
+                        {{-- <label for="aadhar_card" class="block mb-2 font-medium">Aadhar Card (Image/PDF)</label> --}}
                         <input type="file" id="aadhar_card" name="aadhar_card" accept=".jpeg,.png,.pdf"
                             class="w-full border @error('aadhar_card') border-red-500 @else border-gray-300 @enderror
-                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         @error('aadhar_card')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
 
                     <!-- Aadhar Card Number -->
-                    <div class="md:col-span-2">
+                    <div class="">
                         <input type="text" name="aadhar_card_number" placeholder="Aadhar Card Number"
                             class="w-full border @error('aadhar_card_number') border-red-500 @else border-gray-300 @enderror
-                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        p-5  rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         @error('aadhar_card_number')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
-
+                </div>
+                <h4 class="text-md  mt-6 ">PAN Card (Image/PDF)</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
                     <!-- PAN Card -->
                     <div>
-                        <label for="pan_card" class="block mb-2 font-medium">PAN Card (Image/PDF)</label>
+                        {{-- <label for="pan_card" class="block mb-2 font-medium">PAN Card (Image/PDF)</label> --}}
                         <input type="file" id="pan_card" name="pan_card" accept=".jpeg,.png,.pdf"
                             class="w-full border @error('pan_card') border-red-500 @else border-gray-300 @enderror
                    p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
@@ -267,10 +271,10 @@
                     </div>
 
                     <!-- PAN Card Number -->
-                    <div class="md:col-span-2">
+                    <div class="">
                         <input type="text" name="pan_card_number" placeholder="PAN Card Number"
                             class="w-full border @error('pan_card_number') border-red-500 @else border-gray-300 @enderror
-                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                   p-5 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         @error('pan_card_number')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
