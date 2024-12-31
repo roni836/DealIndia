@@ -8,23 +8,28 @@ use Illuminate\Support\Facades\Auth;
 class AdminController extends Controller
 {
    public function dashboard(){
-    return view('Admin.dashboard');
+      $data['recent_applications'] = User::where('isAdmin',0)->where('status', 0)->where('code_details',1)->with('investorDetails')->get();
+      $data['total_pending'] = User::where('isAdmin',0)->where('status', 0)->where('code_details',1)->count();
+      $data['total_approved'] = User::where('isAdmin',0)->where('status',1)->where('code_details',1)->count();
+      $data['total_active'] = User::where('isAdmin',0)->where('all_details',1)->where('code_details',1)->where('status',1)->count();
+      $data['total_application'] = User::where('isAdmin',0)->count();
+      return view('Admin.dashboard',$data);
    }
 
    public function applications(){
       $applications = User::with('investorDetails')->get();
-    return view('Admin.applications',["applications" => $applications]);
+      return view('Admin.applications',["applications" => $applications]);
    }
 
    public function approvedApplication(){
      
-      $applications = User::where('status', 1)->with('investorDetails')->get();
+      $applications = User::where('status', 1)->where('isAdmin',0)->with('investorDetails')->get();
       return view('Admin.approved-applications', ["applications" => $applications]);
   }
    
 
    public function pendingApplication(){
-      $applications = User::where('status', 0)->with('investorDetails')->get();
+      $applications = User::where('status', 0)->where('isAdmin',0)->with('investorDetails')->get();
       return view('Admin.applications',["applications"=>$applications]);
    }
    public function logout()
