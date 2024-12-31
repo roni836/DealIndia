@@ -23,6 +23,10 @@
 
             </li>
             <li>
+                <a href="{{route('member-details')}}" class="block px-4 py-2 hover:bg-gray-400">
+                    <i class="bi bi-people-fill px-4"></i>Members</a>
+            </li>
+            <li>
                 <a href="#settings" class="block px-4 py-2 hover:bg-gray-400"><i
                         class="bi bi-gear-fill px-4"></i>Settings</a>
             </li>
