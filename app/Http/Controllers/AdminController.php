@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\Auth;
 class AdminController extends Controller
 {
    public function dashboard(){
-      $data['recent_applications'] = User::where('isAdmin',0)->where('status', 0)->where('code_details',1)->with('investorDetails')->get();
+      $data['recent_applications'] = User::where('isAdmin',0)->where('status', 0)->where('code_details',1)->with('investorDetails')->take(2)->get();
+      $data['approved_applications'] = User::where('isAdmin',0)->where('status', 1)->where('code_details',1)->with('investorDetails')->take(2)->get();
+      
       $data['total_pending'] = User::where('isAdmin',0)->where('status', 0)->where('code_details',1)->count();
       $data['total_approved'] = User::where('isAdmin',0)->where('status',1)->where('code_details',1)->count();
       $data['total_active'] = User::where('isAdmin',0)->where('all_details',1)->where('code_details',1)->where('status',1)->count();

@@ -107,7 +107,7 @@
                 document.getElementById('sidebar').classList.add('-translate-x-full');
             });
         </script>
-    
+        @yield('scripts')
     </body>
     
     

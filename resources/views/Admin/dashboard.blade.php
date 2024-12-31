@@ -27,53 +27,65 @@
 
         <!-- Recent Activities & Investor Management -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-            <div class="bg-white rounded-lg shadow-md p-6">
+            <div class="bg-white rounded-lg shadow-md p-6 ">
                 <h2 class="text-xl font-bold mb-4">Recent Activities</h2>
                 <div class="overflow-x-auto">
-                    <table class="w-full">
+                    <table class="w-full gap-4 ">
                         <thead>
-                            <tr class="border-b">
-                                <th class="text-left py-2">Action</th>
-                                <th class="text-left py-2">Time</th>
-                                <th class="text-left py-2">Details</th>
+                            <tr class="border-b ">
+                                <th class="text-left py-2">Name</th>
+                                <th class="text-left py-2">Email</th>
+                                <th class="text-left py-2">Status</th>
                             </tr>
                         </thead>
+                       
                         <tbody>
+                            @foreach ($recent_applications as $item)
                             <tr class="border-b hover:bg-gray-50">
-                                <td class="py-2">New Investor Added</td>
-                                <td class="py-2">10:00 AM</td>
-                                <td class="py-2">Rajesh Kumar - ₹1,00,000</td>
+                                <td class="py-2">{{$item->first_name}} {{ $item->last_name }}</td>
+                                <td class="py-2">{{ $item->email }}</td>
+                                <td class="py-2">
+                                    <span class="{{ $item->status == 1 ? 'text-green-500' : 'text-red-500' }}">
+                                        {{ $item->status == 1 ? 'Approved' : 'Pending' }}
+                                    </span>
+                                </td>
                             </tr>
+                            @endforeach
                         </tbody>
+                        
                     </table>
                 </div>
             </div>
 
             <div class="bg-white rounded-lg shadow-md p-6">
-                <h2 class="text-xl font-bold mb-4">Manage Investors</h2>
-                <div class="mb-4">
-                    <input type="text" placeholder="Search investors..." class="w-full border rounded-md px-3 py-2">
-                </div>
+                    <h2 class="text-xl font-bold">Manage Investors</h2>
                 <div class="overflow-x-auto">
-                    <table class="w-full">
+                    <table class="w-full text-sm md:text-md">
                         <thead>
                             <tr class="border-b">
                                 <th class="text-left py-2">Name</th>
-                                <th class="text-left py-2">Investment</th>
                                 <th class="text-left py-2">Status</th>
-                                {{-- <th class="text-left py-2">Actions</th> --}}
+                                <th class="text-left py-2">View</th>
+                               
                             </tr>
                         </thead>
+
                         <tbody>
+                            @foreach ($approved_applications as $user)
                             <tr class="border-b hover:bg-gray-50">
-                                <td class="py-2">Rajesh Kumar</td>
-                                <td class="py-2">₹1,00,000</td>
-                                <td class="py-2"><span class="bg-green-100 text-green-800 px-2 py-1 rounded">Active</span></td>
-                                {{-- <td class="py-2">
-                                    <button class="text-blue-600 hover:text-blue-800 mr-2">Edit</button>
-                                    <button class="text-red-600 hover:text-red-800">Delete</button>
-                                </td> --}}
+                                <td class="py-2">{{$user->first_name}} {{$user->last_name}}</td>
+                                <td class="py-2">
+                                    <span class="{{ $user->status == 1 ? 'bg-green-100 text-green-800 px-2 py-1 rounded' : 'bg-red-100 text-red-800 px-2 py-1 rounded' }}">
+                                        {{ $user->status == 1 ? 'Approved' : 'Pending' }}
+                                    </span></td>
+                                    <td class="py-2">
+                                        <a href="{{ url('/admin/application/' . $user->id) }}" class="text-blue-600 hover:underline">
+                                            <button class="px-2 py-1 bg-blue-600 text-white rounded hover:bg-blue-800">View</button>
+                                        </a>
+                                    </td>
+                                
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -111,13 +123,15 @@
                         <i class="fas fa-file-alt mb-2"></i>
                         <p>Generate Reports</p>
                     </button>
-                    <button class="bg-gray-100 hover:bg-gray-200 p-4 rounded-lg text-center">
+                    <a href="{{url('admin/settings')}}" class="bg-gray-100 hover:bg-gray-200 p-4 rounded-lg text-center">
                         <i class="fas fa-cog mb-2"></i>
                         <p>Settings</p>
-                    </button>
+                   </a>
                 </div>
             </div>
         </div>
 
     </main>
 @endsection
+
+
