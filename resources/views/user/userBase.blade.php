@@ -26,7 +26,7 @@
   {{-- <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script> --}}
 
   <!-- SweetAlert CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
   <title>@yield('title') | Deal India</title>
 
@@ -52,13 +52,12 @@
       <div class="flex items-center justify-between h-16">
         <div class="flex items-center space-x-2">
           <a href="{{ route('homepage') }}">
-            @if (!empty($logo?->meta_logo))
-        <img src="{{ asset('storage/images/setting/' . $logo->meta_logo) }}" alt="Company Logo"
-          class="h-10 md:11 w-auto object-contain rounded-md">
-      @else
-    <img src="{{ asset('logo.png') }}" alt="Default Logo"
-      class="h-10 md:11 w-auto object-contain rounded-md">
-  @endif
+          @if (!empty($logo?->meta_logo))
+                    <img src="{{ asset('storage/images/setting/' . $logo->meta_logo) }}" alt="Company Logo"
+                        class="h-10 md:11 w-auto object-contain rounded-md">
+                @else
+                    <img src="{{ asset('https://placehold.co/600x400') }}" alt="Default Logo" class="h-10 md:11 w-auto object-contain rounded-md">
+                @endif
           </a>
         </div>
         <nav class="hidden md:flex items-center space-x-6">
@@ -89,32 +88,12 @@
         class="px-4 py-2 text-sm font-medium text-white bg-teal-600 rounded-md hover:bg-teal-700 transition-colors duration-200">SignUp</a>
       @endguest
           @auth
-        <div x-data="{ open: false }" class="relative inline-block text-left">
-        <button @click="open = !open" type="button"
-          class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-          Hi, {{ auth()->user()->first_name }}!
-        </button>
-
-        <div x-show="open" x-transition:enter="transition ease-out duration-100"
-          x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
-          x-transition:leave="transition ease-in duration-75" x-transition:leave-start="opacity-100"
-          x-transition:leave-end="opacity-0"
-          class="absolute right-0 w-48 mt-2 rounded-md bg-white shadow-lg  ring-black ring-opacity-5 focus:outline-none"
-          role="menu" aria-orientation="vertical" aria-labelledby="options-menu" @click.away="open = false">
-          <div class="py-2 flex flex-col items-center">
-          <a href="{{ route('dashboard') }}"
-            class="text-gray-700 block px-4 py-2 text-sm rounded-md hover:bg-indigo-100 hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-            role="menuitem">Dashboard</a>
-          <form method="POST" action="{{ route('logout') }}" class="block text-sm">
-            @csrf
-            <button type="submit"
-            class="w-full text-left text-red-600 bg-transparent hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 px-4 py-2 rounded-md">Logout</button>
-          </form>
-          </div>
-        </div>
-        </div>
+        <form method="POST" action="{{ route('logout') }}" class="inline">
+        @csrf
+        <button type="submit"
+          class="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 transition-colors duration-200">Logout</button>
+        </form>
       @endauth
-
         </div>
         <button class="md:hidden text-gray-600 hover:text-teal-600 transition-colors duration-200"
           onclick="toggleMenu()" aria-label="Toggle menu">
@@ -180,7 +159,7 @@
   </div>
   <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
   <!-- SweetAlert JS -->
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   @livewireScripts
 
   <script>
