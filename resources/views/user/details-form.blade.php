@@ -36,84 +36,142 @@
                 @csrf
 
                 <!-- Personal Details -->
-                <h2 class="text-xl font-semibold mt-4 mb-3">Personal Details</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <input type="text" name="first_name" placeholder="First Name"
-                        class="border @error('first_name') border-red-500 @else border-gray-300 @enderror
-                                p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                    @error('first_name')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                    <input type="text" name="last_name" placeholder="Last Name"
-                        class="border @error('last_name') border-red-500 @else border-gray-300 @enderror p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                    @error('last_name')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                    <input type="date" name="date_of_birth"
-                        class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                    @error('date_of_birth')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                    <select name="gender"
-                        class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                        <option value="">Select Gender</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Other">Other</option>
-                    </select>
-                    @error('date_of_birth')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                    <input type="text" name="religion" placeholder="Religion"
-                        class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                    @error('religion')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                    <input type="email" name="email" placeholder="Email"
-                        class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                    @error('email')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                    <input type="tel" name="mobile" placeholder="Mobile" pattern="[0-9]{10}"
-                        class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                    @error('mobile')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
+                <h2 class="text-xl font-semibold mt-4 mb-6">Personal Details</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- First Name -->
+                    <div>
+                        <input type="text" name="first_name" placeholder="First Name"
+                            class="w-full border @error('first_name') border-red-500 @else border-gray-300 @enderror
+                                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        @error('first_name')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Last Name -->
+                    <div>
+                        <input type="text" name="last_name" placeholder="Last Name"
+                            class="w-full border @error('last_name') border-red-500 @else border-gray-300 @enderror
+                                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        @error('last_name')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Date of Birth -->
+                    <div>
+                        <input type="date" name="date_of_birth"
+                            class="w-full border @error('date_of_birth') border-red-500 @else border-gray-300 @enderror
+                                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        @error('date_of_birth')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Gender -->
+                    <div>
+                        <select name="gender"
+                            class="w-full border @error('gender') border-red-500 @else border-gray-300 @enderror
+                                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        @error('gender')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Religion -->
+                    <div>
+                        <input type="text" name="religion" placeholder="Religion"
+                            class="w-full border @error('religion') border-red-500 @else border-gray-300 @enderror
+                                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        @error('religion')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Email -->
+                    <div>
+                        <input type="email" name="email" value="{{ auth()->user()->email }}" disabled
+                            placeholder="Email"
+                            class="w-full border border-gray-300 bg-gray-50 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        {{-- @error('email')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror --}}
+                    </div>
+
+                    <!-- Mobile -->
+                    <div>
+                        <input type="tel" name="mobile" value="{{ auth()->user()->mobile }}" disabled
+                            placeholder="Mobile" pattern="[0-9]{10}"
+                            class="w-full border border-gray-300 bg-gray-50 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        {{-- @error('mobile')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror --}}
+                    </div>
                 </div>
 
                 <!-- Banking Details -->
-                <h2 class="text-xl font-semibold mt-6 mb-3">Banking Details</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <input type="text" name="bank_name" placeholder="Bank Name"
-                        class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                    @error('bank_name')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                    <input type="text" name="account_number" placeholder="Account Number"
-                        class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                    @error('account_number')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                    <input type="text" name="ifsc_code" placeholder="IFSC Code"
-                        class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                    @error('ifsc_code')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                    <input type="text" name="account_holder_name" placeholder="Account Holder Name"
-                        class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                    @error('account_holder_name')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
-                    <select name="account_type"
-                        class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                        <option value="">Select Account Type</option>
-                        <option value="Savings">Savings</option>
-                        <option value="Current">Current</option>
-                    </select>
-                    @error('account_type')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
+                <h2 class="text-xl font-semibold mt-6 mb-4">Banking Details</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Bank Name -->
+                    <div>
+                        <input type="text" name="bank_name" placeholder="Bank Name"
+                            class="w-full border @error('bank_name') border-red-500 @else border-gray-300 @enderror
+                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        @error('bank_name')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Account Number -->
+                    <div>
+                        <input type="text" name="account_number" placeholder="Account Number"
+                            class="w-full border @error('account_number') border-red-500 @else border-gray-300 @enderror
+                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        @error('account_number')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- IFSC Code -->
+                    <div>
+                        <input type="text" name="ifsc_code" placeholder="IFSC Code"
+                            class="w-full border @error('ifsc_code') border-red-500 @else border-gray-300 @enderror
+                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        @error('ifsc_code')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Account Holder Name -->
+                    <div>
+                        <input type="text" name="account_holder_name" placeholder="Account Holder Name"
+                            class="w-full border @error('account_holder_name') border-red-500 @else border-gray-300 @enderror
+                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        @error('account_holder_name')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Account Type -->
+                    <div>
+                        <select name="account_type"
+                            class="w-full border @error('account_type') border-red-500 @else border-gray-300 @enderror
+                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                            <option value="">Select Account Type</option>
+                            <option value="Savings">Savings</option>
+                            <option value="Current">Current</option>
+                        </select>
+                        @error('account_type')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
                 </div>
+
 
                 <!-- Address -->
                 <h2 class="text-xl font-semibold mt-6 mb-3">Address</h2>
@@ -257,7 +315,7 @@
                           @error('inputs[${i}][filename]')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                     @enderror
-                </div>`
+2                </div>`
                     );
                 });
             });
