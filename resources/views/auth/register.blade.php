@@ -185,9 +185,10 @@
             </form>
 
             <!-- Already Registered Link -->
-            <div class="mt-6 text-center flex items-center justify-center">
+            <div class="mt-6 text-center flex items-center justify-center mb-">
                 <hr class="flex-grow border-t border-teal-900">
-                <a href="{{ url('login') }}" class="text-sm text-teal-900 mx-4">Already have an account? Log in</a>
+                <a href="{{ url('login') }}" class="text-sm text-teal-900 mx-1">Already have an account? Log in</a>
+                <a href="{{ route('password.request') }}" class="text-sm text-teal-900 mx-1">Forgot Password</a>
                 <hr class="flex-grow border-t border-teal-900">
             </div>
 

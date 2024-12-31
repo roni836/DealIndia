@@ -87,11 +87,27 @@
         class="px-4 py-2 text-sm font-medium text-white bg-teal-600 rounded-md hover:bg-teal-700 transition-colors duration-200">SignUp</a>
       @endguest
           @auth
-        <form method="POST" action="{{ route('logout') }}" class="inline">
-        @csrf
-        <button type="submit"
-          class="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 transition-colors duration-200">Logout</button>
-        </form>
+        <div class="relative inline-block text-left">
+        <button id="user-menu-button" type="button"
+          class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          Hi, {{ auth()->user()->first_name }}!
+        </button>
+
+        <div id="user-menu"
+          class="absolute right-0 w-48 mt-2 rounded-md bg-white shadow-lg ring-black ring-opacity-5 focus:outline-none hidden"
+          role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+          <div class="py-2 flex flex-col items-center">
+          <a href="{{ route('dashboard') }}"
+            class="text-gray-700 block px-4 py-2 text-sm rounded-md hover:bg-indigo-100 hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            role="menuitem">Dashboard</a>
+          <form method="POST" action="{{ route('logout') }}" class="block text-sm">
+            @csrf
+            <button type="submit"
+            class="w-full text-left text-red-600 bg-transparent hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 px-4 py-2 rounded-md">Logout</button>
+          </form>
+          </div>
+        </div>
+        </div>
       @endauth
         </div>
         <button class="md:hidden text-gray-600 hover:text-teal-600 transition-colors duration-200"
@@ -107,7 +123,7 @@
           id="mobile-home"><i class="bi bi-house-door px-2"></i>Home</a>
         <a href="#"
           class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-teal-600 hover:bg-teal-50"
-          id="mobile-services">Services</a>
+          id="mobile-services"><i class="bi bi-briefcase px-2"></i>Services</a>
         <a href="{{ route('contact') }}"
           class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-teal-600 hover:bg-teal-50"
           id="mobile-contact"><i class="bi bi-person-lines-fill px-2"></i>Contact</a>
@@ -120,15 +136,15 @@
         <div class="pt-4 space-y-2">
           @guest
         <a href="{{ route('login') }}"
-        class="block w-1/2 px-4 py-2 text-md text-center font-semibold text-teal-600 border border-teal-600 rounded-md hover:bg-teal-50 transition-colors duration-200">Login</a>
+        class="block w-1/2 px-4 py-2 text-md text-center font-semibold text-teal-600 border border-teal-600 rounded-md hover:bg-teal-50 transition-colors duration-200"><i class="bi bi-box-arrow-in-right px-2"></i>Login</a>
         <a href="{{ url('register') }}"
-        class="block w-1/2 px-4 py-2 text-md text-center font-semibold text-white bg-teal-600 rounded-md hover:bg-teal-700 transition-colors duration-200">SignUp</a>
+        class="block w-1/2 px-4 py-2 text-md text-center font-semibold text-white bg-teal-600 rounded-md hover:bg-teal-700 transition-colors duration-200"><i class="bi bi-node-plus px-2"></i>SignUp</a>
       @endguest
           @auth
         <form method="POST" action="{{ route('logout') }}" class="inline w-full">
         @csrf
         <button type="submit"
-          class="block w-1/2 px-4 py-2 text-md text-center font-semibold text-white bg-orange-500 rounded-md hover:bg-orange-700 transition-colors duration-200">Logout</button>
+          class="block w-1/2 px-4 py-2 text-md text-center font-semibold text-white bg-orange-500 rounded-md hover:bg-orange-700 transition-colors duration-200"><i class="bi bi-box-arrow-in-left px-4"></i>Logout</button>
         </form>
       @endauth
         </div>
@@ -196,6 +212,19 @@
 
     // Initialize active page
     setActivePage(activePage);
+    const button = document.getElementById('user-menu-button');
+    const menu = document.getElementById('user-menu');
+
+    button.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!button.contains(event.target) && !menu.contains(event.target)) {
+        menu.classList.add('hidden');
+      }
+    });
+
   </script>
 
 </body>

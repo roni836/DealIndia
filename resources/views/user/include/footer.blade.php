@@ -23,12 +23,12 @@
             <div>
                 <h3 class="text-lg font-semibold text-white mb-4">Quick Links</h3>
                 <ul class="space-y-2">
-                    <li><a href="#" class="hover:text-white transition-colors">Home</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">About</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">Services</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    <li><a href="{{ route('homepage') }}" class="hover:text-white transition-colors">Home</a></li>
+                    <li><a href="{{route('about')}}" class="hover:text-white transition-colors">About</a></li>
+                    <li><a href="{{route('services')}}" class="hover:text-white transition-colors">Services</a></li>
+                    <li><a href="{{route('contact')}}" class="hover:text-white transition-colors">Contact</a></li>
+                    <li><a href="{{route('privacy-policy')}}" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                    <li><a href="{{route('Terms-of-Service')}}" class="hover:text-white transition-colors">Terms of Service</a></li>
                 </ul>
             </div>
 

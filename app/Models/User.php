@@ -44,7 +44,11 @@ class User extends Authenticatable
 
 
     public function investorDetails()
-{
-    return $this->hasOne(InvesterDetail::class, 'user_id', 'id');
-}
+    {
+        return $this->hasOne(InvesterDetail::class, 'user_id', 'id');
+    }
+    public function additional_documents()
+    {
+        return $this->hasMany(AdditionalDocument::class);
+    }
 }
