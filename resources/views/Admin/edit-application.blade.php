@@ -22,7 +22,7 @@
                     </p> --}}
                     <div class="inline-grid justify-center items-center">
                         <img src="{{ asset('user.png') }}" alt="" class="">
-                        <p><strong>Name:</strong> {{ $user->name }}</p>
+                        <p><strong>Name:</strong> {{ $user->first_name }}</p>
                     </div>
                     
                     <div class="inline-grid justify-center items-center">

@@ -12,7 +12,7 @@
                 <thead>
                     <tr class="bg-gray-50">
                         <th class="px-4 py-2">Name</th>
-                        <th class="px-4 py-2">Gender</th>
+                        {{-- <th class="px-4 py-2">Gender</th> --}}
                         <th class="px-4 py-2">Email</th>
                         <th class="px-4 py-2">Mobile</th>
                         <th class="px-4 py-2">Status</th>
@@ -22,8 +22,8 @@
                 <tbody>
                     @foreach($applications as $item)
                     <tr>
-                        <td class="px-4 py-2 capitalize">{{$item->name}}</td>
-                        <td class="px-4 py-2 capitalize">{{$item->gender}}</td>
+                        <td class="px-4 py-2 capitalize ">{{$item->first_name}} {{$item->last_name}}</td>
+                        {{-- <td class="px-4 py-2 capitalize">{{$item->gender}}</td> --}}
                         <td class="px-4 py-2">{{$item->email}}</td>
                         <td class="px-4 py-2">{{$item->mobile}}</td>
                         <td class="px-4 py-2">

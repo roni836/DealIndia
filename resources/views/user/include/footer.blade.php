@@ -9,7 +9,7 @@
                         <img src="{{ asset('storage/images/setting/' . $logo->meta_logo) }}" alt="Company Logo"
                             class="h-20 w-auto">
                     @else
-                        <img src="{{ asset('https://placehold.co/600x400') }}" alt="Default Logo" class="h-20 md:h-32 object-contain">
+                        <img src="{{ asset('logo.png') }}" alt="Default Logo" class="h-20 md:h-32 object-contain">
                     @endif
                 </div>
                 <p class="text-sm">Your Partner in Financial Growth and Management</p>
