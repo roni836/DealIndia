@@ -315,7 +315,7 @@
   </div>
 
 
-  {{-- <script>
+  <script>
     document.addEventListener("DOMContentLoaded", function () {
       const sections = document.querySelectorAll("section");
       const navLinks = document.querySelectorAll("nav ul li button");
@@ -352,17 +352,17 @@
       });
 
       // Load header and footer
-      fetch("/header.html")
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById("header").innerHTML = data;
-        });
+      // fetch("/header.html")
+      //   .then((response) => response.text())
+      //   .then((data) => {
+      //     document.getElementById("header").innerHTML = data;
+      //   });
 
-      fetch("/footer.html")
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById("footer").innerHTML = data;
-        });
+      // fetch("/footer.html")
+      //   .then((response) => response.text())
+      //   .then((data) => {
+      //     document.getElementById("footer").innerHTML = data;
+      //   });
     });
 
     function scrollToSection(sectionId) {
@@ -371,5 +371,5 @@
         element.scrollIntoView({ behavior: "smooth" });
       }
     }
-  </script> --}}
+  </script>
 @endsection

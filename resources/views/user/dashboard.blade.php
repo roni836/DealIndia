@@ -66,17 +66,10 @@
                         Save Changes
                     </button>
                 </section>
-                
-               
-            </div>
-    
-
-            <!-- Section: Settings -->
-            
+            </div>           
         </main>
     </div>
 </div>
-
 
 <script>
     // Sidebar toggle for small and medium screens
