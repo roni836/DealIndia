@@ -40,7 +40,8 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- First Name -->
                     <div>
-                        <input type="text" name="first_name"  value="{{ auth()->user()->first_name }}"  placeholder="First Name"
+                        <input type="text" name="first_name" value="{{ auth()->user()->first_name }}"
+                            placeholder="First Name"
                             class="w-full bg-gray-50 border @error('first_name') border-red-500 @else border-gray-300 @enderror
                                    p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         {{-- @error('first_name')
@@ -50,7 +51,8 @@
 
                     <!-- Last Name -->
                     <div>
-                        <input type="text" name="last_name" placeholder="Last Name" value="{{ auth()->user()->last_name }}" 
+                        <input type="text" name="last_name" placeholder="Last Name"
+                            value="{{ auth()->user()->last_name }}"
                             class="w-full bg-gray-50 border @error('last_name') border-red-500 @else border-gray-300 @enderror
                                    p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         {{-- @error('last_name')
@@ -84,33 +86,38 @@
                     </div>
 
                     <!-- Religion -->
+
                     <div>
-                        <input type="text" name="religion" placeholder="Religion"
+                        <select name="religion"
                             class="w-full border @error('religion') border-red-500 @else border-gray-300 @enderror
-                                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                            <option value="">Select Religion</option>
+                            <option value="Hindu">Hindu</option>
+                            <option value="Muslim">Muslim</option>
+                            <option value="Sikh">Sikh</option>
+                            <option value="Christian">Christian</option>
+                        </select>
                         @error('religion')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
-
                     <!-- Email -->
                     <div>
-                        <input type="email" name="email" value="{{ auth()->user()->email }}" 
-                            placeholder="Email"
+                        <input type="email" name="email" value="{{ auth()->user()->email }}" placeholder="Email"
                             class="w-full border border-gray-300 bg-gray-50 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                        {{-- @error('email')
+                        @error('email')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                        @enderror --}}
+                        @enderror
                     </div>
 
                     <!-- Mobile -->
                     <div>
-                        <input type="tel" name="mobile" value="{{ auth()->user()->mobile }}" 
-                            placeholder="Mobile" pattern="[0-9]{10}"
+                        <input type="tel" name="mobile" value="{{ auth()->user()->mobile }}" placeholder="Mobile"
+                            pattern="[0-9]{10}"
                             class="w-full border border-gray-300 bg-gray-50 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                        {{-- @error('mobile')
+                        @error('mobile')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                        @enderror --}}
+                        @enderror
                     </div>
                 </div>
 
@@ -118,35 +125,60 @@
                 <h2 class="text-xl font-semibold mt-6 mb-4">Banking Details</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Bank Name -->
-                    <div>
-                        <input type="text" name="bank_name" placeholder="Bank Name"
-                            class="w-full border @error('bank_name') border-red-500 @else border-gray-300 @enderror
-                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                        @error('bank_name')
-                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
+                    
 
                     <!-- Account Number -->
                     <div>
-                        <input type="text" name="account_number" placeholder="Account Number"
+                        <input type="number" name="account_number" placeholder="Account Number"
                             class="w-full border @error('account_number') border-red-500 @else border-gray-300 @enderror
                    p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         @error('account_number')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
-
-                    <!-- IFSC Code -->
                     <div>
-                        <input type="text" name="ifsc_code" placeholder="IFSC Code"
-                            class="w-full border @error('ifsc_code') border-red-500 @else border-gray-300 @enderror
+                        <input type="number" name="micr_number" placeholder="MICR Number (optional)"
+                            class="w-full border @error('micr_number') border-red-500 @else border-gray-300 @enderror
                    p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                        @error('ifsc_code')
+                        @error('micr_number')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
 
+                    <!-- IFSC Code -->
+                    <div>
+                        <input type="text" id="ifsc_code" name="ifsc_code" placeholder="IFSC Code"
+                            class="w-full border p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        <p id="ifsc_code_error" class="mt-2 text-sm text-red-600" style="display: none;"></p>
+                    </div>
+
+                    <!-- Bank Name -->
+                    <div>
+                        <input type="text" id="bank_name" name="bank_name" placeholder="Bank Name"
+                            class="w-full border p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none" readonly>
+                            @error('bank_name')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Branch Name -->
+                    <div>
+                        <input type="text" id="branch_name" name="branch_name" placeholder="Branch Name"
+                            class="w-full border p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none" readonly>
+                            @error('branch_name')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- Loader -->
+                    <div id="loader" class="hidden mt-2">
+                        <svg class="animate-spin h-5 w-5 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                        </svg>
+                    </div>
                     <!-- Account Holder Name -->
                     <div>
                         <input type="text" name="account_holder_name" placeholder="Account Holder Name"
@@ -185,12 +217,41 @@
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
+                    <div>
+                        <input type="text" name="landmark" placeholder="Landmark"
+                            class="w-full border @error('landmark') border-red-500 @else border-gray-300 @enderror
+                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        @error('landmark')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div>
+                        <input type="text" id="postal_code" name="postal_code" placeholder="Postal Code"
+                            pattern="\d{6}"
+                            class="w-full border p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        <p id="postal_code_error" class="mt-2 border-gray-300 text-sm text-red-600"
+                            style="display: none;">
+                        </p>
+                        @error('postal_code')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+
+                    <!-- Loader -->
+                    <div id="loader" class="hidden mt-2">
+                        <svg class="animate-spin h-5 w-5 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor"
+                                stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                        </svg>
+                    </div>
 
                     <!-- City -->
                     <div>
-                        <input type="text" name="city" placeholder="City"
-                            class="w-full border @error('city') border-red-500 @else border-gray-300 @enderror
-                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        <input type="text" id="city" name="city" placeholder="City"
+                            class="w-full border p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none" readonly>
                         @error('city')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -198,9 +259,8 @@
 
                     <!-- State -->
                     <div>
-                        <input type="text" name="state" placeholder="State"
-                            class="w-full border @error('state') border-red-500 @else border-gray-300 @enderror
-                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        <input type="text" id="state" name="state" placeholder="State"
+                            class="w-full border p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none" readonly>
                         @error('state')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -208,23 +268,13 @@
 
                     <!-- Country -->
                     <div>
-                        <input type="text" name="country" placeholder="Country"
-                            class="w-full border @error('country') border-red-500 @else border-gray-300 @enderror
-                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                        @error('country')
-                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
+                        <input type="text" id="country" name="country" placeholder="Country"
+                            class="w-full border p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                            value="India" readonly>
                     </div>
 
-                    <!-- Postal Code -->
-                    <div>
-                        <input type="text" name="postal_code" placeholder="Postal Code" pattern="\d{6}"
-                            class="w-full border @error('postal_code') border-red-500 @else border-gray-300 @enderror
-                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                        @error('postal_code')
-                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
+
+
                 </div>
 
 
@@ -233,7 +283,7 @@
                 <h4 class="text-md  mt-6 ">Aadhar Card (Image/PDF)</h4>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Profile Photo -->
-                    
+
 
                     <!-- Aadhar Card -->
                     <div>
@@ -258,7 +308,7 @@
                 </div>
                 <h4 class="text-md  mt-6 ">PAN Card (Image/PDF)</h4>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    
+
                     <!-- PAN Card -->
                     <div>
                         {{-- <label for="pan_card" class="block mb-2 font-medium">PAN Card (Image/PDF)</label> --}}
@@ -280,7 +330,7 @@
                         @enderror
                     </div>
 
-                    
+
                 </div>
 
 
@@ -363,6 +413,133 @@
             });
         </script>
     </div>
+
+    <script>
+        document.getElementById('postal_code').addEventListener('blur', function() {
+            const postalCode = this.value.trim();
+            const loader = document.getElementById('loader');
+            const cityField = document.getElementById('city');
+            const stateField = document.getElementById('state');
+            const countryField = document.getElementById('country');
+
+            // Clear previous data
+            cityField.value = '';
+            stateField.value = '';
+            countryField.value = 'India';
+
+            // Validate postal code pattern
+            if (!/^\d{6}$/.test(postalCode)) {
+                showError('postal_code_error', 'Invalid Postal Code');
+                return;
+            }
+
+            // Hide any existing error message and show loader
+            hideError('postal_code_error');
+            loader.classList.remove('hidden');
+
+            // Fetch data from the API
+            fetch(`https://api.postalpincode.in/pincode/${postalCode}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data[0].Status === 'Success') {
+                        const {
+                            District,
+                            State
+                        } = data[0].PostOffice[0];
+
+                        // Populate city, state, and country fields
+                        cityField.value = District;
+                        stateField.value = State;
+                        countryField.value = 'India';
+                    } else {
+                        showError('postal_code_error', 'No data found for this postal code');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching postal data:', error);
+                    showError('postal_code_error', 'Failed to fetch data. Please try again.');
+                })
+                .finally(() => {
+                    // Hide loader
+                    loader.classList.add('hidden');
+                });
+        });
+
+        function showError(elementId, message) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+        }
+
+        function hideError(elementId) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.textContent = '';
+            errorElement.style.display = 'none';
+        }
+    </script>
+
+    <script>
+        document.getElementById('ifsc_code').addEventListener('blur', function() {
+            const ifscCode = this.value.trim().toUpperCase(); // Convert to uppercase for consistency
+            const loader = document.getElementById('loader');
+            const bankField = document.getElementById('bank_name');
+            const branchField = document.getElementById('branch_name');
+
+            // Clear previous data
+            bankField.value = '';
+            branchField.value = '';
+
+            // Validate IFSC Code pattern
+            if (!/^[A-Z]{4}0[A-Z0-9]{6}$/.test(ifscCode)) {
+                showError('ifsc_code_error', 'Invalid IFSC Code');
+                return;
+            }
+
+            // Hide any existing error message and show loader
+            hideError('ifsc_code_error');
+            loader.classList.remove('hidden');
+
+            // Fetch data from the API
+            fetch(`https://ifsc.razorpay.com/${ifscCode}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Invalid IFSC Code');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Populate bank name and branch name
+                    bankField.value = data.BANK;
+                    branchField.value = data.BRANCH;
+                })
+                .catch(error => {
+                    console.error('Error fetching IFSC data:', error);
+                    showError('ifsc_code_error', 'Failed to fetch data. Please try again.');
+                })
+                .finally(() => {
+                    // Hide loader
+                    loader.classList.add('hidden');
+                });
+        });
+
+        function showError(elementId, message) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+        }
+
+        function hideError(elementId) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.textContent = '';
+            errorElement.style.display = 'none';
+        }
+    </script>
+
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
 
 
 @endsection

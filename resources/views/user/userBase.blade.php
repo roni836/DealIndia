@@ -23,7 +23,6 @@
     href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  {{-- <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script> --}}
 
   <!-- SweetAlert CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
@@ -88,11 +87,27 @@
         class="px-4 py-2 text-sm font-medium text-white bg-teal-600 rounded-md hover:bg-teal-700 transition-colors duration-200">SignUp</a>
       @endguest
           @auth
-        <form method="POST" action="{{ route('logout') }}" class="inline">
-        @csrf
-        <button type="submit"
-          class="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 transition-colors duration-200">Logout</button>
-        </form>
+        <div class="relative inline-block text-left">
+        <button id="user-menu-button" type="button"
+          class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+          Hi, {{ auth()->user()->first_name }}!
+        </button>
+
+        <div id="user-menu"
+          class="absolute right-0 w-48 mt-2 rounded-md bg-white shadow-lg ring-black ring-opacity-5 focus:outline-none hidden"
+          role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+          <div class="py-2 flex flex-col items-center">
+          <a href="{{ route('dashboard') }}"
+            class="text-gray-700 block px-4 py-2 text-sm rounded-md hover:bg-indigo-100 hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+            role="menuitem">Dashboard</a>
+          <form method="POST" action="{{ route('logout') }}" class="block text-sm">
+            @csrf
+            <button type="submit"
+            class="w-full text-left text-red-600 bg-transparent hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 px-4 py-2 rounded-md">Logout</button>
+          </form>
+          </div>
+        </div>
+        </div>
       @endauth
         </div>
         <button class="md:hidden text-gray-600 hover:text-teal-600 transition-colors duration-200"
@@ -197,6 +212,19 @@
 
     // Initialize active page
     setActivePage(activePage);
+    const button = document.getElementById('user-menu-button');
+    const menu = document.getElementById('user-menu');
+
+    button.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!button.contains(event.target) && !menu.contains(event.target)) {
+        menu.classList.add('hidden');
+      }
+    });
+
   </script>
 
 </body>
