@@ -348,7 +348,7 @@
                         @error('inputs[0][filename]')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
-
+                    </div>
                         <div>
                             <!-- ...existing code... -->
                             <button type="button" class="text-blue-600 hover:text-blue-700 font-medium"
@@ -356,7 +356,7 @@
                                 + Add Another Document
                             </button>
                         </div>
-                    </div>
+                    
 
                     <button type="submit"
                         class="w-full bg-blue-500 text-white p-3 rounded mt-6 hover:bg-blue-600 transition">
@@ -395,7 +395,7 @@
                 $('#document').on('click', '#add-document-button', function() {
                     ++i;
                     $('#doc-container').append(
-                        `<div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="doc-container">
+                        `
                     <input type="text" name="inputs[${i}][name]" placeholder="Label 1 Name"
                         class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                            @error('inputs[${i}][name]')
@@ -406,7 +406,7 @@
                           @error('inputs[${i}][filename]')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                     @enderror
-2                </div>`
+                `
                     );
                 });
             });

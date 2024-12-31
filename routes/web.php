@@ -42,6 +42,7 @@ Route::get('/login/link', [AuthController::class, 'loginViaLink'])->name('loginV
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+    Route::get('/member', [UserController::class, 'member'])->name('member-details');
 
     Route::get('/details/{id}', [UserController::class, 'personalInvestorDetails'])->name('details');
 

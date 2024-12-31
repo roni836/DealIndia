@@ -50,6 +50,11 @@ class UserController extends Controller
         $data['logo'] = Setting::first();
         return view('user.dashboard',$data);
     }
+    public function member()
+    {
+       
+        return view('user.member');
+    }
     public function personalInvestorDetails($id)
     {
         $data['logo'] = Setting::first();
