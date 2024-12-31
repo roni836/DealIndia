@@ -32,10 +32,8 @@
     <div class="w-full  bg-white flex flex-col md:flex-row overflow-hidden">
         <!-- Left Section: Image -->
         <div class="w-full md:w-6/12 hidden md:flex">
-            
                 <img src="https://img.freepik.com/premium-photo/creative-team-discussing-about-work-office-small-bussiness-teamwork-planing-business-strategy-office-life_265022-80698.jpg?ga=GA1.1.1275289697.1728223870&semt=ais_hybrid"
                     class="object-cover w-full h-[600px] filter opacity-80" alt="New Background Image">
-           
         </div>
 
         <!-- Right Section: Login Form -->
@@ -43,7 +41,7 @@
             <div class="flex-1 py-6 md:py-0">
 
                 <h2 class="text-3xl md:text-4xl font-semibold text-center text-gray-800 mb-6"
-                    style="font-family: 'Roboto Condensed', serif;">Admin Login</h2>
+                    style="font-family: 'Roboto Condensed', serif;">Admintration Login</h2>
 
                 <!-- Buttons to select Login method -->
                 <div class="flex justify-center items-center flex-nowrap space-x-4">
