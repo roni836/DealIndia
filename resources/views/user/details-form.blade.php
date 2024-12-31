@@ -144,42 +144,43 @@
                             class="w-full border p-3 rounded focus:ring-2 @error('ifsc_code') border-red-500 @enderror"
                             autocomplete="off">
                         @error('ifsc_code')
-                        <p id="ifsc_code_error" class="mt-2 text-sm text-red-600" aria-live="polite">{{ $message }}</p>
+                            <p id="ifsc_code_error" class="mt-2 text-sm text-red-600" aria-live="polite">{{ $message }}
+                            </p>
                         @enderror
                     </div>
-                    
+
                     <div>
                         <label for="micr_number" class="sr-only">MICR Number</label>
                         <input type="text" id="micr_number" name="micr_number" placeholder="MICR Number"
-                            class="w-full border p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none @error('micr_number') border-red-500 @enderror"
-                            >
+                            class="w-full border p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none @error('micr_number') border-red-500 @enderror">
                         @error('micr_number')
-                        <p id="micr_number_error" class="mt-2 text-sm text-red-600" aria-live="polite">{{ $message }}</p>
+                            <p id="micr_number_error" class="mt-2 text-sm text-red-600" aria-live="polite">{{ $message }}
+                            </p>
                         @enderror
                     </div>
-                    
+
                     <div>
                         <label for="bank_name" class="sr-only">Bank Name</label>
                         <input type="text" id="bank_name" name="bank_name" placeholder="Bank Name"
-                            class="w-full border p-3 rounded focus:ring-2 @error('bank_name') border-red-500 @enderror"
-                            >
+                            class="w-full border p-3 rounded focus:ring-2 @error('bank_name') border-red-500 @enderror">
                         @error('bank_name')
-                        <p id="bank_name_error" class="mt-2 text-sm text-red-600" aria-live="polite">{{ $message }}</p>
+                            <p id="bank_name_error" class="mt-2 text-sm text-red-600" aria-live="polite">{{ $message }}
+                            </p>
                         @enderror
                     </div>
-                    
+
                     <div>
                         <label for="branch_name" class="sr-only">Branch Name</label>
                         <input type="text" id="branch_name" name="branch_name" placeholder="Branch Name"
-                            class="w-full border p-3 rounded focus:ring-2 @error('branch_name') border-red-500 @enderror"
-                            >
+                            class="w-full border p-3 rounded focus:ring-2 @error('branch_name') border-red-500 @enderror">
                         @error('branch_name')
-                        <p id="branch_name_error" class="mt-2 text-sm text-red-600" aria-live="polite">{{ $message }}</p>
+                            <p id="branch_name_error" class="mt-2 text-sm text-red-600" aria-live="polite">{{ $message }}
+                            </p>
                         @enderror
                     </div>
-                    
 
-                  
+
+
                     <!-- Account Holder Name -->
                     <div>
                         <input type="text" name="account_holder_name" placeholder="Account Holder Name"
@@ -248,7 +249,7 @@
                             <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
                         </svg>
                     </div>
-                      <!-- Loader -->
+                    <!-- Loader -->
                     <!-- City -->
                     <div>
                         <input type="text" id="city" name="city" placeholder="City"
@@ -349,14 +350,14 @@
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
-                        <div>
-                            <!-- ...existing code... -->
-                            <button type="button" class="text-blue-600 hover:text-blue-700 font-medium"
-                                id="add-document-button">
-                                + Add Another Document
-                            </button>
-                        </div>
-                    
+                    <div>
+                        <!-- ...existing code... -->
+                        <button type="button" class="text-blue-600 hover:text-blue-700 font-medium"
+                            id="add-document-button">
+                            + Add Another Document
+                        </button>
+                    </div>
+
 
                     <button type="submit"
                         class="w-full bg-blue-500 text-white p-3 rounded mt-6 hover:bg-blue-600 transition">
@@ -502,6 +503,22 @@
             errorElement.textContent = '';
             errorElement.style.display = 'none';
         }
+    </script>
+
+    <script>
+        // Set the max date for the date picker to 18 years ago
+        document.addEventListener('DOMContentLoaded', function() {
+            const dateOfBirthInput = document.getElementById('date_of_birth');
+            const today = new Date();
+
+            // Calculate the date 18 years ago
+            const maxDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate())
+                .toISOString()
+                .split('T')[0];
+
+            // Set the max attribute to the calculated date
+            dateOfBirthInput.setAttribute('max', maxDate);
+        });
     </script>
 
 

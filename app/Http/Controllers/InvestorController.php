@@ -58,7 +58,7 @@ class InvestorController extends Controller
         $validator = Validator::make($request->all(), [
             // 'first_name' => 'required|string|max:255',
             // 'last_name' => 'required|string|max:255',
-            'date_of_birth' => 'required|date',
+            'date_of_birth' => 'required|date|before:' . now()->subYears(18)->format('Y-m-d'),
             'gender' => 'required|string',
             'religion' => 'nullable|string|max:255',
             // 'email' => 'required|email|max:255|unique:invester_details',
@@ -77,6 +77,7 @@ class InvestorController extends Controller
             'aadhar_card_number' => 'required|string|size:12',
             'pan_card' => 'required|file|mimes:jpeg,png,pdf|max:2048',
             'pan_card_number' => 'required|string|size:10',
+            'pan_card_number' => 'required|string|size:10|regex:/^[A-Z]{5}[0-9]{4}[A-Z]$/',
             'inputs' => 'nullable|array',
             'inputs.*.name' => 'required_with:inputs|string|max:255',
             'inputs.*.filename' => 'required_with:inputs|file|mimes:jpeg,png,pdf|max:2048',
