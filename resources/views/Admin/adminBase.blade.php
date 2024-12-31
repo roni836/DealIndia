@@ -38,27 +38,27 @@
     <body class="min-h-screen flex bg-gray-100">
 
         <!-- Sidebar -->
-        <aside id="sidebar" class="fixed inset-0 transform -translate-x-full lg:translate-x-0 lg:static lg:inset-auto w-64 bg-white shadow-md transition-transform duration-300 z-30">
+        <aside id="sidebar" class="fixed inset-0 transform -translate-x-full lg:translate-x-0 lg:static lg:inset-auto w-64 bg-indigo-800 text-white shadow-md transition-transform duration-300 z-30">
             <div class="p-4 flex justify-between items-center">
-                <h1 class="text-xl font-bold text-gray-800">Deal India</h1>
-                <button id="closeSidebar" class="lg:hidden text-gray-800 focus:outline-none">
+                <h1 class="text-xl font-bold ">Deal India</h1>
+                <button id="closeSidebar" class="lg:hidden text-white focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                 </button>
             </div>
-            <nav class="mt-10 text-md  space-y-2">
-                <a href="{{ url('/admin') }}" class="block py-2 px-4  text-gray-700 hover:bg-gray-200">
+            <nav class="mt-10 text-md  space-y-2 text-white ">
+                <a href="{{ url('/admin') }}" class="block py-2 px-4  hover:bg-indigo-700 ">
                     <i class="bi bi-hdd-stack-fill px-2"></i> Dashboard
                 </a>
-                <a href="{{ url('/admin/application') }}" class="block py-2 px-4 text-gray-700 hover:bg-gray-200">
+                <a href="{{ url('/admin/application') }}" class="block py-2 px-4  hover:bg-indigo-700">
                     <i class="bi bi-person-fill-add px-2"></i> Recent Applications
                 </a>
-                <a href="{{ url('/admin/application-approved') }}" class="block py-2 px-4 text-gray-700 hover:bg-gray-200">
+                <a href="{{ url('/admin/application-approved') }}" class="block py-2 px-4 hover:bg-indigo-700">
                     <i class="bi bi-person-fill-check px-2"></i> Approved Applications
                 </a>
                
-                <a href="{{url('admin/settings')}}" class="block py-2 px-4 text-gray-700 hover:bg-gray-200">
+                <a href="{{url('admin/settings')}}" class="block py-2 px-4 hover:bg-indigo-700">
                     <i class="bi bi-gear-wide-connected px-2"></i>  Setting
                 </a>
             </nav>
@@ -67,7 +67,7 @@
         <!-- Main Content -->
         <div class="flex-1 flex flex-col">
             <!-- Navbar -->
-            <header class="bg-teal-300 shadow-md p-4 flex justify-between items-center">
+            <header class="bg-white shadow-md p-4 flex justify-between items-center">
                 <div class="flex items-center space-x-4">
                     <button id="menuButton" class="lg:hidden text-gray-800 focus:outline-none">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -91,7 +91,11 @@
             <div class=" mt-8 p-4">
                 @yield('content')
                 @show
+
+                <!-- Footer -->
+        
             </div>
+            
         </div>
     
         <script>
