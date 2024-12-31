@@ -11,9 +11,14 @@ use Illuminate\Support\Facades\Validator;
 
 class InvestorController extends Controller
 {
+
+   
     // Display the form
     public function index()
     {
+        if(Auth::user()->all_details != 1){
+            return redirect()->route('details.form');
+        }
         return view('user.codeform');
     }
 
@@ -41,13 +46,17 @@ class InvestorController extends Controller
         ) {
             // Save details in the InvesterDetail model
            User::find(Auth::id())->update(['code_details' => 1]);
-            return redirect()->route('user.investerCodeform')->with('success', 'Code details added successfully!');
+            return redirect()->route('dashboard')->with('success', 'Code details added successfully!');
         } else {
             return redirect()->back()->with('error', 'The provided details do not match.');
         }
     }
     public function showForm()
     {
+
+        if(Auth::user()->all_details == 1){
+            return redirect()->route('user.investerCodeform');
+        }
         $data['logo'] = Setting::first();
 
         return view('user.details-form',$data);
@@ -111,7 +120,7 @@ class InvestorController extends Controller
                 User::where('id', Auth::id())->update(['all_details' => 1]);
             }
     
-            return redirect('/dashboard')->with('success', 'Details submitted successfully!');
+            return redirect('/investerform')->with('success', 'Details submitted successfully!');
         }
         return redirect()->back()->with('error', 'Something went wrong! Please try again later.');
     }
