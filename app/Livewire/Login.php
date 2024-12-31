@@ -104,7 +104,13 @@ class Login extends Component
             if($user->all_details != 1){
                 return redirect()->route('details.form')->with('success', 'Login successful.');
             }else{
-                return redirect()->route('dashboard')->with('success', 'Login successful.');
+                if($user->code_details != 1){
+                    return redirect()->route('user.investerCodeform')->with('success', 'Login successful.');
+                }
+                else{
+                    return redirect()->route('dashboard')->with('success', 'Login successful.');
+                }
+                
             }
         }
 
