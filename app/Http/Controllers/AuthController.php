@@ -20,11 +20,12 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required|string',
-            'gender' => 'required|string',
-            'dob' => 'required|date',
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            // 'gender' => 'required|string',
+            // 'dob' => 'required|date',
             'email' => 'required|email|unique:users,email',
-            'address' => 'required|string',
+            // 'address' => 'required|string',
             'mobile' => 'required|digits:10|regex:/^[6789][0-9]{9}$/',
             'password' => 'required|min:8|confirmed',
         ]);
@@ -34,17 +35,18 @@ class AuthController extends Controller
         }
 
         $data = User::create([
-            'name' => $request->name,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
             'mobile' => $request->mobile,
-            'gender' => $request->gender,
-            'dob' => $request->dob,
+            // 'gender' => $request->gender,
+            // 'dob' => $request->dob,
             'email' => $request->email,
-            'address' => $request->address,
+            // 'address' => $request->address,
             'password' => Hash::make($request->password),
         ]);
 
         if ($data) {
-            Mail::raw("Hello $request->name, your Deal Account has been Created Successfully.", function ($message) use ($request) {
+            Mail::raw("Hello $request->first_name, your Deal Account has been Created Successfully.", function ($message) use ($request) {
                 $message->to($request->email)
                     ->subject('New Deal Account Created');
             });

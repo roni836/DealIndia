@@ -1,5 +1,5 @@
 <div class="mt-10 h-full">
-    @if (session()->has('success'))
+    {{-- @if (session()->has('success'))
         <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert"
             id="success-alert">
             <span class="block sm:inline">{{ session('success') }}</span>
@@ -12,9 +12,9 @@
                 </svg>
             </button>
         </div>
-    @endif
+    @endif --}}
 
-    @if (session()->has('error'))
+    {{-- @if (session()->has('error'))
         <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert"
             id="error-alert">
             <span class="block sm:inline">{{ session('error') }}</span>
@@ -27,7 +27,7 @@
                 </svg>
             </button>
         </div>
-    @endif
+    @endif --}}
 
     <div class="w-full  bg-white flex flex-col md:flex-row overflow-hidden">
         <!-- Left Section: Image -->
@@ -58,14 +58,20 @@
                             <div class="mb-4">
                                 <label {{ $inputDisabled ? 'readonly' : '' }} for="email"
                                     class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                                <input wire:model="email" type="email" required autofocus
+                                <input wire:model="email" type="email"  autofocus
                                     class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
+                                    @error('email')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
                             </div>
                             <div class="mb-4">
                                 <label for="password"
                                     class="block text-sm font-medium text-gray-700 mb-2">Password</label>
-                                <input wire:model="password" type="password" required
+                                <input wire:model="password" type="password" 
                                     class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
+                                    @error('password')
+                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                @enderror
                             </div>
                             <button type="submit"
                                 class="w-full bg-teal-900 hover:bg-teal-700 text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500">
@@ -88,7 +94,7 @@
                                 <div class="mb-4">
                                     <label for="otp" class="block text-sm font-medium text-gray-700 mb-2">Enter
                                         OTP</label>
-                                    <input wire:model="otp" type="text" required
+                                    <input wire:model="otp" type="text" 
                                         class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
                                 </div>
                                 <button type="submit"
@@ -109,7 +115,7 @@
                             <div class="mb-4">
                                 <label for="email-link"
                                     class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                                <input {{ $inputDisabled ? 'readonly' : '' }} wire:model="email" type="email" required
+                                <input {{ $inputDisabled ? 'readonly' : '' }} wire:model="email" type="email" 
                                     autofocus
                                     class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
                             </div>
@@ -142,12 +148,12 @@
             <div class="mb-4">
                 <label {{ $inputDisabled ? 'readonly' : '' }} for="email"
                     class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                <input wire:model="email" type="email" required autofocus
+                <input wire:model="email" type="email"  autofocus
                     class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
             </div>
             <div class="mb-4">
                 <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
-                <input wire:model="password" type="password" required
+                <input wire:model="password" type="password" 
                     class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
             </div>
             <button type="submit"
@@ -170,7 +176,7 @@
             <form wire:submit.prevent="verifyOtp" class="mt-4">
                 <div class="mb-4">
                     <label for="otp" class="block text-sm font-medium text-gray-700 mb-2">Enter OTP</label>
-                    <input wire:model="otp" type="text" required
+                    <input wire:model="otp" type="text" 
                         class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
                 </div>
                 <button type="submit"
@@ -190,7 +196,7 @@
         <form wire:submit.prevent="sendLoginLink">
             <div class="mb-4">
                 <label for="email-link" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                <input {{ $inputDisabled ? 'readonly' : '' }} wire:model="email" type="email" required autofocus
+                <input {{ $inputDisabled ? 'readonly' : '' }} wire:model="email" type="email"  autofocus
                     class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
             </div>
             <button type="submit"
