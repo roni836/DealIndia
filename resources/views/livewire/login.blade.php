@@ -1,5 +1,5 @@
 <div class="mt-10 h-full">
-    {{-- @if (session()->has('success'))
+    @if (session()->has('success'))
         <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert"
             id="success-alert">
             <span class="block sm:inline">{{ session('success') }}</span>
@@ -12,9 +12,9 @@
                 </svg>
             </button>
         </div>
-    @endif --}}
+    @endif
 
-    {{-- @if (session()->has('error'))
+    @if (session()->has('error'))
         <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert"
             id="error-alert">
             <span class="block sm:inline">{{ session('error') }}</span>
@@ -27,7 +27,7 @@
                 </svg>
             </button>
         </div>
-    @endif --}}
+    @endif
 
     <div class="w-full  bg-white flex flex-col md:flex-row overflow-hidden">
         <!-- Left Section: Image -->

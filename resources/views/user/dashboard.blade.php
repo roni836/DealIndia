@@ -24,7 +24,7 @@
                 <section id="profile" class="bg-white shadow-md rounded-lg p-4 md:p-6 h-48">
                     <h2 class="text-2xl font-bold mb-4 text-teal-800">Your Profile</h2>
                     <div class="text-sm md:text-md space-y-2">
-                        <p><strong>Name:</strong> {{ auth()->user()->name }}</p>
+                        <p><strong>Name:</strong> {{ auth()->user()->first_name . ' ' . auth()->user()->last_name }}</p>
                         <p><strong>Email:</strong> {{ auth()->user()->email }}</p>
                         <p><strong>Joined:</strong> {{ auth()->user()->created_at->format('M d, Y') }}</p>
                     </div>
