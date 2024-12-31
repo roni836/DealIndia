@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\InvesterDetail;
 use App\Models\User;
 use App\Models\AdditionalDocument;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -47,7 +48,9 @@ class InvestorController extends Controller
     }
     public function showForm()
     {
-        return view('user.details-form');
+        $data['logo'] = Setting::first();
+
+        return view('user.details-form',$data);
     }
 
     public function submitForm(Request $request)

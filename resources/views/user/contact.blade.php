@@ -8,7 +8,7 @@
     <img src="{{ asset('storage/images/setting/' . $logo->meta_logo) }}" alt="Company Logo"
       class="w-auto h-24 mx-auto mb-6 object-cover">
   @else
-  <img src="{{ asset('images/logo.png') }}" alt="Default Logo" class="h-20 md:h-32 object-contain">
+  <img src="{{ asset('https://placehold.co/600x400') }}" alt="Default Logo" class="w-auto h-24 mx-auto mb-6 object-cover">
 @endif
     <h1 class="text-4xl font-bold mb-4">We'd Love to Hear from You!</h1>
     <p class="text-xl max-w-2xl mx-auto">
