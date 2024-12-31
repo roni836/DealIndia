@@ -22,7 +22,7 @@
                     </p> --}}
                     <div class="inline-grid justify-center items-center">
                         <img src="{{ asset('user.png') }}" alt="" class="">
-                        <p><strong>Name:</strong> {{ $user->first_name }}</p>
+                        <p><strong>Name:</strong> {{ $user->first_name }} {{ $user->last_name }}</p>
                     </div>
                     
                     <div class="inline-grid justify-center items-center">
@@ -59,7 +59,7 @@
                 <div class="bg-white text-sm space-y-2  ">
                     <p class="flex gap-1">
                         <img src="{{ asset('user.png') }}" alt="" class="w-5 h-5">
-                        <strong>Name:</strong> {{ $user->name }}
+                        <strong>Name:</strong> {{ $user->first_name }} {{ $user->last_name }}
                     </p>
                     <p class="flex gap-1">
                         <img src="{{ asset('email.png') }}" alt="" class="w-5 h-5">
@@ -150,6 +150,41 @@
             </div>
         </div>
     </div>
+    </div>
+
+    @if ($user->investorDetails->additional_documents && $user->investorDetails->additional_documents->count() > 0)
+        <div class="mt-6 bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="bg-gray-200 px-6 py-4">
+                <h4 class="text-lg font-semibold">Additional Documents</h4>
+            </div>
+            <div class="p-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    @foreach ($user->investorDetails->additional_documents as $document)
+                        <div class="bg-gray-100 shadow-md rounded-lg p-4">
+                            <p><strong>Document Name:</strong> {{ $document->name }}</p>
+                            @php
+                                $extension = pathinfo($document->filename, PATHINFO_EXTENSION);
+                            @endphp
+                            <p><strong>Document Extension:</strong> {{$extension }}</p>
+                            
+
+                            @if ($extension == 'jpeg' || $extension == 'png' || $extension == 'jpg')
+                                <img src="{{ asset('storage/' . $document->filename) }}" alt="Document" class="w-full h-48 p-2 rounded-lg object-contain">
+                            @else
+                                <p>
+                                    <strong>File:</strong>
+                                    <a href="{{ asset('storage/' . $document->filename) }}" target="_blank" class="text-blue-500 underline">
+                                        View Document
+                                    </a>
+                                </p>
+                            @endif
+                            
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    @endif
     @else
     <div class="bg-white mt-4 mb-4 py-4 rounded-lg">
         <p class="font-semibold text-md m-4 ">No investor details available.</p>
@@ -158,9 +193,13 @@
 
     
     
-</div>
+{{-- </div> --}}
+
+ 
+
+
 <!-- Generated Codes Section -->
-<div class=" overflow-hidden mb-6 p-4 rounded-lg">
+<div class=" overflow-hidden mb-6 mt-4 rounded-lg">
     <div class="bg-gray-200 px-6 py-4 rounded-t-lg">
         <h4 class="text-lg font-semibold">Generated Codes</h4>
     </div>
@@ -188,7 +227,7 @@
         Back to List
     </a>
     @if ($user->investorDetails && $user->vr_code && $user->company_code && $user->noc_number)
-    <!-- User is already approved, so no need to show the approval button -->
+    
 @else
     @if ($user->investorDetails) 
     <form action="{{ url('/admin/application/generate/' . $user->id) }}" method="POST" class="inline-block w-full md:w-auto">

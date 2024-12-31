@@ -23,7 +23,7 @@
     href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+  {{-- <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script> --}}
 
   <!-- SweetAlert CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
@@ -129,7 +129,7 @@
           id="mobile-home"><i class="bi bi-house-door px-2"></i>Home</a>
         <a href="#"
           class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-teal-600 hover:bg-teal-50"
-          id="mobile-services">Services</a>
+          id="mobile-services"><i class="bi bi-briefcase px-2"></i>Services</a>
         <a href="{{ route('contact') }}"
           class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-teal-600 hover:bg-teal-50"
           id="mobile-contact"><i class="bi bi-person-lines-fill px-2"></i>Contact</a>
@@ -142,15 +142,15 @@
         <div class="pt-4 space-y-2">
           @guest
         <a href="{{ route('login') }}"
-        class="block w-1/2 px-4 py-2 text-md text-center font-semibold text-teal-600 border border-teal-600 rounded-md hover:bg-teal-50 transition-colors duration-200">Login</a>
+        class="block w-1/2 px-4 py-2 text-md text-center font-semibold text-teal-600 border border-teal-600 rounded-md hover:bg-teal-50 transition-colors duration-200"><i class="bi bi-box-arrow-in-right px-2"></i>Login</a>
         <a href="{{ url('register') }}"
-        class="block w-1/2 px-4 py-2 text-md text-center font-semibold text-white bg-teal-600 rounded-md hover:bg-teal-700 transition-colors duration-200">SignUp</a>
+        class="block w-1/2 px-4 py-2 text-md text-center font-semibold text-white bg-teal-600 rounded-md hover:bg-teal-700 transition-colors duration-200"><i class="bi bi-node-plus px-2"></i>SignUp</a>
       @endguest
           @auth
         <form method="POST" action="{{ route('logout') }}" class="inline w-full">
         @csrf
         <button type="submit"
-          class="block w-1/2 px-4 py-2 text-md text-center font-semibold text-white bg-orange-500 rounded-md hover:bg-orange-700 transition-colors duration-200">Logout</button>
+          class="block w-1/2 px-4 py-2 text-md text-center font-semibold text-white bg-orange-500 rounded-md hover:bg-orange-700 transition-colors duration-200"><i class="bi bi-box-arrow-in-left px-4"></i>Logout</button>
         </form>
       @endauth
         </div>
