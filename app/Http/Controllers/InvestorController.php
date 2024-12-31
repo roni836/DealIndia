@@ -56,13 +56,13 @@ class InvestorController extends Controller
     public function submitForm(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
+            // 'first_name' => 'required|string|max:255',
+            // 'last_name' => 'required|string|max:255',
             'date_of_birth' => 'required|date',
             'gender' => 'required|string',
             'religion' => 'nullable|string|max:255',
-            'email' => 'required|email|max:255|unique:invester_details',
-            'mobile' => 'required|string|max:15',
+            // 'email' => 'required|email|max:255|unique:invester_details',
+            // 'mobile' => 'required|string|max:15',
             'bank_name' => 'required|string|max:255',
             'account_number' => 'required|string|max:255',
             'ifsc_code' => 'required|string|max:15|regex:/^[A-Z]{4}0[A-Z0-9]{6}$/',

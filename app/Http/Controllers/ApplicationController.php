@@ -9,7 +9,8 @@ class ApplicationController extends Controller
 {
     public function editApplication($id){
         // $data = User::where('id',$id)->first();
-        $user = User::with('investorDetails')->findOrFail($id);
+        // $user = User::with('investorDetails')->findOrFail($id);
+        $user = User::with(['investorDetails.additional_documents'])->findOrFail($id);
 
         
         return view('Admin.edit-application',["user"=>$user]);

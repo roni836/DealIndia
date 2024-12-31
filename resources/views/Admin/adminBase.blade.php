@@ -48,7 +48,7 @@
                 </button>
             </div>
             <nav class="mt-10 text-md  space-y-2">
-                <a href="" class="block py-2 px-4  text-gray-700 hover:bg-gray-200">
+                <a href="{{ url('/admin') }}" class="block py-2 px-4  text-gray-700 hover:bg-gray-200">
                     <i class="bi bi-hdd-stack-fill px-2"></i> Dashboard
                 </a>
                 <a href="{{ url('/admin/application') }}" class="block py-2 px-4 text-gray-700 hover:bg-gray-200">

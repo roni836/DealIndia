@@ -40,22 +40,22 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- First Name -->
                     <div>
-                        <input type="text" name="first_name" placeholder="First Name"
-                            class="w-full border @error('first_name') border-red-500 @else border-gray-300 @enderror
+                        <input type="text" name="first_name"  value="{{ auth()->user()->first_name }}"  placeholder="First Name"
+                            class="w-full bg-gray-50 border @error('first_name') border-red-500 @else border-gray-300 @enderror
                                    p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                        @error('first_name')
+                        {{-- @error('first_name')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
+                        @enderror --}}
                     </div>
 
                     <!-- Last Name -->
                     <div>
-                        <input type="text" name="last_name" placeholder="Last Name"
-                            class="w-full border @error('last_name') border-red-500 @else border-gray-300 @enderror
+                        <input type="text" name="last_name" placeholder="Last Name" value="{{ auth()->user()->last_name }}" 
+                            class="w-full bg-gray-50 border @error('last_name') border-red-500 @else border-gray-300 @enderror
                                    p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                        @error('last_name')
+                        {{-- @error('last_name')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
+                        @enderror --}}
                     </div>
 
                     <!-- Date of Birth -->
@@ -95,7 +95,7 @@
 
                     <!-- Email -->
                     <div>
-                        <input type="email" name="email" value="{{ auth()->user()->email }}" disabled
+                        <input type="email" name="email" value="{{ auth()->user()->email }}" 
                             placeholder="Email"
                             class="w-full border border-gray-300 bg-gray-50 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         {{-- @error('email')
@@ -105,7 +105,7 @@
 
                     <!-- Mobile -->
                     <div>
-                        <input type="tel" name="mobile" value="{{ auth()->user()->mobile }}" disabled
+                        <input type="tel" name="mobile" value="{{ auth()->user()->mobile }}" 
                             placeholder="Mobile" pattern="[0-9]{10}"
                             class="w-full border border-gray-300 bg-gray-50 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         {{-- @error('mobile')
@@ -230,34 +230,38 @@
 
                 <!-- Documents -->
                 <h2 class="text-xl font-semibold mt-6 mb-4">Documents</h2>
+                <h4 class="text-md  mt-6 ">Aadhar Card (Image/PDF)</h4>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Profile Photo -->
                     
 
                     <!-- Aadhar Card -->
                     <div>
-                        <label for="aadhar_card" class="block mb-2 font-medium">Aadhar Card (Image/PDF)</label>
+                        {{-- <label for="aadhar_card" class="block mb-2 font-medium">Aadhar Card (Image/PDF)</label> --}}
                         <input type="file" id="aadhar_card" name="aadhar_card" accept=".jpeg,.png,.pdf"
                             class="w-full border @error('aadhar_card') border-red-500 @else border-gray-300 @enderror
-                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         @error('aadhar_card')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
 
                     <!-- Aadhar Card Number -->
-                    <div class="md:col-span-2">
+                    <div class="">
                         <input type="text" name="aadhar_card_number" placeholder="Aadhar Card Number"
                             class="w-full border @error('aadhar_card_number') border-red-500 @else border-gray-300 @enderror
-                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        p-5  rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         @error('aadhar_card_number')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
-
+                </div>
+                <h4 class="text-md  mt-6 ">PAN Card (Image/PDF)</h4>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    
                     <!-- PAN Card -->
                     <div>
-                        <label for="pan_card" class="block mb-2 font-medium">PAN Card (Image/PDF)</label>
+                        {{-- <label for="pan_card" class="block mb-2 font-medium">PAN Card (Image/PDF)</label> --}}
                         <input type="file" id="pan_card" name="pan_card" accept=".jpeg,.png,.pdf"
                             class="w-full border @error('pan_card') border-red-500 @else border-gray-300 @enderror
                    p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
@@ -267,10 +271,10 @@
                     </div>
 
                     <!-- PAN Card Number -->
-                    <div class="md:col-span-2">
+                    <div class="">
                         <input type="text" name="pan_card_number" placeholder="PAN Card Number"
                             class="w-full border @error('pan_card_number') border-red-500 @else border-gray-300 @enderror
-                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                   p-5 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         @error('pan_card_number')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror

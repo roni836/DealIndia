@@ -23,9 +23,10 @@
     href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
 
   <!-- SweetAlert CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 
   <title>@yield('title') | Deal India</title>
 
@@ -51,13 +52,12 @@
       <div class="flex items-center justify-between h-16">
         <div class="flex items-center space-x-2">
           <a href="{{ route('homepage') }}">
-            @if (!empty($logo?->meta_logo))
-        <img src="{{ asset('storage/images/setting/' . $logo->meta_logo) }}" alt="Company Logo"
-          class="h-10 md:11 w-auto object-contain rounded-md">
-      @else
-    <img src="{{ asset('https://placehold.co/600x400') }}" alt="Default Logo"
-      class="h-10 md:11 w-auto object-contain rounded-md">
-  @endif
+          @if (!empty($logo?->meta_logo))
+                    <img src="{{ asset('storage/images/setting/' . $logo->meta_logo) }}" alt="Company Logo"
+                        class="h-10 md:11 w-auto object-contain rounded-md">
+                @else
+                    <img src="{{ asset('https://placehold.co/600x400') }}" alt="Default Logo" class="h-10 md:11 w-auto object-contain rounded-md">
+                @endif
           </a>
         </div>
         <nav class="hidden md:flex items-center space-x-6">
@@ -73,12 +73,12 @@
           <a href="{{route('contact')}}"
             class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-teal-600"
             id="contact">Contact</a>
-          <a href="{{route('privacy-policy')}}"
+          {{-- <a href="{{route('privacy-policy')}}"
             class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-teal-600"
             id="privacy">Privacy Policy</a>
           <a href="{{route('Terms-of-Service')}}"
             class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-teal-600"
-            id="terms">Terms of Service</a>
+            id="terms">Terms of Service</a> --}}
         </nav>
         <div class="hidden md:flex items-center space-x-4">
           @guest
@@ -88,15 +88,18 @@
         class="px-4 py-2 text-sm font-medium text-white bg-teal-600 rounded-md hover:bg-teal-700 transition-colors duration-200">SignUp</a>
       @endguest
           @auth
-        <div class="relative inline-block text-left">
-        <button id="user-menu-button" type="button"
+        <div x-data="{ open: false }" class="relative inline-block text-left">
+        <button @click="open = !open" type="button"
           class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
           Hi, {{ auth()->user()->first_name }}!
         </button>
 
-        <div id="user-menu"
-          class="absolute right-0 w-48 mt-2 rounded-md bg-white shadow-lg ring-black ring-opacity-5 focus:outline-none hidden"
-          role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+        <div x-show="open" x-transition:enter="transition ease-out duration-100"
+          x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+          x-transition:leave="transition ease-in duration-75" x-transition:leave-start="opacity-100"
+          x-transition:leave-end="opacity-0"
+          class="absolute right-0 w-48 mt-2 rounded-md bg-white shadow-lg  ring-black ring-opacity-5 focus:outline-none"
+          role="menu" aria-orientation="vertical" aria-labelledby="options-menu" @click.away="open = false">
           <div class="py-2 flex flex-col items-center">
           <a href="{{ route('dashboard') }}"
             class="text-gray-700 block px-4 py-2 text-sm rounded-md hover:bg-indigo-100 hover:text-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
@@ -110,7 +113,6 @@
         </div>
         </div>
       @endauth
-
         </div>
         <button class="md:hidden text-gray-600 hover:text-teal-600 transition-colors duration-200"
           onclick="toggleMenu()" aria-label="Toggle menu">
@@ -122,31 +124,31 @@
       <div class="px-2 pt-2 pb-3 space-y-1">
         <a href="{{ route('homepage') }}"
           class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-teal-600 hover:bg-teal-50"
-          id="mobile-home">Home</a>
+          id="mobile-home"><i class="bi bi-house-door px-2"></i>Home</a>
         <a href="#"
           class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-teal-600 hover:bg-teal-50"
-          id="mobile-services">Services</a>
+          id="mobile-services"><i class="bi bi-briefcase px-2"></i>Services</a>
         <a href="{{ route('contact') }}"
           class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-teal-600 hover:bg-teal-50"
-          id="mobile-contact">Contact</a>
-        <a href="#"
+          id="mobile-contact"><i class="bi bi-person-lines-fill px-2"></i>Contact</a>
+        {{-- <a href="#"
           class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-teal-600 hover:bg-teal-50"
           id="mobile-privacy">Privacy Policy</a>
         <a href="#"
           class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-teal-600 hover:bg-teal-50"
-          id="mobile-terms">Terms of Service</a>
+          id="mobile-terms">Terms of Service</a> --}}
         <div class="pt-4 space-y-2">
           @guest
         <a href="{{ route('login') }}"
-        class="block w-full px-4 py-2 text-sm font-medium text-teal-600 border border-teal-600 rounded-md hover:bg-teal-50 transition-colors duration-200">Login</a>
+        class="block w-1/2 px-4 py-2 text-md text-center font-semibold text-teal-600 border border-teal-600 rounded-md hover:bg-teal-50 transition-colors duration-200"><i class="bi bi-box-arrow-in-right px-2"></i>Login</a>
         <a href="{{ url('register') }}"
-        class="block w-full px-4 py-2 text-sm font-medium text-white bg-teal-600 rounded-md hover:bg-teal-700 transition-colors duration-200">SignUp</a>
+        class="block w-1/2 px-4 py-2 text-md text-center font-semibold text-white bg-teal-600 rounded-md hover:bg-teal-700 transition-colors duration-200"><i class="bi bi-node-plus px-2"></i>SignUp</a>
       @endguest
           @auth
         <form method="POST" action="{{ route('logout') }}" class="inline w-full">
         @csrf
         <button type="submit"
-          class="block w-full px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700 transition-colors duration-200">Logout</button>
+          class="block w-1/2 px-4 py-2 text-md text-center font-semibold text-white bg-orange-500 rounded-md hover:bg-orange-700 transition-colors duration-200"><i class="bi bi-box-arrow-in-left px-4"></i>Logout</button>
         </form>
       @endauth
         </div>
@@ -176,7 +178,7 @@
   </div>
   <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
   <!-- SweetAlert JS -->
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   @livewireScripts
 
   <script>

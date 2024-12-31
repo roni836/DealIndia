@@ -9,7 +9,7 @@
                         <img src="{{ asset('storage/images/setting/' . $logo->meta_logo) }}" alt="Company Logo"
                             class="h-20 w-auto">
                     @else
-                        <img src="{{ asset('https://placehold.co/600x400') }}" alt="Default Logo" class="h-20 md:h-32 object-contain">
+                        <img src="{{ asset('logo.png') }}" alt="Default Logo" class="h-20 md:h-32 object-contain">
                     @endif
                 </div>
                 <p class="text-sm">Your Partner in Financial Growth and Management</p>
@@ -23,12 +23,12 @@
             <div>
                 <h3 class="text-lg font-semibold text-white mb-4">Quick Links</h3>
                 <ul class="space-y-2">
-                    <li><a href="#" class="hover:text-white transition-colors">Home</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">About</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">Services</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">Contact</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">Terms of Service</a></li>
+                    <li><a href="{{ route('homepage') }}" class="hover:text-white transition-colors">Home</a></li>
+                    <li><a href="{{route('about')}}" class="hover:text-white transition-colors">About</a></li>
+                    <li><a href="{{route('services')}}" class="hover:text-white transition-colors">Services</a></li>
+                    <li><a href="{{route('contact')}}" class="hover:text-white transition-colors">Contact</a></li>
+                    <li><a href="{{route('privacy-policy')}}" class="hover:text-white transition-colors">Privacy Policy</a></li>
+                    <li><a href="{{route('Terms-of-Service')}}" class="hover:text-white transition-colors">Terms of Service</a></li>
                 </ul>
             </div>
 
