@@ -26,6 +26,8 @@ return new class extends Migration
             $table->string('range_code')->nullable();
             $table->string('company_code')->nullable();
             $table->string('noc_number')->nullable();
+            $table->string('referral_id')->nullable();
+            $table->string('parent_id')->nullable();
             $table->string('status')->default(0);
             $table->boolean('isAdmin')->default(false);
             $table->timestamp('email_verified_at')->nullable();

@@ -106,8 +106,9 @@
             </div>
         </div>
 
+        @auth
         <!-- Team Section -->
-        {{-- <div class="py-16 container mx-auto px-4">
+        <div class="py-16 container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12">
                 Meet the Team Behind DealIndia
             </h2>
@@ -176,8 +177,8 @@
                     </div>
                 </div>
             </div>
-        </div> --}}
-
+        </div>
+@endauth
         <!-- Timeline Section -->
         <div class="py-16 bg-gray-50">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

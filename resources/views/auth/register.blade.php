@@ -139,6 +139,22 @@
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
+
+                    <div class="mb-4">
+                        <label for="referral_id" class="block mb-2 text-sm font-medium text-gray-700">Referral id (Optional)</label>
+                        <input id="parent_id" placeholder="Referral id" type="text" name="parent_id"
+                            value="{{ old('parent_id') }}"
+                            class="w-full px-4 py-2 border  @error('mobile') border-red-500 @else border-gray-300 @enderror rounded-md shadow-sm">
+                        @error('parent_id')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="mb-4">
+                        <label for="referral_id" class="block mb-2 text-sm font-medium text-gray-700">Referred By (Optional)</label>
+                        <input id="referred_by" placeholder="Referred By" type="text" name="referred_by"
+                            value=""
+                            class="w-full px-4 py-2 border  border-gray-300 rounded-md shadow-sm" readonly>
+                    </div>
                 
 
                 <!-- Address Field -->
@@ -195,5 +211,27 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.getElementById('parent_id').addEventListener('input', function () {
+    const parentId = this.value;
+
+    if (parentId) {
+        fetch(`/get-referred-user/${parentId}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                document.getElementById('referred_by').value = data.name || 'No member found';
+            })
+            .catch(error => {
+                console.error('Error fetching referred user:', error);
+                document.getElementById('referred_by').value = 'Error retrieving data';
+            });
+    } else {
+        document.getElementById('referred_by').value = '';
+    }
+});
+
+</script>
 
 @endsection

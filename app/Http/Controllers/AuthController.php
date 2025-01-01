@@ -25,6 +25,7 @@ class AuthController extends Controller
             // 'gender' => 'required|string',
             // 'dob' => 'required|date',
             'email' => 'required|email|unique:users,email',
+            'parent_id' => 'nullable|string|exists:users,parent_id',
             // 'address' => 'required|string',
             'mobile' => 'required|unique:users,mobile|digits:10|regex:/^[6789][0-9]{9}$/',
             'password' => 'required|min:8|confirmed',
@@ -38,15 +39,13 @@ class AuthController extends Controller
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
             'mobile' => $request->mobile,
-            // 'gender' => $request->gender,
-            // 'dob' => $request->dob,
+            'parent_id' => $request->parent_id,
             'email' => $request->email,
-            // 'address' => $request->address,
             'password' => Hash::make($request->password),
         ]);
 
         if ($data) {
-            Mail::raw("Hello $request->first_name, your Deal Account has been Created Successfully.", function ($message) use ($request) {
+            Mail::raw("Hello $request->first_name, your Deal Account has been Registered Successfully.", function ($message) use ($request) {
                 $message->to($request->email)
                     ->subject('New Deal Account Created');
             });

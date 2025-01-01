@@ -9,6 +9,7 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Artisan;
 use App\Models\Setting;
+use App\Models\User;
 
 Route::get('/', [UserController::class, 'home'])->name('homepage');
 Route::get('/contact', [UserController::class, 'contact'])->name('contact');
@@ -32,6 +33,11 @@ Route::get('/register', function () {
     $data['logo'] = Setting::first();
 
     return view('auth.register', $data);
+});
+
+Route::get('/get-referred-user/{id}', function ($id) {
+    $user = User::find($id);
+    return response()->json(['name' => $user ? $user->first_name : null]);
 });
 
 Route::post('/send-otp', [AuthController::class, 'sendOTP'])->middleware('throttle:5,1');

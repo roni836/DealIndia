@@ -278,6 +278,12 @@
                     </div>
                 </div>
 
+                <div class="mt-4">
+                    <input type="checkbox" id="generate_new_code" name="generate_new_code" value="yes"
+                        class="mr-2 rounded border-gray-300 focus:ring-blue-500">
+                    <label for="generate_new_code" class="text-sm text-gray-700">Do you want to generate New VR code and NOC number?</label>
+                </div>
+
                 <!-- Documents -->
                 <h2 class="text-xl font-semibold mt-6 mb-4">Documents</h2>
                 <h4 class="text-md  mt-6 ">Aadhar Card (Image/PDF)</h4>
@@ -339,7 +345,7 @@
 
                     <h2 class="text-xl font-semibold mt-6 mb-3">Additional Documents</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="doc-container">
-                        <input type="text" name="inputs[0][name]" placeholder="Label 1 Name"
+                        <input type="text" name="inputs[0][name]" placeholder="Document Name"
                             class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         @error('inputs[0][name]')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
