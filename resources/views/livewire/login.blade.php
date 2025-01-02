@@ -48,9 +48,9 @@
                     <button wire:click="toggleForm('otp')" class="px-6 py-2 bg-teal-900 text-white rounded-md">
                         Login with OTP
                     </button>
-                    <button wire:click="toggleForm('link')" class="px-6 py-2 bg-teal-900 text-white rounded-md">
+                    {{-- <button wire:click="toggleForm('link')" class="px-6 py-2 bg-teal-900 text-white rounded-md">
                         Login with Email Link
-                    </button>
+                    </button> --}}
                 </div>
                 @if ($loginMethod === 'otp')
                     <div id="otp-form" class="mt-4">
