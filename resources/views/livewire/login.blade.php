@@ -32,8 +32,8 @@
     <div class="w-full  bg-white flex flex-col md:flex-row overflow-hidden">
         <!-- Left Section: Image -->
         <div class="w-full md:w-6/12 hidden md:flex">
-                <img src="https://img.freepik.com/premium-photo/creative-team-discussing-about-work-office-small-bussiness-teamwork-planing-business-strategy-office-life_265022-80698.jpg?ga=GA1.1.1275289697.1728223870&semt=ais_hybrid"
-                    class="object-cover w-full h-[600px] filter opacity-80" alt="New Background Image">
+            <img src="https://img.freepik.com/premium-photo/creative-team-discussing-about-work-office-small-bussiness-teamwork-planing-business-strategy-office-life_265022-80698.jpg?ga=GA1.1.1275289697.1728223870&semt=ais_hybrid"
+                class="object-cover w-full h-[600px] filter opacity-80" alt="New Background Image">
         </div>
 
         <!-- Right Section: Login Form -->
@@ -58,27 +58,28 @@
                             <div class="mb-4">
                                 <label {{ $inputDisabled ? 'readonly' : '' }} for="email"
                                     class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                                <input wire:model="email" type="email"  autofocus
+                                <input wire:model="email" type="email" autofocus
                                     class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
-                                    @error('email')
-                                     <p class="mt-1 text-sm text-red-600">Email not found. You need to register for an account.</p>
-                                    @enderror
+                                @error('email')
+                                    <p class="mt-1 text-sm text-red-600">Email not found. You need to register for an
+                                        account.</p>
+                                @enderror
                             </div>
 
                             @if ($isToggleOtp == false)
-                            <div class="mb-4">
-                                <label for="password"
-                                    class="block text-sm font-medium text-gray-700 mb-2">Password</label>
-                                <input wire:model="password" type="password" 
-                                    class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
+                                <div class="mb-4">
+                                    <label for="password"
+                                        class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                                    <input wire:model="password" type="password"
+                                        class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
                                     @error('password')
-                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                                @enderror
-                            </div>
-                            <button type="submit"
-                                class="w-full bg-teal-900 hover:bg-teal-700 text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500">
-                                Login
-                            </button>
+                                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                                <button type="submit"
+                                    class="w-full bg-teal-900 hover:bg-teal-700 text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500">
+                                    Login
+                                </button>
                             @endif
                         </form>
 
@@ -97,7 +98,7 @@
                                 <div class="mb-4">
                                     <label for="otp" class="block text-sm font-medium text-gray-700 mb-2">Enter
                                         OTP</label>
-                                    <input wire:model="otp" type="text" 
+                                    <input wire:model="otp" type="text"
                                         class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
                                 </div>
                                 <button type="submit"
@@ -118,7 +119,7 @@
                             <div class="mb-4">
                                 <label for="email-link"
                                     class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                                <input {{ $inputDisabled ? 'readonly' : '' }} wire:model="email" type="email" 
+                                <input {{ $inputDisabled ? 'readonly' : '' }} wire:model="email" type="email"
                                     autofocus
                                     class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
                             </div>
@@ -136,6 +137,8 @@
                     <hr class="flex-grow border-t border-teal-900">
                     <a href="{{ url('register') }}" class="text-sm text-teal-900 hover:underline mx-4">Don't have an
                         account? Register now</a>
+                    <a href="{{ url('forgot-password') }}" class="text-sm text-teal-900 hover:underline mx-4">
+                        Forgot Password</a>
                     <hr class="flex-grow border-t border-teal-900">
                 </div>
             </div>
@@ -151,12 +154,12 @@
             <div class="mb-4">
                 <label {{ $inputDisabled ? 'readonly' : '' }} for="email"
                     class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                <input wire:model="email" type="email"  autofocus
+                <input wire:model="email" type="email" autofocus
                     class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
             </div>
             <div class="mb-4">
                 <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
-                <input wire:model="password" type="password" 
+                <input wire:model="password" type="password"
                     class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
             </div>
             <button type="submit"
@@ -179,7 +182,7 @@
             <form wire:submit.prevent="verifyOtp" class="mt-4">
                 <div class="mb-4">
                     <label for="otp" class="block text-sm font-medium text-gray-700 mb-2">Enter OTP</label>
-                    <input wire:model="otp" type="text" 
+                    <input wire:model="otp" type="text"
                         class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
                 </div>
                 <button type="submit"
@@ -199,7 +202,7 @@
         <form wire:submit.prevent="sendLoginLink">
             <div class="mb-4">
                 <label for="email-link" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
-                <input {{ $inputDisabled ? 'readonly' : '' }} wire:model="email" type="email"  autofocus
+                <input {{ $inputDisabled ? 'readonly' : '' }} wire:model="email" type="email" autofocus
                     class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
             </div>
             <button type="submit"

@@ -44,11 +44,19 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        // if ($data) {
+        //     Mail::raw("Hello $request->first_name, your Deal Account has been Registered Successfully.", function ($message) use ($request) {
+        //         $message->to($request->email)
+        //             ->subject('New Deal Account Created');
+        //     });
+        //     return redirect()->route('login')->with('success', 'Account created successfully. Please log in.');
+        // }
         if ($data) {
-            Mail::raw("Hello $request->first_name, your Deal Account has been Registered Successfully.", function ($message) use ($request) {
+            Mail::send('user.emails.deal_account', ['first_name' => $request->first_name], function ($message) use ($request) {
                 $message->to($request->email)
-                    ->subject('New Deal Account Created');
+                    ->subject('Welcome to Deal!');
             });
+
             return redirect()->route('login')->with('success', 'Account created successfully. Please log in.');
         }
     }
@@ -171,7 +179,7 @@ class AuthController extends Controller
         Auth::logout(); // Logs out the current user
         request()->session()->invalidate(); // Invalidates the session
         request()->session()->regenerateToken(); // Regenerates the CSRF token
-        
+
         return redirect('/login')->with('success', 'You have been logged out.');
     }
 
@@ -210,7 +218,7 @@ class AuthController extends Controller
     }
     public function showForgotPasswordForm()
     {
-        return view('auth.forgot-password'); 
+        return view('auth.forgot-password');
     }
 
     public function sendPasswordResetLink(Request $request)
@@ -224,7 +232,7 @@ class AuthController extends Controller
         }
 
         $user = User::where('email', $request->email)->first();
-        
+
         $token = Str::random(64);
 
         DB::table('password_reset_tokens')->updateOrInsert(
@@ -260,6 +268,7 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(), [
             'email' => 'required|email|exists:users,email',
             'token' => 'required',
+            'vr_code' => 'required',
             'password' => 'required|min:8|confirmed',
         ]);
 
@@ -281,5 +290,4 @@ class AuthController extends Controller
 
         return redirect()->route('login')->with('success', 'Your password has been reset successfully.');
     }
- 
 }
