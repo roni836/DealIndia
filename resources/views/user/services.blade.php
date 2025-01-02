@@ -11,7 +11,7 @@
         <div class="absolute inset-0 bg-black opacity-50"></div>
         <div class="relative z-10 text-center max-w-4xl mx-auto">
             <h1 class="text-5xl md:text-6xl font-bold mb-6">
-                Empowering Investments with DealIndia
+                Empowering Investments with DealiContact Us Directlyndia
             </h1>
             <p class="text-xl md:text-2xl mb-8">
                 Discover our innovative solutions for managing financial

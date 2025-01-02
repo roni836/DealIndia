@@ -5,7 +5,7 @@
   <!-- Hero Section -->
   <section class="container mx-auto px-6 py-16 flex flex-col md:flex-row items-center">
         <div class="md:w-1/2 lg:pr-24 md:pr-16">
-            <h1 class="text-4xl md:text-6xl font-bold text-gray-900 leading-tight mb-6">Empower Your Investments with DealIndia.</h1>
+            <h1 class="text-4xl md:text-6xl font-bold text-gray-900 leading-tight mb-6">Empower Your Investments with Dealindia.</h1>
             <p class="text-lg text-gray-600 mb-8">Streamline investment tracking, connect with top investors, and grow your financial opportunities—all in one place.</p>
             <div class="flex gap-4">
                 <button class="bg-teal-600 text-white px-8 py-3 rounded-lg hover:bg-teal-700 transition duration-300">Explore Services</button>

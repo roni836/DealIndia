@@ -62,7 +62,7 @@
                 </a>
                
                 <a href="{{url('admin/settings')}}" class="block py-2 px-4 hover:bg-indigo-700">
-                    <i class="bi bi-gear-wide-connected px-2"></i>  Setting
+                    <i class="bi bi-gear-wide-connected px-2"></i> Website Setting
                 </a>
             </nav>
         </aside>
