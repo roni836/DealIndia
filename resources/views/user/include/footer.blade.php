@@ -38,16 +38,16 @@
                 <ul class="space-y-2">
                     <li class="flex items-center space-x-2">
                         <i class="fas fa-envelope"></i>
-                        <span>support@DealIndia.com</span>
+                        <span>support@Dealindia.org</span>
                     </li>
-                    <li class="flex items-center space-x-2">
+                    {{-- <li class="flex items-center space-x-2">
                         <i class="fas fa-phone"></i>
                         <span>+1-800-FINANCE</span>
                     </li>
                     <li class="flex items-center space-x-2">
                         <i class="fas fa-map-marker-alt"></i>
                         <span>123 Finance Street, Business City, 10101</span>
-                    </li>
+                    </li> --}}
                 </ul>
             </div>
 
@@ -76,7 +76,7 @@
 
         <div class="mt-12 pt-8 border-t border-gray-800">
             <div class="text-center">
-                <p class="text-sm">&copy; 2024 DealIndia. All Rights Reserved.</p>
+                <p class="text-sm">&copy; 2024 Dealindia. All Rights Reserved.</p>
                 <p class="text-xs mt-2 text-gray-200">Financial information provided is for educational purposes only.
                     Always consult with a qualified financial advisor before making investment decisions.</p>
             </div>

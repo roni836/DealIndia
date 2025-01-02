@@ -25,10 +25,10 @@
                         <p><strong>Name:</strong> {{ $user->first_name }} {{ $user->last_name }}</p>
                     </div>
                     
-                    <div class="inline-grid justify-center items-center">
+                    {{-- <div class="inline-grid justify-center items-center">
                         <img src="{{ asset('role.png') }}" alt="" class="">
                         <p><strong>Role:</strong> {{ $user->role }}</p>
-                    </div>
+                    </div> --}}
                     <div class="inline-grid justify-center items-center">
                         <img src="{{ asset('email.png') }}" alt="" class="">
                         <p class=""><strong>Email:</strong> {{ $user->email }}</p>
@@ -133,8 +133,7 @@
                 <p><strong>Aadhar Card:</strong></p>
                 <img src="{{ asset('storage/' . $user->investorDetails->aadhar_card) }}" alt="Aadhar Card" class=" h-48 p-2 rounded-lg object-contain  ">
                 <p class="px-2"><strong>Aadhar Card Number:</strong> {{ $user->investorDetails->aadhar_card_number }}</p>
-
-                
+ 
             </div>
             <div class="bg-gray-100 rounded-lg p-2 space-y-2">
                 <p><strong>Pan Card:</strong></p>
@@ -216,9 +215,9 @@
 
 <!-- Actions Section -->
 <div class="mt-6 p-4 flex flex-col md:flex-row justify-end space-y-2 md:space-y-0 md:space-x-2 m-2">
-    <a href="#" class="bg-blue-500 text-white w-full md:w-auto px-4 py-2 rounded hover:bg-blue-600 text-sm md:text-base text-center">
+    {{-- <a href="#" class="bg-blue-500 text-white w-full md:w-auto px-4 py-2 rounded hover:bg-blue-600 text-sm md:text-base text-center">
         Update User
-    </a>
+    </a> --}}
     <a href="{{ url('/admin/application') }}"
         class="bg-gray-500 text-white w-full md:w-auto px-4 py-2 rounded hover:bg-gray-600 text-sm md:text-base text-center">
         Back to List

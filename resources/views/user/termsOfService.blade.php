@@ -5,9 +5,9 @@
 <div class="bg-gradient-to-r from-teal-600 to-teal-800 text-white py-16">
     <div class="container mx-auto px-4 text-center">
       <i class="fas fa-balance-scale w-16 h-16 mx-auto mb-6"></i>
-      <h1 class="text-4xl font-bold mb-4">DealIndia Terms of Service</h1>
+      <h1 class="text-4xl font-bold mb-4">Dealindia Terms of Service</h1>
       <p class="text-xl max-w-2xl mx-auto">
-        By using DealIndia, you agree to the following terms and conditions.
+        By using Dealindia, you agree to the following terms and conditions.
         Please read them carefully.
       </p>
     </div>
@@ -142,9 +142,9 @@
             <i class="fas fa-check mr-2"></i> Acceptance of Terms
           </h2>
           <p>
-            By using the DealIndia platform, you agree to these terms and
+            By using the Dealindia platform, you agree to these terms and
             conditions. These terms constitute a legal agreement between you
-            and DealIndia.
+            and Dealindia.
           </p>
         </section>
 
@@ -152,7 +152,7 @@
           <h2 class="text-2xl font-bold mb-4 flex items-center">
             <i class="fas fa-user-check mr-2"></i> Eligibility
           </h2>
-          <p>To use DealIndia, you must meet the following criteria:</p>
+          <p>To use Dealindia, you must meet the following criteria:</p>
           <ul class="list-disc pl-6 space-y-2">
             <li>
               Be at least 18 years old or the age of majority in your
@@ -179,9 +179,9 @@
         <section id="services" class="bg-white rounded-lg shadow-lg p-8">
           <h2 class="text-2xl font-bold mb-4 flex items-center">
             <i class="fas fa-briefcase mr-2"></i> Services Provided by
-            DealIndia
+            Dealindia
           </h2>
-          <p>DealIndia offers the following services:</p>
+          <p>Dealindia offers the following services:</p>
           <ul class="list-disc pl-6 space-y-2">
             <li>Managing investments.</li>
             <li>
@@ -194,7 +194,7 @@
           <h2 class="text-2xl font-bold mb-4 flex items-center">
             <i class="fas fa-money-bill-wave mr-2"></i> Fees and Payments
           </h2>
-          <p>Using DealIndia may incur the following fees:</p>
+          <p>Using Dealindia may incur the following fees:</p>
           <ul class="list-disc pl-6 space-y-2">
             <li>Subscription fees for premium services.</li>
             <li>Transaction fees for certain financial activities.</li>
@@ -212,7 +212,7 @@
           </h2>
           <p>
             Maintaining the security of your account is crucial. Please notify
-            DealIndia immediately if you suspect any unauthorized access to
+            Dealindia immediately if you suspect any unauthorized access to
             your account.
           </p>
         </section>
@@ -221,7 +221,7 @@
           <h2 class="text-2xl font-bold mb-4 flex items-center">
             <i class="fas fa-ban mr-2"></i> Prohibited Activities
           </h2>
-          <p>The following activities are not allowed on DealIndia:</p>
+          <p>The following activities are not allowed on Dealindia:</p>
           <ul class="list-disc pl-6 space-y-2">
             <li>Misuse of the platform.</li>
             <li>Sharing false or misleading information.</li>
@@ -234,7 +234,7 @@
             <i class="fas fa-user-slash mr-2"></i> Termination of Service
           </h2>
           <p>
-            DealIndia reserves the right to terminate your account under the
+            Dealindia reserves the right to terminate your account under the
             following circumstances:
           </p>
           <ul class="list-disc pl-6 space-y-2">
@@ -253,7 +253,7 @@
             Limitation of Liability
           </h2>
           <p>
-            DealIndia is not responsible for losses resulting from user
+            Dealindia is not responsible for losses resulting from user
             actions or external factors beyond our control.
           </p>
         </section>
@@ -264,7 +264,7 @@
           </h2>
           <p>
             These terms are governed by the laws of the jurisdiction in which
-            DealIndia operates.
+            Dealindia operates.
           </p>
         </section>
 

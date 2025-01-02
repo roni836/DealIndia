@@ -2,118 +2,117 @@
 @section('title', '')
 @section('content')
 
-    <section class="bg-teal-900 text-white py-20">
-        <div class="container mx-auto px-4 text-center">
-            @if (!empty($logo?->meta_logo))
-                <img src="{{ asset('storage/images/setting/' . $logo->meta_logo) }}" alt="Company Logo"
-                    class="w-auto h-24 mx-auto mb-6 object-cover">
-            @else
-                <img src="{{ asset('logo.png') }}" alt="Default Logo" class="w-auto h-24 mx-auto mb-6 object-cover">
-            @endif
-            <h1 class="text-4xl font-bold mb-4">We'd Love to Hear from You!</h1>
-            <p class="text-xl max-w-2xl mx-auto">
-                Whether you have questions about our platform, need support, or want
-                to provide feedback, we're here to help.
-            </p>
+<section class="bg-teal-900 text-white py-20">
+  <div class="container mx-auto px-4 text-center">
+    @if (!empty($logo?->meta_logo))
+    <img src="{{ asset('storage/images/setting/' . $logo->meta_logo) }}" alt="Company Logo"
+      class="w-auto h-24 mx-auto mb-6 object-cover">
+  @else
+  <img src="{{ asset('logo.png') }}" alt="Default Logo" class="w-auto h-24 mx-auto mb-6 object-cover">
+@endif
+    <h1 class="text-4xl font-bold mb-4">We'd Love to Hear from You!</h1>
+    <p class="text-xl max-w-2xl mx-auto">
+      Whether you have questions about our platform, need support, or want
+      to provide feedback, we're here to help.
+    </p>
+  </div>
+</section>
+
+<!-- Main Content -->
+<div class="container mx-auto px-4 py-16">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+    <!-- Contact Form -->
+    <div class="bg-white p-8 rounded-lg shadow-lg">
+      <h2 class="text-3xl font-bold mb-6 text-gray-800">Get in Touch</h2>
+      @if (session('success'))
+        <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert">
+          <p class="font-bold">Success</p>
+          <p>{{ session('success') }}</p>
         </div>
-    </section>
+      @endif
+      <form action="{{ route('contacts.store') }}" class="space-y-6" method="POST">
+        @csrf
+        <div>
+          <label class="block text-gray-700 mb-2">Name *</label>
+          <input type="text" required name="name"
+            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500"
+            placeholder="Your Name" />
+            @error('name')
+              <span class="text-red-600 text-sm">{{ $message }}</span>
+            @enderror
+        </div>
+        <div>
+          <label class="block text-gray-700 mb-2">Email *</label>
+          <input type="email" required name="email"
+            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500"
+            placeholder="Your Email" />
+            @error('email')
+              <span class="text-red-600 text-sm">{{ $message }}</span>
+            @enderror
+        </div>
+        <div>
+          <label class="block text-gray-700 mb-2">Phone Number</label>
+          <input type="tel" name="phone_number" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500"
+            placeholder="Your Phone Number" />
+            @error('phone_number')
+              <span class="text-red-600 text-sm">{{ $message }}</span>
+            @enderror
+        </div>
+        <div>
+          <label class="block text-gray-700 mb-2">Subject *</label>
+          <select required name="subject" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500">
+            <option value="">Select Subject</option>
+            <option value="inquire">Inquiry</option>
+            <option value="support">Support</option>
+            <option value="feedback">Feedback</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-gray-700 mb-2">Message *</label>
+          <textarea required maxlength="500" rows="4" name="message"
+            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500"
+            placeholder="Your Message"></textarea>
+            @error('message')
+            <span class="text-red-600 text-sm">{{ $message }}</span>
+          @enderror
+        </div>
+        <div class="flex space-x-4">
+          <button type="submit"
+            class="bg-teal-600 text-white px-6 py-3 rounded-lg hover:bg-teal-700 transition duration-300">
+            Send Message
+          </button>
+          <button type="reset"
+            class="bg-gray-200 text-gray-800 px-6 py-3 rounded-lg hover:bg-gray-300 transition duration-300">
+            Clear Form
+          </button>
+        </div>
+      </form>
+    </div>
 
-    <!-- Main Content -->
-    <div class="container mx-auto px-4 py-16">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-            <!-- Contact Form -->
-            <div class="bg-white p-8 rounded-lg shadow-lg">
-                <h2 class="text-3xl font-bold mb-6 text-gray-800">Get in Touch</h2>
-                @if (session('success'))
-                    <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert">
-                        <p class="font-bold">Success</p>
-                        <p>{{ session('success') }}</p>
-                    </div>
-                @endif
-                <form action="{{ route('contacts.store') }}" class="space-y-6" method="POST">
-                    @csrf
-                    <div>
-                        <label class="block text-gray-700 mb-2">Name *</label>
-                        <input type="text" required name="name"
-                            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500"
-                            placeholder="Your Name" />
-                        @error('name')
-                            <span class="text-red-600 text-sm">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div>
-                        <label class="block text-gray-700 mb-2">Email *</label>
-                        <input type="email" required name="email"
-                            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500"
-                            placeholder="Your Email" />
-                        @error('email')
-                            <span class="text-red-600 text-sm">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div>
-                        <label class="block text-gray-700 mb-2">Phone Number</label>
-                        <input type="tel" name="phone_number"
-                            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500"
-                            placeholder="Your Phone Number" />
-                        @error('phone_number')
-                            <span class="text-red-600 text-sm">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div>
-                        <label class="block text-gray-700 mb-2">Subject *</label>
-                        <select required name="subject"
-                            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500">
-                            <option value="">Select Subject</option>
-                            <option value="inquire">Inquiry</option>
-                            <option value="support">Support</option>
-                            <option value="feedback">Feedback</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-gray-700 mb-2">Message *</label>
-                        <textarea required maxlength="500" rows="4" name="message"
-                            class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500" placeholder="Your Message"></textarea>
-                        @error('message')
-                            <span class="text-red-600 text-sm">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div class="flex space-x-4">
-                        <button type="submit"
-                            class="bg-teal-600 text-white px-6 py-3 rounded-lg hover:bg-teal-700 transition duration-300">
-                            Send Message
-                        </button>
-                        <button type="reset"
-                            class="bg-gray-200 text-gray-800 px-6 py-3 rounded-lg hover:bg-gray-300 transition duration-300">
-                            Clear Form
-                        </button>
-                    </div>
-                </form>
-            </div>
-
-            <!-- Contact Information -->
-            <div class="space-y-8">
-                <div class="bg-white p-8 rounded-lg shadow-lg">
-                    <h2 class="text-3xl font-bold mb-6 text-gray-800">
-                        Contact Us Directly
-                    </h2>
-                    <div class="space-y-4">
-                        <div class="flex items-center space-x-4">
-                            <i class="fas fa-envelope text-teal-600 text-xl"></i>
-                            <p class="text-gray-600">support@DealIndia.com</p>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <i class="fas fa-phone text-teal-600 text-xl"></i>
-                            <p class="text-gray-600">+1-800-FINANCE</p>
-                        </div>
-                        <div class="flex items-center space-x-4">
-                            <i class="fas fa-map-marker-alt text-teal-600 text-xl"></i>
-                            <p class="text-gray-600">
-                                123 Finance Street, Business City, 10101
-                            </p>
-                        </div>
-                    </div>
-                </div>
+    <!-- Contact Information -->
+    <div class="space-y-8">
+      <div class="bg-white p-8 rounded-lg shadow-lg">
+        <h2 class="text-3xl font-bold mb-6 text-gray-800">
+          Contact Us Directly
+        </h2>
+        <div class="space-y-4">
+          <div class="flex items-center space-x-4">
+            <i class="fas fa-envelope text-teal-600 text-xl"></i>
+            <p class="text-gray-600">support@Dealindia.org</p>
+          </div>
+          {{-- <div class="flex items-center space-x-4">
+            <i class="fas fa-phone text-teal-600 text-xl"></i>
+            <p class="text-gray-600">+1-800-FINANCE</p>
+          </div>
+          <div class="flex items-center space-x-4">
+            <i class="fas fa-map-marker-alt text-teal-600 text-xl"></i>
+            <p class="text-gray-600">
+              123 Finance Street, Business City, 10101
+            </p>
+          </div> --}}
+        </div>
+      </div>
 
                 <!-- FAQ Section -->
                 <div class="bg-white p-8 rounded-lg shadow-lg">
