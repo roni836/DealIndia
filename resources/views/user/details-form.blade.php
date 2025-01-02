@@ -62,7 +62,10 @@
 
                     <!-- Date of Birth -->
                     <div>
-                        <input type="date" name="date_of_birth"
+                        <input 
+                            type="date" 
+                            name="date_of_birth"
+                            id="date_of_birth"
                             class="w-full border @error('date_of_birth') border-red-500 @else border-gray-300 @enderror
                                    p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         @error('date_of_birth')
@@ -542,4 +545,21 @@
     </style>
 
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const dateInput = document.getElementById('date_of_birth');
+        
+        // Get today's date
+        const today = new Date();
+        
+        // Calculate the maximum allowed date for 18+ (18 years before today)
+        const maxDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+        
+        // Format the date as YYYY-MM-DD for the input field
+        const formattedMaxDate = maxDate.toISOString().split('T')[0];
+        
+        // Set the max attribute of the date input
+        dateInput.setAttribute('max', formattedMaxDate);
+    });
+</script>
 @endsection
