@@ -62,7 +62,11 @@
 
                     <!-- Date of Birth -->
                     <div>
-                        <input type="date" name="date_of_birth"
+                        <input 
+                            type="date" 
+                            name="date_of_birth"
+                            id="date_of_birth"
+                            value="{{ old('date_of_birth') }}"
                             class="w-full border @error('date_of_birth') border-red-500 @else border-gray-300 @enderror
                                    p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         @error('date_of_birth')
@@ -72,7 +76,7 @@
 
                     <!-- Gender -->
                     <div>
-                        <select name="gender"
+                        <select name="gender" value="{{old('gender')}}"
                             class="w-full border @error('gender') border-red-500 @else border-gray-300 @enderror
                                    p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                             <option value="">Select Gender</option>
@@ -89,6 +93,7 @@
 
                     <div>
                         <select name="religion"
+                        value='religion'
                             class="w-full border @error('religion') border-red-500 @else border-gray-300 @enderror
                    p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                             <option value="">Select Religion</option>
@@ -126,74 +131,8 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Bank Name -->
 
-
-                    <!-- Account Number -->
                     <div>
-                        <input type="number" name="account_number" placeholder="Account Number"
-                            class="w-full border @error('account_number') border-red-500 @else border-gray-300 @enderror
-                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                        @error('account_number')
-                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <!-- IFSC Code -->
-                    <div>
-                        <label for="ifsc_code" class="sr-only">IFSC Code</label>
-                        <input type="text" id="ifsc_code" name="ifsc_code" placeholder="IFSC Code"
-                            class="w-full border p-3 rounded focus:ring-2 @error('ifsc_code') border-red-500 @enderror"
-                            autocomplete="off">
-                        @error('ifsc_code')
-                            <p id="ifsc_code_error" class="mt-2 text-sm text-red-600" aria-live="polite">{{ $message }}
-                            </p>
-                        @enderror
-                    </div>
-
-                    <div>
-                        <label for="micr_number" class="sr-only">MICR Number</label>
-                        <input type="text" id="micr_number" name="micr_number" placeholder="MICR Number"
-                            class="w-full border p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none @error('micr_number') border-red-500 @enderror">
-                        @error('micr_number')
-                            <p id="micr_number_error" class="mt-2 text-sm text-red-600" aria-live="polite">{{ $message }}
-                            </p>
-                        @enderror
-                    </div>
-
-                    <div>
-                        <label for="bank_name" class="sr-only">Bank Name</label>
-                        <input type="text" id="bank_name" name="bank_name" placeholder="Bank Name"
-                            class="w-full border p-3 rounded focus:ring-2 @error('bank_name') border-red-500 @enderror">
-                        @error('bank_name')
-                            <p id="bank_name_error" class="mt-2 text-sm text-red-600" aria-live="polite">{{ $message }}
-                            </p>
-                        @enderror
-                    </div>
-
-                    <div>
-                        <label for="branch_name" class="sr-only">Branch Name</label>
-                        <input type="text" id="branch_name" name="branch_name" placeholder="Branch Name"
-                            class="w-full border p-3 rounded focus:ring-2 @error('branch_name') border-red-500 @enderror">
-                        @error('branch_name')
-                            <p id="branch_name_error" class="mt-2 text-sm text-red-600" aria-live="polite">{{ $message }}
-                            </p>
-                        @enderror
-                    </div>
-
-
-
-                    <!-- Account Holder Name -->
-                    <div>
-                        <input type="text" name="account_holder_name" placeholder="Account Holder Name"
-                            class="w-full border @error('account_holder_name') border-red-500 @else border-gray-300 @enderror
-                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                        @error('account_holder_name')
-                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <!-- Account Type -->
-                    <div>
-                        <select name="account_type"
+                        <select name="account_type" value="{{ old('account_type') }}"
                             class="w-full border @error('account_type') border-red-500 @else border-gray-300 @enderror
                    p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                             <option value="">Select Account Type</option>
@@ -204,6 +143,71 @@
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
+
+
+                    <!-- Account Number -->
+                    <div>
+                        <input type="number" name="account_number" value="{{ old('account_number') }}" placeholder="Account Number"
+                            class="w-full border @error('account_number') border-red-500 @else border-gray-300 @enderror
+                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        @error('account_number')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- IFSC Code -->
+                    <div>
+                        <label for="ifsc_code" class="sr-only">IFSC Code</label>
+                        <input type="text" id="ifsc_code" name="ifsc_code" value="{{ old('ifsc_code') }}" placeholder="IFSC Code"
+                            class="w-full border p-3 rounded focus:ring-2 @error('ifsc_code') border-red-500 @else border-gray-300 @enderror"
+                            autocomplete="off">
+                        @error('ifsc_code')
+                            <p id="ifsc_code_error" class="mt-2 text-sm text-red-600" aria-live="polite">{{ $message }}
+                            </p>
+                        @enderror
+                    </div>
+
+                    <div>
+                        <label for="micr_number" class="sr-only">MICR Number</label>
+                        <input type="text" id="micr_number" name="micr_number" value="{{ old('micr_number') }}" placeholder="MICR Number"
+                            class="w-full border p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none @error('micr_number') border-red-500 @else border-gray-300 @enderror">
+                        @error('micr_number')
+                            <p id="micr_number_error" class="mt-2 text-sm text-red-600" aria-live="polite">{{ $message }}
+                            </p>
+                        @enderror
+                    </div>
+
+                    <div>
+                        <label for="bank_name" class="sr-only">Bank Name</label>
+                        <input type="text" id="bank_name" name="bank_name" value="{{ old('bank_name') }}" placeholder="Bank Name"
+                            class="w-full border p-3 rounded focus:ring-2 @error('bank_name') border-red-500 @else border-gray-300 @enderror">
+                        @error('bank_name')
+                            <p id="bank_name_error" class="mt-2 text-sm text-red-600" aria-live="polite">{{ $message }}
+                            </p>
+                        @enderror
+                    </div>
+
+                    <div>
+                        <label for="branch_name" class="sr-only">Branch Name</label>
+                        <input type="text" id="branch_name" name="branch_name" value="{{ old('branch_name') }}" placeholder="Branch Name"
+                            class="w-full border p-3 rounded focus:ring-2 @error('branch_name') border-red-500 @else border-gray-300 @enderror">
+                        @error('branch_name')
+                            <p id="branch_name_error" class="mt-2 text-sm text-red-600" aria-live="polite">{{ $message }}
+                            </p>
+                        @enderror
+                    </div>
+
+                    <!-- Account Holder Name -->
+                    <div>
+                        <input type="text" name="account_holder_name" value="{{ old('account_holder_name') }}" placeholder="Account Holder's Name"
+                            class="w-full border @error('account_holder_name') border-red-500 @else border-gray-300 @enderror
+                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        @error('account_holder_name')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                   
                 </div>
 
 
@@ -212,7 +216,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Street Address -->
                     <div>
-                        <input type="text" name="street_address" placeholder="Street Address"
+                        <input type="text" name="street_address" value="{{ old('street_address') }}" placeholder="Street Address"
                             class="w-full border @error('street_address') border-red-500 @else border-gray-300 @enderror
                    p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         @error('street_address')
@@ -220,7 +224,7 @@
                         @enderror
                     </div>
                     <div>
-                        <input type="text" name="landmark" placeholder="Landmark"
+                        <input type="text" name="landmark" value="{{ old('landmark') }}" placeholder="Landmark"
                             class="w-full border @error('landmark') border-red-500 @else border-gray-300 @enderror
                    p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         @error('landmark')
@@ -228,7 +232,7 @@
                         @enderror
                     </div>
                     <div>
-                        <input type="text" id="postal_code" name="postal_code" placeholder="Postal Code"
+                        <input type="number" id="postal_code" value="{{ old('postal_code') }}" name="postal_code" placeholder="Postal Code"
                             pattern="\d{6}"
                             class="w-full border p-3 rounded focus:ring-2 @error('postal_code') border-red-500 @else border-gray-300 @enderror">
                         <p id="postal_code_error" class="mt-2 border-gray-300 text-sm text-red-600"
@@ -238,7 +242,6 @@
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
-
 
                     <!-- Loader -->
                     <div id="loader" class="hidden mt-2">
@@ -252,7 +255,7 @@
                     <!-- Loader -->
                     <!-- City -->
                     <div>
-                        <input type="text" id="city" name="city" placeholder="City"
+                        <input type="text" id="city" name="city" value="{{ old('city') }}" placeholder="City"
                             class="w-full border p-3 rounded focus:ring-2 @error('city') border-red-500 @else border-gray-300 @enderror"
                             readonly>
                         @error('city')
@@ -262,7 +265,7 @@
 
                     <!-- State -->
                     <div>
-                        <input type="text" id="state" name="state" placeholder="State"
+                        <input type="text" id="state" name="state" value="{{ old('state') }}" placeholder="State"
                             class="w-full border p-3 rounded focus:ring-2 @error('state') border-red-500 @else border-gray-300 @enderror"
                             readonly>
                         @error('state')
@@ -295,7 +298,7 @@
                     <div>
                         {{-- <label for="aadhar_card" class="block mb-2 font-medium">Aadhar Card (Image/PDF)</label> --}}
                         <input type="file" id="aadhar_card" name="aadhar_card" accept=".jpeg,.png,.pdf"
-                            class="w-full border @error('aadhar_card') border-red-500 @else border-gray-300 @enderror
+                            class="w-full @error('aadhar_card') border-red-500 @else border-gray-300 @enderror
                         p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         @error('aadhar_card')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -304,7 +307,7 @@
 
                     <!-- Aadhar Card Number -->
                     <div class="">
-                        <input type="text" name="aadhar_card_number" placeholder="Aadhar Card Number"
+                        <input type="text" name="aadhar_card_number" value="{{ old('aadhar_card_number') }}" placeholder="Aadhar Card Number"
                             class="w-full border @error('aadhar_card_number') border-red-500 @else border-gray-300 @enderror
                         p-5  rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         @error('aadhar_card_number')
@@ -319,7 +322,7 @@
                     <div>
                         {{-- <label for="pan_card" class="block mb-2 font-medium">PAN Card (Image/PDF)</label> --}}
                         <input type="file" id="pan_card" name="pan_card" accept=".jpeg,.png,.pdf"
-                            class="w-full border @error('pan_card') border-red-500 @else border-gray-300 @enderror
+                            class="w-full  @error('pan_card') border-red-500 @else border-gray-300 @enderror
                    p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         @error('pan_card')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -328,7 +331,7 @@
 
                     <!-- PAN Card Number -->
                     <div class="">
-                        <input type="text" name="pan_card_number" placeholder="PAN Card Number"
+                        <input type="text" name="pan_card_number" value="{{ old('pab_card_number') }}" placeholder="PAN Card Number"
                             class="w-full border @error('pan_card_number') border-red-500 @else border-gray-300 @enderror
                    p-5 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         @error('pan_card_number')
@@ -345,13 +348,13 @@
 
                     <h2 class="text-xl font-semibold mt-6 mb-3">Additional Documents</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="doc-container">
-                        <input type="text" name="inputs[0][name]" placeholder="Document Name"
+                        <input type="text" name="inputs[0][name]" value="{{ old('inputs[0][name]') }}" placeholder="Document Name"
                             class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         @error('inputs[0][name]')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                         <input type="file" name="inputs[0][filename]" accept=".jpeg,.png,.pdf"
-                            class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                            class=" focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         @error('inputs[0][filename]')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -403,13 +406,13 @@
                     ++i;
                     $('#doc-container').append(
                         `
-                    <input type="text" name="inputs[${i}][name]" placeholder="Label 1 Name"
+                    <input type="text" name="inputs[${i}][name]" value="{{ old('inputs[${i}][name]') }}" placeholder="Document Name"
                         class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                            @error('inputs[${i}][name]')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                     @enderror
                     <input type="file" name="inputs[${i}][filename]" accept=".jpeg,.png,.pdf"
-                        class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        class=" focus:ring-2 focus:ring-blue-500 focus:outline-none">
                           @error('inputs[${i}][filename]')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                     @enderror
@@ -542,4 +545,21 @@
     </style>
 
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const dateInput = document.getElementById('date_of_birth');
+        
+        // Get today's date
+        const today = new Date();
+        
+        // Calculate the maximum allowed date for 18+ (18 years before today)
+        const maxDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+        
+        // Format the date as YYYY-MM-DD for the input field
+        const formattedMaxDate = maxDate.toISOString().split('T')[0];
+        
+        // Set the max attribute of the date input
+        dateInput.setAttribute('max', formattedMaxDate);
+    });
+</script>
 @endsection
