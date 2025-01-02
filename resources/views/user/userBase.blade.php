@@ -88,11 +88,18 @@
       @endguest
           @auth
         <div class="relative inline-block text-left">
-        <button id="user-menu-button" type="button"
-          class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-          Hi, {{ auth()->user()->first_name }}!
-        </button>
+          <div class="flex gap-2">
+            <button id="user-menu-button" type="button"
+              class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              Hi, {{ auth()->user()->first_name }}!
+            </button>
+            @php
+                $investerDetail = \App\Models\InvesterDetail::where('user_id', auth()->id())->first();
+               
+            @endphp
+            <img src="{{ $investerDetail?->photo ? asset('storage/' . $investerDetail->photo) : asset('user.png') }}" alt="User Profile" class="h-10 w-10 object-contain rounded-full">
 
+      </div>
         <div id="user-menu"
           class="absolute right-0 w-48 mt-2 rounded-md bg-white shadow-lg ring-black ring-opacity-5 focus:outline-none hidden"
           role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
