@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\InvestorController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\UserController;
@@ -12,12 +13,13 @@ use App\Models\Setting;
 use App\Models\User;
 
 Route::get('/', [UserController::class, 'home'])->name('homepage');
-Route::get('/contact', [UserController::class, 'contact'])->name('contact');
+// Route::get('/contact', [UserController::class, 'contact'])->name('contact');
 Route::get('/about', [UserController::class, 'about'])->name('about');
 Route::get('/services', [UserController::class, 'services'])->name('services');
 Route::get('/privacy-policy', [UserController::class, 'privacyPolicy'])->name('privacy-policy');
 Route::get('/Terms-of-Service', [UserController::class, 'termsOfService'])->name('Terms-of-Service');
 
+Route::resource('contacts', ContactController::class);
 
 Route::get('/login', function () {
     $data['logo'] = Setting::first();

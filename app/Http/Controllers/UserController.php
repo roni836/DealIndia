@@ -15,11 +15,11 @@ class UserController extends Controller
         return view('user.home', $data);
     }
 
-    public function contact()
-    {
-        $data['logo'] = Setting::first();
-        return view('user.contact', $data);
-    }
+    // public function contact()
+    // {
+    //     $data['logo'] = Setting::first();
+    //     return view('user.contact', $data);
+    // }
 
     public function about()
     {

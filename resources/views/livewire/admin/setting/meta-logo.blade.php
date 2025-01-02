@@ -56,7 +56,15 @@
                                     ></div>
                                     <p class="mt-2 text-sm text-gray-500">Loading...</p>
                                 </div>
-                                <h1 class="text-2xl font-medium text-gray-400">Logo Upload Here</h1>
+                                <h1 class="text-2xl font-medium text-gray-400">
+                                    {{-- Logo Upload Here --}}
+
+                                    <img 
+                                    src="{{ asset('logo.png') }}" 
+                                    alt="meta logo" 
+                                    class="w-1/2 h-auto rounded-md shadow"
+                                />
+                                </h1>
                             </div>
                         @endif
                     </p>

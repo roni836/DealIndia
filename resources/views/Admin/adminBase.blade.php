@@ -57,6 +57,9 @@
                 <a href="{{ url('/admin/application-approved') }}" class="block py-2 px-4 hover:bg-indigo-700">
                     <i class="bi bi-person-fill-check px-2"></i> Approved Applications
                 </a>
+                <a href="{{ route('contacts.index') }}" class="block py-2 px-4 hover:bg-indigo-700">
+                    <i class="bi bi-person-fill-check px-2"></i>Contacts
+                </a>
                
                 <a href="{{url('admin/settings')}}" class="block py-2 px-4 hover:bg-indigo-700">
                     <i class="bi bi-gear-wide-connected px-2"></i>  Setting
