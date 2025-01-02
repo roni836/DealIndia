@@ -58,25 +58,30 @@ class ApplicationController extends Controller
         $user->save();
 
         // Prepare email details
-        $emailBody = "
-            Hello {$user->name},
+        // $emailBody = "
+        //     Hello {$user->name},
 
-            Your Deal India Account has been created successfully! Here are the details:
+        //     Your Deal India Account has been created successfully! Here are the details:
 
-            VR Code: {$user->vr_code}
-            Range Code: {$user->range_code}
-            Company Code: {$user->company_code}
-            NOC Number: {$user->noc_number}
-            Referral Id : {$user->referral_id}
+        //     VR Code: {$user->vr_code}
+        //     Range Code: {$user->range_code}
+        //     Company Code: {$user->company_code}
+        //     NOC Number: {$user->noc_number}
+        //     Referral Id : {$user->referral_id}
 
-            Thank you for choosing our services!
+        //     Thank you for choosing our services!
 
-            Regards,
-            Deal India
-        ";
+        //     Regards,
+        //     Deal India
+        // ";
 
         // Send email
-        Mail::raw($emailBody, function ($message) use ($user) {
+        // Mail::raw($emailBody, function ($message) use ($user) {
+        //     $message->to($user->email)
+        //         ->subject('New Deal India Account Created');
+        // });
+
+        Mail::send('user.emails.account_created', ['user' => $user], function ($message) use ($user) {
             $message->to($user->email)
                 ->subject('New Deal India Account Created');
         });
