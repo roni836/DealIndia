@@ -25,7 +25,7 @@ class AuthController extends Controller
             // 'gender' => 'required|string',
             // 'dob' => 'required|date',
             'email' => 'required|email|unique:users,email',
-            'parent_id' => 'nullable|string|exists:users,parent_id',
+            'parent_id' => 'nullable|string|exists:users,referral_id',
             // 'address' => 'required|string',
             'mobile' => 'required|unique:users,mobile|digits:10|regex:/^[6789][0-9]{9}$/',
             'password' => 'required|min:8|confirmed',

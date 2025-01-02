@@ -61,30 +61,33 @@
                                 <input wire:model="email" type="email"  autofocus
                                     class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
                                     @error('email')
-                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                                @enderror
+                                     <p class="mt-1 text-sm text-red-600">Email not found. You need to register for an account.</p>
+                                    @enderror
                             </div>
+
+                            @if ($isToggleOtp == false)
                             <div class="mb-4">
                                 <label for="password"
                                     class="block text-sm font-medium text-gray-700 mb-2">Password</label>
                                 <input wire:model="password" type="password" 
                                     class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
                                     @error('password')
-                                    <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                    <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                                 @enderror
                             </div>
                             <button type="submit"
                                 class="w-full bg-teal-900 hover:bg-teal-700 text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500">
                                 Login
                             </button>
+                            @endif
                         </form>
 
                         @if ($showOtpMessage)
-                            <div class="mt-4 text-green-700">
+                            <div class="mt-2 text-green-700">
                                 OTP has been sent to your email.
                             </div>
                         @elseif($resendOtpMessage)
-                            <div class="mt-4 text-green-700">
+                            <div class="mt-2 text-green-700">
                                 OTP has been resent to your email.
                             </div>
                         @endif

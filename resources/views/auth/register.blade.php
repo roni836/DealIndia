@@ -26,16 +26,6 @@
             <div class="w-full mx-6 lg:mx-12 md:p-8 p-3">
                 <h2 class="text-4xl font-semibold text-center text-gray-800 mb-6"
                     style="font-family: 'Roboto Condensed', serif;">Become A Member</h2>
-                {{-- @if ($errors->any())
-            <div class="mb-4">
-                <div class="text-red-600 font-medium">Whoops! Something went wrong.</div>
-                <ul class="mt-2 text-sm text-red-600">
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif --}}
                 @if (session('success'))
                     <script>
                         document.addEventListener('DOMContentLoaded', function() {
@@ -104,33 +94,7 @@
                         @enderror
                     </div>
 
-                    <!-- Gender Field -->
-                    <!-- <div class="mb-4">
-                        <label for="gender" class="block mb-2 text-sm font-medium text-gray-700">Gender</label>
-                        <select id="gender" name="gender"
-                            class="w-full px-4 py-2 border  @error('gender') border-red-500 @else border-gray-300 @enderror  rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
-                            <option value="" disabled selected>Select Gender</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                            <option value="others">Others</option>
-                        </select>
-                        @error('gender')
-        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-    @enderror
-                    </div> -->
-
-                    <!-- Date of Birth Field -->
-
-                    <!-- <div class="mb-4 w-6/12">
-                            <label for="dob" class="block mb-2 text-sm font-medium text-gray-700">Date Of Birth</label>
-                            <input id="dob" type="date" name="dob" value="{{ old('dob') }}"
-                                class="w-full px-4 py-2 border @error('dob') border-red-500 @else border-gray-300 @enderror rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
-                            @error('dob')
-        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-    @enderror
-                        </div> -->
-
-                    <!-- Contact Number Field -->
+                
                     <div class="mb-4">
                         <label for="mobile" class="block mb-2 text-sm font-medium text-gray-700">Contact No.</label>
                         <input id="mobile" placeholder="+1234567890" type="tel" name="mobile"
@@ -158,18 +122,6 @@
                             class="w-full px-4 py-2 border  border-gray-300 rounded-md shadow-sm" readonly>
                     </div>
 
-
-                    <!-- Address Field -->
-                    <!-- <div class="mb-4">
-                        <label for="address" class="block mb-2 text-sm font-medium text-gray-700">Address</label>
-                        <textarea id="address" placeholder="Your Address" name="address"
-                            class="w-full px-4 py-2 border  @error('address') border-red-500 @else border-gray-300 @enderror  rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500">{{ old('address') }}</textarea>
-                        @error('address')
-        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-    @enderror
-                    </div> -->
-
-                    <!-- Password Field -->
                     <div class="flex w-full gap-2">
                         <div class="mb-3 w-6/12">
                             <label for="password" class="block mb-2 text-sm font-medium text-gray-700">Password</label>
