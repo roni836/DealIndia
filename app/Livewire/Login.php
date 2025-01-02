@@ -189,8 +189,8 @@ class Login extends Component
         // Determine the login link and subject based on the user's role
         $loginLink = url('/login/link?token=' . $token . '&email=' . $user->email);
         $subject = $user->isAdmin == 1
-            ? 'Your Admin Login Link'
-            : 'Your Login Link';
+            ? 'Dealindia Admin Login Link'
+            : 'Dealindia Login Link';
 
         // Attempt to send the email
         try {
