@@ -28,7 +28,7 @@
         </script>
     @endif
 
-    <div class="bg-gray-100">
+    <div class="bg-gray-100 px-4 py-10 ">
 
         <div class="max-w-4xl mx-auto mt-10 bg-white p-8 rounded-lg shadow-md">
             <h1 class="text-2xl font-bold mb-6 text-center">Investor Details Form</h1>
@@ -72,7 +72,7 @@
 
                     <!-- Gender -->
                     <div>
-                        <select name="gender" value="{{ old('gender') }}"
+                        <select name="gender" id="gender" value="{{ old('gender') }}"
                             class="w-full border @error('gender') border-red-500 @else border-gray-300 @enderror
                                    p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                             <option value="">Select Gender</option>
@@ -88,7 +88,7 @@
                     <!-- Religion -->
 
                     <div>
-                        <select name="religion" value='religion'
+                        <select name="religion" value='religion' id="religion"
                             class="w-full border @error('religion') border-red-500 @else border-gray-300 @enderror
                    p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                             <option value="">Select Religion</option>
@@ -119,6 +119,7 @@
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
+                   
                 </div>
 
                 <!-- Banking Details -->
@@ -295,6 +296,18 @@
 
                 <!-- Documents -->
                 <h2 class="text-xl font-semibold mt-6 mb-4">Documents</h2>
+                 <!-- Photo -->
+                 <h4 class="text-md font-semibold mt-6 mb-4">Profile Picture</h4>
+
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <input type="file" name="photo" id="photo" accept="image/*" placeholder="profile pic" class="w-full    rounded focus:ring-2 focus:ring-blue-500 focus:outline-none" onchange="previewImage(event)">
+                    @error('photo')
+                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                    <div class="mt-4">
+                        <img id="photoPreview" src="#" alt="Photo Preview" class="hidden  h-24 object-contain rounded-lg border border-gray-300">
+                    </div>
+                </div>
                 <h4 class="text-md  mt-6 ">Aadhar Card (Image/PDF)</h4>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Profile Photo -->
@@ -431,6 +444,29 @@
             });
         </script>
     </div>
+
+    {{-- profile preview --}}
+
+    <script>
+        function previewImage(event) {
+            const photoPreview = document.getElementById('photoPreview');
+            const file = event.target.files[0];
+        
+            if (file) {
+                const reader = new FileReader();
+        
+                reader.onload = function(e) {
+                    photoPreview.src = e.target.result;
+                    photoPreview.classList.remove('hidden');
+                };
+        
+                reader.readAsDataURL(file);
+            } else {
+                photoPreview.src = '#';
+                photoPreview.classList.add('hidden');
+            }
+        }
+        </script>
 
     <script>
         document.getElementById('postal_code').addEventListener('blur', async function() {

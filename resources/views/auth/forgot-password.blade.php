@@ -37,6 +37,15 @@
                             @enderror
                         </div>
 
+                        <!-- VR Code Input (New) -->
+                        <div class="mb-4">
+                            <label for="vr_code" class="block text-sm font-medium text-gray-700">{{ __('Verification Code') }}</label>
+                            <input type="text" id="vr_code" name="vr_code" placeholder="Enter Verification Code" class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 @error('vr_code') border-red-500 @enderror" value="{{ old('vr_code') }}" required>
+                            @error('vr_code')
+                                <span class="text-sm text-red-500 mt-1">{{ $message }}</span>
+                            @enderror
+                        </div>
+
                         <div class="mb-4">
                             <button type="submit" class="w-full py-3 px-4 bg-teal-600 text-white font-semibold rounded-lg hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-blue-400">
                                 {{ __('Send Password Reset Link') }}

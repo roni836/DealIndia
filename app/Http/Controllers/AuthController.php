@@ -227,23 +227,25 @@ class AuthController extends Controller
             'email' => 'required|email|exists:users,email',
         ]);
 
-        if ($validator->fails()) {
+        if ($validator->fails()) { 
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
         $user = User::where('email', $request->email)->first();
-
         $token = Str::random(64);
+        $vr_code = Str::random(6);  // Generate a 6-character verification code
 
         DB::table('password_reset_tokens')->updateOrInsert(
             ['email' => $user->email],
             [
                 'token' => Hash::make($token),
+                'vr_code' => $vr_code,
                 'created_at' => Carbon::now(),
             ]
         );
 
-        $resetLink = url('/reset-password/' . $token . '?email=' . $user->email);
+        // Send the password reset link with token and vr_code
+        $resetLink = url('/reset-password/' . $token . '?email=' . $user->email . '&vr_code=' . $vr_code);
 
         try {
             Mail::raw("Click here to reset your password: $resetLink", function ($message) use ($user) {
@@ -257,12 +259,17 @@ class AuthController extends Controller
         }
     }
 
+    // Show password reset form
     public function showResetPasswordForm(Request $request, $token)
     {
-        return view('auth.reset-password', ['token' => $token, 'email' => $request->email]);
+        return view('auth.reset-password', [
+            'token' => $token,
+            'email' => $request->email,
+            'vr_code' => $request->vr_code,
+        ]);
     }
 
-    // Reset the password
+    // Reset password
     public function resetPassword(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -278,8 +285,9 @@ class AuthController extends Controller
 
         $resetRecord = DB::table('password_reset_tokens')->where('email', $request->email)->first();
 
-        if (!$resetRecord || !Hash::check($request->token, $resetRecord->token)) {
-            return redirect()->route('password.request')->with('error', 'Invalid or expired token.');
+        // Check if the token and vr_code are valid
+        if (!$resetRecord || !Hash::check($request->token, $resetRecord->token) || $resetRecord->vr_code !== $request->vr_code) {
+            return redirect()->route('password.request')->with('error', 'Invalid or expired token or verification code.');
         }
 
         $user = User::where('email', $request->email)->first();

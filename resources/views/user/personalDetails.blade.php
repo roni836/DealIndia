@@ -26,7 +26,9 @@
                 <!-- Personal Details Section -->
                 <div class="bg-white p-6 rounded-xl shadow-md">
                   <div class="flex items-center gap-3 mb-4">
-                    <i class="fas fa-user text-teal-600 text-xl"></i>
+                    {{-- <i class="fas fa-user text-teal-600 text-xl"></i> --}}
+                    <img src="{{ asset('storage/' . $investor->photo) }}" 
+                          class="h-10 object-contain">
                     <h2 class="text-xl font-semibold">Personal Details</h2>
                   </div>
                   <div class="grid grid-cols-2 gap-4">
@@ -58,6 +60,8 @@
                       <p class="text-sm text-gray-500">Contact Number</p>
                       <p class="font-medium">{{$investor->mobile}}</p>
                     </div>
+                    
+                    
                   </div>
                 </div>
           
