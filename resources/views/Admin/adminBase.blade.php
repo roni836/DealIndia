@@ -58,7 +58,7 @@
                     <i class="bi bi-person-fill-check px-2"></i> Approved Applications
                 </a>
                 <a href="{{ route('admin.contact.manage') }}" class="block py-2 px-4 hover:bg-indigo-700">
-                    <i class="bi bi-person-fill-check px-2"></i>Contacts
+                    <i class="bi bi-person-fill-exclamation px-2"></i>Enquiry
                 </a>
                
                 <a href="{{url('admin/settings')}}" class="block py-2 px-4 hover:bg-indigo-700">
