@@ -4,14 +4,19 @@
 
 @section('content')
 <div class="container mx-auto ">
+
+    @if(!$user->investorDetails)
+    <div class="bg-red-100 border border-red-200 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+        {{-- <strong class="font-bold">Error:</strong> --}}
+        <span class="block sm:inline">Investor details are required to approve this user.</span>
+    </div>
+    @endif
     <!-- User Information Section -->
     <div class="bg-white hidden md:block rounded-lg overflow-hidden mb-6">
         <div class="bg-gray-200 px-6 py-4">
             <h4 class="text-lg font-semibold">User Information</h4>
         </div>
         <div class=" bg-white p-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">
-           
-                {{-- <div class="flex  justify-between items-center  "> --}}
                     
                     <div class="text-center">
                         <img src="{{ asset('user.png') }}" alt="" class="mx-auto">
@@ -38,8 +43,6 @@
                             </span>
                         </p>
                     </div>
-                    
-                </div>
            
         </div>
     </div>
@@ -176,58 +179,59 @@
         <p class="font-semibold text-md m-4 ">No investor details available.</p>
     </div>
     @endif
-
-    
-    
-{{-- </div> --}}
+</div>
 
  
 
 
-<!-- Generated Codes Section -->
-<div class=" overflow-hidden mb-6 mt-4 rounded-lg">
-    <div class="bg-gray-200 px-6 py-4 rounded-t-lg">
-        <h4 class="text-lg font-semibold">Generated Codes</h4>
-    </div>
-    <div class="p-6 bg-white">
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 ">
-            <div>
-                <p class="text-sm md:text-base"><span class="font-semibold">V.R Code:</span> {{ $user->vr_code }}</p>
-                <p class="text-sm md:text-base"><span class="font-semibold">Range Code:</span> {{ $user->range_code }}</p>
-            </div>
-            <div>
-                <p class="text-sm md:text-base"><span class="font-semibold">Company Code:</span> {{ $user->company_code }}</p>
-                <p class="text-sm md:text-base"><span class="font-semibold">NOC no.:</span> {{ $user->noc_number }}</p>
+    <!-- Generated Codes Section -->
+    <div class=" overflow-hidden mb-6 mt-4 rounded-lg">
+        <div class="bg-gray-200 px-6 py-4 rounded-t-lg">
+            <h4 class="text-lg font-semibold">Generated Codes</h4>
+        </div>
+        <div class="p-6 bg-white">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 ">
+                <div>
+                    <p class="text-sm md:text-base"><span class="font-semibold">V.R Code:</span> {{ $user->vr_code }}</p>
+                    <p class="text-sm md:text-base"><span class="font-semibold">Range Code:</span> {{ $user->range_code }}</p>
+                </div>
+                <div>
+                    <p class="text-sm md:text-base"><span class="font-semibold">Company Code:</span> {{ $user->company_code }}</p>
+                    <p class="text-sm md:text-base"><span class="font-semibold">NOC no.:</span> {{ $user->noc_number }}</p>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 <!-- Actions Section -->
-<div class="mt-6 p-4 flex flex-col md:flex-row justify-end space-y-2 md:space-y-0 md:space-x-2 m-2">
-    {{-- <a href="#" class="bg-blue-500 text-white w-full md:w-auto px-4 py-2 rounded hover:bg-blue-600 text-sm md:text-base text-center">
-        Update User
-    </a> --}}
-    <a href="{{ url('/admin/application') }}"
-        class="bg-gray-500 text-white w-full md:w-auto px-4 py-2 rounded hover:bg-gray-600 text-sm md:text-base text-center">
-        Back to List
-    </a>
-    @if ($user->investorDetails && $user->vr_code && $user->company_code && $user->noc_number)
-    
-@else
-    @if ($user->investorDetails) 
-    <form action="{{ url('/admin/application/generate/' . $user->id) }}" method="POST" class="inline-block w-full md:w-auto">
-        @csrf
-        <button type="submit"
-            class="bg-green-500 text-white w-full md:w-auto px-4 py-2 rounded hover:bg-green-600 font-semibold focus:outline-none focus:ring-2 focus:ring-green-500 text-sm md:text-base text-center">
-            Approve Now
-        </button>
-    </form>
-    @else
-        <p class="text-red-500">Investor details are required to approve this user.</p>
-    @endif
-@endif
+    <div class="mt-6 p-4 flex flex-col md:flex-row justify-end space-y-2 md:space-y-0 md:space-x-2 m-2">
+        {{-- <a href="#" class="bg-blue-500 text-white w-full md:w-auto px-4 py-2 rounded hover:bg-blue-600 text-sm md:text-base text-center">
+            Update User
+        </a> --}}
+        <a href="{{ url('/admin/application') }}"
+            class="bg-gray-500 text-white w-full md:w-auto px-4 py-2 rounded hover:bg-gray-600 text-sm md:text-base text-center">
+            Back to List
+        </a>
+        @if ($user->investorDetails && $user->vr_code && $user->company_code && $user->noc_number)
+        
+        @else
+            @if ($user->investorDetails) 
+            <form action="{{ url('/admin/application/generate/' . $user->id) }}" method="POST" class="inline-block w-full md:w-auto">
+                @csrf
+                <button type="submit"
+                    class="bg-green-500 text-white w-full md:w-auto px-4 py-2 rounded hover:bg-green-600 font-semibold focus:outline-none focus:ring-2 focus:ring-green-500 text-sm md:text-base text-center">
+                    Approve Now
+                </button>
+            </form>
+            @else
+                {{-- <p class="text-red-500">Investor details are required to approve this user.</p> --}}
+                <button type="button" 
+                class="bg-red-500 text-white w-full md:w-auto px-4 py-2 rounded font-semibold focus:outline-none text-sm md:text-base text-center" disabled>
+                Cannot Approve: Investor Details Missing
+                </button>
+            @endif
+        @endif
 
-    
-</div>
+        
+    </div>
 @endsection

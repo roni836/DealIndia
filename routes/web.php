@@ -107,14 +107,11 @@ Route::get('/clear-cache', function () {
 
 Route::get('/seed', function () {
     Artisan::call('db:seed');
-
-    Route::get('/seed-admin', function () {
-        Artisan::call('db:seed', [
-            '--class' => 'AdminSeeder'
-        ]);
-    
-        return "AdminSeeder has been run successfully!";
-    });
-
     return "seeder run successfully";
+});
+Route::get('/seed-admin', function () {
+    Artisan::call('db:seed', [
+        '--class' => 'AdminSeeder'
+    ]);
+    return "AdminSeeder has been run successfully!";
 });

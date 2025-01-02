@@ -30,21 +30,21 @@
             <div class="bg-white rounded-lg shadow-md p-6 ">
                 <h2 class="text-xl font-bold mb-4">Recent Activities</h2>
                 <div class="overflow-x-auto">
-                    <table class="w-full gap-4 ">
+                    <table class="w-full text-sm md:text-md gap-4 space-x-4 ">
                         <thead>
                             <tr class="border-b ">
-                                <th class="text-left py-2">Name</th>
-                                <th class="text-left py-2">Email</th>
-                                <th class="text-left py-2">Status</th>
+                                <th class="text-left px-4 md:px-2 py-2">Name</th>
+                                <th class="text-left px-4 md:px-2 py-2">Email</th>
+                                <th class="text-left px-4 md:px-2 py-2">Status</th>
                             </tr>
                         </thead>
                        
                         <tbody>
                             @foreach ($recent_applications as $item)
                             <tr class="border-b hover:bg-gray-50">
-                                <td class="py-2">{{$item->first_name}} {{ $item->last_name }}</td>
-                                <td class="py-2">{{ $item->email }}</td>
-                                <td class="py-2">
+                                <td class="py-2 px-4 md:px-2">{{$item->first_name}} {{ $item->last_name }}</td>
+                                <td class="py-2 px-4 md:px-2">{{ $item->email }}</td>
+                                <td class="py-2 px-4 md:px-2">
                                     <span class="{{ $item->status == 1 ? 'text-green-500' : 'text-red-500' }}">
                                         {{ $item->status == 1 ? 'Approved' : 'Pending' }}
                                     </span>
@@ -60,12 +60,12 @@
             <div class="bg-white rounded-lg shadow-md p-6">
                     <h2 class="text-xl font-bold">Manage Investors</h2>
                 <div class="overflow-x-auto">
-                    <table class="w-full text-sm md:text-md">
+                    <table class="w-full text-sm md:text-md ">
                         <thead>
                             <tr class="border-b">
-                                <th class="text-left py-2">Name</th>
-                                <th class="text-left py-2">Status</th>
-                                <th class="text-left py-2">View</th>
+                                <th class="text-left  p-2">Name</th>
+                                <th class="text-left  p-2">Status</th>
+                                <th class="text-left p-2">View</th>
                                
                             </tr>
                         </thead>
@@ -73,12 +73,12 @@
                         <tbody>
                             @foreach ($approved_applications as $user)
                             <tr class="border-b hover:bg-gray-50">
-                                <td class="py-2">{{$user->first_name}} {{$user->last_name}}</td>
-                                <td class="py-2">
+                                <td class="p-2">{{$user->first_name}} {{$user->last_name}}</td>
+                                <td class="p-2">
                                     <span class="{{ $user->status == 1 ? 'bg-green-100 text-green-800 px-2 py-1 rounded' : 'bg-red-100 text-red-800 px-2 py-1 rounded' }}">
                                         {{ $user->status == 1 ? 'Approved' : 'Pending' }}
                                     </span></td>
-                                    <td class="py-2">
+                                    <td class="p-2">
                                         <a href="{{ url('/admin/application/' . $user->id) }}" class="text-blue-600 hover:underline">
                                             <button class="px-2 py-1 bg-blue-600 text-white rounded hover:bg-blue-800">View</button>
                                         </a>
@@ -111,21 +111,21 @@
             <div class="bg-white rounded-lg shadow-md p-6">
                 <h2 class="text-xl font-bold mb-4">Quick Links</h2>
                 <div class="grid grid-cols-2 gap-4">
-                    <button class="bg-gray-100 hover:bg-gray-200 p-4 rounded-lg text-center">
+                    <a href="{{ url('/admin/application') }}" class="bg-gray-100 hover:bg-gray-200 p-4 rounded-lg text-center">
                         <i class="fas fa-users mb-2"></i>
-                        <p>View All Investors</p>
-                    </button>
-                    <button class="bg-gray-100 hover:bg-gray-200 p-4 rounded-lg text-center">
+                        <p class="text-sm">View Pending Application</p>
+                    </a>
+                    <a href="{{ url('/admin/application-approved') }}" class="bg-gray-100 hover:bg-gray-200 p-4 rounded-lg text-center">
                         <i class="fas fa-plus-circle mb-2"></i>
-                        <p>Add New Project</p>
-                    </button>
-                    <button class="bg-gray-100 hover:bg-gray-200 p-4 rounded-lg text-center">
+                        <p class="text-sm">View Approved Application</p>
+                    </a>
+                    <a href="{{ route('admin.contact.manage') }}"class="bg-gray-100 hover:bg-gray-200 p-4 rounded-lg text-center">
                         <i class="fas fa-file-alt mb-2"></i>
-                        <p>Generate Reports</p>
-                    </button>
+                        <p class="text-sm">View Enquiry</p>
+                        </a>
                     <a href="{{url('admin/settings')}}" class="bg-gray-100 hover:bg-gray-200 p-4 rounded-lg text-center">
                         <i class="fas fa-cog mb-2"></i>
-                        <p>Settings</p>
+                        <p class="text-sm">Settings</p>
                    </a>
                 </div>
             </div>
