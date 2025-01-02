@@ -86,10 +86,7 @@ class InvestorController extends Controller
             'aadhar_card_number' => 'required|string|size:12',
             'pan_card' => 'required|file|mimes:jpeg,png,pdf|max:2048',
             'pan_card_number' => 'required|string|size:10',
-            'pan_card_number' => 'required|string|size:10|regex:/^[A-Z]{5}[0-9]{4}[A-Z]$/',
-            'inputs' => 'nullable|array',
-            'inputs.*.name' => 'required_with:inputs|string|max:255',
-            'inputs.*.filename' => 'required_with:inputs|file|mimes:jpeg,png,pdf|max:2048',
+            'pan_card_number' => 'required|string|size:10|regex:/^[A-Z]{5}[0-9]{4}[A-Z]$/'
         ]);
 
         if ($validator->fails()) {
