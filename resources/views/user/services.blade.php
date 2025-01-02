@@ -145,7 +145,7 @@
                 Ready to Transform Your Investments?
             </h2>
             <p class="text-xl mb-8">
-                Join thousands of users who trust DealIndia for seamless financial
+                Join thousands of users who trust Dealindia for seamless financial
                 management.
             </p>
             <div class="space-x-4">
@@ -171,7 +171,7 @@
                 <div class="border rounded-lg">
                     <button class="w-full px-6 py-4 text-left flex justify-between items-center focus:outline-none"
                         onclick="toggleFAQ(0)">
-                        <span class="font-semibold">What services does DealIndia offer?</span>
+                        <span class="font-semibold">What services does Dealindia offer?</span>
                         <i class="fas fa-angle-down"></i>
                     </button>
                     <div class="faq-answer px-6 py-4 bg-gray-50">

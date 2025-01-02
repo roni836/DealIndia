@@ -99,7 +99,7 @@
         <div class="space-y-4">
           <div class="flex items-center space-x-4">
             <i class="fas fa-envelope text-teal-600 text-xl"></i>
-            <p class="text-gray-600">support@DealIndia.org</p>
+            <p class="text-gray-600">support@Dealindia.org</p>
           </div>
           {{-- <div class="flex items-center space-x-4">
             <i class="fas fa-phone text-teal-600 text-xl"></i>
