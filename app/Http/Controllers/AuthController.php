@@ -44,11 +44,19 @@ class AuthController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        // if ($data) {
+        //     Mail::raw("Hello $request->first_name, your Deal Account has been Registered Successfully.", function ($message) use ($request) {
+        //         $message->to($request->email)
+        //             ->subject('New Deal Account Created');
+        //     });
+        //     return redirect()->route('login')->with('success', 'Account created successfully. Please log in.');
+        // }
         if ($data) {
-            Mail::raw("Hello $request->first_name, your Deal Account has been Registered Successfully.", function ($message) use ($request) {
+            Mail::send('user.emails.deal_account', ['first_name' => $request->first_name], function ($message) use ($request) {
                 $message->to($request->email)
-                    ->subject('New Deal Account Created');
+                    ->subject('Welcome to Deal!');
             });
+        
             return redirect()->route('login')->with('success', 'Account created successfully. Please log in.');
         }
     }
