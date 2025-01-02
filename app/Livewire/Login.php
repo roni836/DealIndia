@@ -50,7 +50,12 @@ class Login extends Component
 
             // Send OTP to email
             try {
-                Mail::raw("Your OTP is: $otp", function ($message) {
+                // Mail::raw("Your OTP is: $otp", function ($message) {
+                //     $message->to($this->email)
+                //         ->subject('Your OTP for Login');
+                // });
+
+                Mail::send('user.emails.otp', ['otp' => $otp], function ($message) {
                     $message->to($this->email)
                         ->subject('Your OTP for Login');
                 });
