@@ -22,13 +22,10 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(), [
             'first_name' => 'required|string',
             'last_name' => 'required|string',
-            // 'gender' => 'required|string',
-            // 'dob' => 'required|date',
             'email' => 'required|email|unique:users,email',
             'parent_id' => 'nullable|string|exists:users,referral_id',
-            // 'address' => 'required|string',
             'mobile' => 'required|unique:users,mobile|digits:10|regex:/^[6789][0-9]{9}$/',
-            'password' => 'required|min:8|confirmed',
+            // 'password' => 'required|min:8|confirmed',
         ]);
 
         if ($validator->fails()) {
@@ -41,16 +38,10 @@ class AuthController extends Controller
             'mobile' => $request->mobile,
             'parent_id' => $request->parent_id,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
+            // 'password' => Hash::make($request->password),
         ]);
 
-        // if ($data) {
-        //     Mail::raw("Hello $request->first_name, your Deal Account has been Registered Successfully.", function ($message) use ($request) {
-        //         $message->to($request->email)
-        //             ->subject('New Deal Account Created');
-        //     });
-        //     return redirect()->route('login')->with('success', 'Account created successfully. Please log in.');
-        // }
+
         if ($data) {
             Mail::send('user.emails.deal_account', ['first_name' => $request->first_name], function ($message) use ($request) {
                 $message->to($request->email)
@@ -59,6 +50,76 @@ class AuthController extends Controller
 
             return redirect()->route('login')->with('success', 'Account created successfully. Please log in.');
         }
+    }
+
+    public function registerOtp(Request $request){
+        
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email|exists:users,email',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $user = User::where('email', $request->email)->first();
+
+        if($user){
+            $otp = rand(100000, 999999);
+
+            OTP::updateOrCreate(
+                ['email' => $request->email],
+                [
+                    'otp' => $otp,
+                    'expires_at' => Carbon::now()->addMinutes(10),
+                ]
+            );
+
+            // Send OTP to email
+            try {
+                Mail::raw("Your OTP is: $otp", function ($message) use ($request) {
+                    $message->to($request->email)
+                        ->subject('Your OTP for Login');
+                });
+
+                return redirect('/verification')->with('success', 'OTP sent successfully.');
+            } catch (\Exception $e) {
+                return redirect()->back()->with('error', 'Failed to send OTP. Please try again.');
+            }
+        }
+    }
+
+    public function verifyRegisterOTP(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email|exists:users,email',
+            'otp' => 'required|numeric',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+
+        $otpRecord = OTP::where('email', $request->email)->first();
+
+        if (!$otpRecord || $otpRecord->otp !== $request->otp) {
+            return redirect()->back()->with('error', 'Invalid OTP.');
+        }
+
+        if (Carbon::now()->greaterThan($otpRecord->expires_at)) {
+            return redirect()->back()->with('error', 'OTP has expired.');
+        }
+
+        $otpRecord->delete();
+
+        $user = User::where('email', $request->email)->first();
+
+        if ($user) {
+            Auth::login($user);
+            $request->session()->regenerate();
+            return redirect()->route('login')->with('success', 'Register successfully.');
+        }
+        return redirect()->back()->with('error', 'Failed to log in.');
     }
 
 
