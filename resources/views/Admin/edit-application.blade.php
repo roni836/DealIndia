@@ -3,25 +3,18 @@
 @section('title', 'Application Details')
 
 @section('content')
-<div class="container mx-auto px-4">
+<div class="container mx-auto ">
     <!-- User Information Section -->
     <div class="bg-white hidden md:block rounded-lg overflow-hidden mb-6">
         <div class="bg-gray-200 px-6 py-4">
             <h4 class="text-lg font-semibold">User Information</h4>
         </div>
-        <div class="flex  justify-center items-center ">
+        <div class=" bg-white p-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">
            
-                <div class="bg-white p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 ">
-                    {{-- <p><strong>Name:</strong> {{ $user->name }}</p>
-                    <p><strong>Email:</strong> {{ $user->email }}</p>
-                    <p><strong>Role:</strong> {{ $user->role }}</p>
-                    <p><strong>Status:</strong>
-                        <span class="{{ $user->status ? 'text-green-500' : 'text-red-500' }}">
-                            {{ $user->status ? 'Active' : 'Inactive' }}
-                        </span>
-                    </p> --}}
-                    <div class="inline-grid justify-center items-center">
-                        <img src="{{ asset('user.png') }}" alt="" class="">
+                {{-- <div class="flex  justify-between items-center  "> --}}
+                    
+                    <div class="text-center">
+                        <img src="{{ asset('user.png') }}" alt="" class="mx-auto">
                         <p><strong>Name:</strong> {{ $user->first_name }} {{ $user->last_name }}</p>
                     </div>
                     
@@ -29,15 +22,15 @@
                         <img src="{{ asset('role.png') }}" alt="" class="">
                         <p><strong>Role:</strong> {{ $user->role }}</p>
                     </div> --}}
-                    <div class="inline-grid justify-center items-center">
-                        <img src="{{ asset('email.png') }}" alt="" class="">
+                    <div class="text-center">
+                        <img src="{{ asset('email.png') }}" alt="" class="mx-auto">
                         <p class=""><strong>Email:</strong> {{ $user->email }}</p>
                     </div>
-                    <div class="inline-grid justify-center items-center">
+                    <div class="text-center">
                         @if ($user->status)
-                                <img src="{{ asset('active.png') }}" alt="Active" >
+                                <img src="{{ asset('active.png') }}" alt="Active" class="mx-auto">
                             @else
-                                <img src="{{ asset('inactive.png') }}" alt="Inactive" class="w-20 h-20">
+                                <img src="{{ asset('inactive.png') }}" alt="Inactive" class=" mx-auto">
                             @endif
                         <p><strong>Status:</strong>
                             <span class="{{ $user->status ? 'text-green-500' : 'text-red-500' }}">
@@ -65,10 +58,7 @@
                         <img src="{{ asset('email.png') }}" alt="" class="w-5 h-5">
                         <strong>Email:</strong> {{ $user->email }}
                     </p>
-                    <p class="flex gap-1">
-                        <img src="{{ asset('role.png') }}" alt="" class="w-5 h-5">
-                        <strong>Role:</strong> {{ $user->role }}
-                    </p>
+                    
                     <p class="flex gap-1">
                         
                         @if ($user->status)
