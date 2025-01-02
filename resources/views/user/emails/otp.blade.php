@@ -7,22 +7,29 @@
     <title>Your OTP for Login</title>
 </head>
 
-<body>
-    <div>
-        <h2>Your OTP for Login</h2>
-        <p>Hello,</p>
-        <p>We received a request to log in to your account. Use the following OTP to complete the process:</p>
+<body style="font-family: Arial, sans-serif; background-color: #f4f4f9; padding: 20px; color: #333;">
+    <div style="max-width: 600px; margin: 0 auto; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+        <div style="background-color: #0d9488; color: white; padding: 20px; text-align: center;">
+            <h1 style="margin: 0; font-size: 24px;">🔒 Secure Your Login</h1>
+        </div>
 
-        <p style="font-size: 2em; font-weight: bold; text-align: center; background-color: #3498db; color: white; padding: 10px; border-radius: 5px;">
-            {{ $otp }}
-        </p>
+        <div style="padding: 20px;">
+            <h2 style="color: #0d9488; text-align: center;">✨ Your OTP is Here! ✨</h2>
+            <p>We noticed a login attempt for your account. Use the <strong>One-Time Password (OTP)</strong> below to proceed:</p>
 
-        <p>If you did not request this, please ignore this email or contact us at 
-            <a href="mailto:support@example.com">support@example.com</a>.
-        </p>
+            <p style="font-size: 2em; font-weight: bold; text-align: center; background-color: #0d9488; color: white; padding: 15px; border-radius: 8px; width: 50%; margin: 20px auto;">
+                {{ $otp }}
+            </p>
 
-        <div style="text-align: center; font-size: 0.8em; color: #777; margin-top: 20px;">
-            <p>&copy; {{ date('Y') }} Deal India. All rights reserved.</p>
+            <p>🚨 <strong>Important:</strong> This OTP will expire in <span style="color: red;">10 minutes</span>. Please do not share it with anyone.</p>
+
+            <p>If you did not request this, ignore this email or contact us immediately at 
+                <a href="mailto:support@example.com" style="color: #0d9488; text-decoration: none;">support@example.com</a>.
+            </p>
+        </div>
+
+        <div style="text-align: center; background-color: #f4f4f9; padding: 10px 20px; font-size: 0.9em; color: #555;">
+            <p>&copy; {{ date('Y') }} <strong>Deal India</strong>. All rights reserved.</p>
         </div>
     </div>
 </body>
