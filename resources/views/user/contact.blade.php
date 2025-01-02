@@ -24,27 +24,28 @@
     <!-- Contact Form -->
     <div class="bg-white p-8 rounded-lg shadow-lg">
       <h2 class="text-3xl font-bold mb-6 text-gray-800">Get in Touch</h2>
-      <form id="contactForm" class="space-y-6">
+      <form action="{{ route('contacts.store') }}" class="space-y-6" method="POST">
+        @csrf
         <div>
           <label class="block text-gray-700 mb-2">Name *</label>
-          <input type="text" required
+          <input type="text" required name="name"
             class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500"
             placeholder="Your Name" />
         </div>
         <div>
           <label class="block text-gray-700 mb-2">Email *</label>
-          <input type="email" required
+          <input type="email" required name="email"
             class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500"
             placeholder="Your Email" />
         </div>
         <div>
           <label class="block text-gray-700 mb-2">Phone Number</label>
-          <input type="tel" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500"
+          <input type="tel" name="phone_number" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500"
             placeholder="Your Phone Number" />
         </div>
         <div>
           <label class="block text-gray-700 mb-2">Subject *</label>
-          <select required class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500">
+          <select required name="subject" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500">
             <option value="">Select Subject</option>
             <option value="inquiry">Inquiry</option>
             <option value="support">Support</option>
@@ -54,7 +55,7 @@
         </div>
         <div>
           <label class="block text-gray-700 mb-2">Message *</label>
-          <textarea required maxlength="500" rows="4"
+          <textarea required maxlength="500" rows="4" name="message"
             class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500"
             placeholder="Your Message"></textarea>
         </div>

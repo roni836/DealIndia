@@ -55,7 +55,7 @@
                     <img src="{{ asset('storage/images/setting/' . $logo->meta_logo) }}" alt="Company Logo"
                         class="h-10 md:11 w-auto object-contain rounded-md">
                 @else
-                    <img src="{{ asset('https://placehold.co/600x400') }}" alt="Default Logo" class="h-10 md:11 w-auto object-contain rounded-md">
+                    <img src="{{ asset('logo.png') }}" alt="Default Logo" class="h-10 md:11 w-auto object-contain rounded-md">
                 @endif
           </a>
         </div>
@@ -69,7 +69,7 @@
           <a href="{{route('about')}}"
             class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-teal-600"
             id="about">About</a>
-          <a href="{{route('contact')}}"
+          <a href="{{route('contacts.create')}}"
             class="text-sm font-medium transition-colors duration-200 text-gray-600 hover:text-teal-600"
             id="contact">Contact</a>
           {{-- <a href="{{route('privacy-policy')}}"
@@ -124,7 +124,7 @@
         <a href="#"
           class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-teal-600 hover:bg-teal-50"
           id="mobile-services"><i class="bi bi-briefcase px-2"></i>Services</a>
-        <a href="{{ route('contact') }}"
+        <a href="{{ route('contacts.create') }}"
           class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-teal-600 hover:bg-teal-50"
           id="mobile-contact"><i class="bi bi-person-lines-fill px-2"></i>Contact</a>
         {{-- <a href="#"
