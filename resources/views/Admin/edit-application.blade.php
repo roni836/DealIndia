@@ -96,7 +96,7 @@
         <div class="p-6 ">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4 ">
                 <!-- Personal Info Card -->
-                <div class="bg-gray-100 shadow-lg rounded-lg p-4 text-sm md:text-md space-y-1 ">
+                <div class="bg-gray-100  rounded-lg p-4 text-sm md:text-md space-y-1 ">
                     <h5 class="font-semibold text-blue-600 text-xl py-2">Personal Info</h5>
                     <p><strong>Name:</strong> {{ $user->investorDetails->first_name }} {{ $user->investorDetails->last_name }}</p>
                     <p><strong>Gender:</strong> {{ $user->investorDetails->gender }}</p>
@@ -107,7 +107,7 @@
                 </div>
 
                 <!-- Banking Info Card -->
-                <div class="bg-gray-100 shadow-lg rounded-lg p-4 text-sm md:text-md space-y-1">
+                <div class="bg-gray-100  rounded-lg p-4 text-sm md:text-md space-y-1">
                     <h5 class="font-semibold text-blue-600 text-xl py-2 ">Banking Info</h5>
                     <p><strong>Bank Name:</strong> {{ $user->investorDetails->bank_name }}</p>
                     <p><strong>Account Number:</strong> {{ $user->investorDetails->account_number }}</p>
@@ -117,7 +117,7 @@
                 </div>
 
                 <!-- Address Info Card -->
-                <div class="bg-gray-100 shadow-lg rounded-lg p-4 text-sm md:text-md space-y-1">
+                <div class="bg-gray-100  rounded-lg p-4 text-sm md:text-md space-y-1">
                     <h5 class="font-semibold text-blue-600 text-xl py-2">Address Info</h5>
                     <p><strong>Street Address:</strong> {{ $user->investorDetails->street_address }}</p>
                     <p><strong>City:</strong> {{ $user->investorDetails->city }}</p>
@@ -125,28 +125,25 @@
                     <p><strong>Country:</strong> {{ $user->investorDetails->country }}</p>
                     <p><strong>Postal Code:</strong> {{ $user->investorDetails->postal_code }}</p>
                 </div>
-
-                
-                
             </div>
             <!-- Documents Info Card -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 ">
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 ">
                 
-            <div class="bg-gray-100 shadow-lg rounded-lg p-4 space-y-2">
-                
+            <div class="bg-gray-100  rounded-lg p-2 space-y-2 ">
                 <p><strong>Aadhar Card:</strong></p>
-                <img src="{{ asset('storage/' . $user->investorDetails->aadhar_card) }}" alt="Aadhar Card" class="w-full md:w-3/4  h-48 p-2 rounded-lg object-contain  ">
-                <p><strong>Aadhar Card Number:</strong> {{ $user->investorDetails->aadhar_card_number }}</p>
+                <img src="{{ asset('storage/' . $user->investorDetails->aadhar_card) }}" alt="Aadhar Card" class=" h-48 p-2 rounded-lg object-contain  ">
+                <p class="px-2"><strong>Aadhar Card Number:</strong> {{ $user->investorDetails->aadhar_card_number }}</p>
 
                 
             </div>
-            <div class="bg-gray-100 shadow-lg space-y-2 rounded-lg p-4">
-                
-                
-
+            <div class="bg-gray-100 rounded-lg p-2 space-y-2">
                 <p><strong>Pan Card:</strong></p>
-                <img src="{{ asset('storage/' . $user->investorDetails->pan_card) }}" alt="Pan Card" class="w-full md:w-3/4  h-48 p-2 rounded-lg  object-contain ">
-                <p><strong>Pan Card Number:</strong> {{ $user->investorDetails->pan_card_number }}</p>
+                <img src="{{ asset('storage/' . $user->investorDetails->pan_card) }}" alt="Pan Card" class=" h-48 p-2 rounded-lg  object-contain ">
+                <p class="px-2"><strong>Pan Card Number:</strong> {{ $user->investorDetails->pan_card_number }}</p>
+            </div>
+            <div class="bg-gray-100  rounded-lg p-2">
+                <p><strong>Profile Picture:</strong></p>
+                <img src="{{ asset('storage/' . $user->investorDetails->photo) }}" alt="Profile photo" class=" h-48 px-2 rounded-lg  object-contain ">
             </div>
         </div>
     </div>

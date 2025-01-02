@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\InvestorController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\UserController;
@@ -12,12 +13,13 @@ use App\Models\Setting;
 use App\Models\User;
 
 Route::get('/', [UserController::class, 'home'])->name('homepage');
-Route::get('/contact', [UserController::class, 'contact'])->name('contact');
+// Route::get('/contact', [UserController::class, 'contact'])->name('contact');
 Route::get('/about', [UserController::class, 'about'])->name('about');
 Route::get('/services', [UserController::class, 'services'])->name('services');
 Route::get('/privacy-policy', [UserController::class, 'privacyPolicy'])->name('privacy-policy');
 Route::get('/Terms-of-Service', [UserController::class, 'termsOfService'])->name('Terms-of-Service');
 
+Route::resource('contacts', ContactController::class);
 
 Route::get('/login', function () {
     $data['logo'] = Setting::first();
@@ -35,10 +37,16 @@ Route::get('/register', function () {
     return view('auth.register', $data);
 });
 
-Route::get('/get-referred-user/{id}', function ($id) {
-    $user = User::find($id);
-    return response()->json(['name' => $user ? $user->first_name : null]);
+Route::get('/get-referred-user/{parent_id}', function ($parent_id) {
+    $user = User::where('referral_id', $parent_id)->first();
+
+    if ($user) {
+        return response()->json(['name' => $user->first_name . ' ' . $user->last_name]);
+    } else {
+        return response()->json(['name' => null]);
+    }
 });
+
 
 Route::post('/send-otp', [AuthController::class, 'sendOTP'])->middleware('throttle:5,1');
 Route::post('/verify-otp', [AuthController::class, 'verifyOTP']);
@@ -65,6 +73,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/application-approved', [AdminController::class, 'approvedApplication']);
     Route::get('/admin/application/{id}', [ApplicationController::class, 'editApplication']);
     Route::post('/admin/application/generate/{id}', [ApplicationController::class, 'generateCode']);
+    Route::get('/admin/contact', [AdminController::class, 'contact'])->name('admin.contact.manage');
+    Route::get('admin/contact-view/{contact}', [AdminController::class, 'editContact'])->name('admin.contact.show');
+    Route::put('/contact-view/{contact}', [AdminController::class, 'updateContact'])->name('admin.contact.update');
+
     Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
     Route::get('admin/settings', [SettingController::class, 'index']);
 
@@ -94,6 +106,14 @@ Route::get('/clear-cache', function () {
 
 Route::get('/seed', function () {
     Artisan::call('db:seed');
+
+    Route::get('/seed-admin', function () {
+        Artisan::call('db:seed', [
+            '--class' => 'AdminSeeder'
+        ]);
+    
+        return "AdminSeeder has been run successfully!";
+    });
 
     return "seeder run successfully";
 });

@@ -1,6 +1,7 @@
 @extends('user.userBase')
 @section('title', 'Login Work')
 @section('content')
+
 @if (session('success'))
                     <script>
                         document.addEventListener('DOMContentLoaded', function() {

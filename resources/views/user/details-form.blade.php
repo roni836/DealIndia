@@ -28,7 +28,7 @@
         </script>
     @endif
 
-    <div class="bg-gray-100">
+    <div class="bg-gray-100 px-4 py-10 ">
 
         <div class="max-w-4xl mx-auto mt-10 bg-white p-8 rounded-lg shadow-md">
             <h1 class="text-2xl font-bold mb-6 text-center">Investor Details Form</h1>
@@ -62,7 +62,7 @@
 
                     <!-- Date of Birth -->
                     <div>
-                        <input type="date" name="date_of_birth"
+                        <input type="date" name="date_of_birth" id="date_of_birth" value="{{ old('date_of_birth') }}"
                             class="w-full border @error('date_of_birth') border-red-500 @else border-gray-300 @enderror
                                    p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         @error('date_of_birth')
@@ -72,7 +72,7 @@
 
                     <!-- Gender -->
                     <div>
-                        <select name="gender"
+                        <select name="gender" id="gender" value="{{ old('gender') }}"
                             class="w-full border @error('gender') border-red-500 @else border-gray-300 @enderror
                                    p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                             <option value="">Select Gender</option>
@@ -88,7 +88,7 @@
                     <!-- Religion -->
 
                     <div>
-                        <select name="religion"
+                        <select name="religion" value='religion' id="religion"
                             class="w-full border @error('religion') border-red-500 @else border-gray-300 @enderror
                    p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                             <option value="">Select Religion</option>
@@ -119,6 +119,7 @@
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
+                   
                 </div>
 
                 <!-- Banking Details -->
@@ -126,74 +127,8 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Bank Name -->
 
-
-                    <!-- Account Number -->
                     <div>
-                        <input type="number" name="account_number" placeholder="Account Number"
-                            class="w-full border @error('account_number') border-red-500 @else border-gray-300 @enderror
-                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                        @error('account_number')
-                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <!-- IFSC Code -->
-                    <div>
-                        <label for="ifsc_code" class="sr-only">IFSC Code</label>
-                        <input type="text" id="ifsc_code" name="ifsc_code" placeholder="IFSC Code"
-                            class="w-full border p-3 rounded focus:ring-2 @error('ifsc_code') border-red-500 @enderror"
-                            autocomplete="off">
-                        @error('ifsc_code')
-                            <p id="ifsc_code_error" class="mt-2 text-sm text-red-600" aria-live="polite">{{ $message }}
-                            </p>
-                        @enderror
-                    </div>
-
-                    <div>
-                        <label for="micr_number" class="sr-only">MICR Number</label>
-                        <input type="text" id="micr_number" name="micr_number" placeholder="MICR Number"
-                            class="w-full border p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none @error('micr_number') border-red-500 @enderror">
-                        @error('micr_number')
-                            <p id="micr_number_error" class="mt-2 text-sm text-red-600" aria-live="polite">{{ $message }}
-                            </p>
-                        @enderror
-                    </div>
-
-                    <div>
-                        <label for="bank_name" class="sr-only">Bank Name</label>
-                        <input type="text" id="bank_name" name="bank_name" placeholder="Bank Name"
-                            class="w-full border p-3 rounded focus:ring-2 @error('bank_name') border-red-500 @enderror">
-                        @error('bank_name')
-                            <p id="bank_name_error" class="mt-2 text-sm text-red-600" aria-live="polite">{{ $message }}
-                            </p>
-                        @enderror
-                    </div>
-
-                    <div>
-                        <label for="branch_name" class="sr-only">Branch Name</label>
-                        <input type="text" id="branch_name" name="branch_name" placeholder="Branch Name"
-                            class="w-full border p-3 rounded focus:ring-2 @error('branch_name') border-red-500 @enderror">
-                        @error('branch_name')
-                            <p id="branch_name_error" class="mt-2 text-sm text-red-600" aria-live="polite">{{ $message }}
-                            </p>
-                        @enderror
-                    </div>
-
-
-
-                    <!-- Account Holder Name -->
-                    <div>
-                        <input type="text" name="account_holder_name" placeholder="Account Holder Name"
-                            class="w-full border @error('account_holder_name') border-red-500 @else border-gray-300 @enderror
-                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                        @error('account_holder_name')
-                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
-                    </div>
-
-                    <!-- Account Type -->
-                    <div>
-                        <select name="account_type"
+                        <select name="account_type" value="{{ old('account_type') }}"
                             class="w-full border @error('account_type') border-red-500 @else border-gray-300 @enderror
                    p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                             <option value="">Select Account Type</option>
@@ -204,6 +139,78 @@
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
+
+
+                    <!-- Account Number -->
+                    <div>
+                        <input type="number" name="account_number" value="{{ old('account_number') }}"
+                            placeholder="Account Number"
+                            class="w-full border @error('account_number') border-red-500 @else border-gray-300 @enderror
+                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        @error('account_number')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+                    <!-- IFSC Code -->
+                    <div>
+                        <label for="ifsc_code" class="sr-only">IFSC Code</label>
+                        <input type="text" id="ifsc_code" name="ifsc_code" value="{{ old('ifsc_code') }}"
+                            placeholder="IFSC Code"
+                            class="w-full border p-3 rounded focus:ring-2 @error('ifsc_code') border-red-500 @else border-gray-300 @enderror"
+                            autocomplete="off">
+                        @error('ifsc_code')
+                            <p id="ifsc_code_error" class="mt-2 text-sm text-red-600" aria-live="polite">{{ $message }}
+                            </p>
+                        @enderror
+                    </div>
+
+                    <div>
+                        <label for="micr_number" class="sr-only">MICR Number</label>
+                        <input type="text" id="micr_number" name="micr_number" value="{{ old('micr_number') }}"
+                            placeholder="MICR Number"
+                            class="w-full border p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none @error('micr_number') border-red-500 @else border-gray-300 @enderror" readonly>
+                        @error('micr_number')
+                            <p id="micr_number_error" class="mt-2 text-sm text-red-600" aria-live="polite">{{ $message }}
+                            </p>
+                        @enderror
+                    </div>
+
+                    <div>
+                        <label for="bank_name" class="sr-only">Bank Name</label>
+                        <input type="text" id="bank_name" name="bank_name" value="{{ old('bank_name') }}"
+                            placeholder="Bank Name"
+                            class="w-full border p-3 rounded focus:ring-2 @error('bank_name') border-red-500 @else border-gray-300 @enderror" readonly>
+                        @error('bank_name')
+                            <p id="bank_name_error" class="mt-2 text-sm text-red-600" aria-live="polite">{{ $message }}
+                            </p>
+                        @enderror
+                    </div>
+
+                    <div>
+                        <label for="branch_name" class="sr-only">Branch Name</label>
+                        <input type="text" id="branch_name" name="branch_name" value="{{ old('branch_name') }}"
+                            placeholder="Branch Name"
+                            class="w-full border p-3 rounded focus:ring-2 @error('branch_name') border-red-500 @else border-gray-300 @enderror" readonly>
+                        @error('branch_name')
+                            <p id="branch_name_error" class="mt-2 text-sm text-red-600" aria-live="polite">
+                                {{ $message }}
+                            </p>
+                        @enderror
+                    </div>
+
+                    <!-- Account Holder Name -->
+                    <div>
+                        <input type="text" name="account_holder_name" value="{{ old('account_holder_name') }}"
+                            placeholder="Account Holder's Name"
+                            class="w-full border @error('account_holder_name') border-red-500 @else border-gray-300 @enderror
+                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        @error('account_holder_name')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                        @enderror
+                    </div>
+
+
                 </div>
 
 
@@ -212,7 +219,8 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Street Address -->
                     <div>
-                        <input type="text" name="street_address" placeholder="Street Address"
+                        <input type="text" name="street_address" value="{{ old('street_address') }}"
+                            placeholder="Street Address"
                             class="w-full border @error('street_address') border-red-500 @else border-gray-300 @enderror
                    p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         @error('street_address')
@@ -220,7 +228,7 @@
                         @enderror
                     </div>
                     <div>
-                        <input type="text" name="landmark" placeholder="Landmark"
+                        <input type="text" name="landmark" value="{{ old('landmark') }}" placeholder="Landmark"
                             class="w-full border @error('landmark') border-red-500 @else border-gray-300 @enderror
                    p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         @error('landmark')
@@ -228,8 +236,8 @@
                         @enderror
                     </div>
                     <div>
-                        <input type="text" id="postal_code" name="postal_code" placeholder="Postal Code"
-                            pattern="\d{6}"
+                        <input type="number" id="postal_code" value="{{ old('postal_code') }}" name="postal_code"
+                            placeholder="Postal Code" pattern="\d{6}"
                             class="w-full border p-3 rounded focus:ring-2 @error('postal_code') border-red-500 @else border-gray-300 @enderror">
                         <p id="postal_code_error" class="mt-2 border-gray-300 text-sm text-red-600"
                             style="display: none;">
@@ -238,7 +246,6 @@
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
-
 
                     <!-- Loader -->
                     <div id="loader" class="hidden mt-2">
@@ -252,7 +259,8 @@
                     <!-- Loader -->
                     <!-- City -->
                     <div>
-                        <input type="text" id="city" name="city" placeholder="City"
+                        <input type="text" id="city" name="city" value="{{ old('city') }}"
+                            placeholder="City"
                             class="w-full border p-3 rounded focus:ring-2 @error('city') border-red-500 @else border-gray-300 @enderror"
                             readonly>
                         @error('city')
@@ -262,7 +270,8 @@
 
                     <!-- State -->
                     <div>
-                        <input type="text" id="state" name="state" placeholder="State"
+                        <input type="text" id="state" name="state" value="{{ old('state') }}"
+                            placeholder="State"
                             class="w-full border p-3 rounded focus:ring-2 @error('state') border-red-500 @else border-gray-300 @enderror"
                             readonly>
                         @error('state')
@@ -281,11 +290,24 @@
                 <div class="mt-4">
                     <input type="checkbox" id="generate_new_code" name="generate_new_code" value="yes"
                         class="mr-2 rounded border-gray-300 focus:ring-blue-500">
-                    <label for="generate_new_code" class="text-sm text-gray-700">Do you want to generate New VR code and NOC number?</label>
+                    <label for="generate_new_code" class="text-sm text-gray-700">Do you want to generate New VR code and
+                        NOC number?</label>
                 </div>
 
                 <!-- Documents -->
                 <h2 class="text-xl font-semibold mt-6 mb-4">Documents</h2>
+                 <!-- Photo -->
+                 <h4 class="text-md font-semibold mt-6 mb-4">Profile Picture</h4>
+
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <input type="file" name="photo" id="photo" accept="image/*" placeholder="profile pic" class="w-full    rounded focus:ring-2 focus:ring-blue-500 focus:outline-none" onchange="previewImage(event)">
+                    @error('photo')
+                        <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                    @enderror
+                    <div class="mt-4">
+                        <img id="photoPreview" src="#" alt="Photo Preview" class="hidden  h-24 object-contain rounded-lg border border-gray-300">
+                    </div>
+                </div>
                 <h4 class="text-md  mt-6 ">Aadhar Card (Image/PDF)</h4>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Profile Photo -->
@@ -295,7 +317,7 @@
                     <div>
                         {{-- <label for="aadhar_card" class="block mb-2 font-medium">Aadhar Card (Image/PDF)</label> --}}
                         <input type="file" id="aadhar_card" name="aadhar_card" accept=".jpeg,.png,.pdf"
-                            class="w-full border @error('aadhar_card') border-red-500 @else border-gray-300 @enderror
+                            class="w-full @error('aadhar_card') border-red-500 @else border-gray-300 @enderror
                         p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         @error('aadhar_card')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -304,7 +326,8 @@
 
                     <!-- Aadhar Card Number -->
                     <div class="">
-                        <input type="text" name="aadhar_card_number" placeholder="Aadhar Card Number"
+                        <input type="text" name="aadhar_card_number" value="{{ old('aadhar_card_number') }}"
+                            placeholder="Aadhar Card Number"
                             class="w-full border @error('aadhar_card_number') border-red-500 @else border-gray-300 @enderror
                         p-5  rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         @error('aadhar_card_number')
@@ -319,7 +342,7 @@
                     <div>
                         {{-- <label for="pan_card" class="block mb-2 font-medium">PAN Card (Image/PDF)</label> --}}
                         <input type="file" id="pan_card" name="pan_card" accept=".jpeg,.png,.pdf"
-                            class="w-full border @error('pan_card') border-red-500 @else border-gray-300 @enderror
+                            class="w-full  @error('pan_card') border-red-500 @else border-gray-300 @enderror
                    p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         @error('pan_card')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -328,7 +351,8 @@
 
                     <!-- PAN Card Number -->
                     <div class="">
-                        <input type="text" name="pan_card_number" placeholder="PAN Card Number"
+                        <input type="text" name="pan_card_number" value="{{ old('pab_card_number') }}"
+                            placeholder="PAN Card Number"
                             class="w-full border @error('pan_card_number') border-red-500 @else border-gray-300 @enderror
                    p-5 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         @error('pan_card_number')
@@ -345,13 +369,14 @@
 
                     <h2 class="text-xl font-semibold mt-6 mb-3">Additional Documents</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="doc-container">
-                        <input type="text" name="inputs[0][name]" placeholder="Document Name"
+                        <input type="text" name="inputs[0][name]" value="{{ old('inputs[0][name]') }}"
+                            placeholder="Document Name"
                             class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         @error('inputs[0][name]')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                         <input type="file" name="inputs[0][filename]" accept=".jpeg,.png,.pdf"
-                            class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                            class=" focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         @error('inputs[0][filename]')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -403,13 +428,13 @@
                     ++i;
                     $('#doc-container').append(
                         `
-                    <input type="text" name="inputs[${i}][name]" placeholder="Label 1 Name"
+                    <input type="text" name="inputs[${i}][name]" value="{{ old('inputs[${i}][name]') }}" placeholder="Document Name"
                         class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                            @error('inputs[${i}][name]')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                     @enderror
                     <input type="file" name="inputs[${i}][filename]" accept=".jpeg,.png,.pdf"
-                        class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        class=" focus:ring-2 focus:ring-blue-500 focus:outline-none">
                           @error('inputs[${i}][filename]')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                     @enderror
@@ -419,6 +444,29 @@
             });
         </script>
     </div>
+
+    {{-- profile preview --}}
+
+    <script>
+        function previewImage(event) {
+            const photoPreview = document.getElementById('photoPreview');
+            const file = event.target.files[0];
+        
+            if (file) {
+                const reader = new FileReader();
+        
+                reader.onload = function(e) {
+                    photoPreview.src = e.target.result;
+                    photoPreview.classList.remove('hidden');
+                };
+        
+                reader.readAsDataURL(file);
+            } else {
+                photoPreview.src = '#';
+                photoPreview.classList.add('hidden');
+            }
+        }
+        </script>
 
     <script>
         document.getElementById('postal_code').addEventListener('blur', async function() {
@@ -461,42 +509,6 @@
             }
         });
 
-        document.getElementById('ifsc_code').addEventListener('blur', async function() {
-            const ifscCode = this.value.trim().toUpperCase();
-            const loader = document.getElementById('loader');
-            const bankField = document.getElementById('bank_name');
-            const branchField = document.getElementById('branch_name');
-            const micrField = document.getElementById('micr_number');
-
-            // Clear previous data
-            bankField.value = '';
-            branchField.value = '';
-            micrField.value = '';
-
-            if (!/^[A-Z]{4}0[A-Z0-9]{6}$/.test(ifscCode)) {
-                showError('ifsc_code_error', 'Invalid IFSC Code');
-                return;
-            }
-
-            hideError('ifsc_code_error');
-            loader.classList.remove('hidden'); // Show loader
-
-            try {
-                const response = await fetch(`https://ifsc.razorpay.com/${ifscCode}`);
-                if (!response.ok) throw new Error('Invalid IFSC Code');
-                const data = await response.json();
-
-                bankField.value = data?.BANK || '';
-                branchField.value = data?.BRANCH || '';
-                micrField.value = data?.MICR || '';
-            } catch (error) {
-                console.error('Error fetching IFSC data:', error);
-                showError('ifsc_code_error', 'Failed to fetch data. Please try again.');
-            } finally {
-                loader.classList.add('hidden'); // Hide loader
-            }
-        });
-
         function showError(elementId, message) {
             const errorElement = document.getElementById(elementId);
             errorElement.textContent = message;
@@ -527,6 +539,46 @@
         });
     </script>
 
+    <script>
+        document.getElementById('ifsc_code').addEventListener('blur', function() {
+            const ifsc = this.value.trim();
+            const bankNameInput = document.getElementById('bank_name');
+            const branchNameInput = document.getElementById('branch_name');
+            const micrInput = document.getElementById('micr_number');
+
+            if (ifsc) {
+                fetch(`https://ifsc.razorpay.com/${ifsc}`)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Invalid IFSC code');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        // Populate the fields with the fetched data
+                        bankNameInput.value = data.BANK || '';
+                        branchNameInput.value = data.BRANCH || '';
+                        micrInput.value = data.MICR || '';
+                    })
+                    .catch(error => {
+                        console.error('Error fetching bank details:', error);
+                        alert('Could not fetch bank details. Please ensure the IFSC code is valid.');
+
+                        // Clear fields in case of error
+                        bankNameInput.value = '';
+                        branchNameInput.value = '';
+                        micrInput.value = '';
+                    });
+            } else {
+                // Clear fields if IFSC input is empty
+                bankNameInput.value = '';
+                branchNameInput.value = '';
+                micrInput.value = '';
+            }
+        });
+    </script>
+
+
 
     <style>
         .hidden {
@@ -542,4 +594,21 @@
     </style>
 
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dateInput = document.getElementById('date_of_birth');
+
+            // Get today's date
+            const today = new Date();
+
+            // Calculate the maximum allowed date for 18+ (18 years before today)
+            const maxDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate());
+
+            // Format the date as YYYY-MM-DD for the input field
+            const formattedMaxDate = maxDate.toISOString().split('T')[0];
+
+            // Set the max attribute of the date input
+            dateInput.setAttribute('max', formattedMaxDate);
+        });
+    </script>
 @endsection
