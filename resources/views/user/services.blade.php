@@ -108,7 +108,7 @@
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="bg-white p-8 rounded-lg shadow-lg">
                     <p class="text-lg italic mb-6">
-                        "DealIndia has transformed how we manage investments. It's
+                        "Dealindia has transformed how we manage investments. It's
                         intuitive and reliable."
                     </p>
                     <div class="flex items-center">

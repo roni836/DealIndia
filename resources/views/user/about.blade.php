@@ -9,13 +9,13 @@
                     <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
                         <div class="sm:text-center lg:text-left">
                             <h1 class="text-4xl tracking-tight font-bold text-gray-900 sm:text-5xl md:text-6xl">
-                                <span class="block xl:inline">About DealIndia:</span>
+                                <span class="block xl:inline">About Dealindia:</span>
                                 <span class="block text-teal-600 xl:inline">
                                     Your Trusted Financial Growth Partner</span>
                             </h1>
                             <p
                                 class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                                At DealIndia, we empower individuals and businesses to achieve
+                                At Dealindia, we empower individuals and businesses to achieve
                                 their financial goals through innovative solutions and
                                 collaborative investments.
                             </p>
@@ -110,7 +110,7 @@
         <!-- Team Section -->
         <div class="py-16 container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12">
-                Meet the Team Behind DealIndia
+                Meet the Team Behind Dealindia
             </h2>
             <div class="grid md:grid-cols-3 gap-8">
                 <div class="bg-white p-6 rounded-lg shadow-lg text-center">
@@ -196,7 +196,7 @@
                             </div>
                             <div class="bg-white col-start-6 col-end-10 p-4 rounded-xl my-4 mr-auto shadow-md">
                                 <h3 class="font-semibold text-lg mb-1">2018</h3>
-                                <p class="text-gray-600">Conceptualization of DealIndia</p>
+                                <p class="text-gray-600">Conceptualization of Dealindia</p>
                             </div>
                         </div>
                         <div class="flex md:contents">
@@ -262,7 +262,7 @@
                             </div>
                         </div>
                         <p class="testimonial-text text-gray-600 italic">
-                            DealIndia has transformed how I manage my investments. The
+                            Dealindia has transformed how I manage my investments. The
                             platform's intuitive interface and comprehensive analytics make
                             decision-making easier.
                         </p>
@@ -281,7 +281,7 @@
             <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
                 <h2 class="text-3xl font-bold tracking-tight text-white sm:text-4xl">
                     <span class="block">Join Us Today</span>
-                    <span class="block text-teal-200">Start your investment journey with DealIndia.</span>
+                    <span class="block text-teal-200">Start your investment journey with Dealindia.</span>
                 </h2>
                 <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0 space-x-4">
                     <button
