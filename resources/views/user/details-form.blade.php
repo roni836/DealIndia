@@ -298,7 +298,7 @@
                     <div>
                         {{-- <label for="aadhar_card" class="block mb-2 font-medium">Aadhar Card (Image/PDF)</label> --}}
                         <input type="file" id="aadhar_card" name="aadhar_card" accept=".jpeg,.png,.pdf"
-                            class="w-full border @error('aadhar_card') border-red-500 @else border-gray-300 @enderror
+                            class="w-full @error('aadhar_card') border-red-500 @else border-gray-300 @enderror
                         p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         @error('aadhar_card')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -322,7 +322,7 @@
                     <div>
                         {{-- <label for="pan_card" class="block mb-2 font-medium">PAN Card (Image/PDF)</label> --}}
                         <input type="file" id="pan_card" name="pan_card" accept=".jpeg,.png,.pdf"
-                            class="w-full border @error('pan_card') border-red-500 @else border-gray-300 @enderror
+                            class="w-full  @error('pan_card') border-red-500 @else border-gray-300 @enderror
                    p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         @error('pan_card')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
@@ -354,7 +354,7 @@
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                         <input type="file" name="inputs[0][filename]" accept=".jpeg,.png,.pdf"
-                            class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                            class=" focus:ring-2 focus:ring-blue-500 focus:outline-none">
                         @error('inputs[0][filename]')
                             <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                         @enderror
@@ -406,13 +406,13 @@
                     ++i;
                     $('#doc-container').append(
                         `
-                    <input type="text" name="inputs[${i}][name]" placeholder="Label 1 Name"
+                    <input type="text" name="inputs[${i}][name]" placeholder="Document Name"
                         class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                            @error('inputs[${i}][name]')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                     @enderror
                     <input type="file" name="inputs[${i}][filename]" accept=".jpeg,.png,.pdf"
-                        class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        class=" focus:ring-2 focus:ring-blue-500 focus:outline-none">
                           @error('inputs[${i}][filename]')
                         <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
                     @enderror
