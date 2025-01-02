@@ -12,8 +12,8 @@
                 <button class="border-2 border-teal-600 text-teal-600 px-8 py-3 rounded-lg hover:bg-teal-50 transition duration-300">Learn More</button>
             </div>
         </div>
-        <div class="md:w-1/2 mt-12 md:mt-0">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800" alt="Financial Growth" class="rounded-lg shadow-xl">
+        <div class="md:w-1/2 mt-12 md:mt-12 md:ml-10">
+            <img src="{{asset('banner.jpeg')}}" alt="Financial Growth" class="rounded-lg shadow-xl">
         </div>
     </section>
 
