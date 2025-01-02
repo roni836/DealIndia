@@ -216,34 +216,49 @@ class AuthController extends Controller
 
         return redirect('/login')->with('error', 'Login failed.');
     }
+    // Show forgot password form
     public function showForgotPasswordForm()
     {
         return view('auth.forgot-password');
     }
 
+    // Send password reset link
     public function sendPasswordResetLink(Request $request)
     {
+        // Validate the input data
         $validator = Validator::make($request->all(), [
             'email' => 'required|email|exists:users,email',
+            'vr_code' => 'required|string',
         ]);
 
         if ($validator->fails()) {
+            // If validation fails, redirect back with errors
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
+        // Retrieve user by email
         $user = User::where('email', $request->email)->first();
+
+        // Check if the vr_code matches the email
+        if ($user->vr_code !== $request->vr_code) {
+            // If vr_code doesn't match, show error
+            return redirect()->back()->with('error', 'Invalid verification code.');
+        }
 
         $token = Str::random(64);
 
+        // Insert or update the password reset token in the database, including vr_code
         DB::table('password_reset_tokens')->updateOrInsert(
             ['email' => $user->email],
             [
                 'token' => Hash::make($token),
                 'created_at' => Carbon::now(),
+                'vr_code' => $user->vr_code,  // Make sure to include vr_code here
             ]
         );
 
-        $resetLink = url('/reset-password/' . $token . '?email=' . $user->email);
+        // Send the password reset link with token and vr_code
+        $resetLink = url('/reset-password/' . $token . '?email=' . $user->email . '&vr_code=' . $request->vr_code);
 
         try {
             Mail::raw("Click here to reset your password: $resetLink", function ($message) use ($user) {
@@ -251,43 +266,72 @@ class AuthController extends Controller
                     ->subject('Password Reset Link');
             });
 
+            // Redirect with success message
             return redirect()->route('password.request')->with('success', 'Password reset link sent to your email.');
         } catch (\Exception $e) {
+            // If mail sending fails, redirect with error message
             return redirect()->back()->with('error', 'Failed to send password reset link. Please try again.');
         }
+
     }
 
+
+
+    // Show password reset form
     public function showResetPasswordForm(Request $request, $token)
     {
-        return view('auth.reset-password', ['token' => $token, 'email' => $request->email]);
+        // Retrieve the reset token record from the database
+        $resetRecord = DB::table('password_reset_tokens')
+            ->where('email', $request->email)
+            ->first();
+
+        // Check if the token and vr_code are valid
+        if (!$resetRecord || !Hash::check($token, $resetRecord->token) || $resetRecord->vr_code !== $request->vr_code) {
+            return redirect()->route('password.request')->with('error', 'Invalid or expired token or verification code.');
+        }
+
+        // If valid, show the reset password form
+        return view('auth.reset-password', [
+            'token' => $token,
+            'email' => $request->email,
+            'vr_code' => $request->vr_code,
+        ]);
     }
 
-    // Reset the password
+
+    // Reset password
     public function resetPassword(Request $request)
     {
+        // Validate the input data
         $validator = Validator::make($request->all(), [
             'email' => 'required|email|exists:users,email',
             'token' => 'required',
-            'vr_code' => 'required',
             'password' => 'required|min:8|confirmed',
         ]);
 
         if ($validator->fails()) {
+            // If validation fails, redirect back with errors
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
+        // Retrieve the reset record from the database
         $resetRecord = DB::table('password_reset_tokens')->where('email', $request->email)->first();
 
+        // Check if the token and vr_code are valid
         if (!$resetRecord || !Hash::check($request->token, $resetRecord->token)) {
-            return redirect()->route('password.request')->with('error', 'Invalid or expired token.');
+            return redirect()->route('password.request')->with('error', 'Invalid or expired token or verification code.');
         }
 
+        // Proceed to reset the password
         $user = User::where('email', $request->email)->first();
         $user->password = Hash::make($request->password);
         $user->save();
 
+        // Delete the reset record after successful password reset
         DB::table('password_reset_tokens')->where('email', $request->email)->delete();
 
+        // Redirect to login with success message
         return redirect()->route('login')->with('success', 'Your password has been reset successfully.');
     }
+
 }

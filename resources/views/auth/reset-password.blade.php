@@ -29,7 +29,11 @@
             <div class="mb-4">
                 <label for="email" class="block text-sm font-semibold text-gray-700">Email Address</label>
                 <input type="email" id="email" name="email" class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500" value="{{ $email ?? old('email') }}" required autofocus>
-            </div>
+            </div> 
+            {{-- <div class="mb-4">
+                <label for="vr_code" class="block text-sm font-semibold text-gray-700">Vr code</label>
+                <input type="text" id="vr_code" name="vr_code" class="w-full px-4 py-2 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500" value="{{ $vr_code ?? old('vr_code') }}" required autofocus>
+            </div> --}}
 
             <div class="mb-4">
                 <label for="password" class="block text-sm font-semibold text-gray-700">New Password</label>

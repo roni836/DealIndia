@@ -61,7 +61,7 @@
                                 <input wire:model="email" type="email" autofocus
                                     class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
                                 @error('email')
-                                    <p class="mt-1 text-sm text-red-600">Email not found. You need to register for an
+                                    <p class="mt-1 text-sm text-red-600">Email not found. You need to register for
                                         account.</p>
                                 @enderror
                             </div>
@@ -122,6 +122,10 @@
                                 <input {{ $inputDisabled ? 'readonly' : '' }} wire:model="email" type="email"
                                     autofocus
                                     class="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-teal-500">
+                                  @error('email')
+                                    <p class="mt-1 text-sm text-red-600">Email not found. You need to register an
+                                        account.</p>
+                                @enderror
                             </div>
                             <button type="submit"
                                 class="w-full bg-teal-900 hover:bg-teal-700 text-white font-semibold py-2 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-teal-500">
@@ -130,12 +134,9 @@
                         </form>
                     </div>
                 @endif
-
-
-
                 <div class="mt-6 text-center flex items-center justify-center">
                     <hr class="flex-grow border-t border-teal-900">
-                    <a href="{{ url('register') }}" class="text-sm text-teal-900 hover:underline mx-4">Don't have an
+                    <a href="{{ url('register') }}" class="text-sm text-teal-900 hover:underline ">Don't have an
                         account? Register now</a>
                     <a href="{{ url('forgot-password') }}" class="text-sm text-teal-900 hover:underline mx-4">
                         Forgot Password</a>

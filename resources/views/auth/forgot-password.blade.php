@@ -16,6 +16,14 @@
                         </div>
                     @endif
 
+                    @if(session('error'))
+                        <div class="bg-red-100 text-red-800 border border-red-300 rounded-md p-4 mb-4">
+                            <ul>
+                                <li>{{ session('error') }}</li>
+                            </ul>
+                        </div>
+                    @endif
+
                     @if ($errors->any())
                         <div class="bg-red-100 text-red-800 border border-red-300 rounded-md p-4 mb-4">
                             <ul>
@@ -33,6 +41,15 @@
                             <label for="email" class="block text-sm font-medium text-gray-700">{{ __('Email Address') }}</label>
                             <input type="email" id="email" name="email" placeholder="Enter Email" class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 @error('email') border-red-500 @enderror" value="{{ old('email') }}" required autofocus>
                             @error('email')
+                                <span class="text-sm text-red-500 mt-1">{{ $message }}</span>
+                            @enderror
+                        </div>
+
+                        <!-- VR Code Input (New) -->
+                        <div class="mb-4">
+                            <label for="vr_code" class="block text-sm font-medium text-gray-700">{{ __('Verification Code') }}</label>
+                            <input type="text" id="vr_code" name="vr_code" placeholder="Enter Verification Code" class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 @error('vr_code') border-red-500 @enderror" value="{{ old('vr_code') }}" required>
+                            @error('vr_code')
                                 <span class="text-sm text-red-500 mt-1">{{ $message }}</span>
                             @enderror
                         </div>

@@ -70,37 +70,41 @@
                         @enderror
                     </div>
 
+
                     <!-- Gender -->
                     <div>
-                        <select name="gender" id="gender" value="{{ old('gender') }}"
+                        <select name="gender" id="gender"
                             class="w-full border @error('gender') border-red-500 @else border-gray-300 @enderror
                                    p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                             <option value="">Select Gender</option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                            <option value="Other">Other</option>
+                            <option value="Male" {{ old('gender') == 'Male' ? 'selected' : '' }}>Male</option>
+                            <option value="Female" {{ old('gender') == 'Female' ? 'selected' : '' }}>Female</option>
+                            <option value="Other" {{ old('gender') == 'Other' ? 'selected' : '' }}>Other</option>
                         </select>
                         @error('gender')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
 
+
                     <!-- Religion -->
 
                     <div>
-                        <select name="religion" value='religion' id="religion"
+                        <select name="religion" id="religion"
                             class="w-full border @error('religion') border-red-500 @else border-gray-300 @enderror
-                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                             <option value="">Select Religion</option>
-                            <option value="Hindu">Hindu</option>
-                            <option value="Muslim">Muslim</option>
-                            <option value="Sikh">Sikh</option>
-                            <option value="Christian">Christian</option>
+                            <option value="Hindu" {{ old('religion') == 'Hindu' ? 'selected' : '' }}>Hindu</option>
+                            <option value="Muslim" {{ old('religion') == 'Muslim' ? 'selected' : '' }}>Muslim</option>
+                            <option value="Sikh" {{ old('religion') == 'Sikh' ? 'selected' : '' }}>Sikh</option>
+                            <option value="Christian" {{ old('religion') == 'Christian' ? 'selected' : '' }}>Christian
+                            </option>
                         </select>
                         @error('religion')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
+
                     <!-- Email -->
                     <div>
                         <input type="email" name="email" value="{{ auth()->user()->email }}" placeholder="Email"
@@ -119,7 +123,7 @@
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
-                   
+
                 </div>
 
                 <!-- Banking Details -->
@@ -128,17 +132,19 @@
                     <!-- Bank Name -->
 
                     <div>
-                        <select name="account_type" value="{{ old('account_type') }}"
-                            class="w-full border @error('account_type') border-red-500 @else border-gray-300 @enderror
-                   p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        <select name="account_type"
+                            class="w-full border @error('account_type') border-red-500 @else border-gray-300 @enderror p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
                             <option value="">Select Account Type</option>
-                            <option value="Savings">Savings</option>
-                            <option value="Current">Current</option>
+                            <option value="Savings" {{ old('account_type') == 'Savings' ? 'selected' : '' }}>Savings
+                            </option>
+                            <option value="Current" {{ old('account_type') == 'Current' ? 'selected' : '' }}>Current
+                            </option>
                         </select>
                         @error('account_type')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                         @enderror
                     </div>
+
 
 
                     <!-- Account Number -->
@@ -169,7 +175,8 @@
                         <label for="micr_number" class="sr-only">MICR Number</label>
                         <input type="text" id="micr_number" name="micr_number" value="{{ old('micr_number') }}"
                             placeholder="MICR Number"
-                            class="w-full border p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none @error('micr_number') border-red-500 @else border-gray-300 @enderror" readonly>
+                            class="w-full border p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none @error('micr_number') border-red-500 @else border-gray-300 @enderror"
+                            readonly>
                         @error('micr_number')
                             <p id="micr_number_error" class="mt-2 text-sm text-red-600" aria-live="polite">{{ $message }}
                             </p>
@@ -180,7 +187,8 @@
                         <label for="bank_name" class="sr-only">Bank Name</label>
                         <input type="text" id="bank_name" name="bank_name" value="{{ old('bank_name') }}"
                             placeholder="Bank Name"
-                            class="w-full border p-3 rounded focus:ring-2 @error('bank_name') border-red-500 @else border-gray-300 @enderror" readonly>
+                            class="w-full border p-3 rounded focus:ring-2 @error('bank_name') border-red-500 @else border-gray-300 @enderror"
+                            readonly>
                         @error('bank_name')
                             <p id="bank_name_error" class="mt-2 text-sm text-red-600" aria-live="polite">{{ $message }}
                             </p>
@@ -191,7 +199,8 @@
                         <label for="branch_name" class="sr-only">Branch Name</label>
                         <input type="text" id="branch_name" name="branch_name" value="{{ old('branch_name') }}"
                             placeholder="Branch Name"
-                            class="w-full border p-3 rounded focus:ring-2 @error('branch_name') border-red-500 @else border-gray-300 @enderror" readonly>
+                            class="w-full border p-3 rounded focus:ring-2 @error('branch_name') border-red-500 @else border-gray-300 @enderror"
+                            readonly>
                         @error('branch_name')
                             <p id="branch_name_error" class="mt-2 text-sm text-red-600" aria-live="polite">
                                 {{ $message }}
@@ -289,6 +298,7 @@
 
                 <div class="mt-4">
                     <input type="checkbox" id="generate_new_code" name="generate_new_code" value="yes"
+                        {{ old('generate_new_code') == 'yes' ? 'checked' : '' }}
                         class="mr-2 rounded border-gray-300 focus:ring-blue-500">
                     <label for="generate_new_code" class="text-sm text-gray-700">Do you want to generate New VR code and
                         NOC number?</label>
@@ -296,16 +306,19 @@
 
                 <!-- Documents -->
                 <h2 class="text-xl font-semibold mt-6 mb-4">Documents</h2>
-                 <!-- Photo -->
-                 <h4 class="text-md font-semibold mt-6 mb-4">Profile Picture</h4>
+                <!-- Photo -->
+                <h4 class="text-md font-semibold mt-6 mb-4">Profile Picture</h4>
 
-                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <input type="file" name="photo" id="photo" accept="image/*" placeholder="profile pic" class="w-full    rounded focus:ring-2 focus:ring-blue-500 focus:outline-none" onchange="previewImage(event)">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <input type="file" name="photo" id="photo" accept="image/*" placeholder="profile pic"
+                        class="w-full  focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                        onchange="previewImage(event)">
                     @error('photo')
                         <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                     @enderror
                     <div class="mt-4">
-                        <img id="photoPreview" src="#" alt="Photo Preview" class="hidden  h-24 object-contain rounded-lg border border-gray-300">
+                        <img id="photoPreview" src="#" alt="Photo Preview"
+                            class="hidden  h-24 object-contain border border-gray-300">
                     </div>
                 </div>
                 <h4 class="text-md  mt-6 ">Aadhar Card (Image/PDF)</h4>
@@ -326,13 +339,10 @@
 
                     <!-- Aadhar Card Number -->
                     <div class="">
-                        <input type="text" name="aadhar_card_number" value="{{ old('aadhar_card_number') }}"
+                        <input type="text" id="aadhar_card_number" value="{{ old('aadhar_card_number') }}" name="aadhar_card_number" 
                             placeholder="Aadhar Card Number"
-                            class="w-full border @error('aadhar_card_number') border-red-500 @else border-gray-300 @enderror
-                        p-5  rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                        @error('aadhar_card_number')
-                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
+                            class="w-full border border-gray-300 p-5 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        <p id="aadhar_card_error" class="mt-2 text-sm text-red-600"></p>
                     </div>
                 </div>
                 <h4 class="text-md  mt-6 ">PAN Card (Image/PDF)</h4>
@@ -350,16 +360,13 @@
                     </div>
 
                     <!-- PAN Card Number -->
+                    
                     <div class="">
-                        <input type="text" name="pan_card_number" value="{{ old('pab_card_number') }}"
+                        <input type="text" id="pan_card_number" value="{{ old('pan_card_number') }}" name="pan_card_number" 
                             placeholder="PAN Card Number"
-                            class="w-full border @error('pan_card_number') border-red-500 @else border-gray-300 @enderror
-                   p-5 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                        @error('pan_card_number')
-                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
-                        @enderror
+                            class="w-full border border-gray-300 p-5 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                        <p id="pan_card_error" class="mt-2 text-sm text-red-600"></p>
                     </div>
-
 
                 </div>
 
@@ -430,14 +437,9 @@
                         `
                     <input type="text" name="inputs[${i}][name]" value="{{ old('inputs[${i}][name]') }}" placeholder="Document Name"
                         class="border border-gray-300 p-3 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                           @error('inputs[${i}][name]')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
+                         
                     <input type="file" name="inputs[${i}][filename]" accept=".jpeg,.png,.pdf"
                         class=" focus:ring-2 focus:ring-blue-500 focus:outline-none">
-                          @error('inputs[${i}][filename]')
-                        <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
-                    @enderror
                 `
                     );
                 });
@@ -451,22 +453,22 @@
         function previewImage(event) {
             const photoPreview = document.getElementById('photoPreview');
             const file = event.target.files[0];
-        
+
             if (file) {
                 const reader = new FileReader();
-        
+
                 reader.onload = function(e) {
                     photoPreview.src = e.target.result;
                     photoPreview.classList.remove('hidden');
                 };
-        
+
                 reader.readAsDataURL(file);
             } else {
                 photoPreview.src = '#';
                 photoPreview.classList.add('hidden');
             }
         }
-        </script>
+    </script>
 
     <script>
         document.getElementById('postal_code').addEventListener('blur', async function() {
@@ -611,4 +613,48 @@
             dateInput.setAttribute('max', formattedMaxDate);
         });
     </script>
+
+<script>
+    document.getElementById('aadhar_card_number').addEventListener('input', function () {
+        validateAadhar(this);
+    });
+
+    document.getElementById('pan_card_number').addEventListener('input', function () {
+        validatePan(this);
+    });
+
+    function validateAadhar(input) {
+        const value = input.value;
+        const errorField = document.getElementById('aadhar_card_error');
+        const regex = /^[0-9]{12}$/;
+
+        if (!regex.test(value)) {
+            errorField.textContent = 'Aadhar Card Number must be a 12-digit number.';
+            input.classList.add('border-red-500');
+            input.classList.remove('border-gray-300');
+        } else {
+            errorField.textContent = '';
+            input.classList.add('border-gray-300');
+            input.classList.remove('border-red-500');
+        }
+    }
+
+    function validatePan(input) {
+        const value = input.value.toUpperCase(); // PAN is case-sensitive; convert to uppercase
+        input.value = value; // Update the input to display uppercase
+        const errorField = document.getElementById('pan_card_error');
+        const regex = /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/;
+
+        if (!regex.test(value)) {
+            errorField.textContent = 'PAN Card Number is Invalid.';
+            input.classList.add('border-red-500');
+            input.classList.remove('border-gray-300');
+        } else {
+            errorField.textContent = '';
+            input.classList.add('border-gray-300');
+            input.classList.remove('border-red-500');
+        }
+    }
+</script>
+
 @endsection
