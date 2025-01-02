@@ -99,7 +99,7 @@
         <div class="space-y-4">
           <div class="flex items-center space-x-4">
             <i class="fas fa-envelope text-teal-600 text-xl"></i>
-            <p class="text-gray-600">support@Dealindia.org</p>
+            <p class="text-gray-600">support@dealindia.org</p>
           </div>
           {{-- <div class="flex items-center space-x-4">
             <i class="fas fa-phone text-teal-600 text-xl"></i>
@@ -160,7 +160,7 @@
             <h2 class="text-3xl font-bold mb-4">Need Immediate Assistance?</h2>
             <div class="flex justify-center space-x-4">
                 <button class="bg-white text-teal-600 px-6 py-3 rounded-lg hover:bg-gray-100 transition duration-300">
-                    +91 800-123-4567
+                    +91 800-1XX-4567
                 </button>
                 <button class="bg-white text-teal-600 px-6 py-3 rounded-lg hover:bg-gray-100 transition duration-300">
                     Call Now

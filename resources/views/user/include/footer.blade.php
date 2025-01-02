@@ -38,7 +38,7 @@
                 <ul class="space-y-2">
                     <li class="flex items-center space-x-2">
                         <i class="fas fa-envelope"></i>
-                        <span>support@Dealindia.org</span>
+                        <span>support@dealindia.org</span>
                     </li>
                     {{-- <li class="flex items-center space-x-2">
                         <i class="fas fa-phone"></i>
