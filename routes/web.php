@@ -51,6 +51,7 @@ Route::get('/get-referred-user/{parent_id}', function ($parent_id) {
 Route::post('/send-otp', [AuthController::class, 'sendOTP'])->middleware('throttle:5,1');
 Route::post('/verify-otp', [AuthController::class, 'verifyOTP']);
 Route::post('/new-register', [AuthController::class, "register"])->name("user.register");
+Route::post('/new-register-verify', [AuthController::class, "verifyRegisterOTP"])->name("user.register.verify");
 Route::post('/send-login-link', [AuthController::class, 'sendLoginLink'])->name('sendLoginLink');
 Route::get('/login/link', [AuthController::class, 'loginViaLink'])->name('loginViaLink');
 
@@ -106,14 +107,11 @@ Route::get('/clear-cache', function () {
 
 Route::get('/seed', function () {
     Artisan::call('db:seed');
-
-    Route::get('/seed-admin', function () {
-        Artisan::call('db:seed', [
-            '--class' => 'AdminSeeder'
-        ]);
-    
-        return "AdminSeeder has been run successfully!";
-    });
-
     return "seeder run successfully";
+});
+Route::get('/seed-admin', function () {
+    Artisan::call('db:seed', [
+        '--class' => 'AdminSeeder'
+    ]);
+    return "AdminSeeder has been run successfully!";
 });
