@@ -51,7 +51,10 @@ class ApplicationController extends Controller
         $user->company_code = 'CMP' . strtoupper(uniqid());
         $user->noc_number = 'NOC-' . now()->format('Ymd-His');
         $user->status = 1;
-        $user->referral_id =  'DI' . str_pad($data->id, 6, '0', STR_PAD_LEFT);
+        $user->save();
+
+        // Now the ID is available
+        $user->referral_id = 'DI' . str_pad($user->id, 6, '0', STR_PAD_LEFT);
         $user->save();
 
         // Prepare email details
