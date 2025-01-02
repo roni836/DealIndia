@@ -35,10 +35,16 @@ Route::get('/register', function () {
     return view('auth.register', $data);
 });
 
-Route::get('/get-referred-user/{id}', function ($id) {
-    $user = User::find($id);
-    return response()->json(['name' => $user ? $user->first_name : null]);
+Route::get('/get-referred-user/{parent_id}', function ($parent_id) {
+    $user = User::where('referral_id', $parent_id)->first();
+
+    if ($user) {
+        return response()->json(['name' => $user->first_name . ' ' . $user->last_name]);
+    } else {
+        return response()->json(['name' => null]);
+    }
 });
+
 
 Route::post('/send-otp', [AuthController::class, 'sendOTP'])->middleware('throttle:5,1');
 Route::post('/verify-otp', [AuthController::class, 'verifyOTP']);
