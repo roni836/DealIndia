@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Contact;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,9 +35,33 @@ class AdminController extends Controller
       $applications = User::where('status', 0)->where('isAdmin',0)->with('investorDetails')->get();
       return view('Admin.applications',["applications"=>$applications]);
    }
+
+   public function contact(){
+      $data['contacts'] = Contact::paginate(10);
+      return view('Admin.contact', $data);
+   }
+
+   public function editContact(Contact $contact)
+   {
+       return view('Admin.manage_contact', compact('contact'));
+   }
+
+   public function updateContact(Request $request, Contact $contact)
+   {
+       $validatedData = $request->validate([
+           'name' => 'required|string|max:255',
+            'email' => 'required|email',
+           'status' => 'required|string', 
+       ]);
+       $contact->update($validatedData);
+       return redirect()->route('admin.contact.manage', $contact)->with('success', 'Contact Message updated successfully');
+   } 
+
+
    public function logout()
    {
        Auth::logout();
        return redirect('/'); // Redirect to the desired page after logout
    }
+
 }

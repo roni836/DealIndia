@@ -24,6 +24,12 @@
     <!-- Contact Form -->
     <div class="bg-white p-8 rounded-lg shadow-lg">
       <h2 class="text-3xl font-bold mb-6 text-gray-800">Get in Touch</h2>
+      @if (session('success'))
+        <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert">
+          <p class="font-bold">Success</p>
+          <p>{{ session('success') }}</p>
+        </div>
+      @endif
       <form action="{{ route('contacts.store') }}" class="space-y-6" method="POST">
         @csrf
         <div>
@@ -31,23 +37,32 @@
           <input type="text" required name="name"
             class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500"
             placeholder="Your Name" />
+            @error('name')
+              <span class="text-red-600 text-sm">{{ $message }}</span>
+            @enderror
         </div>
         <div>
           <label class="block text-gray-700 mb-2">Email *</label>
           <input type="email" required name="email"
             class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500"
             placeholder="Your Email" />
+            @error('email')
+              <span class="text-red-600 text-sm">{{ $message }}</span>
+            @enderror
         </div>
         <div>
           <label class="block text-gray-700 mb-2">Phone Number</label>
           <input type="tel" name="phone_number" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500"
             placeholder="Your Phone Number" />
+            @error('phone_number')
+              <span class="text-red-600 text-sm">{{ $message }}</span>
+            @enderror
         </div>
         <div>
           <label class="block text-gray-700 mb-2">Subject *</label>
           <select required name="subject" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500">
             <option value="">Select Subject</option>
-            <option value="inquiry">Inquiry</option>
+            <option value="inquire">Inquiry</option>
             <option value="support">Support</option>
             <option value="feedback">Feedback</option>
             <option value="other">Other</option>
@@ -58,6 +73,9 @@
           <textarea required maxlength="500" rows="4" name="message"
             class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500"
             placeholder="Your Message"></textarea>
+            @error('message')
+            <span class="text-red-600 text-sm">{{ $message }}</span>
+          @enderror
         </div>
         <div class="flex space-x-4">
           <button type="submit"
