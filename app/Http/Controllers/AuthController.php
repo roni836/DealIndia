@@ -17,7 +17,57 @@ use Validator;
 
 class AuthController extends Controller
 {
-    public function register(Request $request)
+    // public function register(Request $request)
+    // {
+    //     $validator = Validator::make($request->all(), [
+    //         'first_name' => 'required|string',
+    //         'last_name' => 'required|string',
+    //         'email' => 'required|email|unique:users,email',
+    //         'parent_id' => 'nullable|string|exists:users,referral_id',
+    //         'mobile' => 'required|unique:users,mobile|digits:10|regex:/^[6789][0-9]{9}$/',
+    //     ]);
+
+    //     if ($validator->fails()) {
+    //         return redirect()->back()->withErrors($validator)->withInput();
+    //     }
+
+    //     $data = User::create([
+    //         'first_name' => $request->first_name,
+    //         'last_name' => $request->last_name,
+    //         'mobile' => $request->mobile,
+    //         'parent_id' => $request->parent_id,
+    //         'email' => $request->email,
+    //     ]);
+
+    //     $user = User::where('email', $request->email)->first();
+
+    //     if($user){
+    //         $otp = rand(100000, 999999);
+
+    //         OTP::updateOrCreate(
+    //             ['email' => $request->email],
+    //             [
+    //                 'otp' => $otp,
+    //                 'expires_at' => Carbon::now()->addMinutes(10),
+    //             ]
+    //         );
+
+    //         // Send OTP to email
+    //         try {
+    //             Mail::raw("Your OTP is: $otp", function ($message) use ($request) {
+    //                 $message->to($request->email)
+    //                     ->subject('Your OTP for Login');
+    //             });
+
+    //             return redirect()->back()->with('success', 'OTP sent successfully.');
+    //         } catch (\Exception $e) {
+    //             return redirect()->back()->with('error', 'Failed to send OTP. Please try again.');
+    //         }
+    //     }
+
+    // }
+
+        public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'first_name' => 'required|string',
@@ -25,102 +75,115 @@ class AuthController extends Controller
             'email' => 'required|email|unique:users,email',
             'parent_id' => 'nullable|string|exists:users,referral_id',
             'mobile' => 'required|unique:users,mobile|digits:10|regex:/^[6789][0-9]{9}$/',
-            // 'password' => 'required|min:8|confirmed',
         ]);
 
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
 
-        $data = User::create([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'mobile' => $request->mobile,
-            'parent_id' => $request->parent_id,
-            'email' => $request->email,
-            // 'password' => Hash::make($request->password),
-        ]);
+        $otp = rand(100000, 999999);
 
+        OTP::updateOrCreate(
+            ['email' => $request->email],
+            [
+                'otp' => $otp,
+                'expires_at' => Carbon::now()->addMinutes(10),
+                'data' => json_encode($request->only(['first_name', 'last_name', 'email', 'mobile', 'parent_id'])), // Save temporary user data
+            ]
+        );
 
-        if ($data) {
-            Mail::send('user.emails.deal_account', ['first_name' => $request->first_name], function ($message) use ($request) {
+        // Send OTP to email
+        try {
+            Mail::raw("Your OTP is: $otp", function ($message) use ($request) {
                 $message->to($request->email)
-                    ->subject('Welcome to Deal!');
+                    ->subject('Your OTP for Registration');
             });
 
-            return redirect()->route('login')->with('success', 'Account created successfully. Please log in.');
-        }
-    }
-
-    public function registerOtp(Request $request){
-        
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|email|exists:users,email',
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-
-        $user = User::where('email', $request->email)->first();
-
-        if($user){
-            $otp = rand(100000, 999999);
-
-            OTP::updateOrCreate(
-                ['email' => $request->email],
-                [
-                    'otp' => $otp,
-                    'expires_at' => Carbon::now()->addMinutes(10),
-                ]
-            );
-
-            // Send OTP to email
-            try {
-                Mail::raw("Your OTP is: $otp", function ($message) use ($request) {
-                    $message->to($request->email)
-                        ->subject('Your OTP for Login');
-                });
-
-                return redirect('/verification')->with('success', 'OTP sent successfully.');
-            } catch (\Exception $e) {
-                return redirect()->back()->with('error', 'Failed to send OTP. Please try again.');
-            }
+            return redirect()->back()->with('success', 'OTP sent successfully.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Failed to send OTP. Please try again.');
         }
     }
 
     public function verifyRegisterOTP(Request $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|email|exists:users,email',
-            'otp' => 'required|numeric',
-        ]);
+{
+    $validator = Validator::make($request->all(), [
+        'email' => 'required|email|exists:users,email',
+        'otp' => 'required|numeric',
+        'password' => 'required|min:8|confirmed',
+    ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
-
-        $otpRecord = OTP::where('email', $request->email)->first();
-
-        if (!$otpRecord || $otpRecord->otp !== $request->otp) {
-            return redirect()->back()->with('error', 'Invalid OTP.');
-        }
-
-        if (Carbon::now()->greaterThan($otpRecord->expires_at)) {
-            return redirect()->back()->with('error', 'OTP has expired.');
-        }
-
-        $otpRecord->delete();
-
-        $user = User::where('email', $request->email)->first();
-
-        if ($user) {
-            Auth::login($user);
-            $request->session()->regenerate();
-            return redirect()->route('login')->with('success', 'Register successfully.');
-        }
-        return redirect()->back()->with('error', 'Failed to log in.');
+    if ($validator->fails()) {
+        return back()->withErrors($validator)->withInput();
     }
+
+    $otpRecord = OTP::where('email', $request->email)->first();
+
+    if (!$otpRecord || $otpRecord->otp !== $request->otp) {
+        return back()->with('error', 'Invalid OTP.')->withInput();
+    }
+
+    if (Carbon::now()->greaterThan($otpRecord->expires_at)) {
+        return back()->with('error', 'OTP has expired.')->withInput();
+    }
+
+    $otpRecord->delete();
+
+    $user = User::where('email', $request->email)->first();
+
+    if ($user) {
+        Auth::login($user);
+        $request->session()->regenerate();
+
+        return redirect()->route('dashboard')->with('success', 'Registration successful.');
+    }
+
+    return back()->with('error', 'Failed to log in.')->withInput();
+}
+
+
+
+
+    // public function verifyRegisterOTP(Request $request)
+    // {
+    //     $validator = Validator::make($request->all(), [
+    //         'email' => 'required|email|exists:users,email',
+    //         'otp' => 'required|numeric',
+    //         'password' => 'required|min:8|confirmed',
+
+    //     ]);
+
+    //     if ($validator->fails()) {
+    //         return redirect()->back()->withErrors($validator)->withInput();
+    //     }
+
+    //     $otpRecord = OTP::where('email', $request->email)->first();
+
+    //     if (!$otpRecord || $otpRecord->otp !== $request->otp) {
+    //         return redirect()->back()->with('error', 'Invalid OTP.');
+    //     }
+
+    //     if (Carbon::now()->greaterThan($otpRecord->expires_at)) {
+    //         return redirect()->back()->with('error', 'OTP has expired.');
+    //     }
+
+    //     $otpRecord->delete();
+
+    //     $user = User::where('email', $request->email)->first();
+
+    //     if ($user) {
+    //         Auth::login($user);
+    //         $request->session()->regenerate();
+    //         Mail::send('user.emails.deal_account', ['first_name' => $request->first_name], function ($message) use ($request) {
+    //             $message->to($request->email)
+    //                 ->subject('Welcome to Deal!');
+    //         });
+
+    //         return redirect()->route('login')->with('success', 'Account created successfully. Please log in.');
+    //     }
+
+    //     return redirect()->back()->with('error', 'Failed to log in.');
+    // }
 
 
     public function sendOTP(Request $request)
