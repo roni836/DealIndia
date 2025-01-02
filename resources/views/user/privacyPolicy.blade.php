@@ -5,9 +5,9 @@
     <div class="bg-gradient-to-r from-teal-600 to-teal-800 text-white py-16">
         <div class="container mx-auto px-4 text-center">
             <i class="fas fa-shield-alt w-16 h-16 mx-auto mb-6"></i>
-            <h1 class="text-4xl font-bold mb-4">DealIndia Privacy Policy</h1>
+            <h1 class="text-4xl font-bold mb-4">Dealindia Privacy Policy</h1>
             <p class="text-xl max-w-2xl mx-auto">
-                Your privacy is our priority. Learn how DealIndia handles your information with transparency and care.
+                Your privacy is our priority. Learn how DeaiIndia handles your information with transparency and care.
             </p>
         </div>
     </div>
@@ -174,12 +174,12 @@
                             <i class="fas fa-envelope mr-2"></i> Email: <a href="mailto:privacy@dealindia.com"
                                 class="text-teal-600 hover:underline">privacy@dealindia.com</a>
                         </p>
-                        <p class="flex items-center">
+                        {{-- <p class="flex items-center">
                             <i class="fas fa-phone mr-2"></i> Phone: +1-800-DEALINDIA
                         </p>
                         <p class="flex items-center">
                             <i class="fas fa-map-marker-alt mr-2"></i> Address: 123 Investment Lane, DealCity, 45678
-                        </p>
+                        </p> --}}
                     </div>
                     <button class="mt-6 bg-teal-600 text-white px-6 py-3 rounded-lg hover:bg-teal-700 transition-colors">
                         Contact Us for Privacy Concerns
