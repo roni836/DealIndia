@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\LoginToken;
 use App\Models\Logo;
-use App\Models\OTP;
+use App\Models\Otp;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -67,7 +67,7 @@ class AuthController extends Controller
 
     // }
 
-        public function register(Request $request)
+    public function register(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'first_name' => 'required|string',
@@ -76,14 +76,14 @@ class AuthController extends Controller
             'parent_id' => 'nullable|string|exists:users,referral_id',
             'mobile' => 'required|unique:users,mobile|digits:10|regex:/^[6789][0-9]{9}$/',
         ]);
-
+    
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-
+    
         $otp = rand(100000, 999999);
-
-        OTP::updateOrCreate(
+    
+        Otp::updateOrCreate(
             ['email' => $request->email],
             [
                 'otp' => $otp,
@@ -91,55 +91,70 @@ class AuthController extends Controller
                 'data' => json_encode($request->only(['first_name', 'last_name', 'email', 'mobile', 'parent_id'])), // Save temporary user data
             ]
         );
-
-        // Send OTP to email
+        
         try {
-            Mail::raw("Your OTP is: $otp", function ($message) use ($request) {
+            Mail::raw("Your OTP is: $otp.", function ($message) use ($request) {
                 $message->to($request->email)
                     ->subject('Your OTP for Registration');
             });
-
-            return redirect()->back()->with('success', 'OTP sent successfully.');
+    
+            return redirect()->route('verify-otp', ['email' => $request->email])
+            ->with('success', 'OTP sent successfully. Check your email for the verification link.');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Failed to send OTP. Please try again.');
         }
     }
+    
+    
 
     public function verifyRegisterOTP(Request $request)
-{
-    $validator = Validator::make($request->all(), [
-        'email' => 'required|email|exists:users,email',
-        'otp' => 'required|numeric',
-        'password' => 'required|min:8|confirmed',
-    ]);
-
-    if ($validator->fails()) {
-        return back()->withErrors($validator)->withInput();
-    }
-
-    $otpRecord = OTP::where('email', $request->email)->first();
-
-    if (!$otpRecord || $otpRecord->otp !== $request->otp) {
-        return back()->with('error', 'Invalid OTP.')->withInput();
-    }
-
-    if (Carbon::now()->greaterThan($otpRecord->expires_at)) {
-        return back()->with('error', 'OTP has expired.')->withInput();
-    }
-
-    $otpRecord->delete();
-
-    $user = User::where('email', $request->email)->first();
-
-    if ($user) {
+    {
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email|exists:otps,email', // Use OTP table for email validation
+            'otp' => 'required|numeric',
+            'password' => 'required|min:8|confirmed',
+        ]);
+    
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+    
+        $otpRecord = Otp::where('email', $request->email)->first();
+    
+        if (!$otpRecord || $otpRecord->otp !== $request->otp) {
+            return back()->with('error', 'Invalid OTP.')->withInput();
+        }
+    
+        if (Carbon::now()->greaterThan($otpRecord->expires_at)) {
+            return back()->with('error', 'OTP has expired.')->withInput();
+        }
+    
+        // Decode user data and validate keys
+        $userData = json_decode($otpRecord->data, true);
+        if (!$userData || !isset($userData['first_name'], $userData['last_name'], $userData['mobile'])) {
+            return back()->with('error', 'Invalid or missing user data.')->withInput();
+        }
+    
+        $otpRecord->delete();
+    
+        $user = User::firstOrCreate(
+            ['email' => $request->email],
+            [
+                'first_name' => $userData['first_name'],
+                'last_name' => $userData['last_name'],
+                'mobile' => $userData['mobile'],
+                'parent_id' => $userData['parent_id'] ?? null,
+                'password' => Hash::make($request->password),
+            ]
+        );
+    
         Auth::login($user);
         $request->session()->regenerate();
-
+    
         return redirect()->route('dashboard')->with('success', 'Registration successful.');
     }
-
-    return back()->with('error', 'Failed to log in.')->withInput();
-}
+    
+    
 
 
 

@@ -9,6 +9,7 @@ use App\Http\Controllers\InvestorController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Http\Request;
 use App\Models\Setting;
 use App\Models\User;
 
@@ -36,6 +37,19 @@ Route::get('/register', function () {
 
     return view('auth.register', $data);
 });
+
+Route::get('/verify-otp', function (Request $request) {
+    $email = $request->query('email'); // Get email from URL
+    $logo = Setting::first();
+
+    if (!$email) {
+        return redirect('/register')->with('error', 'Email parameter is missing.');
+    }
+
+    return view('auth.verify-otp', compact('email', 'logo'));
+})->name('verify-otp');
+
+
 
 Route::get('/get-referred-user/{parent_id}', function ($parent_id) {
     $user = User::where('referral_id', $parent_id)->first();

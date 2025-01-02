@@ -55,10 +55,10 @@
                 <!-- Register Form -->
 
 
-                @if (session('success'))
+                {{-- @if (session('success'))
                     <form method="POST" action="{{ route('user.register.verify') }}">
                         @csrf
-                        <input type="hidden" name="email" value="{{ old('email', session('email')) }}">
+                        <input type="text" name="email" value="{{ old('email', session('email')) }}">
 
                         <div class="mb-4">
                             <label for="otp" class="block mb-2 text-sm font-medium text-gray-700">Enter the OTP</label>
@@ -96,7 +96,7 @@
                         <button type="submit" class="bg-teal-900 hover:bg-teal-700 text-white py-2 px-4 rounded-md">Verify
                             OTP</button>
                     </form>
-                @else
+                @else --}}
                     <form method="POST" action="{{ route('user.register') }}">
                         @csrf
 
@@ -179,7 +179,7 @@
                             </button>
                         </div>
                     </form>
-                @endif
+                {{-- @endif --}}
 
 
                 {{-- <form action="Post" action="{{route('user.register.verify')}}">
