@@ -1,9 +1,9 @@
 @extends('user.userBase')
 @section('title', 'Login Work')
 @section('content')
-    <div class="flex w-full flex-col lg:flex-row mt-10 md:mt-4">
+    <div class="flex w-full flex-col lg:flex-row mt-10 md:mt-4 overflow-hidden">
         <!-- Left Section (Image) -->
-        <div class="w-full lg:w-6/12  bg-orange-100 hidden md:flex">
+        <div class="w-full md:w-6/12 hidden md:flex">
             <div class="w-full h-screen relative">
                 <img src="register.jpg" class="object-cover w-full h-full filter opacity-80" alt="">
                 <div class="absolute inset-0 bg-black opacity-50"></div>
@@ -20,7 +20,7 @@
         </div>
 
         <!-- Right Section (Form) -->
-        <div class="w-full lg:w-6/12 flex flex-1 items-center">
+        <div class="w-full lg:w-6/12  flex flex-1 items-center">
             <!-- Display Validation Errors -->
 
             <div class="w-full mx-6 lg:mx-12 md:p-8 p-3">
@@ -57,9 +57,10 @@
                     @csrf
 
                     <!-- Name Field -->
-                    <div class="flex flex-col md:flex-col gap-4">
+                    <div class="flex flex-col  gap-4">
+                        
                         <!-- First Name Field -->
-                        <div class="w-full w-6/12 mb-4">
+                        <div class="w-full">
                             <label for="first_name" class="block text-sm font-medium mb-2 text-gray-700">First Name</label>
                             <input id="first_name" type="text" placeholder="Your First Name" name="first_name"
                                 value="{{ old('first_name') }}"
@@ -70,7 +71,7 @@
                         </div>
 
                         <!-- Last Name Field -->
-                        <div class="w-full w-6/12 mb-4">
+                        <div class="w-full  mb-2">
                             <label for="last_name" class="block text-sm font-medium mb-2 text-gray-700">Last Name</label>
                             <input id="last_name" type="text" placeholder="Your Last Name" name="last_name"
                                 value="{{ old('last_name') }}"
@@ -80,9 +81,6 @@
                             @enderror
                         </div>
                     </div>
-
-
-
                     <!-- Email Field -->
                     <div class="mb-4">
                         <label for="email" class="block mb-2 text-sm font-medium text-gray-700">Email</label>
@@ -159,7 +157,7 @@
                 <div class="mt-6 text-center flex items-center justify-center mb-">
                     <hr class="flex-grow border-t border-teal-900">
                     <a href="{{ url('login') }}" class="text-sm text-teal-900 mx-1">Already have an account? Log in</a>
-                    <a href="{{ route('password.request') }}" class="text-sm text-teal-900 mx-1">Forgot Password</a>
+                    {{-- <a href="{{ route('password.request') }}" class="text-sm text-teal-900 mx-1">Forgot Password</a> --}}
                     <hr class="flex-grow border-t border-teal-900">
                 </div>
 
