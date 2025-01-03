@@ -98,7 +98,13 @@ class AuthController extends Controller
                     ->subject('Your OTP for Registration');
             });
     
-            return redirect()->route('verify-otp', ['email' => $request->email])
+            return redirect()->route('verify-otp', [
+                'email' => $request->email,
+                'first_name'=>$request->first_name,
+                'last_name'=>$request->last_name,
+                'parent_id'=>$request->parent_id,
+                'mobile'=>$request->mobile,
+                ])
             ->with('success', 'OTP sent successfully. Check your email for the verification link.');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Failed to send OTP. Please try again.');
@@ -130,21 +136,20 @@ class AuthController extends Controller
         }
     
         // Decode user data and validate keys
-        $userData = json_decode($otpRecord->data, true);
-        if (!$userData || !isset($userData['first_name'], $userData['last_name'], $userData['mobile'])) {
-            return back()->with('error', 'Invalid or missing user data.')->withInput();
-        }
+        // $userData = json_decode($otpRecord->data, true);
+        // if (!$userData || !isset($userData['first_name'], $userData['last_name'], $userData['mobile'])) {
+        //     return back()->with('error', 'Invalid or missing user data.')->withInput();
+        // }
     
         $otpRecord->delete();
     
         $user = User::firstOrCreate(
-            ['email' => $request->email],
-            [
-                'first_name' => $userData['first_name'],
-                'last_name' => $userData['last_name'],
-                'mobile' => $userData['mobile'],
-                'parent_id' => $userData['parent_id'] ?? null,
-                'password' => Hash::make($request->password),
+            ['email' => $request->email,
+            'first_name'=>$request->first_name,
+            'last_name'=>$request->last_name,
+            'mobile'=>$request->mobile,
+            'parent_id'=>$request->parent_id,
+            'password' => Hash::make($request->password),
             ]
         );
     

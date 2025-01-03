@@ -57,9 +57,21 @@
 
                 <form method="POST" action="{{ route('user.register.verify') }}">
                     @csrf
-                    <input id="email" type="text" name="email"
+                    <input id="email" type="hidden" name="email"
                         value="{{ old('email', request()->query('email')) }}"
-                        class="w-full px-4 py-2 border @error('email') border-red-500 @else border-gray-300 @enderror rounded-md shadow-sm">
+                        class="w-full px-4 py-2 border  border-gray-300 rounded-md shadow-sm">
+                    <input id="first_name" type="hidden" name="first_name"
+                        value="{{ old('first_name', request()->query('first_name')) }}"
+                        class="w-full px-4 py-2 border  border-gray-300 rounded-md shadow-sm">
+                    <input id="last_name" type="hidden" name="last_name"
+                        value="{{ old('last_name', request()->query('last_name')) }}"
+                        class="w-full px-4 py-2 border  border-gray-300 rounded-md shadow-sm">
+                    <input id="mobile" type="hidden" name="mobile"
+                        value="{{ old('mobile', request()->query('mobile')) }}"
+                        class="w-full px-4 py-2 border  border-gray-300 rounded-md shadow-sm">
+                    <input id="parent_id" type="hidden" name="parent_id"
+                        value="{{ old('parent_id', request()->query('parent_id')) }}"
+                        class="w-full px-4 py-2 border  border-gray-300 rounded-md shadow-sm">
                     <div class="mb-4">
                         <label for="otp" class="block mb-2 text-sm font-medium text-gray-700">Enter the OTP</label>
                         <input id="otp" type="number" name="otp" value="{{ old('otp') }}"

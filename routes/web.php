@@ -39,7 +39,11 @@ Route::get('/register', function () {
 });
 
 Route::get('/verify-otp', function (Request $request) {
-    $email = $request->query('email'); // Get email from URL
+    $email = $request->query('email');
+    $first_name = $request->query('first_name');
+    $last_name = $request->query('last_name');
+    $mobile = $request->query('mobile');
+    $parent_id = $request->query('parent_id');
     $logo = Setting::first();
 
     if (!$email) {
