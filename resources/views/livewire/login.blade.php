@@ -138,10 +138,15 @@
                     <hr class="flex-grow border-t border-teal-900">
                     <a href="{{ url('register') }}" class="text-sm text-teal-900 hover:underline ">Don't have an
                         account? Register now</a>
-                    <a href="{{ url('forgot-password') }}" class="text-sm text-teal-900 hover:underline mx-4">
-                        Forgot Password</a>
                     <hr class="flex-grow border-t border-teal-900">
                 </div>
+                <div class="mt-2 text-center flex items-center justify-center">
+                    {{-- <hr class="flex-grow border-t border-teal-900"> --}}
+                    <a href="{{ url('forgot-password') }}" class="text-sm text-teal-900 hover:underline mx-4">
+                        Forgot Password</a>
+                    {{-- <hr class="flex-grow border-t border-teal-900"> --}}
+                </div>
+                
             </div>
         </div>
     </div>
