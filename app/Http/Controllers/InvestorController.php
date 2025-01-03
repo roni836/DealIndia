@@ -7,6 +7,7 @@ use App\Models\AdditionalDocument;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
 class InvestorController extends Controller
@@ -118,6 +119,10 @@ class InvestorController extends Controller
 
             if ($investerDetails) {
                 User::where('id', Auth::id())->update(['all_details' => 1]);
+                Mail::send('user.emails.investor_created', ['first_name' => $investerDetails->first_name], function ($message) use ($request) {
+                    $message->to($request->email)
+                        ->subject('New Dealindia Investor Request Submitted');
+                });
             }
     
             return redirect('/investerform')->with('success', 'Details submitted successfully!');
