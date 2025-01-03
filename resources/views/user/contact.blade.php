@@ -1,5 +1,6 @@
 @extends('user.userBase')
-@section('title', '')
+@section('title', 'Contact Us')
+@section('meta_description', 'Have questions or need assistance? Get in touch with Deal India today. We\'re here to help you with all your financial queries and solutions.')
 @section('content')
 
 <section class="bg-teal-900 text-white py-20">

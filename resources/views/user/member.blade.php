@@ -1,5 +1,7 @@
 @extends('user.userBase')
-@section('title', 'User Member ')
+@section('title', 'Our Team ')
+@section('meta_description', 'Meet the dedicated team behind Deal India. Our experts are passionate about delivering top-notch financial solutions and empowering you to achieve financial success.')
+
 @section('content')
 
 <div class="flex mt-10 bg-gray-100">

@@ -1,5 +1,7 @@
 @extends('user.userBase')
 @section('title', 'User Dashboard')
+
+@section('meta_description', 'Access your personalized financial dashboard on Deal India. Track your progress, manage your investments, and stay updated with expert recommendations.')
 @section('content')
 <div class="flex mt-10 bg-gray-100">
     <!-- Sidebar -->

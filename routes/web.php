@@ -9,6 +9,7 @@ use App\Http\Controllers\InvestorController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Setting;
 use App\Models\User;
@@ -24,18 +25,29 @@ Route::resource('contacts', ContactController::class);
 
 Route::get('/login', function () {
     $data['logo'] = Setting::first();
-    return view('auth.login', $data);
+    $user = Auth::user();
+    if(!$user){
+        return view('auth.login', $data);
+    }
+    return redirect('/dashboard');
 })->name('login');
 
 Route::get('/verification', function () {
     $data['logo'] = Setting::first();
-    return view('auth.verification',$data);
+    $user = Auth::user();
+    if(!$user){
+        return view('auth.verification',$data);
+    }
+    return redirect('/dashboard');
 });
 
 Route::get('/register', function () {
     $data['logo'] = Setting::first();
-
-    return view('auth.register', $data);
+    $user = Auth::user();
+    if(!$user){
+        return view('auth.register', $data);
+    }
+    return redirect('/dashboard');
 });
 
 Route::get('/verify-otp', function (Request $request) {

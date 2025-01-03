@@ -71,8 +71,12 @@ class UserController extends Controller
         if (!$investor) {
             return redirect()->route('details.submit');
         }
-
+       
+        $additionalDocuments = $investor->additional_documents;
+       
         $data['investor'] = $investor;
+        $data['additionalDocuments'] = $additionalDocuments;
+
         return view('user.personalDetails', $data);
     }
 

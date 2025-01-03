@@ -1,10 +1,11 @@
 @extends('user.userBase')
-@section('title', '')
+@section('title', 'Privacy Policy')
+@section('meta_description', 'Learn how Deal India protects your personal data. Our Privacy Policy outlines our practices for data collection, usage, and security to ensure your information is safe.')
 @section('content')
     <!-- Hero Section -->
     <div class="bg-gradient-to-r from-teal-600 to-teal-800 text-white py-16">
         <div class="container mx-auto px-4 text-center">
-            <i class="fas fa-shield-alt w-16 h-16 mx-auto mb-6"></i>
+            <i class="fas fa-shield-alt text-3xl md:text-4xl lg:text-6xl mx-auto mb-6"></i>
             <h1 class="text-4xl font-bold mb-4">Dealindia Privacy Policy</h1>
             <p class="text-xl max-w-2xl mx-auto">
                 Your privacy is our priority. Learn how DeaiIndia handles your information with transparency and care.

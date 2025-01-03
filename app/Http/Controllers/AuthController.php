@@ -69,6 +69,10 @@ class AuthController extends Controller
     public function verifyRegisterOTP(Request $request)
     {
         $validator = Validator::make($request->all(), [
+            'first_name' => 'required|string',
+            'last_name' => 'required|string',
+            'parent_id' => 'nullable|string|exists:users,referral_id',
+            'mobile' => 'required|unique:users,mobile|digits:10|regex:/^[6789][0-9]{9}$/',
             'email' => 'required|email|exists:otps,email', // Use OTP table for email validation
             'otp' => 'required|numeric',
             'password' => 'required|min:8|confirmed',
@@ -148,7 +152,7 @@ class AuthController extends Controller
             return redirect()->back()->with('error', 'Invalid email or password.');
         }
     }
-    
+
     public function verifyOTP(Request $request)
     {
         $validator = Validator::make($request->all(), [

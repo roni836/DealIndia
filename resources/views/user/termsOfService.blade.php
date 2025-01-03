@@ -1,5 +1,6 @@
 @extends('user.userBase')
-@section('title', '')
+@section('title', 'Terms of Service')
+@section('meta_description', 'Read Deal India\'s Terms of Service to understand the rules and conditions for using our financial platform and services. Your compliance ensures a safe and secure experience.')
 @section('content')
 <!-- Hero Section -->
 <div class="bg-gradient-to-r from-teal-600 to-teal-800 text-white py-16">

@@ -1,6 +1,6 @@
 @extends('user.userBase')
-@section('title', '')
-@section('content')
+@section('title', 'Our Services')
+@section('meta_description', 'Discover Deal India\'s range of financial services, including investment planning, loan advice, and budgeting solutions. Tailored to meet your financial needs and goals.')@section('content')
     <!-- Hero Section -->
     <div class="relative h-screen flex items-center justify-center bg-gradient-to-r from-teal-900 to-teal-700 text-white px-4"
         style="

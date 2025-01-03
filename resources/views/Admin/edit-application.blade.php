@@ -110,6 +110,8 @@
                     <p><strong>Bank Name:</strong> {{ $user->investorDetails->bank_name }}</p>
                     <p><strong>Account Number:</strong> {{ $user->investorDetails->account_number }}</p>
                     <p><strong>IFSC Code:</strong> {{ $user->investorDetails->ifsc_code }}</p>
+                    <p><strong>MICR Number:</strong> {{ $user->investorDetails->micr_number }}</p>
+                    <p><strong>Branch Name:</strong> {{ $user->investorDetails->branch_name }}</p>
                     <p><strong>Account Holder Name:</strong> {{ $user->investorDetails->account_holder_name }}</p>
                     <p><strong>Account Type:</strong> {{ $user->investorDetails->account_type }}</p>
                 </div>
