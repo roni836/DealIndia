@@ -16,11 +16,22 @@ class InvestorController extends Controller
     // Display the form
     public function index()
     {
-        if(Auth::user()->all_details != 1){
+        // Check if the user's details are not complete
+        if (Auth::user()->all_details != 1) {
+            // Redirect to the form to complete details
             return redirect()->route('details.form');
         }
+    
+        // Check if admin approval is pending
+        if (Auth::user()->status != 1) {
+            // Show the approval pending view
+            return view('user.approval');
+        }
+    
+        // Show the code form once admin approval is granted
         return view('user.codeform');
     }
+    
 
     // Handle form submission
     public function store(Request $request)
