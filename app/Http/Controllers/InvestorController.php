@@ -75,7 +75,6 @@ class InvestorController extends Controller
             'bank_name' => 'required|string|max:255',
             'branch_name' => 'required|string|max:255',
             'account_number' => 'required|string|max:255',
-            'micr_number' => 'required|string|max:255',
             'ifsc_code' => 'required|string|max:15|regex:/^[A-Z]{4}0[A-Z0-9]{6}$/',
             'account_holder_name' => 'required|string|max:255',
             'account_type' => 'required|string',
