@@ -8,16 +8,16 @@
 <body style="font-family: Arial, sans-serif; background-color: #f9f9f9;">
 
     <div>
-        <h1 style="font-size: 24px; color: #4CAF50;">🎉 Welcome to Deal India! 🎉</h1>
+        <h1 style="font-size: 24px; color: #4CAF50;">🎉 Welcome to Dealindia! 🎉</h1>
         
         <p style="font-size: 16px; color: #333; line-height: 1.8;">
             👋 <strong>Hi {{ $user->first_name }}</strong>,
         </p>
         <p style="font-size: 16px; color: #333; line-height: 1.8;">
-            🌟 We are beyond excited to welcome you to the Deal India family! Your account has been successfully created, and you’re now part of a growing community of passionate individuals striving for excellence.
+            🌟 We are beyond excited to welcome you to the Dealindia family! Your account has been successfully created, and you’re now part of a growing community of passionate individuals striving for excellence.
         </p>
         <p style="font-size: 16px; color: #333; line-height: 1.8;">
-            🚀 Here's a quick glance at your account details. Feel free to use them to explore everything Deal India has to offer:
+            🚀 Here's a quick glance at your account details. Feel free to use them to explore everything Dealindia has to offer:
         </p>
         
         <div style="background-color: #f4f4f4; padding: 15px; border-radius: 8px; margin-top: 15px;">
@@ -37,7 +37,7 @@
         </p>
     
         <p style="font-size: 12px; color: #888; margin-top: 20px;">
-            &copy; {{ date('Y') }} Deal India. All rights reserved.
+            &copy; {{ date('Y') }} Dealindia. All rights reserved.
         </p>
     </div>
     

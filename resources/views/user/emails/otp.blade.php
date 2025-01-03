@@ -34,7 +34,7 @@
         </div>
 
         <div style="text-align: center; background-color: #f4f4f9; padding: 10px 20px; font-size: 0.9em; color: #555;">
-            <p>&copy; {{ date('Y') }} <strong>Deal India</strong>. All rights reserved.</p>
+            <p>&copy; {{ date('Y') }} <strong>Dealindia</strong>. All rights reserved.</p>
         </div>
     </div>
 </body>
