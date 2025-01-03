@@ -1,5 +1,6 @@
 @extends('user.userBase')
-@section('title', '')
+@section('title', 'Privacy Policy')
+@section('meta_description', 'Learn how Deal India protects your personal data. Our Privacy Policy outlines our practices for data collection, usage, and security to ensure your information is safe.')
 @section('content')
     <!-- Hero Section -->
     <div class="bg-gradient-to-r from-teal-600 to-teal-800 text-white py-16">

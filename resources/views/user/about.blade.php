@@ -1,5 +1,6 @@
 @extends('user.userBase')
-@section('title', '')
+@section('title', 'About Us')
+@section('meta_description', 'Learn more about Deal India, our mission to simplify finance, and our commitment to empowering individuals with the best tools and insights for financial success in India.')
 @section('content')
     <div class="bg-gray-50">
         <!-- Hero Section -->

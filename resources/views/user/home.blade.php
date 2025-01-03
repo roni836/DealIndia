@@ -1,5 +1,7 @@
 @extends('user.userBase')
 @section('title', '')
+@section('meta_description', 'Welcome to Deal India – your go-to platform for financial solutions, expert advice, and tools to achieve your financial goals in India.')
+
 @section('content')
 <main class="">
   <!-- Hero Section -->
