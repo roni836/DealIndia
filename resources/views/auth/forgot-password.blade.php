@@ -1,7 +1,7 @@
 @extends('user.userBase')
 @section('title', 'Forgot Password Work')
 @section('content')
-<div class="container mt-10 mx-auto p-4">
+<div class="container mt-10 mx-auto py-20 px-4">
     <div class="flex justify-center">
         <div class="w-full max-w-md">
             <div class="bg-white shadow-lg rounded-lg">
@@ -54,8 +54,8 @@
                             @enderror
                         </div>
 
-                        <div class="mb-4">
-                            <button type="submit" class="w-full py-3 px-4 bg-teal-600 text-white font-semibold rounded-lg hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-blue-400">
+                        <div class="mb-4 text-center">
+                            <button type="submit" class=" w-full py-3 px-4 bg-teal-600 text-white font-semibold rounded-lg hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-blue-400">
                                 {{ __('Send Password Reset Link') }}
                             </button>
                         </div>

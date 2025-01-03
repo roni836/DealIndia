@@ -68,6 +68,7 @@
           
                 <!-- Banking Details Section -->
                 <div class="bg-white p-6 rounded-xl shadow-md">
+                  
                   <div class="flex items-center gap-3 mb-4">
                     <i class="fas fa-university text-teal-600 text-xl"></i>
                     <h2 class="text-xl font-semibold">Banking Details</h2>
@@ -99,6 +100,20 @@
                       <div>
                         <p class="text-sm text-gray-500">IFSC Code</p>
                         <p class="font-medium">{{$investor->ifsc_code}}</p>
+                      </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                      <i class="fas fa-credit-card text-gray-400 mt-1"></i>
+                      <div>
+                        <p class="text-sm text-gray-500">MICR Number</p>
+                        <p class="font-medium">{{$investor->micr_number}}</p>
+                      </div>
+                    </div>
+                    <div class="flex items-start gap-3">
+                      <i class="fas fa-credit-card text-gray-400 mt-1"></i>
+                      <div>
+                        <p class="text-sm text-gray-500">Branch Name</p>
+                        <p class="font-medium">{{$investor->branch_name}}</p>
                       </div>
                     </div>
                     <div class="flex items-start gap-3">
@@ -206,7 +221,32 @@
                 </div>
               </div>
 
-              
+              <!-- Additional Documents Section (Optional) -->
+              @if($additionalDocuments && $additionalDocuments->count() > 0)
+              <div class="bg-white shadow-lg rounded-lg mt-4 mb-6">
+                  <div class="flex items-center gap-3 p-6">
+                    <i class="fas fa-file-alt text-teal-600 text-xl"></i>
+                      <h4 class="text-lg font-semibold">Additional Documents</h4>
+                  </div>
+                  <div class="p-6 grid grid-cols-1 md:grid-cols-3 gap-4">
+                      @foreach($additionalDocuments as $document)
+                      <div class="bg-gray-100 p-4 rounded-lg">
+                          <p><strong>Name:</strong> {{ $document->name }}</p>
+                          @php
+                              $extension = pathinfo($document->filename, PATHINFO_EXTENSION);
+                          @endphp
+                          @if(in_array($extension, ['jpeg', 'jpg', 'png']))
+                          <img src="{{ asset('storage/' . $document->filename) }}" alt="Document" class="rounded-lg w-full h-48 object-contain">
+                          @else
+                          <a href="{{ asset('storage/' . $document->filename) }}" target="_blank" class="text-blue-500 underline">
+                              View Document
+                          </a>
+                          @endif
+                      </div>
+                      @endforeach
+                  </div>
+              </div>
+              @endif
           
               <!-- Action Buttons -->
               {{-- <div class="mt-8 flex flex-wrap gap-4">
