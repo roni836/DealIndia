@@ -41,7 +41,7 @@ return new class extends Migration
             $table->string('state')->nullable();
             $table->string('country')->nullable();
             $table->string('postal_code')->nullable();
-            $table->string('generate_new_code')->nullable();
+            $table->boolean('generate_new_code')->default(true);
 
 
             // Document Details

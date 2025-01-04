@@ -4,6 +4,18 @@
     <div class="flex items-center justify-center min-h-screen bg-gray-100">
         <div class="w-full max-w-md p-6">
             <!-- Display Success or Error Messages -->
+            @if (session('error'))
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        Swal.fire({
+                            title: 'Whoops! Something went wrong.',
+                            icon: 'error',
+                            confirmButtonText: 'OK',
+                            confirmButtonColor: '#d33',
+                        });
+                    });
+                </script>
+            @endif
             @if (session('success'))
                 <script>
                     document.addEventListener('DOMContentLoaded', function() {

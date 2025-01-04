@@ -17,16 +17,18 @@ class InvestorController extends Controller
     // Display the form
     public function index()
     {
+        $status = Auth::user()->status;
+        $investerDetails = InvesterDetail::where('user_id',Auth::id())->first();
         // Check if the user's details are not complete
         if (Auth::user()->all_details != 1) {
             // Redirect to the form to complete details
             return redirect()->route('details.form');
         } else {
             // Check the user's status
-            if (Auth::user()->status == 0) {
+            if ($status == 0 && $investerDetails->generate_new_code && Auth::user()->vr_code != NULL) {
                 // Show the approval pending view
                 return view('user.approval');
-            } elseif (Auth::user()->status == 2) {
+            } elseif ($status == 2) {
                 // Show the rejected view
                 return view('user.rejected');
             } else {
@@ -52,6 +54,15 @@ class InvestorController extends Controller
         $userId = Auth::id();
         $userDetails = User::find($userId);
 
+        $investerDetails = InvesterDetail::where('user_id',Auth::id())->first();
+        if($investerDetails->generate_new_code == true){
+            $userDetails->vr_code = $validated['vr_code'];
+            $userDetails->range_code = $validated['range_code'];
+            $userDetails->company_code = $validated['company_code'];
+            $userDetails->noc_number = $validated['noc_number'];
+            $userDetails->code_details = 1;
+            $userDetails->save();
+        }
         // Check if the submitted codes match the user's details
         if (
             $userDetails->vr_code == $validated['vr_code'] &&
@@ -112,11 +123,12 @@ class InvestorController extends Controller
         }
     
         else {
-            $data = $request->except('aadhar_card', 'pan_card', 'inputs');
+            $data = $request->except('aadhar_card', 'pan_card', 'inputs','generate_new_code');
             $data['aadhar_card'] = $request->file('aadhar_card')?->store('documents/aadhar', 'public');
             $data['pan_card'] = $request->file('pan_card')?->store('documents/pan', 'public');
             $data['photo'] = $request->file('photo')?->store('documents/photo', 'public');
             $data['user_id'] = Auth::id();
+            $data['generate_new_code'] = $request->input('generate_new_code',false);
     
             $investerDetails = InvesterDetail::create($data);
     
@@ -133,6 +145,7 @@ class InvestorController extends Controller
 
             if ($investerDetails) {
                 User::where('id', Auth::id())->update(['all_details' => 1]);
+
                 Mail::send('user.emails.investor_created', ['first_name' => $investerDetails->first_name], function ($message) use ($request) {
                     $message->to($request->email)
                         ->subject('Dealindia member request submitted');

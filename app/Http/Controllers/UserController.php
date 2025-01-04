@@ -51,10 +51,14 @@ class UserController extends Controller
     public function dashboard()
     {
         $data['logo'] = Setting::first();
-        if (Auth::user()->code_details != 1) {
+        if (Auth::user()->status != 1) {
+            if (Auth::user()->vr_code != NULL) {
+                    return view('user.approval');
+            }
             return redirect()->route('user.investerCodeform');
         } else {
-            return view('user.dashboard', $data);
+            
+                return view('user.dashboard', $data);
         }
     }
     public function member()

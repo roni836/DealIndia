@@ -16,27 +16,6 @@ class ApplicationController extends Controller
         return view('Admin.edit-application',["user"=>$user]);
     }
 
-    // public function generateCode($id){
-    //     $user = User::find($id);
-
-    //     if (!$user) {
-    //         return redirect()->back()->with('error', 'User not found');
-    //     }
-
-    //     $user->vr_code = 'VR' . time();
-    //     $user->range_code = 'RG' . time() . rand(10, 99);
-    //     $user->company_code = 'CMP' . strtoupper(uniqid());
-    //     $user->noc_number = 'NOC-' . now()->format('Ymd-His');
-    //     $user->save();
-
-    //     Mail::raw("Hello $request->name, your Real Account has been Created Successfully.", function ($message) use ($request) {
-    //         $message->to($request->email)
-    //             ->subject('New Real Account Created');
-    //     });
-
-    //     return redirect()->back()->with('success', 'User approved successfully!');
-    // }
-
     public function generateCode($id)
     {
         $user = User::find($id);

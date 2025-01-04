@@ -297,8 +297,8 @@
             </div>
 
             <div class="mt-4">
-                <input type="checkbox" id="generate_new_code" name="generate_new_code" value="yes"
-                    {{ old('generate_new_code') == 'yes' ? 'checked' : '' }}
+                <input type="checkbox" id="generate_new_code" name="generate_new_code"
+                    {{ old('generate_new_code') == true ? 'checked' : '' }}
                     class="mr-2 rounded border-gray-300 focus:ring-blue-500">
                 <label for="generate_new_code" class="text-sm text-gray-700">Do you want to generate New VR code and
                     NOC number?</label>
