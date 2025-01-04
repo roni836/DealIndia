@@ -29,7 +29,6 @@
                         <a href="{{ url('/admin/application/' . $application->id) }}"
                            class="text-blue-500 hover:underline">
                            <button class="px-2 py-1 bg-blue-600 text-white rounded hover:bg-blue-800">View</button>
-
                         </a>
                     </td>
                 </tr>
