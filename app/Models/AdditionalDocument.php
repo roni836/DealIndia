@@ -10,6 +10,11 @@ class AdditionalDocument extends Model
 
     public function investor_detail(): HasOne
     {
-        return $this->HasOne(InvestorDetail::class, 'id', 'investor_detail_id');
+        return $this->HasOne(InvesterDetail::class, 'id', 'investor_detail_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

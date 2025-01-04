@@ -17,7 +17,7 @@ use Validator;
 
 class AuthController extends Controller
 {
-   
+
 
     public function register(Request $request)
     {
@@ -28,13 +28,13 @@ class AuthController extends Controller
             'parent_id' => 'nullable|string|exists:users,referral_id',
             'mobile' => 'required|unique:users,mobile|digits:10|regex:/^[6789][0-9]{9}$/',
         ]);
-    
+
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-    
+
         $otp = rand(100000, 999999);
-    
+
         Otp::updateOrCreate(
             ['email' => $request->email],
             [
@@ -43,28 +43,28 @@ class AuthController extends Controller
                 'data' => json_encode($request->only(['first_name', 'last_name', 'email', 'mobile', 'parent_id'])), // Save temporary user data
             ]
         );
-        
+
         try {
             Mail::send('user.emails.otp', ['otp' => $otp], function ($message) use ($request) {
                 $message->to($request->email)
                     ->subject('Your OTP for Registration');
             });
-            
-    
+
+
             return redirect()->route('verify-otp', [
                 'email' => $request->email,
-                'first_name'=>$request->first_name,
-                'last_name'=>$request->last_name,
-                'parent_id'=>$request->parent_id,
-                'mobile'=>$request->mobile,
-                ])
-            ->with('success', 'OTP sent successfully. Check your email for verification OTP.');
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'parent_id' => $request->parent_id,
+                'mobile' => $request->mobile,
+            ])
+                ->with('success', 'OTP sent successfully. Check your email for verification OTP.');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Failed to send OTP. Please try again.');
         }
     }
-    
-    
+
+
 
     public function verifyRegisterOTP(Request $request)
     {
@@ -77,41 +77,42 @@ class AuthController extends Controller
             'otp' => 'required|numeric',
             'password' => 'required|min:8|confirmed',
         ]);
-    
+
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput();
         }
-    
+
         $otpRecord = Otp::where('email', $request->email)->first();
-    
+
         if (!$otpRecord || $otpRecord->otp !== $request->otp) {
             return back()->with('error', 'Your OTP is Incorrect.')->withInput();
         }
-    
+
         if (Carbon::now()->greaterThan($otpRecord->expires_at)) {
             return back()->with('error', 'OTP has expired.')->withInput();
         }
-    
-       
-    
+
+
+
         $otpRecord->delete();
-    
+
         $user = User::firstOrCreate(
-            ['email' => $request->email,
-            'first_name'=>$request->first_name,
-            'last_name'=>$request->last_name,
-            'mobile'=>$request->mobile,
-            'parent_id'=>$request->parent_id,
-            'password' => Hash::make($request->password),
+            [
+                'email' => $request->email,
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'mobile' => $request->mobile,
+                'parent_id' => $request->parent_id,
+                'password' => Hash::make($request->password),
             ]
         );
-    
+
         Auth::login($user);
         $request->session()->regenerate();
-    
+
         return redirect()->route('dashboard')->with('success', 'Registration successful.');
     }
-  
+
 
     public function sendOTP(Request $request)
     {
@@ -314,7 +315,7 @@ class AuthController extends Controller
 
             Mail::send('user.emails.password_reset', ['resetLink' => $resetLink], function ($message) use ($request) {
                 $message->to($request->email)
-                ->subject('Password Reset Link');
+                    ->subject('Password Reset Link');
             });
 
             // Redirect with success message
@@ -323,7 +324,6 @@ class AuthController extends Controller
             // If mail sending fails, redirect with error message
             return redirect()->back()->with('error', 'Failed to send password reset link. Please try again.');
         }
-
     }
 
 
@@ -384,5 +384,4 @@ class AuthController extends Controller
         // Redirect to login with success message
         return redirect()->route('login')->with('success', 'Your password has been reset successfully.');
     }
-
 }

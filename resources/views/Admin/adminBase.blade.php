@@ -69,6 +69,9 @@
                 <a href="{{ url('/admin/application-approved') }}" class="block py-2 px-4 hover:bg-indigo-700">
                     <i class="bi bi-person-fill-check px-2"></i> Approved Applications
                 </a>
+                <a href="{{ url('/admin/rejected-applications') }}" class="block py-2 px-4 hover:bg-indigo-700">
+                    <i class="bi bi-person-fill-slash px-2"></i> Rejected Applications
+                </a>
                 <a href="{{ route('admin.contact.manage') }}" class="block py-2 px-4 hover:bg-indigo-700">
                     <i class="bi bi-person-fill-exclamation px-2"></i>Enquiry
                 </a>

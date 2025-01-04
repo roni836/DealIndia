@@ -1,12 +1,12 @@
 @extends('user.userBase')
 @section('title', 'User Dashboard')
 @section('content')
-   <!-- Static Page -->
-   <div class="min-h-screen flex items-start  justify-start bg-gradient-to-br from-green-50 to-green-100">
+<!-- Static Page -->
+<div class="min-h-screen flex items-start  justify-start bg-gradient-to-br from-green-50 to-green-100">
     <div class="bg-green-100 p-10 my-20 rounded-sm shadow-xl max-w-4xl text-left mx-auto">
-       
+
         <h2 class="text-4xl font-extrabold text-gray-800 mb-4">
-             Admin Approval Required!
+            Company Approval Required!
         </h2>
         <p class="text-gray-600 text-lg mb-6">
             Your account setup is not yet complete. Here’s what to expect during the process:
@@ -15,7 +15,7 @@
             <h3 class="text-green-700 font-bold mb-2">📋 Steps to Complete Your Account:</h3>
             <ul class="list-decimal list-inside text-green-700 text-sm leading-relaxed space-y-2">
                 <li>Admin will review and approve your investor details.</li>
-                <li>After approval, you will receive an email titled: 
+                <li>After approval, you will receive an email titled:
                     <span class="font-semibold text-green-800">"Your Deal India Account has been created successfully!"</span>
                 </li>
                 <li>The email will contain:
@@ -43,9 +43,9 @@
             Need help? Contact us to resolve your queries promptly.
         </p>
         <a href="mailto:support@dealindia.org"
-        class="inline-block text-center w-full bg-teal-600 text-white py-3 rounded-lg font-medium hover:bg-teal-700 focus:outline-none ">
-        📧 Contact Support
-     </a>
+            class="inline-block text-center w-full bg-teal-600 text-white py-3 rounded-lg font-medium hover:bg-teal-700 focus:outline-none ">
+            📧 Contact Support
+        </a>
     </div>
 </div>
 

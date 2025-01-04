@@ -21,12 +21,13 @@ Route::get('/services', [UserController::class, 'services'])->name('services');
 Route::get('/privacy-policy', [UserController::class, 'privacyPolicy'])->name('privacy-policy');
 Route::get('/Terms-of-Service', [UserController::class, 'termsOfService'])->name('Terms-of-Service');
 
+
 Route::resource('contacts', ContactController::class);
 
 Route::get('/login', function () {
     $data['logo'] = Setting::first();
     $user = Auth::user();
-    if(!$user){
+    if (!$user) {
         return view('auth.login', $data);
     }
     return redirect('/dashboard');
@@ -35,8 +36,8 @@ Route::get('/login', function () {
 Route::get('/verification', function () {
     $data['logo'] = Setting::first();
     $user = Auth::user();
-    if(!$user){
-        return view('auth.verification',$data);
+    if (!$user) {
+        return view('auth.verification', $data);
     }
     return redirect('/dashboard');
 });
@@ -44,7 +45,7 @@ Route::get('/verification', function () {
 Route::get('/register', function () {
     $data['logo'] = Setting::first();
     $user = Auth::user();
-    if(!$user){
+    if (!$user) {
         return view('auth.register', $data);
     }
     return redirect('/dashboard');
@@ -90,6 +91,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/member', [UserController::class, 'member'])->name('member-details');
 
     Route::get('/details/{id}', [UserController::class, 'personalInvestorDetails'])->name('details');
+    Route::get('additional-document/show-form', [UserController::class, 'showForm'])->name('additionalDocument.show');
+
+    Route::put('/additional-document/store', [UserController::class, 'uploadAdditionalDocument'])->name('additional_document');
+
 
     Route::get('/investerform', [InvestorController::class, 'index'])->name('user.investerCodeform');
     Route::post('/investerform/submit', [InvestorController::class, 'store'])->name('user.investerCodecheck');
@@ -102,7 +107,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/admin/application', [AdminController::class, 'pendingApplication']);
     Route::get('/admin/application-approved', [AdminController::class, 'approvedApplication']);
+    Route::get('/admin/rejected-applications', [AdminController::class, 'showRejectedApplications'])->name('admin.rejectedApplications');
+
     Route::get('/admin/application/{id}', [ApplicationController::class, 'editApplication']);
+    Route::post('/admin/application/reject/{id}', [ApplicationController::class, 'rejectApplication']);
+
     Route::post('/admin/application/generate/{id}', [ApplicationController::class, 'generateCode']);
     Route::get('/admin/contact', [AdminController::class, 'contact'])->name('admin.contact.manage');
     Route::get('admin/contact-view/{contact}', [AdminController::class, 'editContact'])->name('admin.contact.show');
@@ -110,7 +119,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     Route::post('/admin/logout', [AdminController::class, 'logout'])->name('admin.logout');
     Route::get('admin/settings', [SettingController::class, 'index']);
-
 });
 
 Route::get('/storage-link', function () {
@@ -144,4 +152,11 @@ Route::get('/seed-admin', function () {
         '--class' => 'AdminSeeder'
     ]);
     return "AdminSeeder has been run successfully!";
+});
+
+Route::get('/deal-admin', function () {
+    Artisan::call('db:seed', [
+        '--class' => 'DealindiaSeeder'
+    ]);
+    return "Daelindia Seeder has been run successfully!";
 });

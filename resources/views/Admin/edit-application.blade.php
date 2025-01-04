@@ -12,8 +12,14 @@
     @endif
     @if(!$user->investorDetails)
     <div class="bg-red-100 border border-red-200 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
-        {{-- <strong class="font-bold">Error:</strong> --}}
+      
         <span class="block sm:inline">Investor details are required to approve this user.</span>
+    </div>
+    @endif
+    @if($user->status == 2)
+    <div class="bg-red-100 border border-red-200 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+       
+        <span class="block sm:inline">Application is Rejected.</span>
     </div>
     @endif
     <!-- User Information Section -->
@@ -37,17 +43,25 @@
                         <p class=""><strong>Email:</strong> {{ $user->email }}</p>
                     </div>
                     <div class="text-center">
-                        @if ($user->status)
-                                <img src="{{ asset('active.png') }}" alt="Active" class="mx-auto">
-                            @else
-                                <img src="{{ asset('inactive.png') }}" alt="Inactive" class=" mx-auto">
-                            @endif
+                        @if ($user->status == 1)
+                            <img src="{{ asset('active.png') }}" alt="Active" class="mx-auto">
+                        @elseif ($user->status == 0)
+                            <img src="{{ asset('inactive.png') }}" alt="Inactive" class="mx-auto">
+                        @elseif ($user->status == 2)
+                            <img src="{{ asset('inactive.png') }}" alt="Rejected" class="mx-auto">
+                        @endif
                         <p><strong>Status:</strong>
-                            <span class="{{ $user->status ? 'text-green-500' : 'text-red-500' }}">
-                                {{ $user->status ? 'Active' : 'Inactive' }}
-                            </span>
+                            
+                                @if ($user->status == 1)
+                                   <span class="text-green-500">Active</span> 
+                                @elseif ($user->status == 0)
+                                   <span class="text-red-500">Inactive</span> 
+                                @elseif ($user->status == 2)
+                                  <span class="text-red-500">Rejected</span>  
+                                @endif                           
                         </p>
                     </div>
+                    
            
         </div>
     </div>
@@ -69,16 +83,24 @@
                     
                     <p class="flex gap-1">
                         
-                        @if ($user->status)
-                                <img src="{{ asset('active.png') }}" alt="Active" class="w-5 h-5" >
-                            @else
-                                <img src="{{ asset('inactive.png') }}" alt="Inactive" class="w-5 h-5" >
-                            @endif
-                            <strong>Status:</strong>
-                            <span class="{{ $user->status ? 'text-green-500' : 'text-red-500' }}">
-                                {{ $user->status ? 'Active' : 'Inactive' }}
-                            </span>
-                        </p>
+                        @if ($user->status == 1)
+                        <img src="{{ asset('active.png') }}" alt="Active" class="w-5 h-5">
+                    @elseif ($user->status == 0)
+                        <img src="{{ asset('inactive.png') }}" alt="Inactive" class="w-5 h-5">
+                    @elseif ($user->status == 2)
+                        <img src="{{ asset('inactive.png') }}" alt="Rejected" class="w-5 h-5"> 
+                    @endif
+                   <strong>Status:</strong>
+                        
+                            @if ($user->status == 1)
+                               <span class="text-green-500">Active</span> 
+                            @elseif ($user->status == 0)
+                               <span class="text-red-500">Inactive</span> 
+                            @elseif ($user->status == 2)
+                              <span class="text-red-500">Rejected</span>  
+                            @endif                           
+                   
+                        
                     </p>
                 </div>
             </div>
@@ -211,10 +233,8 @@
     </div>
 
 <!-- Actions Section -->
-    <div class="mt-6 p-4 flex flex-col md:flex-row justify-end space-y-2 md:space-y-0 md:space-x-2 m-2">
-        {{-- <a href="#" class="bg-blue-500 text-white w-full md:w-auto px-4 py-2 rounded hover:bg-blue-600 text-sm md:text-base text-center">
-            Update User
-        </a> --}}
+    {{-- <div class="mt-6 p-4 flex flex-col md:flex-row justify-end space-y-2 md:space-y-0 md:space-x-2 m-2">
+       
         <a href="{{ url('/admin/application') }}"
             class="bg-gray-500 text-white w-full md:w-auto px-4 py-2 rounded hover:bg-gray-600 text-sm md:text-base text-center">
             Back to List
@@ -231,14 +251,61 @@
                 </button>
             </form>
             @else
-                {{-- <p class="text-red-500">Investor details are required to approve this user.</p> --}}
                 <button type="button" 
                 class="bg-red-500 text-white w-full md:w-auto px-4 py-2 rounded font-semibold focus:outline-none text-sm md:text-base text-center" disabled>
                 Cannot Approve: Investor Details Missing
                 </button>
             @endif
+            <!-- Reject Button -->
+        <form action="{{ url('/admin/application/reject/' . $user->id) }}" method="POST" class="inline-block w-full md:w-auto">
+            @csrf
+            <button type="submit"
+                class="bg-orange-600 text-white w-full md:w-auto px-4 py-2 rounded hover:bg-orange-700 font-semibold focus:outline-none focus:ring-2 focus:ring-orange-500 text-sm md:text-base text-center" onclick="return confirm('Are you sure you want to reject this application?')">
+                Reject
+            </button>
+        </form>
         @endif
 
         
+    </div> --}}
+
+    <div class="mt-6 p-4 flex flex-col md:flex-row justify-end space-y-2 md:space-y-0 md:space-x-2 m-2">
+        <a href="{{ url('/admin') }}"
+            class="bg-gray-500 text-white w-full md:w-auto px-4 py-2 rounded hover:bg-gray-600 text-sm md:text-base text-center">
+           Dashboard
+        </a>
+    
+        @if ($user->status == 0 && $user->investorDetails )
+            <form action="{{ url('/admin/application/generate/' . $user->id) }}" method="POST" class="inline-block w-full md:w-auto">
+                @csrf
+                <button type="submit"
+                    class="bg-green-500 text-white w-full md:w-auto px-4 py-2 rounded hover:bg-green-600 font-semibold focus:outline-none focus:ring-2 focus:ring-green-500 text-sm md:text-base text-center">
+                    Approve Now
+                </button>
+            </form>
+        @elseif ($user->status == 2)
+        <button type="button" 
+        class="bg-red-500 text-white w-full md:w-auto px-4 py-2 rounded font-semibold focus:outline-none text-sm md:text-base text-center" disabled>
+        Rejected Application
+        </button>        @else
+            @if (!$user->investorDetails)
+                <button type="button" 
+                class="bg-red-500 text-white w-full md:w-auto px-4 py-2 rounded font-semibold focus:outline-none text-sm md:text-base text-center" disabled>
+                Cannot Approve: Missing Required Details
+                </button>
+            @endif
+        @endif
+    
+        <!-- Reject Button -->
+        @if ($user->status == 0)
+            <form action="{{ url('/admin/application/reject/' . $user->id) }}" method="POST" class="inline-block w-full md:w-auto">
+                @csrf
+                <button type="submit"
+                    class="bg-orange-600 text-white w-full md:w-auto px-4 py-2 rounded hover:bg-orange-700 font-semibold focus:outline-none focus:ring-2 focus:ring-orange-500 text-sm md:text-base text-center" onclick="return confirm('Are you sure you want to reject this application?')">
+                    Reject
+                </button>
+            </form>
+        @endif
     </div>
+    
 @endsection
