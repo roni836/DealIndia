@@ -133,9 +133,12 @@
         <a href="{{ route('homepage') }}"
           class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-teal-600 hover:bg-teal-50"
           id="mobile-home"><i class="bi bi-house-door px-2"></i>Home</a>
-        <a href="#"
+        <a href="{{route('services')}}"
           class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-teal-600 hover:bg-teal-50"
           id="mobile-services"><i class="bi bi-briefcase px-2"></i>Services</a>
+          <a href="{{route('about')}}"
+          class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-teal-600 hover:bg-teal-50"
+          id="mobile-services"><i class="bi bi-file-person px-2"></i>About</a>
         <a href="{{ route('contacts.create') }}"
           class="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:text-teal-600 hover:bg-teal-50"
           id="mobile-contact"><i class="bi bi-person-lines-fill px-2"></i>Contact</a>
