@@ -107,7 +107,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/admin/application', [AdminController::class, 'pendingApplication']);
     Route::get('/admin/application-approved', [AdminController::class, 'approvedApplication']);
+    Route::get('/admin/rejected-applications', [AdminController::class, 'showRejectedApplications'])->name('admin.rejectedApplications');
+
     Route::get('/admin/application/{id}', [ApplicationController::class, 'editApplication']);
+    Route::post('/admin/application/reject/{id}', [ApplicationController::class, 'rejectApplication']);
+
     Route::post('/admin/application/generate/{id}', [ApplicationController::class, 'generateCode']);
     Route::get('/admin/contact', [AdminController::class, 'contact'])->name('admin.contact.manage');
     Route::get('admin/contact-view/{contact}', [AdminController::class, 'editContact'])->name('admin.contact.show');

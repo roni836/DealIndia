@@ -26,7 +26,7 @@
                         {{-- <td class="px-4 py-2 capitalize">{{$item->gender}}</td> --}}
                         <td class="px-4 py-2">{{$item->email}}</td>
                         <td class="px-4 py-2">{{$item->mobile}}</td>
-                        <td class="px-4 py-2">
+                        <td class="px-4 py-2 text-orange-500 font-semibold">
                             {{ $item->status == 1 ? 'Approved' : 'Pending' }}
                         </td>
                         <td class="px-4 py-2 flex space-x-2">

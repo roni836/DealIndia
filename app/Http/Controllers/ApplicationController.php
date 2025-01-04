@@ -89,4 +89,21 @@ class ApplicationController extends Controller
         return redirect()->back()->with('success', 'User approved successfully!');
     }
 
+
+    public function rejectApplication(Request $request,$id){
+        $user = User::with('investorDetails')->findOrFail($id);
+        if (!$user) {
+            return redirect()->back()->with('error', 'User not found');
+        }
+        $user->status=2;
+        $user->save();
+
+        Mail::send('user.emails.application_rejected',['user'=>$user],function($message) use ($user){
+            $message->to($user->email)->subject('Application Rejected');
+        });
+
+        return redirect()->back()->with('success','User application rejected successfully');
+
+    }
+
 }
