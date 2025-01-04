@@ -54,7 +54,7 @@ class AdminController extends Controller
            'status' => 'required|string', 
        ]);
        $contact->update($validatedData);
-       return redirect()->route('admin.contact.manage', $contact)->with('success', 'Contact Message updated successfully');
+       return redirect()->route('admin.contact.manage', $contact)->with('success', 'Contact message updated successfully');
    } 
 
 

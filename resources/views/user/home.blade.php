@@ -4,8 +4,8 @@
 
 @section('content')
 <main class="">
-  <!-- Hero Section -->
-  <section class="container mx-auto px-6 py-16 flex flex-col md:flex-row items-center">
+    <!-- Hero Section -->
+    <section class="container mx-auto px-6 py-16 flex flex-col md:flex-row items-center">
         <div class="md:w-1/2 lg:pr-24 md:pr-16">
             <h1 class="text-4xl md:text-6xl font-bold text-gray-900 leading-tight mb-6">Empower Your Investments with Dealindia.</h1>
             <p class="text-lg text-gray-600 mb-8">Streamline investment tracking, connect with top investors, and grow your financial opportunities—all in one place.</p>
@@ -34,7 +34,7 @@
                     <p class="text-gray-600">Connect with potential investors and manage relationships effectively.</p>
                 </div>
                 <div class="p-6 bg-gray-50 rounded-xl hover:shadow-lg transition duration-300">
-                <i class="fa-solid fa-wand-magic-sparkles text-4xl text-teal-600 mb-4"></i>
+                    <i class="fa-solid fa-wand-magic-sparkles text-4xl text-teal-600 mb-4"></i>
                     <h3 class="text-xl font-semibold mb-2">Portfolio Insights</h3>
                     <p class="text-gray-600">Advanced analytics to make informed investment decisions.</p>
                 </div>
@@ -71,7 +71,7 @@
                     <div class="flex gap-4 items-center mb-4">
                         <img class="object-cover object-center w-12 h-12 rounded-full" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100" alt="User" class="w-12 h-12 rounded-full mr-4">
                         <div>
-                            <h4 class="font-semibold">Rahul Agrawal  </h4>
+                            <h4 class="font-semibold">Rahul Agrawal </h4>
                             <div class="text-[#f8931f]">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -98,6 +98,56 @@
                         </div>
                     </div>
                     <p class="text-gray-600">"Outstanding portfolio management and investor networking features."</p>
+                </div>
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <div class="flex gap-4 items-center mb-4">
+                        <img class="object-cover object-center w-12 h-12 rounded-full" src="https://images.unsplash.com/photo-1502767089025-6572583495b9?ixlib=rb-1.2.1&auto=format&fit=crop&w=100" alt="User" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold">Ahmed Al Mansoori</h4>
+                            <div class="text-[#f8931f]">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Dealindia's platform is incredibly user-friendly and efficient."</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <div class="flex gap-4 items-center mb-4">
+                        <img class="object-cover object-center w-12 h-12 rounded-full" src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?ixlib=rb-1.2.1&auto=format&fit=crop&w=100" alt="User" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold">Fatima Al Hashimi</h4>
+                            <div class="text-[#f8931f]">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"The customer support at Dealindia is top-notch and very responsive."</p>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <div class="flex gap-4 items-center mb-4">
+                        <img class="object-cover object-center w-12 h-12 rounded-full" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=100" alt="User" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold">Omar Al Suwaidi</h4>
+                            <div class="text-[#f8931f]">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Using Dealindia has significantly improved my financial planning."</p>
                 </div>
             </div>
         </div>

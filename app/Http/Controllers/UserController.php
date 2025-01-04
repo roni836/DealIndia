@@ -51,17 +51,15 @@ class UserController extends Controller
     public function dashboard()
     {
         $data['logo'] = Setting::first();
-        if(Auth::user()->code_details != 1){
+        if (Auth::user()->code_details != 1) {
             return redirect()->route('user.investerCodeform');
+        } else {
+            return view('user.dashboard', $data);
         }
-        else{
-            return view('user.dashboard',$data);
-        }
-    
     }
     public function member()
     {
-       
+
         return view('user.member');
     }
 
@@ -102,9 +100,9 @@ class UserController extends Controller
         if (!$investor) {
             return redirect()->route('details.submit');
         }
-       
+
         $additionalDocuments = $investor->additional_documents;
-       
+
         $data['investor'] = $investor;
         $data['additionalDocuments'] = $additionalDocuments;
 
