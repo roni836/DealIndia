@@ -21,6 +21,7 @@ Route::get('/services', [UserController::class, 'services'])->name('services');
 Route::get('/privacy-policy', [UserController::class, 'privacyPolicy'])->name('privacy-policy');
 Route::get('/Terms-of-Service', [UserController::class, 'termsOfService'])->name('Terms-of-Service');
 
+
 Route::resource('contacts', ContactController::class);
 
 Route::get('/login', function () {
@@ -90,6 +91,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/member', [UserController::class, 'member'])->name('member-details');
 
     Route::get('/details/{id}', [UserController::class, 'personalInvestorDetails'])->name('details');
+    Route::get('additional-document/show-form', [UserController::class, 'showForm'])->name('additionalDocument.show');
+
+    Route::put('/additional-document/store', [UserController::class, 'uploadAdditionalDocument'])->name('additional_document');
+
 
     Route::get('/investerform', [InvestorController::class, 'index'])->name('user.investerCodeform');
     Route::post('/investerform/submit', [InvestorController::class, 'store'])->name('user.investerCodecheck');
