@@ -83,7 +83,7 @@ class ApplicationController extends Controller
 
         Mail::send('user.emails.account_created', ['user' => $user], function ($message) use ($user) {
             $message->to($user->email)
-                ->subject('New Dealindia Account Created');
+                ->subject('Dealindia Account Created');
         });
 
         return redirect()->back()->with('success', 'User approved successfully!');

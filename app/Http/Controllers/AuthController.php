@@ -311,9 +311,10 @@ class AuthController extends Controller
         $resetLink = url('/reset-password/' . $token . '?email=' . $user->email . '&vr_code=' . $request->vr_code);
 
         try {
-            Mail::raw("Click here to reset your password: $resetLink", function ($message) use ($user) {
-                $message->to($user->email)
-                    ->subject('Password Reset Link');
+
+            Mail::send('user.emails.password_reset', ['resetLink' => $resetLink], function ($message) use ($request) {
+                $message->to($request->email)
+                ->subject('Password Reset Link');
             });
 
             // Redirect with success message

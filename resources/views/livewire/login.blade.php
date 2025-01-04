@@ -41,7 +41,7 @@
             <div class="flex-1 py-6 md:py-0">
 
                 <h2 class="text-3xl md:text-4xl font-semibold text-center text-gray-800 mb-6"
-                    style="font-family: 'Roboto Condensed', serif;">Administration Login</h2>
+                    style="font-family: 'Roboto Condensed', serif;">Member Login</h2>
 
                 <!-- Buttons to select Login method -->
                 <div class="flex justify-center items-center flex-nowrap space-x-4">

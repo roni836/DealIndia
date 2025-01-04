@@ -47,8 +47,8 @@
 
                         <!-- VR Code Input (New) -->
                         <div class="mb-4">
-                            <label for="vr_code" class="block text-sm font-medium text-gray-700">{{ __('Verification Code') }}</label>
-                            <input type="text" id="vr_code" name="vr_code" placeholder="Enter Verification Code" class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 @error('vr_code') border-red-500 @enderror" value="{{ old('vr_code') }}" required>
+                            <label for="vr_code" class="block text-sm font-medium text-gray-700">{{ __('VR Code') }}</label>
+                            <input type="text" id="vr_code" name="vr_code" placeholder="Enter VR Code" class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 @error('vr_code') border-red-500 @enderror" value="{{ old('vr_code') }}" required>
                             @error('vr_code')
                                 <span class="text-sm text-red-500 mt-1">{{ $message }}</span>
                             @enderror
