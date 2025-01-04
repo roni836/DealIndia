@@ -132,7 +132,7 @@ class InvestorController extends Controller
                 User::where('id', Auth::id())->update(['all_details' => 1]);
                 Mail::send('user.emails.investor_created', ['first_name' => $investerDetails->first_name], function ($message) use ($request) {
                     $message->to($request->email)
-                        ->subject('Dealindia Investor Request Submitted');
+                        ->subject('Dealindia member request submitted');
                 });
             }
     
