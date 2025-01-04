@@ -6,6 +6,10 @@
     <title>Application Rejected</title>
 </head>
 <body style="font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 20px; color: #333;">
+    <!-- Hero Image -->
+    <div class="bg-gray-100">
+            <img src="https://dealindia.org/storage/images/setting/1735671088.png" alt="Welcome Image" width="20%" height="20%" class="w-full object-cover">
+        </div>
 
     <div style="max-width: 600px; margin: 0 auto; background-color: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
         <h1 style="font-size: 24px; color: #f44336;">📩 Application Rejected</h1>
@@ -32,7 +36,7 @@
     
         <p style="font-size: 14px; color: #555; line-height: 1.8;">
             Regards,<br>
-            <strong>Deal India Team</strong>
+            <strong>Dealindia Team</strong>
         </p>
     
         <p style="font-size: 12px; color: #888; margin-top: 20px; text-align: center;">
