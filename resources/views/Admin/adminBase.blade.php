@@ -36,6 +36,16 @@
             font-family: "Roboto", sans-serif;
         }
     </style>
+      <!-- Google tag (gtag.js) -->
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-31B12XJ1SK"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-31B12XJ1SK');
+    </script>
 </head>
     <body class="min-h-screen flex bg-gray-100">
 
