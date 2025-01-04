@@ -25,7 +25,7 @@
 
         <p style="font-size: 16px; line-height: 1.6;">
             If you have any questions or require further clarification, please feel free to reach out to our support team at
-            <a href="mailto:support@dealindia.com" style="color: #1a73e8;">support@dealindia.org</a>.
+            <a href="mailto:support@dealindia.org" style="color: #1a73e8;">support@dealindia.org</a>.
         </p>
 
         <div style="background-color: #f4f4f4; padding: 15px; border-radius: 8px; margin-top: 20px; color: #555;">

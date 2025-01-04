@@ -7,8 +7,8 @@
     <!-- Hero Section -->
     <section class="container mx-auto px-6 py-16 flex flex-col md:flex-row items-center">
         <div class="md:w-1/2 lg:pr-24 md:pr-16">
-            <h1 class="text-4xl md:text-6xl font-bold text-gray-900 leading-tight mb-6">Empower Your Investments with Dealindia.</h1>
-            <p class="text-lg text-gray-600 mb-8">Streamline investment tracking, connect with top investors, and grow your financial opportunities—all in one place.</p>
+            <h1 class="text-3xl md:text-6xl font-bold text-gray-900 leading-tight mb-6">Build Your Prosperity with DealIndia.</h1>
+            <p class="text-lg text-gray-600 mb-8">Stay ahead with smart tools, network with leaders, and explore fresh opportunities—all in one place.</p>
             <div class="flex gap-4">
                 <button class="bg-teal-600 text-white px-8 py-3 rounded-lg hover:bg-teal-700 transition duration-300">Explore Services</button>
                 <button class="border-2 border-teal-600 text-teal-600 px-8 py-3 rounded-lg hover:bg-teal-50 transition duration-300">Learn More</button>
