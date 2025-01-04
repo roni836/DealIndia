@@ -6,13 +6,13 @@
             <div class="space-y-4">
                 <div class="flex items-center space-x-2">
                     @if (!empty($logo?->meta_logo))
-                        <img src="{{ asset('storage/images/setting/' . $logo->meta_logo) }}" alt="Company Logo"
-                            class="h-20 w-auto">
+                    <img src="{{ asset('storage/images/setting/' . $logo->meta_logo) }}" alt="Company Logo"
+                        class="h-20 w-auto">
                     @else
-                        <img src="{{ asset('logo.png') }}" alt="Default Logo" class="h-20 md:h-32 object-contain">
+                    <img src="{{ asset('logo.png') }}" alt="Default Logo" class="h-20 md:h-32 object-contain">
                     @endif
                 </div>
-                <p class="text-sm">Your Partner in Financial Growth and Management</p>
+                <p class="text-sm">Your partner in financial growth and management</p>
                 <div class="flex items-center space-x-2">
                     <i class="fas fa-shield-alt text-green-500"></i>
                     <span class="text-xs">Secure & Trusted</span>
@@ -61,22 +61,22 @@
                     <button
                         class="w-full px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors">Subscribe</button>
                 </form>
-                <div class="mt-6 space-x-4">
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i
-                            class="fab fa-facebook"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i
-                            class="fab fa-twitter"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i
-                            class="fab fa-linkedin"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i
-                            class="fab fa-instagram"></i></a>
-                </div>
+                <!--<div class="mt-6 space-x-4">-->
+                <!--    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i-->
+                <!--            class="fab fa-facebook"></i></a>-->
+                <!--    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i-->
+                <!--            class="fab fa-twitter"></i></a>-->
+                <!--    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i-->
+                <!--            class="fab fa-linkedin"></i></a>-->
+                <!--    <a href="#" class="text-gray-400 hover:text-white transition-colors"><i-->
+                <!--            class="fab fa-instagram"></i></a>-->
+                <!--</div>-->
             </div>
         </div>
 
         <div class="mt-12 pt-8 border-t border-gray-800">
             <div class="text-center">
-                <p class="text-sm">&copy; 2024 Dealindia. All Rights Reserved.</p>
+                <p class="text-sm">&copy; 2019-2025 Dealindia. All Rights Reserved.</p>
                 <p class="text-xs mt-2 text-gray-200">Financial information provided is for educational purposes only.
                     Always consult with a qualified financial advisor before making investment decisions.</p>
             </div>

@@ -8,9 +8,9 @@
     @if (!empty($logo?->meta_logo))
     <img src="{{ asset('storage/images/setting/' . $logo->meta_logo) }}" alt="Company Logo"
       class="w-auto h-24 mx-auto mb-6 object-cover">
-  @else
-  <img src="{{ asset('logo.png') }}" alt="Default Logo" class="w-auto h-24 mx-auto mb-6 object-cover">
-@endif
+    @else
+    <img src="{{ asset('logo.png') }}" alt="Default Logo" class="w-auto h-24 mx-auto mb-6 object-cover">
+    @endif
     <h1 class="text-4xl font-bold mb-4">We'd Love to Hear from You!</h1>
     <p class="text-xl max-w-2xl mx-auto">
       Whether you have questions about our platform, need support, or want
@@ -26,10 +26,10 @@
     <div class="bg-white p-8 rounded-lg shadow-lg">
       <h2 class="text-3xl font-bold mb-6 text-gray-800">Get in Touch</h2>
       @if (session('success'))
-        <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert">
-          <p class="font-bold">Success</p>
-          <p>{{ session('success') }}</p>
-        </div>
+      <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4" role="alert">
+        <p class="font-bold">Success</p>
+        <p>{{ session('success') }}</p>
+      </div>
       @endif
       <form action="{{ route('contacts.store') }}" class="space-y-6" method="POST">
         @csrf
@@ -38,26 +38,26 @@
           <input type="text" required name="name"
             class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500"
             placeholder="Your Name" />
-            @error('name')
-              <span class="text-red-600 text-sm">{{ $message }}</span>
-            @enderror
+          @error('name')
+          <span class="text-red-600 text-sm">{{ $message }}</span>
+          @enderror
         </div>
         <div>
           <label class="block text-gray-700 mb-2">Email *</label>
           <input type="email" required name="email"
             class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500"
             placeholder="Your Email" />
-            @error('email')
-              <span class="text-red-600 text-sm">{{ $message }}</span>
-            @enderror
+          @error('email')
+          <span class="text-red-600 text-sm">{{ $message }}</span>
+          @enderror
         </div>
         <div>
           <label class="block text-gray-700 mb-2">Phone Number</label>
           <input type="tel" name="phone_number" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500"
             placeholder="Your Phone Number" />
-            @error('phone_number')
-              <span class="text-red-600 text-sm">{{ $message }}</span>
-            @enderror
+          @error('phone_number')
+          <span class="text-red-600 text-sm">{{ $message }}</span>
+          @enderror
         </div>
         <div>
           <label class="block text-gray-700 mb-2">Subject *</label>
@@ -74,8 +74,8 @@
           <textarea required maxlength="500" rows="4" name="message"
             class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-teal-500"
             placeholder="Your Message"></textarea>
-            @error('message')
-            <span class="text-red-600 text-sm">{{ $message }}</span>
+          @error('message')
+          <span class="text-red-600 text-sm">{{ $message }}</span>
           @enderror
         </div>
         <div class="flex space-x-4">
@@ -115,35 +115,35 @@
         </div>
       </div>
 
-                <!-- FAQ Section -->
-                <div class="bg-white p-8 rounded-lg shadow-lg">
-                    <h2 class="text-3xl font-bold mb-6 text-gray-800">FAQ</h2>
-                    <div class="space-y-4">
-                        <details class="p-4 rounded-lg bg-gray-50">
-                            <summary class="font-semibold cursor-pointer">
-                                How do I create an account?
-                            </summary>
-                            <p class="mt-2 text-gray-600">
-                                Click on the "Sign Up" button and follow the registration
-                                process.
-                            </p>
-                        </details>
-                        <details class="p-4 rounded-lg bg-gray-50">
-                            <summary class="font-semibold cursor-pointer">
-                                What services does DealIndia offer?
-                            </summary>
-                            <p class="mt-2 text-gray-600">
-                                We offer financial consulting, investment planning, and wealth
-                                management services.
-                            </p>
-                        </details>
-                    </div>
-                </div>
-            </div>
+      <!-- FAQ Section -->
+      <div class="bg-white p-8 rounded-lg shadow-lg">
+        <h2 class="text-3xl font-bold mb-6 text-gray-800">FAQ</h2>
+        <div class="space-y-4">
+          <details class="p-4 rounded-lg bg-gray-50">
+            <summary class="font-semibold cursor-pointer">
+              How do I create an account?
+            </summary>
+            <p class="mt-2 text-gray-600">
+              Click on the "Sign Up" button and follow the registration
+              process.
+            </p>
+          </details>
+          <details class="p-4 rounded-lg bg-gray-50">
+            <summary class="font-semibold cursor-pointer">
+              What services does DealIndia offer?
+            </summary>
+            <p class="mt-2 text-gray-600">
+              We offer financial consulting, investment planning, and wealth
+              management services.
+            </p>
+          </details>
         </div>
+      </div>
+    </div>
+  </div>
 
-        <!-- Map Section -->
-        {{-- <div class="mt-12 bg-white p-8 rounded-lg shadow-lg">
+  <!-- Map Section
+  {{-- <div class="mt-12 bg-white p-8 rounded-lg shadow-lg">
             <h2 class="text-3xl font-bold mb-6 text-gray-800">Visit Us</h2>
             <div class="aspect-w-16 aspect-h-9">
                 <iframe
@@ -154,22 +154,22 @@
             <button class="mt-4 bg-teal-600 text-white px-6 py-3 rounded-lg hover:bg-teal-700 transition duration-300">
                 Get Directions
             </button>
-        </div> --}}
+        </div> --}} -->
 
-        <!-- CTA Section -->
-        <div class="mt-12 bg-teal-600 text-white p-8 rounded-lg text-center">
-            <h2 class="text-3xl font-bold mb-4">Need Immediate Assistance?</h2>
-            <div class="flex justify-center space-x-4">
-                <button class="bg-white text-teal-600 px-6 py-3 rounded-lg hover:bg-gray-100 transition duration-300">
-                    +91 800-1XX-4567
-                </button>
-                <button class="bg-white text-teal-600 px-6 py-3 rounded-lg hover:bg-gray-100 transition duration-300">
-                    Call Now
-                </button>
-            </div>
-        </div>
+  <!-- CTA Section -->
+  <!-- <div class="mt-12 bg-teal-600 text-white p-8 rounded-lg text-center">
+    <h2 class="text-3xl font-bold mb-4">Need Immediate Assistance?</h2>
+    <div class="flex justify-center space-x-4">
+      <button class="bg-white text-teal-600 px-6 py-3 rounded-lg hover:bg-gray-100 transition duration-300">
+        +91 800-1XX-4567
+      </button>
+      <button class="bg-white text-teal-600 px-6 py-3 rounded-lg hover:bg-gray-100 transition duration-300">
+        Call Now
+      </button>
     </div>
-    {{--
+  </div> -->
+</div>
+{{--
 <script>
   // Load header and footer
   fetch("header.html")
