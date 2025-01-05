@@ -12,8 +12,9 @@ return [
      * to learn how to get this file. You can also pass the credentials as an array
      * instead of a file path.
      */
-    'service_account_credentials_json' => storage_path('app/analytics/service-account-credentials.json'),
-
+    // 'service_account_credentials_json' => storage_path('app/analytics/service-account-credentials.json'),
+'view_id' => env('ANALYTICS_VIEW_ID'), // Google Analytics से View ID
+'service_account_credentials_json' => storage_path('app/analytics.json'),
     /*
      * The amount of minutes the Google API responses will be cached.
      * If you set this to zero, the responses won't be cached at all.

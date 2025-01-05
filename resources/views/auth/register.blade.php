@@ -25,7 +25,7 @@
 
             <div class="w-full mx-6 lg:mx-12 md:p-8 p-3">
                 <h2 class="text-4xl font-semibold text-center text-gray-800 mb-6"
-                    style="font-family: 'Roboto Condensed', serif;">Become A Member</h2>
+                    style="font-family: 'Roboto Condensed', serif;">Become a member</h2>
                 @if (session('success'))
                     <script>
                         document.addEventListener('DOMContentLoaded', function() {

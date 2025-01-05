@@ -293,7 +293,7 @@ class AuthController extends Controller
         // Check if the vr_code matches the email
         if ($user->vr_code !== $request->vr_code) {
             // If vr_code doesn't match, show error
-            return redirect()->back()->with('error', 'Invalid verification code.');
+            return redirect()->back()->with('error', 'Invalid Vr_code.');
         }
 
         $token = Str::random(64);

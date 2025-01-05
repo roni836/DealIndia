@@ -105,9 +105,11 @@ Route::middleware(['auth'])->group(function () {
 
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-    Route::get('/admin/application', [AdminController::class, 'pendingApplication']);
+    Route::get('/admin/application', [AdminController::class, 'pendingApplication'])->name('pending-application');
     Route::get('/admin/application-approved', [AdminController::class, 'approvedApplication']);
-    Route::get('/admin/rejected-applications', [AdminController::class, 'showRejectedApplications'])->name('admin.rejectedApplications');
+    // Route::get('/admin/rejected-applications', [AdminController::class, 'showRejectedApplications'])->name('admin.rejectedApplications');
+    Route::post('/application/reject/{id}', [ApplicationController::class, 'rejectApplication'])->name('application.reject');
+
 
     Route::get('/admin/application/{id}', [ApplicationController::class, 'editApplication']);
     Route::post('/admin/application/reject/{id}', [ApplicationController::class, 'rejectApplication']);
@@ -160,3 +162,4 @@ Route::get('/deal-admin', function () {
     ]);
     return "Daelindia Seeder has been run successfully!";
 });
+Route::get('/analytics', [AdminController::class, 'getVisitorsData']);

@@ -9,7 +9,7 @@
                 </p>
                 <div class="mt-4 text-center sm:text-left">
                     <p class="text-sm">Phone: <a href="tel:+1234567890" class="text-blue-300 hover:text-white">+123 456 7890</a></p>
-                    <p class="text-sm">Email: <a href="mailto:info@dealindia.com" class="text-blue-300 hover:text-white">info@dealindia.com</a></p>
+                    <p class="text-sm">Email: <a href="mailto:info@dealindia.org" class="text-blue-300 hover:text-white">info@dealindia.org</a></p>
                 </div>0
             </div>
  
