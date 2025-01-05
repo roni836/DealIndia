@@ -1,5 +1,5 @@
 @extends('user.userBase')
-@section('title', 'Forgot Password Work')
+@section('title', 'Forgot Password')
 @section('content')
     <div class="container mt-10 mx-auto py-20 px-4">
         <div class="flex justify-center">
@@ -23,7 +23,7 @@
                                 });
                             </script>
                         @endif
-                        @if ($errors->any())
+                        {{-- @if ($errors->any())
                             <script>
                                 document.addEventListener('DOMContentLoaded', function() {
                                     Swal.fire({
@@ -34,7 +34,23 @@
                                     });
                                 });
                             </script>
+                        @endif --}}
+
+                        @if (session('error'))
+                        <div class="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
+                            {{ session('error') }}
+                        </div>
                         @endif
+
+                    @if ($errors->any())
+                        <div class="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 
                         <form method="POST" action="{{ route('password.email') }}">
                             @csrf
