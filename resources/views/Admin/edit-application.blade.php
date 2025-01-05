@@ -155,18 +155,23 @@
                 
             <div class="bg-gray-100  rounded-lg p-2 space-y-2 ">
                 <p><strong>Aadhar Card:</strong></p>
-                <img src="{{ asset('storage/' . $user->investorDetails->aadhar_card) }}" alt="Aadhar Card" class=" h-48 p-2 rounded-lg object-contain  ">
+                <a href="{{ asset('storage/' . $user->investorDetails->aadhar_card) }}" target="_blank"><img src="{{ asset('storage/' . $user->investorDetails->aadhar_card) }}" alt="Aadhar Card" class=" h-48 p-2 rounded-lg object-contain  "></a>
                 <p class="px-2"><strong>Aadhar Card Number:</strong> {{ $user->investorDetails->aadhar_card_number }}</p>
  
             </div>
             <div class="bg-gray-100 rounded-lg p-2 space-y-2">
                 <p><strong>Pan Card:</strong></p>
-                <img src="{{ asset('storage/' . $user->investorDetails->pan_card) }}" alt="Pan Card" class=" h-48 p-2 rounded-lg  object-contain ">
+                <a href="{{ asset('storage/' . $user->investorDetails->pan_card) }}" target="_blank">
+                    <img src="{{ asset('storage/' . $user->investorDetails->pan_card) }}" alt="Pan Card" class=" h-48 p-2 rounded-lg  object-contain ">
+
+                </a>
                 <p class="px-2"><strong>Pan Card Number:</strong> {{ $user->investorDetails->pan_card_number }}</p>
             </div>
             <div class="bg-gray-100  rounded-lg p-2">
                 <p><strong>Profile Picture:</strong></p>
+                <a href="{{ asset('storage/' . $user->investorDetails->photo) }}" target="_blank">
                 <img src="{{ asset('storage/' . $user->investorDetails->photo) }}" alt="Profile photo" class=" h-48 px-2 rounded-lg  object-contain ">
+                </a>
             </div>
         </div>
     </div>
@@ -189,7 +194,10 @@
                             
 
                             @if ($extension == 'jpeg' || $extension == 'png' || $extension == 'jpg')
+                            <a href="{{ asset('storage/' . $document->filename) }}" target="_blank">
                                 <img src="{{ asset('storage/' . $document->filename) }}" alt="Document" class="w-full h-48 p-2 rounded-lg object-contain">
+                            </a>
+                            </a>
                             @else
                                 <p>
                                     <strong>File:</strong>
