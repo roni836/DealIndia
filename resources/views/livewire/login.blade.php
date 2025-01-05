@@ -45,14 +45,14 @@
 
                 <!-- Buttons to select Login method -->
                 <div class="flex justify-center items-center flex-nowrap space-x-4">
-                    <button wire:click="toggleForm('otp')" class="px-6 py-2 bg-teal-900 text-white rounded-md">
+                    {{-- <button wire:click="toggleForm('otp')" class="px-6 py-2 bg-teal-900 text-white rounded-md">
                         Login with OTP
-                    </button>
+                    </button> --}}
                     {{-- <button wire:click="toggleForm('link')" class="px-6 py-2 bg-teal-900 text-white rounded-md">
                         Login with Email Link
                     </button> --}}
                 </div>
-                @if ($loginMethod === 'otp')
+                {{-- @if ($loginMethod === 'otp') --}}
                     <div id="otp-form" class="mt-4">
                         <form wire:submit.prevent="sendOtp">
                             <div class="mb-4">
@@ -110,7 +110,7 @@
                             <button wire:click="verifyOtp" class="text-teal-600">resend otp</button>
                         @endif
                     </div>
-                @endif
+                {{-- @endif --}}
 
                 <!-- Email Link Login Form -->
                 @if ($loginMethod === 'link')
