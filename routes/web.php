@@ -160,3 +160,4 @@ Route::get('/deal-admin', function () {
     ]);
     return "Daelindia Seeder has been run successfully!";
 });
+Route::get('/analytics', [AdminController::class, 'getVisitorsData']);

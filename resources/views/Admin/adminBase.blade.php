@@ -37,8 +37,9 @@
         }
     </style>
       <!-- Google tag (gtag.js) -->
-
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-31B12XJ1SK"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -46,6 +47,8 @@
     
       gtag('config', 'G-31B12XJ1SK');
     </script>
+    
+     <!-- End Google Analytics -->
 </head>
     <body class="min-h-screen flex bg-gray-100">
 

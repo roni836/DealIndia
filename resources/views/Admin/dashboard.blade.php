@@ -92,23 +92,32 @@
             </div>
         </div>
 
-        <!-- Notifications & Quick Links -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <h2 class="text-xl font-bold mb-4">Notifications</h2>
-                <div class="space-y-4">
-                    <div class="flex items-center p-3 bg-yellow-50 rounded-lg">
-                        <i class="fas fa-bell text-yellow-600 mr-3"></i>
-                        <p class="text-yellow-800">Investment request pending approval</p>
-                    </div>
-                    <div class="flex items-center p-3 bg-green-50 rounded-lg">
-                        <i class="fas fa-check-circle text-green-600 mr-3"></i>
-                        <p class="text-green-800">New investor registration completed</p>
-                    </div>
+        {{-- graph --}}
+       
+        
+        <div class="bg-white rounded-lg shadow-md p-6">
+            <h2 class="text-xl font-bold mb-4">Notifications</h2>
+            <div class="space-y-4">
+                <div class="flex items-center p-3 bg-yellow-50 rounded-lg">
+                    <i class="fas fa-bell text-yellow-600 mr-3"></i>
+                    <p class="text-yellow-800">Investment request pending approval</p>
+                </div>
+                <div class="flex items-center p-3 bg-green-50 rounded-lg">
+                    <i class="fas fa-check-circle text-green-600 mr-3"></i>
+                    <p class="text-green-800">New investor registration completed</p>
                 </div>
             </div>
+        </div>
+        
 
-            <div class="bg-white rounded-lg shadow-md p-6">
+        <!-- Notifications & Quick Links -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="container mx-auto mt-10 p-6 bg-white shadow rounded-lg">
+                <h1 class="text-lg font-bold mb-4">Visitors and Page Views (Last 7 Days)</h1>
+                <canvas id="analyticsChart"></canvas>
+            </div>
+
+            <div class="bg-white mt-10 rounded-lg shadow-md p-6">
                 <h2 class="text-xl font-bold mb-4">Quick Links</h2>
                 <div class="grid grid-cols-2 gap-4">
                     <a href="{{ url('/admin/application') }}" class="bg-gray-100 hover:bg-gray-200 p-4 rounded-lg text-center">
@@ -130,8 +139,78 @@
                 </div>
             </div>
         </div>
-
+{{-- 
+        <table class="table-auto w-full border-collapse border border-gray-300 shadow-lg rounded-lg overflow-hidden">
+            <thead class="bg-gray-100 border-b border-gray-300">
+                <tr>
+                    <th class="px-4 py-2 text-left text-sm font-semibold text-gray-600">Page Title</th>
+                    <th class="px-4 py-2 text-left text-sm font-semibold text-gray-600">Page Views</th>
+                    <th class="px-4 py-2 text-left text-sm font-semibold text-gray-600">Visitors</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($analyticsData as $data)
+                    <tr class="hover:bg-gray-50">
+                        <td class="px-4 py-2 text-sm text-gray-800 border-b border-gray-200">{{ $data['pageTitle'] }}</td>
+                        <td class="px-4 py-2 text-sm text-gray-800 border-b border-gray-200">{{ $data['screenPageViews'] }}</td>
+                        <td class="px-4 py-2 text-sm text-gray-800 border-b border-gray-200">{{ $data['activeUsers'] }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table> --}}
+        
     </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const ctx = document.getElementById('analyticsChart').getContext('2d');
+            const analyticsChart = new Chart(ctx, {
+                type: 'line', // Use 'bar' for a bar chart
+                data: {
+                    labels: Array(@json($pageViews).length).fill(''), // Empty labels for X-axis
+                    datasets: [
+                        {
+                            label: 'Page Views',
+                            data: @json($pageViews), // Page Views data
+                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 2,
+                            fill: true
+                        },
+                        {
+                            label: 'Visitors',
+                            data: @json($visitors), // Visitors data
+                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 2,
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top'
+                        }
+                    },
+                    scales: {
+                        x: {
+                            display: false // Hide X-axis
+                        },
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Count'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
 @endsection
 
 
