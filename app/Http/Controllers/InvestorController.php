@@ -26,9 +26,9 @@ class InvestorController extends Controller
             if (Auth::user()->status == 0) {
                 // Show the approval pending view
                 return view('user.approval');
-            } elseif (Auth::user()->status == 2) {
-                // Show the rejected view
-                return view('user.rejected');
+            // } elseif (!Auth::user()) {
+            //     // Show the rejected view
+            //     return view('user.rejected');
             } else {
                 // Show the code form once admin approval is granted
                 return view('user.codeform');

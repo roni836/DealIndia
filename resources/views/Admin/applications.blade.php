@@ -3,6 +3,12 @@
 @section('content')
 <main class="p-6">
     <!-- Table Section -->
+    @if(session('message'))
+    <div class="bg-red-100 border border-red-200 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+        {{ session('message') }}
+    </div>
+    @endif
+
     <div class="bg-white rounded-lg shadow-md overflow-x-auto">
         <div class="p-4 border-b border-gray-200">
             <h3 class="text-lg font-semibold">Recent Applications</h3>

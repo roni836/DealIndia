@@ -111,12 +111,12 @@ class AdminController extends Controller
       return view('Admin.applications', ["applications" => $applications]);
    }
 
-   public function showRejectedApplications()
-   {
-      $rejectedApplications = User::where('status', 2)->with('investorDetails')->get();
+   // public function showRejectedApplications()
+   // {
+   //    $rejectedApplications = User::where('status', 2)->with('investorDetails')->get();
 
-      return view('Admin.rejected-applications', compact('rejectedApplications'));
-   }
+   //    return view('Admin.rejected-applications', compact('rejectedApplications'));
+   // }
    public function contact()
    {
       $data['contacts'] = Contact::paginate(10);

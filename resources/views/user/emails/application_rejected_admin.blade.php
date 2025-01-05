@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Application Rejected</title>
+    <title>Application Rejected - Admin Notification</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -52,12 +52,12 @@
             text-decoration: none;
         }
 
-        .support-box {
+        .info-box {
             background-color: #f4f4f4;
             padding: 15px;
             border-radius: 8px;
-            color: #555;
             margin: 20px 0;
+            color: #555;
         }
 
         .footer {
@@ -88,19 +88,16 @@
         <!-- Content -->
         <div class="content">
             <h1>📩 Application Rejected</h1>
-            <p>👤 <strong>Dear {{ $user->first_name . ' ' . $user->last_name }},</strong></p>
-            <p>We regret to inform you that your application has been rejected for the following reason:</p>
-            <p><strong>Reason:</strong> {{ $reason }}</p>
+            <p><strong>Admin Notification:</strong> The following user's application has been rejected:</p>
 
-            <p>If you have any questions or require further clarification, please feel free to reach out to our support team at
-                <a href="mailto:support@dealindia.org">support@dealindia.org</a>.
-            </p>
-
-            <div class="support-box">
-                <p>📞 <strong>Need Help?</strong> Contact our support team for assistance.</p>
+            <div class="info-box">
+                <p><strong>👤 Name:</strong> {{ $user->first_name . ' ' . $user->last_name }}</p>
+                <p><strong>📧 Email:</strong> {{ $user->email }}</p>
+                <p><strong>📱 Mobile:</strong> {{ $user->mobile }}</p>
+                <p><strong>📝 Rejection Reason:</strong> {{ $reason }}</p>
             </div>
 
-            <p>Thank you for your interest in our services. We appreciate the time and effort you put into your application.</p>
+            <p>If you have any questions or need to take further action, please log in to the admin portal or contact the user directly.</p>
 
             <p>Regards,<br>
                 <strong>DealIndia Team</strong>
@@ -110,7 +107,7 @@
         <!-- Footer -->
         <div class="footer">
             <p>&copy; {{ date('Y') }} DealIndia. All rights reserved.</p>
-            <p><a href="https://dealindia.org">Visit Our Website</a></p>
+            <p><a href="https://dealindia.org">Visit Admin Portal</a></p>
         </div>
     </div>
 </body>

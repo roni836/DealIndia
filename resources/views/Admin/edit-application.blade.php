@@ -16,12 +16,12 @@
         <span class="block sm:inline">Investor details are required to approve this user.</span>
     </div>
     @endif
-    @if($user->status == 2)
+    {{-- @if($user->status == 2)
     <div class="bg-red-100 border border-red-200 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
        
         <span class="block sm:inline">Application is Rejected.</span>
     </div>
-    @endif
+    @endif --}}
     <!-- User Information Section -->
     <div class="bg-white hidden md:block rounded-lg overflow-hidden mb-6">
         <div class="bg-gray-200 px-6 py-4">
@@ -43,21 +43,25 @@
                         <p class=""><strong>Email:</strong> {{ $user->email }}</p>
                     </div>
                     <div class="text-center">
-                        @if ($user->status == 1)
+                        {{-- @if ($user->status == 1)
                             <img src="{{ asset('active.png') }}" alt="Active" class="mx-auto">
                         @elseif ($user->status == 0)
                             <img src="{{ asset('inactive.png') }}" alt="Inactive" class="mx-auto">
                         @elseif ($user->status == 2)
                             <img src="{{ asset('inactive.png') }}" alt="Rejected" class="mx-auto">
+                        @endif --}}
+                        @if($user->status == 1)
+                        <img src="{{ asset('active.png') }}" alt="Active" class="mx-auto">
+                        @else
+                        <img src="{{ asset('inactive.png') }}" alt="Inactive" class="mx-auto">
                         @endif
                         <p><strong>Status:</strong>
                             
                                 @if ($user->status == 1)
                                    <span class="text-green-500">Active</span> 
-                                @elseif ($user->status == 0)
+                                @else
                                    <span class="text-red-500">Inactive</span> 
-                                @elseif ($user->status == 2)
-                                  <span class="text-red-500">Rejected</span>  
+                                 
                                 @endif                           
                         </p>
                     </div>
@@ -85,19 +89,17 @@
                         
                         @if ($user->status == 1)
                         <img src="{{ asset('active.png') }}" alt="Active" class="w-5 h-5">
-                    @elseif ($user->status == 0)
+                    @else
                         <img src="{{ asset('inactive.png') }}" alt="Inactive" class="w-5 h-5">
-                    @elseif ($user->status == 2)
-                        <img src="{{ asset('inactive.png') }}" alt="Rejected" class="w-5 h-5"> 
+                   
                     @endif
                    <strong>Status:</strong>
                         
                             @if ($user->status == 1)
                                <span class="text-green-500">Active</span> 
-                            @elseif ($user->status == 0)
+                            @else
                                <span class="text-red-500">Inactive</span> 
-                            @elseif ($user->status == 2)
-                              <span class="text-red-500">Rejected</span>  
+                           
                             @endif                           
                    
                         
@@ -283,11 +285,8 @@
                     Approve Now
                 </button>
             </form>
-        @elseif ($user->status == 2)
-        <button type="button" 
-        class="bg-red-500 text-white w-full md:w-auto px-4 py-2 rounded font-semibold focus:outline-none text-sm md:text-base text-center" disabled>
-        Rejected Application
-        </button>        @else
+        
+               @else
             @if (!$user->investorDetails)
                 <button type="button" 
                 class="bg-red-500 text-white w-full md:w-auto px-4 py-2 rounded font-semibold focus:outline-none text-sm md:text-base text-center" disabled>
@@ -297,15 +296,96 @@
         @endif
     
         <!-- Reject Button -->
-        @if ($user->status == 0)
-            <form action="{{ url('/admin/application/reject/' . $user->id) }}" method="POST" class="inline-block w-full md:w-auto">
+        @if ($user->status == 0 && $user->investorDetails)
+            {{-- <form action="{{ url('/admin/application/reject/' . $user->id) }}" method="POST" class="inline-block w-full md:w-auto">
                 @csrf
                 <button type="submit"
                     class="bg-orange-600 text-white w-full md:w-auto px-4 py-2 rounded hover:bg-orange-700 font-semibold focus:outline-none focus:ring-2 focus:ring-orange-500 text-sm md:text-base text-center" onclick="return confirm('Are you sure you want to reject this application?')">
                     Reject
                 </button>
-            </form>
+            </form> --}}
+            <button
+                    class="bg-orange-600 text-white w-full md:w-auto px-4 py-2 rounded hover:bg-orange-700 font-semibold focus:outline-none focus:ring-2 focus:ring-orange-500 text-sm md:text-base text-center"
+                    onclick="rejectApplication({{ $user->id }})"
+                >
+                    Reject
+                </button>
+
+
+
+            
         @endif
     </div>
+    
+    <script>
+//        function rejectApplication(userId) {
+//     const reason = prompt("Please provide a reason for rejection:");
+//         if (reason) {
+//             if (confirm("Are you sure you want to reject this application? This action is irreversible.")) {
+//                 fetch(`/application/reject/${userId}`, {
+//                     method: "POST",
+//                     headers: {
+//                         "Content-Type": "application/json",
+//                         "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+//                     },
+//                     body: JSON.stringify({ reason })
+//                 })
+//                 .then(response => {
+//                     if (response.ok) {
+//                         return response.json(); // Expecting JSON response
+//                     } else {
+//                         throw new Error('Server responded with an error.');
+//                     }
+//                 })
+//                 .then(data => {
+//                     alert(data.message);
+//                     location.reload(); // Reload to reflect changes
+//                 })
+//                 .catch((error) => {
+//                     // Log full error object to console for debugging
+//                     console.error("Error:", error);
+//                     alert(`Error: ${error.message || "Something went wrong. Please try again later."}`);
+//                 });
+//             }
+//         } else {
+//             alert("Rejection reason is required.");
+//         }
+// }
+
+function rejectApplication(userId) {
+    const reason = prompt("Please provide a reason for rejection:");
+    if (reason) {
+        if (confirm("Are you sure you want to reject this application? This action is irreversible.")) {
+            fetch(`/application/reject/${userId}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                },
+                body: JSON.stringify({ reason })
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json(); // Expecting JSON response
+                } else {
+                    throw new Error('Server responded with an error.');
+                }
+            })
+            .then(data => {
+                alert(data.message); // Show success message
+                window.location.href = '/admin/application'; // Redirect to the admin applications page
+            })
+            .catch((error) => {
+                console.error("Error:", error);
+                alert(`Error: ${error.message || "Something went wrong. Please try again later."}`);
+            });
+        }
+    } else {
+        alert("Rejection reason is required.");
+    }
+}
+
+
+    </script>
     
 @endsection
