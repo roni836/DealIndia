@@ -74,7 +74,7 @@
                                     class="mt-1 block w-full p-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 @error('vr_code') border-red-500 @enderror"
                                     value="{{ old('vr_code') }}" required>
                                 @error('vr_code')
-                                    <span class="text-sm text-red-500 mt-1">{{ $message }}</span>
+                                    <span class="text-sm text-red-500 mt-1">Invalid Vr Code</span>
                                 @enderror
                             </div>
 
