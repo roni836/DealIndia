@@ -229,32 +229,20 @@ public function rejectApplication(Request $request, $id)
         $email = $user->email;
         $mobile = $user->mobile;
         $application_no = $user->id;
-
-        // // Send email to user
-        // Mail::send('user.emails.application_rejected', compact('name', 'reason'), function($message) use ($email) {
-        //     $message->to($email)->subject('Application Rejected');
-        // });
-
-        // // Send email to admin
-        // $adminEmail = 'shuruchi0508@gmail.com'; // Change this to your admin email
-        // Mail::send('user.emails.application_rejected_admin', compact('name', 'reason', 'application_no', 'email', 'mobile'), function($message) use ($adminEmail) {
-        //     $message->to($adminEmail)->subject('Application Rejected Notification');
-        // });
-
+        //user mail
         Mail::send('user.emails.application_rejected', compact('name', 'reason', 'user'), function($message) use ($email) {
             $message->to($email)->subject('Application Rejected');
         });
         
         // Send email to admin
-        $adminEmail = 'shuruchi0508@gmail.com'; // Change this to your admin email
+        $adminEmail = 'support@dealindia.org'; 
         Mail::send('user.emails.application_rejected_admin', compact('name', 'reason', 'application_no', 'email', 'mobile', 'user'), function($message) use ($adminEmail) {
             $message->to($adminEmail)->subject('Application Rejected Notification');
         });
         // Delete the user
         $user->delete();
 
-        //return response()->json(['message' => 'User application rejected successfully']);
-        // return redirect()->route('pending-application')->with('success', 'Application rejected successfully. The user has been removed.');
+        
         session()->flash('message', 'Application rejected successfully');
         return response()->json(['message' => 'Application rejected successfully']);
 
