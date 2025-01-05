@@ -172,8 +172,8 @@
                     </h2>
                     <div class="space-y-4">
                         <p class="flex items-center">
-                            <i class="fas fa-envelope mr-2"></i> Email: <a href="mailto:privacy@dealindia.com"
-                                class="text-teal-600 hover:underline">privacy@dealindia.com</a>
+                            <i class="fas fa-envelope mr-2"></i> Email: <a href="mailto:privacy@dealindia.org"
+                                class="text-teal-600 hover:underline">privacy@dealindia.org</a>
                         </p>
                         {{-- <p class="flex items-center">
                             <i class="fas fa-phone mr-2"></i> Phone: +1-800-DEALINDIA

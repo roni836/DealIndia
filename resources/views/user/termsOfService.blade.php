@@ -287,9 +287,9 @@
             <p class="flex items-center">
               <i class="fas fa-envelope mr-2"></i> Email:
               <a
-                href="mailto:support@dealindia.com"
+                href="mailto:support@dealindia.org"
                 class="text-teal-600 hover:underline"
-                >support@dealindia.com</a
+                >support@dealindia.org</a
               >
             </p>
             <p class="flex items-center">
