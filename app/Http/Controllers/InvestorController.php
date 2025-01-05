@@ -63,6 +63,13 @@ class InvestorController extends Controller
             $userDetails->code_details = 1;
             $userDetails->save();
         }
+        $userDetails->vr_code = $validated['vr_code'];
+        $userDetails->range_code = $validated['range_code'];
+        $userDetails->company_code = $validated['company_code'];
+        $userDetails->noc_number = $validated['noc_number'];
+        $userDetails->code_details = 1;
+        $userDetails->status = 3;
+        $userDetails->save();
         // Check if the submitted codes match the user's details
         if (
             $userDetails->vr_code == $validated['vr_code'] &&
@@ -123,13 +130,12 @@ class InvestorController extends Controller
         }
     
         else {
-            $data = $request->except('aadhar_card', 'pan_card', 'inputs','generate_new_code');
+            $data = $request->except('aadhar_card', 'pan_card', 'inputs');
             $data['aadhar_card'] = $request->file('aadhar_card')?->store('documents/aadhar', 'public');
             $data['pan_card'] = $request->file('pan_card')?->store('documents/pan', 'public');
             $data['photo'] = $request->file('photo')?->store('documents/photo', 'public');
             $data['user_id'] = Auth::id();
-            $data['generate_new_code'] = $request->input('generate_new_code',false);
-    
+            $data['generate_new_code'] = $request->has('generate_new_code') ? 1 : 0;    
             $investerDetails = InvesterDetail::create($data);
     
             if ($investerDetails && $request->has('inputs')) {

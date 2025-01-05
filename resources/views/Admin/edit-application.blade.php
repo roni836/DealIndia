@@ -3,111 +3,108 @@
 @section('title', 'Application Details')
 
 @section('content')
-<div class="container mx-auto ">
-    @if(session('success'))
-    <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6" role="alert">
-        <strong class="font-bold">Success:</strong>
-        <span class="block sm:inline">{{ session('success') }}</span>
-    </div>
-    @endif
-    @if(!$user->investorDetails)
-    <div class="bg-red-100 border border-red-200 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
-      
-        <span class="block sm:inline">Investor details are required to approve this user.</span>
-    </div>
-    @endif
-    {{-- @if($user->status == 2)
+    <div class="container mx-auto ">
+        @if (session('success'))
+            <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-6" role="alert">
+                <strong class="font-bold">Success:</strong>
+                <span class="block sm:inline">{{ session('success') }}</span>
+            </div>
+        @endif
+        @if (!$user->investorDetails)
+            <div class="bg-red-100 border border-red-200 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+
+                <span class="block sm:inline">Investor details are required to approve this user.</span>
+            </div>
+        @endif
+        {{-- @if ($user->status == 2)
     <div class="bg-red-100 border border-red-200 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
        
         <span class="block sm:inline">Application is Rejected.</span>
     </div>
     @endif --}}
-    <!-- User Information Section -->
-    <div class="bg-white hidden md:block rounded-lg overflow-hidden mb-6">
-        <div class="bg-gray-200 px-6 py-4">
-            <h4 class="text-lg font-semibold">User Information</h4>
-        </div>
-        <div class=" bg-white p-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">
-                    
-                    <div class="text-center">
-                        <img src="{{ asset('user.png') }}" alt="" class="mx-auto">
-                        <p><strong>Name:</strong> {{ $user->first_name }} {{ $user->last_name }}</p>
-                    </div>
-                    
-                    {{-- <div class="inline-grid justify-center items-center">
+        <!-- User Information Section -->
+        <div class="bg-white hidden md:block rounded-lg overflow-hidden mb-6">
+            <div class="bg-gray-200 px-6 py-4">
+                <h4 class="text-lg font-semibold">User Information</h4>
+            </div>
+            <div class=" bg-white p-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">
+
+                <div class="text-center">
+                    <img src="{{ asset('user.png') }}" alt="" class="mx-auto">
+                    <p><strong>Name:</strong> {{ $user->first_name }} {{ $user->last_name }}</p>
+                </div>
+
+                {{-- <div class="inline-grid justify-center items-center">
                         <img src="{{ asset('role.png') }}" alt="" class="">
                         <p><strong>Role:</strong> {{ $user->role }}</p>
                     </div> --}}
-                    <div class="text-center">
-                        <img src="{{ asset('email.png') }}" alt="" class="mx-auto">
-                        <p class=""><strong>Email:</strong> {{ $user->email }}</p>
-                    </div>
-                    <div class="text-center">
-                        {{-- @if ($user->status == 1)
+                <div class="text-center">
+                    <img src="{{ asset('email.png') }}" alt="" class="mx-auto">
+                    <p class=""><strong>Email:</strong> {{ $user->email }}</p>
+                </div>
+                <div class="text-center">
+                    {{-- @if ($user->status == 1)
                             <img src="{{ asset('active.png') }}" alt="Active" class="mx-auto">
                         @elseif ($user->status == 0)
                             <img src="{{ asset('inactive.png') }}" alt="Inactive" class="mx-auto">
                         @elseif ($user->status == 2)
                             <img src="{{ asset('inactive.png') }}" alt="Rejected" class="mx-auto">
                         @endif --}}
-                        @if($user->status == 1)
+                    @if ($user->status == 1)
                         <img src="{{ asset('active.png') }}" alt="Active" class="mx-auto">
-                        @else
+                    @else
                         <img src="{{ asset('inactive.png') }}" alt="Inactive" class="mx-auto">
+                    @endif
+                    <p><strong>Status:</strong>
+
+                        @if ($user->status == 1)
+                            <span class="text-green-500">Active</span>
+                        @else
+                            <span class="text-red-500">Inactive</span>
                         @endif
-                        <p><strong>Status:</strong>
-                            
-                                @if ($user->status == 1)
-                                   <span class="text-green-500">Active</span> 
-                                @else
-                                   <span class="text-red-500">Inactive</span> 
-                                 
-                                @endif                           
+                    </p>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="bg-white  rounded-lg overflow-hidden md:hidden mb-6">
+            <div class="bg-gray-200 px-6 py-4">
+                <h4 class="text-lg font-semibold">User Information</h4>
+            </div>
+            <div class="p-3">
+                <div class="grid grid-cols-1">
+                    <div class="bg-white text-sm space-y-2  ">
+                        <p class="flex gap-1">
+                            <img src="{{ asset('user.png') }}" alt="" class="w-5 h-5">
+                            <strong>Name:</strong> {{ $user->first_name }} {{ $user->last_name }}
+                        </p>
+                        <p class="flex gap-1">
+                            <img src="{{ asset('email.png') }}" alt="" class="w-5 h-5">
+                            <strong>Email:</strong> {{ $user->email }}
+                        </p>
+
+                        <p class="flex gap-1">
+
+                            @if ($user->status == 1)
+                                <img src="{{ asset('active.png') }}" alt="Active" class="w-5 h-5">
+                            @else
+                                <img src="{{ asset('inactive.png') }}" alt="Inactive" class="w-5 h-5">
+                            @endif
+                            <strong>Status:</strong>
+
+                            @if ($user->status == 1)
+                                <span class="text-green-500">Active</span>
+                            @else
+                                <span class="text-red-500">Inactive</span>
+                            @endif
+
+
                         </p>
                     </div>
-                    
-           
-        </div>
-    </div>
-    <div class="bg-white  rounded-lg overflow-hidden md:hidden mb-6">
-        <div class="bg-gray-200 px-6 py-4">
-            <h4 class="text-lg font-semibold">User Information</h4>
-        </div>
-        <div class="p-3">
-            <div class="grid grid-cols-1">
-                <div class="bg-white text-sm space-y-2  ">
-                    <p class="flex gap-1">
-                        <img src="{{ asset('user.png') }}" alt="" class="w-5 h-5">
-                        <strong>Name:</strong> {{ $user->first_name }} {{ $user->last_name }}
-                    </p>
-                    <p class="flex gap-1">
-                        <img src="{{ asset('email.png') }}" alt="" class="w-5 h-5">
-                        <strong>Email:</strong> {{ $user->email }}
-                    </p>
-                    
-                    <p class="flex gap-1">
-                        
-                        @if ($user->status == 1)
-                        <img src="{{ asset('active.png') }}" alt="Active" class="w-5 h-5">
-                    @else
-                        <img src="{{ asset('inactive.png') }}" alt="Inactive" class="w-5 h-5">
-                   
-                    @endif
-                   <strong>Status:</strong>
-                        
-                            @if ($user->status == 1)
-                               <span class="text-green-500">Active</span> 
-                            @else
-                               <span class="text-red-500">Inactive</span> 
-                           
-                            @endif                           
-                   
-                        
-                    </p>
                 </div>
             </div>
         </div>
-    </div>
 
     <!-- Investor Details Section -->
     @if($user->investorDetails)
@@ -220,8 +217,6 @@
     @endif
 </div>
 
- 
-
 
     <!-- Generated Codes Section -->
     <div class=" overflow-hidden mb-6 mt-4 rounded-lg">
@@ -232,77 +227,54 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 ">
                 <div>
                     <p class="text-sm md:text-base"><span class="font-semibold">V.R Code:</span> {{ $user->vr_code }}</p>
-                    <p class="text-sm md:text-base"><span class="font-semibold">Range Code:</span> {{ $user->range_code }}</p>
+                    <p class="text-sm md:text-base"><span class="font-semibold">Range Code:</span>
+                        {{ $user->range_code }}</p>
                 </div>
                 <div>
-                    <p class="text-sm md:text-base"><span class="font-semibold">Company Code:</span> {{ $user->company_code }}</p>
-                    <p class="text-sm md:text-base"><span class="font-semibold">NOC no.:</span> {{ $user->noc_number }}</p>
+                    <p class="text-sm md:text-base"><span class="font-semibold">Company Code:</span>
+                        {{ $user->company_code }}</p>
+                    <p class="text-sm md:text-base"><span class="font-semibold">NOC no.:</span> {{ $user->noc_number }}
+                    </p>
                 </div>
             </div>
         </div>
     </div>
 
-<!-- Actions Section -->
-    {{-- <div class="mt-6 p-4 flex flex-col md:flex-row justify-end space-y-2 md:space-y-0 md:space-x-2 m-2">
-       
-        <a href="{{ url('/admin/application') }}"
-            class="bg-gray-500 text-white w-full md:w-auto px-4 py-2 rounded hover:bg-gray-600 text-sm md:text-base text-center">
-            Back to List
-        </a>
-        @if ($user->investorDetails && $user->vr_code && $user->company_code && $user->noc_number)
-        
-        @else
-            @if ($user->investorDetails) 
-            <form action="{{ url('/admin/application/generate/' . $user->id) }}" method="POST" class="inline-block w-full md:w-auto">
-                @csrf
-                <button type="submit"
-                    class="bg-green-500 text-white w-full md:w-auto px-4 py-2 rounded hover:bg-green-600 font-semibold focus:outline-none focus:ring-2 focus:ring-green-500 text-sm md:text-base text-center">
-                    Approve Now
-                </button>
-            </form>
-            @else
-                <button type="button" 
-                class="bg-red-500 text-white w-full md:w-auto px-4 py-2 rounded font-semibold focus:outline-none text-sm md:text-base text-center" disabled>
-                Cannot Approve: Investor Details Missing
-                </button>
-            @endif
-            <!-- Reject Button -->
-        <form action="{{ url('/admin/application/reject/' . $user->id) }}" method="POST" class="inline-block w-full md:w-auto">
-            @csrf
-            <button type="submit"
-                class="bg-orange-600 text-white w-full md:w-auto px-4 py-2 rounded hover:bg-orange-700 font-semibold focus:outline-none focus:ring-2 focus:ring-orange-500 text-sm md:text-base text-center" onclick="return confirm('Are you sure you want to reject this application?')">
-                Reject
-            </button>
-        </form>
-        @endif
-
-        
-    </div> --}}
-
     <div class="mt-6 p-4 flex flex-col md:flex-row justify-end space-y-2 md:space-y-0 md:space-x-2 m-2">
         <a href="{{ url('/admin') }}"
             class="bg-gray-500 text-white w-full md:w-auto px-4 py-2 rounded hover:bg-gray-600 text-sm md:text-base text-center">
-           Dashboard
+            Dashboard
         </a>
-    
-        @if ($user->status == 0 && $user->investorDetails )
-            <form action="{{ url('/admin/application/generate/' . $user->id) }}" method="POST" class="inline-block w-full md:w-auto">
+
+        @if ($user->status == 0 && $user->investorDetails)
+            <form action="{{ url('/admin/application/generate/' . $user->id) }}" method="POST"
+                class="inline-block w-full md:w-auto">
                 @csrf
                 <button type="submit"
                     class="bg-green-500 text-white w-full md:w-auto px-4 py-2 rounded hover:bg-green-600 font-semibold focus:outline-none focus:ring-2 focus:ring-green-500 text-sm md:text-base text-center">
                     Approve Now
                 </button>
             </form>
-        
-               @else
+        @else
+            @if ($user->status == 3)
+                <form action="{{ url('/admin/application/approve/' . $user->id) }}" method="POST"
+                    class="inline-block w-full md:w-auto">
+                    @csrf
+                    <button type="submit"
+                        class="bg-green-500 text-white w-full md:w-auto px-4 py-2 rounded hover:bg-green-600 font-semibold focus:outline-none focus:ring-2 focus:ring-green-500 text-sm md:text-base text-center">
+                        Verify & Approve
+                    </button>
+                </form>
+            @endif
             @if (!$user->investorDetails)
-                <button type="button" 
-                class="bg-red-500 text-white w-full md:w-auto px-4 py-2 rounded font-semibold focus:outline-none text-sm md:text-base text-center" disabled>
-                Cannot Approve: Missing Required Details
+                <button type="button"
+                    class="bg-red-500 text-white w-full md:w-auto px-4 py-2 rounded font-semibold focus:outline-none text-sm md:text-base text-center"
+                    disabled>
+                    Cannot Approve: Missing Required Details
                 </button>
             @endif
         @endif
-    
+
         <!-- Reject Button -->
         @if ($user->status == 0 && $user->investorDetails)
             {{-- <form action="{{ url('/admin/application/reject/' . $user->id) }}" method="POST" class="inline-block w-full md:w-auto">
@@ -313,87 +285,64 @@
                 </button>
             </form> --}}
             <button
-                    class="bg-orange-600 text-white w-full md:w-auto px-4 py-2 rounded hover:bg-orange-700 font-semibold focus:outline-none focus:ring-2 focus:ring-orange-500 text-sm md:text-base text-center"
-                    onclick="rejectApplication({{ $user->id }})"
-                >
+                class="bg-orange-600 text-white w-full md:w-auto px-4 py-2 rounded hover:bg-orange-700 font-semibold focus:outline-none focus:ring-2 focus:ring-orange-500 text-sm md:text-base text-center"
+                onclick="rejectApplication({{ $user->id }})">
+                Reject
+            </button>
+        @endif
+        @if ($user->status == 3 && $user->investorDetails)
+            {{-- <form action="{{ url('/admin/application/reject/' . $user->id) }}" method="POST" class="inline-block w-full md:w-auto">
+                @csrf
+                <button type="submit"
+                    class="bg-orange-600 text-white w-full md:w-auto px-4 py-2 rounded hover:bg-orange-700 font-semibold focus:outline-none focus:ring-2 focus:ring-orange-500 text-sm md:text-base text-center" onclick="return confirm('Are you sure you want to reject this application?')">
                     Reject
                 </button>
-
-
-
-            
+            </form> --}}
+            <button
+                class="bg-orange-600 text-white w-full md:w-auto px-4 py-2 rounded hover:bg-orange-700 font-semibold focus:outline-none focus:ring-2 focus:ring-orange-500 text-sm md:text-base text-center"
+                onclick="rejectApplication({{ $user->id }})">
+                Reject
+            </button>
         @endif
     </div>
-    
+
     <script>
-//        function rejectApplication(userId) {
-//     const reason = prompt("Please provide a reason for rejection:");
-//         if (reason) {
-//             if (confirm("Are you sure you want to reject this application? This action is irreversible.")) {
-//                 fetch(`/application/reject/${userId}`, {
-//                     method: "POST",
-//                     headers: {
-//                         "Content-Type": "application/json",
-//                         "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-//                     },
-//                     body: JSON.stringify({ reason })
-//                 })
-//                 .then(response => {
-//                     if (response.ok) {
-//                         return response.json(); // Expecting JSON response
-//                     } else {
-//                         throw new Error('Server responded with an error.');
-//                     }
-//                 })
-//                 .then(data => {
-//                     alert(data.message);
-//                     location.reload(); // Reload to reflect changes
-//                 })
-//                 .catch((error) => {
-//                     // Log full error object to console for debugging
-//                     console.error("Error:", error);
-//                     alert(`Error: ${error.message || "Something went wrong. Please try again later."}`);
-//                 });
-//             }
-//         } else {
-//             alert("Rejection reason is required.");
-//         }
-// }
 
-function rejectApplication(userId) {
-    const reason = prompt("Please provide a reason for rejection:");
-    if (reason) {
-        if (confirm("Are you sure you want to reject this application? This action is irreversible.")) {
-            fetch(`/application/reject/${userId}`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                },
-                body: JSON.stringify({ reason })
-            })
-            .then(response => {
-                if (response.ok) {
-                    return response.json(); // Expecting JSON response
-                } else {
-                    throw new Error('Server responded with an error.');
+        function rejectApplication(userId) {
+            const reason = prompt("Please provide a reason for rejection:");
+            if (reason) {
+                if (confirm("Are you sure you want to reject this application? This action is irreversible.")) {
+                    fetch(`/application/reject/${userId}`, {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute(
+                                    'content')
+                            },
+                            body: JSON.stringify({
+                                reason
+                            })
+                        })
+                        .then(response => {
+                            if (response.ok) {
+                                return response.json(); // Expecting JSON response
+                            } else {
+                                throw new Error('Server responded with an error.');
+                            }
+                        })
+                        .then(data => {
+                            alert(data.message); // Show success message
+                            window.location.href = '/admin/application'; // Redirect to the admin applications page
+                        })
+                        .catch((error) => {
+                            console.error("Error:", error);
+                            alert(`Error: ${error.message || "Something went wrong. Please try again later."}`);
+                        });
                 }
-            })
-            .then(data => {
-                alert(data.message); // Show success message
-                window.location.href = '/admin/application'; // Redirect to the admin applications page
-            })
-            .catch((error) => {
-                console.error("Error:", error);
-                alert(`Error: ${error.message || "Something went wrong. Please try again later."}`);
-            });
+            } else {
+                alert("Rejection reason is required.");
+            }
         }
-    } else {
-        alert("Rejection reason is required.");
-    }
-}
-
-
     </script>
-    
+
 @endsection

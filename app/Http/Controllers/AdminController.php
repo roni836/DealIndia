@@ -107,7 +107,7 @@ class AdminController extends Controller
 
    public function pendingApplication()
    {
-      $applications = User::where('status', 0)->where('isAdmin', 0)->with('investorDetails')->get();
+      $applications = User::where('status', 0)->orwhere('status', 3)->where('isAdmin', 0)->with('investorDetails')->get();
       return view('Admin.applications', ["applications" => $applications]);
    }
 

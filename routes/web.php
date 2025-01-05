@@ -115,6 +115,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/admin/application/reject/{id}', [ApplicationController::class, 'rejectApplication']);
 
     Route::post('/admin/application/generate/{id}', [ApplicationController::class, 'generateCode']);
+    Route::post('/admin/application/approve/{id}', [ApplicationController::class, 'approveCode']);
     Route::get('/admin/contact', [AdminController::class, 'contact'])->name('admin.contact.manage');
     Route::get('admin/contact-view/{contact}', [AdminController::class, 'editContact'])->name('admin.contact.show');
     Route::put('/contact-view/{contact}', [AdminController::class, 'updateContact'])->name('admin.contact.update');
